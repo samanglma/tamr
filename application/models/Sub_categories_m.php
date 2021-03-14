@@ -1,0 +1,53 @@
+<?php
+
+class Sub_Categories_m  extends CI_Model
+{
+
+    public function saveSubCategory($data)
+    {
+        $this->db->insert('sub_categories', $data);
+        return true;
+    }
+
+    public function getAllSubCategory()
+    {
+        $this->db->select('sub_categories.*, categories.title as catTitle');
+        $this->db->from('sub_categories');
+        $this->db->join('categories', 'categories.id = sub_categories.cat_id');
+        $query = $this->db->get()->result();
+        return $query;
+
+    }
+
+    public function editSubCategory($id)
+    {
+        $this->db->select('*');
+        $this->db->from('sub_categories');
+        $this->db->where('id', $id);
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
+    public function updateSubCategory($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('sub_categories', $data['data']);
+    }
+
+    public function deleteSubCategory($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('sub_categories');
+        return true;
+    }
+
+    public function getAllCat()
+    {
+        $this->db->select('*');
+        $this->db->from('categories');
+        $q = $this->db->get()->result();
+
+        return $q;
+    }
+
+}

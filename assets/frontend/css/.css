@@ -1,0 +1,128 @@
+.about-section{
+					direction: rtl !important;
+				}
+
+				.vendorsss{
+					direction: rtl !important;
+				}
+				.vendors-list-section .vendor-line{
+
+				left: -200px;
+				top: -11px;
+				}
+
+				.aboutss{
+
+					float: right;
+					margin-top: -70px;
+
+				}
+
+				.vender-list_h2{
+					float: right;
+					margin-top: -70px;
+				}
+
+				.about-section .about-line{
+
+					right: -16%;
+					top: -46px;
+
+				}
+
+				.about-section .title h2{
+
+					float: right;
+					    margin-top: -105px;
+					    margin-right: 23px;
+
+				}
+				.about-section .content p{
+					    text-align: initial;
+
+				}
+
+				.vendors-list-section .content .view-more a{
+					float: left;
+
+				}
+				
+
+				.products-custom-scroll{
+
+					direction: rtl;
+
+
+				}
+
+				.contact-line{
+					left: 313px !important;
+   					 top: 145px !important;
+				}
+
+				.vendors-list-section .vendor-line-left{
+
+					
+
+					  /*  position: relative;
+    height: 2px;
+    width: 12%;
+    background: #D9CE46;
+  
+    float: right;*/
+				}
+
+				.contact-section{
+					direction: rtl;
+				}
+
+				.vendors-list-section .vendor-line{
+					    /*left: 313px;*/
+
+				}
+
+				.product_h2{
+
+					float: right;
+					    margin-top: -105px;
+					    margin-right: 23px;
+				}
+
+				.sidenav{
+				    right: 0px;
+				    left: 2px;
+				}
+
+				#myBtn{
+					position: fixed;
+				    background: #D9CE46;
+				    font-size: 40px;
+				    color: white;
+				    border: none;
+				    z-index: 9;
+				   right: auto;
+				}
+
+				.right-contact-us{
+
+					    right: auto;
+					        direction: rtl;
+
+				}
+
+				.nav-bar-logo img{
+
+					    float: right;
+				    margin-right: 57px;
+				    margin-top: -10px;
+
+				}
+
+				.contantt{
+
+					margin-left: 44px;
+				}
+
+				.right-contact-us img{
+					left: 3px;
+				}

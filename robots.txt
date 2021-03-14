@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+https://www.depachika.ae/sitemap.xml

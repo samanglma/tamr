@@ -1,0 +1,172 @@
+<?php
+
+class Products_m extends CI_Model
+{
+
+
+	function __construct() {
+        $this->proTable   = 'products';
+        $this->transTable = 'payments';
+	}
+	
+	
+	public function save($data)
+	{
+		$this->db->insert('products', $data);
+		return true;
+	}
+
+	public function getAll()
+	{
+		$this->db->select('products.*,brands.brand_name,categories.title as cat_title');
+		$this->db->join('brands', 'brands.id = products.brand_id');
+		$this->db->join('categories', 'categories.id = products.cat_id');
+		$query = $this->db->get('products')->result();
+		return $query;
+
+	}
+
+	public function edit($id)
+	{
+		$this->db->select('*');
+		$this->db->where('id', $id);
+		$query = $this->db->get('products')->row();
+		return $query;
+	}
+
+	public function update($data)
+	{
+		$this->db->where('id', $data['id']);
+		$this->db->update('products', $data['data']);
+		return true;
+	}
+
+	public function delete($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('products');
+		return true;
+	}
+
+	public function getHomeProducts()
+	{
+		$this->db->where('status', 1);
+		return $this->db->get('products')->result();
+	}
+
+
+	public function getTopSellers()
+	{
+		$this->db->select("*");
+		return $this->db->where('status', 1)->where('top_seller', 1)->limit(2)->order_by('id', 'desc')->get('products')->result();
+	}
+
+	public function filterProducts($data)
+	{
+
+		$catValue = $data['selectCatValue'];
+
+		$filterOption = $data['filterOption'];
+		$this->db->select("*");
+
+		if($catValue)
+		{
+
+			return $this->db->where('status', 1)->where('cat_id', $catValue)->order_by('id', 'desc')->get('products')->result();
+
+		}
+		if($catValue && $filterOption == 'topSales')
+			{
+
+				return $this->db->where('status', 1)->where('top_seller', 1)->where('cat_id', $catValue)->order_by('id', 'desc')->get('products')->result();
+
+			}
+
+		if (empty($catValue)) {
+			if ($filterOption == 'all') { 
+				return $this->db->where('status', 1)->get('products')->result();
+			} else if ($filterOption == 'new') {
+				return $this->db->where('status', 1)->where('mark_as_new', 1)->order_by('id', 'desc')->get('products')->result();
+			}
+
+			
+
+			elseif($catValue && $filterOption == 'new')
+			{
+
+
+
+				return $this->db->where('status', 1)->where('mark_as_new', 1)->where('cat_id', $catValue)->order_by('id', 'desc')->get('products')->result();
+
+			}
+
+
+			else if ($filterOption == 'topSales') {
+				return $this->db->where('status', 1)->where('top_seller', 1)->order_by('id', 'desc')->get('products')->result();
+			}
+
+			 else {
+				return $this->db->where('status', 1)->get('products')->result();
+			}
+		} else {
+			if ($filterOption == 'all') {
+				return $this->db->where('status', 1)->where('cat_id',$catValue)->get('products')->result();
+			} else if ($filterOption == 'new') {
+				return $this->db->where('status', 1)->where('mark_as_new', 1)->where('cat_id',$catValue)->order_by('id', 'desc')->get('products')->result();
+			}
+
+
+			else if ($filterOption == 'topSales') {
+				return $this->db->where('status', 1)->where('top_seller', 1)->order_by('id', 'desc')->get('products')->result();
+			}
+
+			 else {
+				return $this->db->where('status', 1)->where('cat_id',$catValue)->get('products')->result();
+			}
+		}
+	}
+
+
+
+	public function insertTransaction($data){
+        $insert = $this->db->insert($this->transTable,$data);
+        return $insert?true:false;
+	}
+	
+
+	public function getProductsByID($id)
+	{
+		$this->db->select('*');
+		$this->db->where('id', $id);
+		$query = $this->db->get('products')->row();
+		return $query;
+
+	}
+
+	public function getAllProducts($category = '')
+	{
+		$this->db->select('*');
+		if($category!= '')
+		{
+			$this->db->where('categories.slug', $category);
+		}
+		$this->db->join('categories', 'categories.id = products.cat_id');
+		$this->db->where('products.status', 1);
+		$this->db->from('products');
+		$query = $this->db->get()->result();
+
+		return $query;
+	}
+
+	public function getProductDetails($id)
+	{
+		$this->db->select('*');
+		$this->db->where('id', $id);
+		$this->db->from('products');
+
+		$query = $this->db->get()->row();
+
+		return $query;
+	}
+
+}
