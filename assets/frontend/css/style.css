@@ -48,6 +48,21 @@ a, a:focus, a:hover {
   padding-left: 100px;
 }
 
+.cart-wrapper {
+  padding-right: 100px;
+  background-image: url('../images/home-bg.png');
+  display: table;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-left: 100px;
+}
+
+.logo img{
+
+  margin-bottom: 30px;
+}
+
 .wrapper-inner {
   display: table-cell;
   vertical-align: middle;
@@ -450,7 +465,7 @@ p {
 }
 
 .justify-content-between {
-  margin-bottom: -22px;
+  margin-bottom: 22px;
 }
 
 .details {
@@ -590,19 +605,17 @@ i{
 
 
 .bg-text h2 {
-   font-size: 100px;
- 
-   
-   text-align: center;
-   padding-top: 10px;
-   margin-bottom: 0px;
-   padding-bottom: 0px;
-   position: relative;
-   top: 30px;
-   letter-spacing: -10px;
-   z-index: 2;
-   opacity: 0.1;
-   margin-left: 0px;
+  font-size: 100px;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 75px;
+    position: relative;
+    top: 30px;
+    letter-spacing: -10px;
+    z-index: 2;
+    opacity: 0.1;
+    margin-left: -345px;
 }
 
 .heading h1{

@@ -11,6 +11,7 @@ class Products extends CI_Controller
     public function index()
     {
         $slug = $this->uri->segment('3');
+        
         $data['products'] = $this->Products_m->getAllProducts($slug);
 
         $this->load->view('frontend/includes/header', $data);
