@@ -1,3 +1,6 @@
+<?php
+$lang = lang() == 'english' ? 'en' : 'ar';
+?>
 <!-- Page Header -->
 <div class="masthead" style="background-image: url('<?= base_url('assets/frontend/images/about-bg.jpg') ?>'); height: 406px;">
 
@@ -7,10 +10,10 @@
 <div class="container content">
 
 	<ul class="list-inline menu wrap_scroll">
-		<li><a id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a></li>
-		<li><a id="home-tab" data-toggle="tab" href="#profile-tab" role="tab" aria-controls="home" aria-selected="true">New Products</a></li>
-		<li><a id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Top Sellers</a></li>
-		<li><a id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Date</a></li>
+		<li><a href="<?= base_url($lang . '/products') ?>" >All</a></li>
+		<li><a href="<?= base_url($lang . '/products/dates') ?>" >Dates</a></li>
+		<li><a href="<?= base_url($lang . '/products/debes') ?>" >Debes</a></li>
+		<li><a href="<?= base_url($lang . '/products/gifts') ?>">Gifts</a></li>
 	</ul>
 
 
@@ -20,78 +23,30 @@
 			<div class="tab-content" id="myTabContent">
 
 				<div class="row g-3">
+				<?php
+				foreach($products as $p)
+				{
+				?>
 					<div class="col-md-4">
-						<div class=""> <img src="https://i.imgur.com/SOMPPzU.jpg" class="card-img-top">
+					<a href="<?= base_url($lang . '/product/'.$p->slug) ?>">
+						<div class=""> <img src="<?= base_url('uploads/products/'.$p->image1) ?>" class="card-img-top">
 							<div class="card-body">
-								<div class="d-flex justify-content-between"> <span class="font-weight-bold">Wood Sofa set-3</span> </div>
-								<p class="details">This is details</p>
+								<div class="d-flex justify-content-between"> <span class="font-weight-bold"><?= $p->title ?></span> </div>
+								<p class="details"><?= substr($p->description, 0, 50) ?? "" ?></p>
 
-								<span class="font-weight-bold price">550</span> <span class='currancy'>AED</span>
+								<span class="font-weight-bold price"><?= $p->price ?></span> <span class='currancy'>AED</span>
 							</div>
 
 						</div>
+					</a>
 					</div>
-					<div class="col-md-4">
-						<div class=""> <img src="https://i.imgur.com/SOMPPzU.jpg" class="card-img-top">
-							<div class="card-body">
-								<div class="d-flex justify-content-between"> <span class="font-weight-bold">Wood Sofa set-3</span> </div>
-								<p class="details">lasdmlasd</p>
-
-								<span class="font-weight-bold">550</span> <span class='currancy'>AED</span>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class=""> <img src="https://i.imgur.com/SOMPPzU.jpg" class="card-img-top">
-							<div class="card-body">
-								<div class="d-flex justify-content-between"> <span class="font-weight-bold">Wood Sofa set-3</span> </div>
-								<p class="details">lasdmlasd</p>
-
-								<span class="font-weight-bold">550</span> <span class='currancy'>AED</span>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class=""> <img src="https://i.imgur.com/SOMPPzU.jpg" class="card-img-top">
-							<div class="card-body">
-								<div class="d-flex justify-content-between"> <span class="font-weight-bold">Wood Sofa set-3</span> </div>
-								<p class="details">lasdmlasd</p>
-
-								<span class="font-weight-bold">550</span> <span class='currancy'>AED</span>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class=""> <img src="https://i.imgur.com/SOMPPzU.jpg" class="card-img-top">
-							<div class="card-body">
-								<div class="d-flex justify-content-between"> <span class="font-weight-bold">Wood Sofa set-3</span> </div>
-								<p class="details">lasdmlasd</p>
-
-								<span class="font-weight-bold">550</span><span class='currancy'>AED</span>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class=""> <img src="https://i.imgur.com/SOMPPzU.jpg" class="card-img-top">
-							<div class="card-body">
-								<div class="d-flex justify-content-between"> <span class="font-weight-bold">Wood Sofa set-3</span> </div>
-								<p class="details">lasdmlasd</p>
-
-								<span class="font-weight-bold">550</span> <span class='currancy'>AED</span>
-							</div>
-
-						</div>
-					</div>
-
+					<?php
+				}
+				?>
+			
 				</div>
 
 
 			</div>
 		</div>
 	</div>
-
-	<hr>

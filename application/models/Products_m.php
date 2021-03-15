@@ -145,16 +145,18 @@ class Products_m extends CI_Model
 
 	public function getAllProducts($category = '')
 	{
-		$this->db->select('*');
+		$this->db->select('products.*, categories.title, categories.title_ar');
 		if($category!= '')
 		{
 			$this->db->where('categories.slug', $category);
 		}
 		$this->db->join('categories', 'categories.id = products.cat_id');
+		// $this->db->join('product_variants', 'products.id = product_variants.product_id', 'left');
+		// $this->db->join('variants', 'product_variants.variant_id = variants.id', 'left');
+		// $this->db->join('variants_value', 'product_variants.variant_value_id = variants_value.id', 'left');
 		$this->db->where('products.status', 1);
 		$this->db->from('products');
 		$query = $this->db->get()->result();
-
 		return $query;
 	}
 
@@ -165,6 +167,33 @@ class Products_m extends CI_Model
 		$this->db->from('products');
 
 		$query = $this->db->get()->row();
+
+		return $query;
+	}
+
+	public function getProductDetailsBySlug($slug)
+	{
+		$this->db->select('*');
+		$this->db->where('slug', $slug);
+		$this->db->from('products');
+		// $this->db->join('product_variants', 'products.id = product_variants.product_id', 'left');
+		// $this->db->join('variants', 'product_variants.variant_id = variants.id', 'left');
+		// $this->db->join('variants_value', 'product_variants.variant_value_id = variants_value.id', 'left');
+
+		$query = $this->db->get()->row();
+
+		return $query;
+	}
+
+	public function getProductVariants($id)
+	{
+		$this->db->select('*');
+		$this->db->where('product_id', $id);
+		$this->db->from('product_variants');
+		$this->db->join('variants', 'product_variants.variant_id = variants.id', 'left');
+		$this->db->join('variants_value', 'product_variants.variant_value_id = variants_value.id', 'left');
+
+		$query = $this->db->get()->result();
 
 		return $query;
 	}
