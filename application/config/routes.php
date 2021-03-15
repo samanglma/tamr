@@ -76,6 +76,7 @@ $route['^(en|ar)/about']                                 =  'Page/index/about';
 $route['^(en|ar)/contact']                                 =  'Page/index/contact';
 $route['^(en|ar)/cart']                                 =  'Cart/index';
 $route['^(en|ar)/products/(:any)']                                 =  'Products/index/$i';
+$route['^(en|ar)/product-details/(:any)']                                 =  'Products/details/$i';
 // $route['en/cart']                      =  'Home/cart'; 
 // $route['en/products']                      =  'Home/products';
 // $route['en/product-details/(:any)']       =  'Home/product_details';
