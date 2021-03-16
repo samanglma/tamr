@@ -8,6 +8,33 @@ class Cart extends CI_Controller
         parent::__construct();
     }
 
+    public function index()
+	{
+
+		$data['meta'] = [
+			'canonical_tag' => '',
+			'meta_title' => lang() == 'english' ? '' : '',
+			'meta_description' => lang() == 'english' ? '' : '',
+			'schema' => '',
+			'robots' => ''
+		];
+        $data['breadcrumb'] = [
+			'Home' => base_url(),
+		];
+
+		$data['bodyClass'] = 'cart';
+
+		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
+
+		$this->load->view('frontend/includes/header', $data);
+		$this->load->view('frontend/includes/navigation');
+		$this->load->view('frontend/includes/right-sidebar');
+		$this->load->view('frontend/includes/bottom-sidebar', $data);
+		$this->load->view('frontend/cart');
+		$this->load->view('frontend/includes/footer');
+	}
+
     public function add($id, $quantity)
 	{
 		$this->db->select("products.*,brands.brand_name,categories.title as cat_title");
@@ -45,5 +72,15 @@ class Cart extends CI_Controller
 		if ($this->cart->total_items() <= 0)
 			redirect($lng . '/cart');
 		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+    public function updateCartQuantity()
+	{
+		$data = array(
+			'rowid' => $this->security->xss_clean($this->input->post('rowid')),
+			'qty'   => $this->security->xss_clean($this->input->post('qty'))
+		);
+		$this->cart->update($data);
+		echo "true";
 	}
 }

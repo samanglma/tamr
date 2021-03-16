@@ -153,7 +153,9 @@ color:black !important;
 <div id="menu1" class="row tab-pane fade in active">
   <div class="col-lg-8 col-md-8 mx-auto our">
 
-   <form>
+  <form action="#" id="contactForm">
+  
+  <div id="notification"></div>
     <input type="text" placeholder="NAME" name='name'/>
   </br>
 
@@ -163,7 +165,7 @@ color:black !important;
     <input type="text" placeholder="EMAIL" name='email'/>
     </br>
 
-    <textarea name="msg" class='msg' placeholder="Message"></textarea>
+    <textarea name="message" class='msg' placeholder="Message"></textarea>
    <!--  <input type="text" placeholder="Message" name='msg' class="msg" />
 -->
     <input type="submit" value='SUBMIT'/>
@@ -190,3 +192,56 @@ color:black !important;
 
 </div>
 </div>
+<script>
+
+$("#contactForm").validate({
+		rules: {
+			name: "required",
+			email: {
+				required: true,
+				email: true
+			},
+			phone: "required",
+			message: "required",
+
+		},
+		messages: {
+			name: '<?= $this->lang->line('name-required'); ?>',
+			email: {
+				required: '<?= $this->lang->line('email-required'); ?>',
+				email: '<?= $this->lang->line('valid-email'); ?>',
+			},
+			phone: '<?= $this->lang->line('phone-required'); ?>',
+			message: '<?= $this->lang->line('message-required'); ?>',
+		},
+		submitHandler: function(form) {
+			$("#inside-loading").html(`<i class="fa fa-spinner fa-spin"></i>`);
+			$.ajax({
+				url: "<?php echo base_url(); ?>page/submit",
+				type: 'post',
+				data: $("#contactForm").serialize(),
+				success: function(data) {
+					msg = `<div class="alert alert-success"><?= $this->lang->line('enquiry-success'); ?></div>`;
+					$("#notification").html(msg);
+					$("#inside-loading").html(``);
+					$("#contactForm")[0].reset();
+					setTimeout(function() {
+						$("#notification").html('');
+					}, 2000)
+
+
+				},
+				error: function(data) {
+					msg = `<div class="alert alert-danger">Something went wrong, Please try again later</div>`;
+					$("#notification").html(msg);
+					$("#inside-loading").html(``);
+					$("#contactForm")[0].reset();
+					setTimeout(function() {
+						$("#notification").html('');
+					}, 2000)
+
+				}
+			})
+		}
+	});
+  </script>
