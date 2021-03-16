@@ -1,7 +1,4 @@
 <style>
-
-
-
 .product-detail-price{
   margin-top: 160px;
 }
