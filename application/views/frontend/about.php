@@ -11,7 +11,7 @@ margin-top: 100px;
   </style>
  
  <!-- Page Header -->
-  <div class="masthead" style="background-image: url('<?= base_url('assets/frontend/images/about-bg.jpg') ?>'); height: 406px;">
+  <div class="masthead" style="background-image: url('<?= base_url('assets/frontend/images/about.png') ?>'); height: 406px;">
     
   </div>
 

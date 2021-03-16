@@ -14,6 +14,8 @@ class Products extends CI_Controller
         
         $data['products'] = $this->Products_m->getAllProducts($slug);
 
+        
+
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');

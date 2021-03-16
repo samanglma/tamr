@@ -4,9 +4,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
  <!-- Navigation -->
  <style>
 
-.masthead-products{
-  margin: 90px;
-}
+
 
 .content-products{
       margin-top: -63px;
@@ -42,12 +40,12 @@ p{
 
 
 <!-- Page Header -->
-<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/about-bg.jpg') ?>'); height: 406px;">
+<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); height: 806px;">
 
 </div>
 
 <!-- Main Content -->
-<div class="container content-products">
+<div class="container content-products ">
 
 	<ul class="list-inline menu-products wrap_scroll">
 		<li><a href="<?= base_url($lang . '/products') ?>" >All</a></li>
@@ -69,7 +67,7 @@ p{
 				?>
 					<div class="col-md-4">
 					<a href="<?= base_url($lang . '/product/'.$p->slug) ?>">
-						<div class=""> <img src="<?= base_url('uploads/products/'.$p->image1) ?>" class="card-img-top">
+						<div class=""> <img width='80%' src="<?= base_url('uploads/products/'.$p->image1) ?>" class="card-img-top">
 							<div class="card-body">
 								<div class="d-flex justify-content-between"> <span class="font-weight-bold"><?= $p->title ?></span> </div>
 								<p class="details-products"><?= substr($p->description, 0, 50) ?? "" ?></p>
@@ -90,3 +88,10 @@ p{
 			</div>
 		</div>
 	</div>
+
+	<hr>
+
+</body>
+
+
+</html>

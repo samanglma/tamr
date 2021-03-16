@@ -145,6 +145,8 @@ class Products_m extends CI_Model
 
 	public function getAllProducts($category = '')
 	{
+
+		
 		$this->db->select('products.*, categories.title, categories.title_ar');
 		if($category!= '')
 		{
