@@ -1,4 +1,19 @@
-<div class="container">
+<style>
+
+  .product-details-tamr{
+    margin-bottom:15px;
+  }
+
+  .product-details-name{
+    font-weight: bold;
+    text-align: left;
+    font-size: 25px;
+    line-height: 25px;
+  }
+
+</style>
+
+<div class="container ">
 
 
  <ul class="list-inline text-right socialss">
@@ -28,11 +43,9 @@
             </li>
           </ul>
 
-    <div class="row">
+  <div class="row">
 
-      
-
-
+    
 <div class="col-lg-2 col-md-2 mx-auto price">
  <p> <span class="currancy">AED</span> <?= $product->price ?></p>
  <p>KHOLAS</p>
@@ -56,7 +69,7 @@
   
 </div>
 
-<a href="" class="view-all"> ALL PRODUCTS </a>
+<a href="<?php echo base_url();?>en/products" class="view-all"> ALL PRODUCTS </a>
 
 </div>
 
@@ -74,15 +87,15 @@
   <!-- <img src="img/Box1.png" width="100%"> -->
 
   <div class="item active">
-      <img src="img/Box1.png" alt="Los Angeles" width="100%">
+      <img src="<?= base_url('uploads/products/'.$product->image1) ?>" alt="Los Angeles" width="100%">
     </div>
 
     <div class="item">
-      <img src="img/Box3.png" alt="Chicago" width="100%">
+      <img src="<?= base_url('uploads/products/'.$product->image1) ?>" alt="Chicago" width="100%">
     </div>
 
     <div class="item">
-      <img src="img/Box1.png" alt="New York" width="100%">
+      <img src="<?= base_url('uploads/products/'.$product->image1) ?>" alt="New York" width="100%">
     </div>
 
 
@@ -90,8 +103,8 @@
 
 </div>
 <div class="col-lg-2 col-md-2 mx-auto pcs">
-<p class="tamr">TAMR</p>
- <p class="name"><?= $product->title ?></p>
+<p class="product-details-tamr">TAMR</p>
+ <p class="product-details-name"><?= $product->title ?></p>
 
 <?php
 if(!empty($variants))

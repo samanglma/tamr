@@ -153,7 +153,7 @@ color:black !important;
 <div id="menu1" class="row tab-pane fade in active">
   <div class="col-lg-8 col-md-8 mx-auto our">
 
-   <form>
+   <form method='post' action='<?php echo base_url();?>home/submit'>
     <input type="text" placeholder="NAME" name='name'/>
   </br>
 

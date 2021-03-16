@@ -18,7 +18,7 @@ class Contact_m extends CI_Model
 
     public function submit($data)
     {
-        $this->db->insert('contactus', $data);
+        $this->db->insert('inquiries', $data);
         return true;
     }
 

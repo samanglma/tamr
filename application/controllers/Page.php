@@ -18,10 +18,6 @@ class Page extends CI_Controller
 			'robots' => ''
 		];
 
-
-
-
-
 		$data['contents'] = $this->Page_m->getPageBySlug($slug);
 
 		$this->load->view('frontend/includes/header', $data);
