@@ -150,25 +150,11 @@
             <!-- Shopping cart table -->
             <div class="table-responsive">
               <table class="table">
-                <thead>
-                  <!-- <tr>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="p-2 px-3 text-uppercase">Product</div>
-                  </th> -->
-                  <!--    <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Price</div>
-                  </th> -->
-                  <!--  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Quantity</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Remove</div>
-                  </th>
-                </tr> -->
-                </thead>
                 <tbody>
                   <!-- <form method="post" action=""> -->
-                  <?php foreach ($this->cart->contents() as $items) { ?>
+                  <?php foreach ($this->cart->contents() as $items) { 
+                    
+                    ?>
                     <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
                     <?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value) { ?>
                       <?php
@@ -190,56 +176,58 @@
 
                       ?>
 
-                    <?php }  ?>
+                    <?php } 
+                    $vat += ($vat_price - $items['price'])* $items['qty'];
+                    $this->db->select('products.*, b.brand_name_ar as brand_arabic_title, c.title_ar as cat_arabic_title')->from('products')->where('products.id', $items['id']);
+                    $this->db->join('brands as b', 'b.id = products.brand_id');
+                    $this->db->join('categories as c', 'c.id = products.cat_id');
+                    $arabic_data = $this->db->get()->result();?>
+                      
+                    <?php if($_SESSION['site_lang'] == 'arabic'){
+                      foreach ($arabic_data as $data) {
+  
+                        
+                        $title = $data->title_ar;
+  
+                        $cat_title = $data->cat_arabic_title;
+  
+                        $brand_title = $data->brand_arabic_title;
+                        $image = $data->thumbnail;											
+                      }
+  
+                      }
+  
+                      else{
+  
+                        $title = $items['name'];
+  
+                        $cat_title = $productCategory;
+  
+                        $brand_title = $brandName;
+                        $image = $items['options'] ? $items['options']['image'] : '';
+                        // $image = $data->thumbnail;
+  
+  
+                      }
+                      ?>
                     <tr>
                       <td>
 
                         <img src="<?= base_url("assets/frontend/images/Box1.png") ?>" alt="" width="150" class="img-fluid rounded shadow-sm">
                         <div class="ml-3 d-inline-block align-middle">
-                          <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5>
-                          <strong>AED 79.00</strong>
-                          <span class="text-muted font-weight-normal font-italic">Electronics</span>
+                          <h5 class="mb-0"><a href="#" class="text-dark d-inline-block"><?php echo $title; ?></a></h5>
+                          <strong>AED <?php echo number_format(getTruncatedValue($items['price'],2),2); ?></strong>
+                          <span class="text-muted font-weight-normal font-italic"><?php echo $cat_title; ?></span>
                         </div>
 
                       </td>
 
                       <td class="align-middle"><strong>QTY 1</strong></td>
-                      <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-times"></i></a>
-                      </td>
                     </tr>
-                  <?php } ?>
-                  <tr>
-                    <td>
+                    <?php
+                  }
+                  ?>
 
-                      <img src="<?= base_url("assets/frontend/images/Box3.png") ?>" alt="" width="150" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5>
-                        <strong>AED 79.00</strong>
-                        <span class="text-muted font-weight-normal font-italic">Electronics</span>
-                      </div>
-
-                    </td>
-
-                    <td class="align-middle"><strong>QTY 1</strong></td>
-                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-times"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-
-                      <img src="<?= base_url("assets/frontend/images/Box1.png") ?>" alt="" width="150" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5>
-                        <strong>AED 79.00</strong>
-                        <span class="text-muted font-weight-normal font-italic">Electronics</span>
-                      </div>
-
-                    </td>
-
-                    <td class="align-middle"><strong>QTY 1</strong></td>
-                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-times"></i></a>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -251,7 +239,10 @@
             <div class="p-4">
 
               <ul class="list-unstyled mb-4">
-                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal </strong><strong> 390.00 AED</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal
+                <input type="hidden" id="price-total-input" value="<?php echo getTruncatedValue($this->cart->total(),2); ?>" />
+								<input type="hidden" id="vat_inp" value="<?php echo getTruncatedValue($vat,2); ?>" />
+                 </strong><strong> <?php echo number_format(getTruncatedValue($this->cart->total(),2),2); ?> AED</strong></li>
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping</strong><strong> 10.00 AED</strong></li>
                 <!--  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li> -->
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
@@ -273,8 +264,3 @@
 
   </div>
   <hr>
-
-  </body>
-
-
-  </html>
