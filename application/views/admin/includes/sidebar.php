@@ -68,7 +68,7 @@
             </li>
 
 
-            <li <?php if ($this->uri->segment(2) == "brands") {
+            <!-- <li <?php if ($this->uri->segment(2) == "brands") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -76,18 +76,18 @@
                     <span class="nav-label">Brands</span>
                 </a>
                 <ul>
-                    <li <?php if ($this->uri->segment(2) == "brands" && $this->uri->segment(3) == 'add') {
-                            echo 'class="active"';
-                        } ?>>
-                        <a href="<?php echo base_url() ?>admin/brands/add"> Add Brand</a>
+                    <li <?php //if ($this->uri->segment(2) == "brands" && $this->uri->segment(3) == 'add') {
+                           // echo 'class="active"';
+                     //   } ?>>
+                        <a href="<?php //echo base_url() ?>admin/brands/add"> Add Brand</a>
                     </li>
-                    <li <?php if ($this->uri->segment(2) == "brands" && $this->uri->segment(3) == '') {
-                            echo 'class="active"';
-                        } ?>>
-                        <a href="<?php echo base_url() ?>admin/brands">View Brands</a>
+                    <li <?php //if ($this->uri->segment(2) == "brands" && $this->uri->segment(3) == '') {
+                       //     echo 'class="active"';
+                      //  } ?>>
+                        <a href="<?php //echo base_url() ?>admin/brands">View Brands</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
 
 

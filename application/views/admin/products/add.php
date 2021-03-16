@@ -5,7 +5,6 @@
            <h1>Add Product</h1>
            <ol class="breadcrumb">
                <li><a href="javascript:void(0);">Home</a></li>
-               <li><a href="javascript:void(0);">Forms</a></li>
                <li class="active">Add Product</li>
            </ol>
        </div>
@@ -39,15 +38,15 @@
                <div class="panel-body">
 
                    <form method="post" action="<?php echo base_url()?>admin/products/save" enctype="multipart/form-data">
-                   <div class="col-md-7 form-group">
+                   <!-- <div class="col-md-7 form-group">
                                <label>Brand</label>
                                <select name="brand_id" class="form-control">
                                    <option value="">Select Brand</option>
-                               <?php foreach($brands as $brand){?>
-                                   <option value="<?php echo $brand->id ?>"><?php echo $brand->brand_name; ?></option>
-                              <?php } ?>
+                               <?php //foreach($brands as $brand){?>
+                                   <option value="<?php //echo $brand->id ?>"><?php //echo $brand->brand_name; ?></option>
+                              <?php //} ?>
                                </select>
-                       </div>
+                       </div> -->
 
                         <div class="col-md-7 form-group">
                                <label>Category</label>

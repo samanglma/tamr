@@ -168,7 +168,7 @@ color:black !important;
     <textarea name="message" class='msg' placeholder="Message"></textarea>
    <!--  <input type="text" placeholder="Message" name='msg' class="msg" />
 -->
-    <input type="submit" value='SUBMIT'/>
+    <input type="submit" class="submit-btn" value='SUBMIT'/>
 </form>
    
   </div>

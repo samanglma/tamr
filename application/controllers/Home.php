@@ -24,6 +24,9 @@ class Home extends MY_Controller
 
 		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
+		// echo '<pre>';
+		// print_r($data['categories']);
+		// die();
 
 		$this->load->view('frontend/includes/header', $data);
 		$this->load->view('frontend/includes/navigation');

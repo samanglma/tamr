@@ -3,7 +3,7 @@
         <?php 
         foreach($categories as $category) {
         ?>
-        <li><a href="<?= base_url('products/'.$category->slug) ?>"><?= $category ?></a></li>
+        <li><a href="<?= base_url('products/'.$category->slug) ?>"><?= $category->title ?></a></li>
         <?php
         } ?>
     </ul>
