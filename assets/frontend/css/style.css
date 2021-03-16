@@ -686,3 +686,120 @@ input[type="text"]
       
    }
    .breadcrumbs li { display: inline-block; margin-right: 10px;}
+
+   .price{
+    margin-top: 160px;
+  }
+  
+  .pcs{
+    margin-top: 160px;
+  }
+  .currancy{
+  
+    font-weight: bold;
+    font-size: 13px;
+  }
+  
+  .price p{
+  
+    font-weight: bold;
+    text-align: right;
+    font-size: 25px;
+  }
+  
+  .name{
+  
+     font-weight: bold;
+    text-align: left;
+    font-size: 25px;
+  }
+  .tamr{
+  
+    margin-bottom: -27px;
+  }
+  
+  
+  .socialss{
+  
+  display: inline-grid !important;
+      float: right;
+      margin-top: 185px;
+      font-size: 15px;
+      margin-right: -105px;
+  }
+  
+  
+  i{
+    color:black !important;
+  }
+  
+  .carousel-indicators li{
+       display: inline-block;
+      width: 25px;
+      height: 4px;
+      margin: 1px;
+      text-indent: -999px;
+      cursor: pointer;
+      background-color: #000\9;
+      background-color: rgba(0,0,0,0);
+      border: 1px solid #291a1a;
+      margin:6px;
+     /* border-radius: 10px*/
+  }
+  
+  .carousel-indicators .active {
+       width: 25px;
+      height: 4px;
+      margin: 0;
+      background-color: #291a1a;
+      margin:6px;
+  }
+  
+  #content{
+    display:none;
+  }
+  #content.show{
+    display:block; /* P.S: Use `!important` if missing `#content` (selector specificity). */
+  }
+  
+  #size{
+    display:none;
+  }
+  #size.show{
+    display:block; /* P.S: Use `!important` if missing `#content` (selector specificity). */
+  }
+  
+  
+  #toggle{
+    border: none;
+      font-size: 12px;
+      background: none;
+  }
+  button:focus {
+       outline: none;
+      /* outline: 5px auto -webkit-focus-ring-color; */
+  }
+  .kinds{
+    font-size: 11px;
+  }
+  
+  #toggle2{
+    border: none;
+      font-size: 12px;
+      background: none;
+  }
+  
+  
+  .view-all{
+    font-size: 12px;
+     border-bottom: 1px solid #51302c;
+     padding-bottom:3px;
+     text-decoration: none;
+     
+  }
+  
+  
+  
+  a:hover{
+    text-decoration: none;
+  }
