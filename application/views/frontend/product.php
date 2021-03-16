@@ -116,7 +116,7 @@ if(!empty($variants))
 ?>
 <br>
 
- <a href="" class="view-all"> ADD TO CART </a>
+ <a href="javascript:void(0);" class="add-to-cart" id="addToCart" data-id="<?= $product->id ?>" class="view-all"> ADD TO CART </a>
 
     </div>
 
