@@ -206,11 +206,6 @@
                  <h2>LOGIN</h2>
              </div>
          </div>
-
-
-
-
-
      </div>
 
  </div>
