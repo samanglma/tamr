@@ -5,6 +5,7 @@ class Settings_m  extends CI_Model
 
   public function getInfo()
   {
+
       $this->db->select('*');
       $this->db->where('id', 1);
       $this->db->from('settings');

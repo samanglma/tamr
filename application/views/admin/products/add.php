@@ -38,7 +38,8 @@
                <div class="panel-body">
 
                    <form method="post" action="<?php echo base_url()?>admin/products/save" enctype="multipart/form-data">
-                   <!-- <div class="col-md-7 form-group">
+                  
+                  <!-- <div class="col-md-7 form-group">
                                <label>Brand</label>
                                <select name="brand_id" class="form-control">
                                    <option value="">Select Brand</option>
@@ -57,6 +58,12 @@
                                  <?php } ?>
                                </select>
                        </div>
+
+                       <div class="col-md-7 form-group">
+                <label for="title">Select Child Category:</label>
+                <select name="child_cat" class="form-control" >
+                </select>
+            </div>
 
 
                        <div class="col-md-7  form-group">
@@ -96,6 +103,12 @@
                            <input type="text" name="discounted_price"  value="<?php if(empty(set_value('discounted_price')) && isset($data)){ echo $data['data']['discounted_price']; } else { echo set_value('discounted_price'); } ?>" class="form-control" placeholder="Discounted Price"  />
                            <?php echo form_error('discounted_price', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div> -->
+
+                       <div class="col-md-7  form-group weight">
+                           <label>Weight </label>
+                           <input type="text" name="weight" value="<?php if(empty(set_value('weight')) && isset($data)){ echo $data['data']['weight']; } else { echo set_value('weight'); } ?>" class="form-control weight" placeholder="weight"  />
+                           <?php echo form_error('weight', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
                     
                       
 
@@ -226,3 +239,43 @@
        </div>
    </section>
 <?php $this->load->view('admin/includes/footer')?>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function() {
+        $('select[name="cat_id"]').on('change', function() {
+            var CatID = $(this).val();
+            if(CatID) {
+                $.ajax({
+                    url: '<?php echo base_url();?>admin/products/myformAjax/'+CatID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        $('select[name="child_cat"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="child_cat"]').append('<option value="'+ value.id +'">'+ value.title +'</option>');
+                        });
+                    }
+                });
+            }else{
+                $('select[name="child_cat"]').empty();
+            }
+        });
+        $('.weight').hide();
+        $('select[name="cat_id"]').on('change', function() {
+            var CatID = $(this).val();
+            if(CatID == 38) {
+                
+               
+                $('.weight').show();
+
+            }else
+            {
+                $('.weight').hide();
+            }
+                
+           
+        });
+    });
+</script>

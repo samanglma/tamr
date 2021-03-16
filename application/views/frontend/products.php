@@ -3,9 +3,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
  <!-- Navigation -->
  <style>
-
-
-
 .content-products{
       margin-top: -63px;
       background-color: white !important;

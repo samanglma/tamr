@@ -39,6 +39,11 @@ class Categories extends My_Controller {
     {
         $this->form_validation->set_rules('title', 'Title', 'required');
 
+        $title = $this->input->post('title');
+		$slugs = url_title($title);
+		$slug = strtolower($slugs);
+        
+
         if($this->form_validation->run() == FALSE)
         {
 
@@ -50,6 +55,7 @@ class Categories extends My_Controller {
             $data = array(
 
                 'title' => $this->input->post('title'),
+                'slug' => $slug,
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
                 'status' => $this->input->post('status')
@@ -82,6 +88,11 @@ class Categories extends My_Controller {
     public function update()
     {
         $id = $_POST['id'];
+
+        $title = $this->input->post('title');
+		$slugs = url_title($title);
+		$slug = strtolower($slugs);
+
         $this->form_validation->set_rules('title', 'Title', 'required');
        if($this->form_validation->run() == False)
         {
@@ -121,6 +132,7 @@ class Categories extends My_Controller {
             $data['data'] = array(
 
                 'title' => $this->input->post('title'),
+                'slug' => $slug,
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
                 'status' => $this->input->post('status')

@@ -27,7 +27,7 @@
                    <form method="post" action="<?php echo base_url()?>admin/products/update" enctype="multipart/form-data">
                        <input type="hidden" value="<?php echo $row->id; ?>" name="id">
                  
-                 
+                 <!--
                        <div class="col-md-7 form-group">
                                <label>Brand</label>
                                <select name="brand_id" class="form-control">
@@ -37,6 +37,7 @@
                                 <?php } ?>
                                </select>
                        </div>
+                               -->
 
 
                          <div class="col-md-7 form-group">
@@ -47,7 +48,19 @@
                                    <option value="<?php echo $category->id ?>" <?php if($category->id == $row->cat_id){ echo "selected"; }?>><?php echo $category->title; ?></option>
                                 <?php } ?>
                                </select>
-                       </div>
+                          </div>
+
+                <div class="col-md-7 form-group">
+                <label for="title">Select Child Category:</label>
+                <select name="child_cat" class="form-control" >
+                <?php foreach($chlid_categories as $category){?>
+                   
+                <option value="<?php echo $category->id ?>" <?php if($category->id == $row->child_cat){ echo "selected"; }?>><?php echo $category->title; ?></option>
+                 <?php } ?>
+                            
+                </select>
+            </div>
+
 
 
                        <div class="col-md-7  form-group">
@@ -82,6 +95,13 @@
                            <input type="text" name="vat_price"  value="<?php if(empty(set_value('vat_price')) && isset($row->vat_price)){ echo $row->vat_price; } else { echo set_value('vat_price'); } ?>" class="form-control" placeholder="Price (Including VAT)"  required />
                            <?php echo form_error('vat_price', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
+
+                       <div class="col-md-7  form-group weight">
+                           <label>Weight</label>
+                           <input type="text" name="weight" value="<?php if(empty(set_value('weight')) && isset($data)){ echo $data['data']['weight']; } else { echo set_value('weight'); } ?>" class="form-control weight" placeholder="weight"  />
+                           <?php echo form_error('weight', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+                       
                      <!--   <div class="col-md-7  form-group">
                            <label>Discounted Price *</label>
                            <input type="text" name="discounted_price"  value="<?php echo $row->discounted_price ?>" class="form-control" placeholder="Discounted Price" />
@@ -239,3 +259,45 @@
        </div>
    </section>
 <?php $this->load->view('admin/includes/footer')?>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function() {
+        $('select[name="cat_id"]').on('change', function() {
+            var CatID = $(this).val();
+            if(CatID) {
+                $.ajax({
+                    url: '<?php echo base_url();?>admin/products/myformAjax/'+CatID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+                        $('select[name="child_cat"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="child_cat"]').append('<option value="'+ value.id +'">'+ value.title +'</option>');
+                        });
+                    }
+                });
+            }else{
+                $('select[name="child_cat"]').empty();
+            }
+        });
+
+        $('.weight').hide();
+        $('select[name="cat_id"]').on('change', function() {
+            var CatID = $(this).val();
+            if(CatID == 38) {
+                
+               
+                $('.weight').show();
+
+            }else
+            {
+                $('.weight').hide();
+            }
+                
+           
+        });
+
+    });
+</script>
