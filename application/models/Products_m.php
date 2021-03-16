@@ -18,8 +18,8 @@ class Products_m extends CI_Model
 
 	public function getAll()
 	{
-		$this->db->select('products.*,brands.brand_name,categories.title as cat_title');
-		$this->db->join('brands', 'brands.id = products.brand_id');
+		$this->db->select('products.*,categories.title as cat_title');
+		//$this->db->join('brands', 'brands.id = products.brand_id');
 		$this->db->join('categories', 'categories.id = products.cat_id');
 		$query = $this->db->get('products')->result();
 		return $query;

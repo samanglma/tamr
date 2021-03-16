@@ -79,6 +79,9 @@ $route['^(en|ar)/products/(:any)']                                 =  'Products/
 $route['^(en|ar)/products']                                 =  'Products/index';
 $route['^(en|ar)/product/(:any)']                                 =  'Products/details/$i';
 $route['^(en|ar)/register']                                 =  'User/index';
+
+$route['myform/ajax/(:any)'] = 'Products/myformAjax/$1';
+
 // $route['en/cart']                      =  'Home/cart'; 
 // $route['en/products']                      =  'Home/products';
 // $route['en/product-details/(:any)']       =  'Home/product_details';

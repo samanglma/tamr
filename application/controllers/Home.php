@@ -32,6 +32,7 @@ class Home extends MY_Controller
 		$this->load->view('frontend/home');
 		$this->load->view('frontend/includes/footer');
 	}
+	
 
 	public function submit()
 	{

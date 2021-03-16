@@ -23,41 +23,50 @@ class Products extends My_Controller {
     {
         $data['brands'] = $this->Brands_m->getAll();
 
-         $data['categories'] = $this->Categories_m->getAllCategory();
+         $data['categories'] = $this->Categories_m->getAllParentCategory();
 
          $data['variants'] = $this->Variant_m->getAll();
 
         $this->load->view('admin/products/add', $data);
 
     }
+
+    public function myformAjax($id) { 
+
+        
+        $result = $this->db->where("parent_id",$id)->get("categories")->result();
+        echo json_encode($result);
+    }
+
 	public function save()
     {
 
 
        
         $discounted_price = 'NULL';
-        $this->form_validation->set_rules('title', 'Brand Name', 'required');
+       // $this->form_validation->set_rules('title', 'Brand Name', 'required');
         $this->form_validation->set_rules('description', 'Description|max_length[170]', 'required');
-        $this->form_validation->set_rules('brand_id', 'Brand', 'required');
+        //$this->form_validation->set_rules('brand_id', 'Brand', 'required');
         $this->form_validation->set_rules('price', 'Price', 'required');
         $this->form_validation->set_rules('vat_price', 'Price Including VAT', 'required');
         $this->form_validation->set_rules('alt', 'Alt', 'required');
 
 		$dataArray = array(
 			'title' => $this->input->post('title'),
-			'title_ar' => $this->input->post('title_ar'),
+			//'title_ar' => $this->input->post('title_ar'),
 			'description' => $this->input->post('description'),
-			'description_ar' => $this->input->post('description_ar'),
-			'discounted_price' => $discounted_price,
+			//'description_ar' => $this->input->post('description_ar'),
+			//'discounted_price' => $discounted_price,
 			'price' => $this->input->post('price'),
 			'vat_price' => $this->input->post('vat_price'),
 			'alt' => $this->input->post('alt'),
 			'alt_ar' => $this->input->post('alt_ar'),
-			'brand_id' => $this->input->post('brand_id'),   
-			'status' => $this->input->post('status'),
-			'mark_as_new'=>$this->input->post('markAsNew'),
-			'top_seller'=>$this->input->post('topSeller'),
-			'out_of_stock'=>$this->input->post('outofStock'),
+           // 'alt_ar' => $this->input->post('alt_ar'),
+			//'brand_id' => $this->input->post('brand_id'),   child_cat
+			//'status' => $this->input->post('status'),
+			//'mark_as_new'=>$this->input->post('markAsNew'),
+			//'top_seller'=>$this->input->post('topSeller'),
+			//'out_of_stock'=>$this->input->post('outofStock'),
             'cat_id' => $this->input->post('cat_id'),
             
 		);
@@ -193,7 +202,9 @@ class Products extends My_Controller {
                 'vat_price' => $this->input->post('vat_price'),
                 'alt' => $this->input->post('alt'),
                 'alt_ar' => $this->input->post('alt_ar'),
-                'brand_id' => $this->input->post('brand_id'),
+               // 'brand_id' => $this->input->post('brand_id'),  
+                'cat_id' => $this->input->post('cat_id'),
+                'weight' => $this->input->post('weight'),
                 'cat_id' => $this->input->post('cat_id'),
                 'status' => $this->input->post('status'),
 				'mark_as_new'=>$this->input->post('markAsNew'),
@@ -212,7 +223,9 @@ class Products extends My_Controller {
     {
         $data['row'] = $this->Products_m->edit($id);
         $data['brands'] = $this->Brands_m->getAll();
-        $data['categories'] = $this->Categories_m->getAllCategory();
+        //$data['categories'] = $this->Categories_m->getAllCategory(); 
+        $data['categories'] = $this->Categories_m->getAllParentCategory();
+        $data['chlid_categories'] = $this->Categories_m->getAllChildCategory();
          $data['variantss'] = $this->Variant_m->getAll();
         $this->load->view('admin/products/edit', $data);
     }
@@ -446,8 +459,10 @@ class Products extends My_Controller {
                 'price' => $this->input->post('price'),
                 'vat_price' => $this->input->post('vat_price'),
                 'alt_ar' => $this->input->post('alt_ar'),
-                'brand_id' => $this->input->post('brand_id'),
+               // 'brand_id' => $this->input->post('brand_id'), 
                 'cat_id' => $this->input->post('cat_id'),
+                'child_cat' => $this->input->post('child_cat'),
+                'weight' => $this->input->post('weight'),
                 'status' => $this->input->post('status'),
                 'mark_as_new'=>$this->input->post('markAsNew'),
 				'top_seller'=>$this->input->post('topSeller'),

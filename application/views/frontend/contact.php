@@ -19,12 +19,8 @@ p{
 font-size: 15px;
 }
 .our{
-
-/*text-align: center;*/
 margin-top: 50px;
-
 margin-right: 20px;
-
 margin-bottom: 76px;
 }
 .menu{
@@ -55,19 +51,16 @@ input[type="submit"]
    
 }
 .msg{
-
- 
- border: 0;
+    border: 0;
     border-bottom: 1px solid gray;
     outline: 0;
     padding: 15px;
     width: 55%;
-     margin-left: 54px;
+    margin-left: 54px;
 
 }
 
 .addresss{
-
   text-align: right;
   margin-top: 60px;
   margin-left: -88px;
@@ -111,6 +104,7 @@ font-size: 15px;
 i{
 color:black !important;
 }
+
 </style>
 
  
@@ -141,7 +135,7 @@ color:black !important;
             </span>
           </a>
         </li>
-      </ul>
+</ul>
 
 </div>
 
@@ -153,12 +147,11 @@ color:black !important;
 <div id="menu1" class="row tab-pane fade in active">
   <div class="col-lg-8 col-md-8 mx-auto our">
 
-   <form method='post' action='<?php echo base_url();?>home/submit'>
   <form action="#" id="contactForm">
   
-  <div id="notification"></div>
+    <div id="notification"></div>
     <input type="text" placeholder="NAME" name='name'/>
-  </br>
+    </br>
 
     <input type="text" placeholder="PHONE NUMBER" name='phone'/>
       </br>
@@ -167,32 +160,35 @@ color:black !important;
     </br>
 
     <textarea name="message" class='msg' placeholder="Message"></textarea>
-   <!--  <input type="text" placeholder="Message" name='msg' class="msg" />
--->
+
     <input type="submit" value='SUBMIT'/>
-</form>
+
+  </form>
    
   </div>
+
   <div class="col-lg-4 col-md-4 mx-auto addresss">
 
     <div class="logo"> 
       <img src="<?= base_url("assets/frontend/images/tamr.png") ?>" width="30%">
     </div>
+
     <div class='head'>
       TAMR HEAD OFFICE
     </div>
+
     <div class="address">
-      Al Ain, Abu Dhabi, UAE
-    </br>
-      www.tamruae.com
-        </br>
-      +971 50 836 7465
+
+      <?php echo $info->address; ?>
     </div>
+
   </div>
+
 </div>
 
 </div>
 </div>
+
 <script>
 
 $("#contactForm").validate({
@@ -230,7 +226,6 @@ $("#contactForm").validate({
 						$("#notification").html('');
 					}, 2000)
 
-
 				},
 				error: function(data) {
 					msg = `<div class="alert alert-danger">Something went wrong, Please try again later</div>`;
@@ -245,4 +240,5 @@ $("#contactForm").validate({
 			})
 		}
 	});
+
   </script>

@@ -15,6 +15,24 @@ class Categories_m  extends CI_Model
         return $query;
     }
 
+    public function getAllChildCategory()
+    {
+        $this->db->select('*');
+        $this->db->where('parent_id !=', 0);
+        $this->db->from('categories');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function getAllParentCategory()
+    {
+        $this->db->select('*');
+        $this->db->where('parent_id',0);
+        $this->db->from('categories');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
     public function getCategoriesByParent($parentSlug)
     {
         $this->db->select('id');

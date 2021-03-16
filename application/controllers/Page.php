@@ -6,6 +6,8 @@ class Page extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->load->model('settings_m');
 	}
 
 	public function index($slug = '')
@@ -25,12 +27,20 @@ class Page extends CI_Controller
 		$this->load->view('frontend/includes/right-sidebar');
 		$this->load->view('frontend/includes/bottom-sidebar');
 		if ($slug != 'about' && $slug != 'contact' && $slug != 'cart') {
+
+			
+
 			$data['breadcrumb'] = [
 				'Home' => base_url(),
 				$slug => base_url('page/'.$slug),
 			];
 			$this->load->view('frontend/page', $data);
 		} else {
+
+			
+
+			$data['info'] = $this->Settings_m->getInfo();
+
 			$data['breadcrumb'] = [
 				'Home' => base_url(),
 				$slug => base_url('page/'.$slug),
