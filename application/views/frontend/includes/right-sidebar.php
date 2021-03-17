@@ -45,7 +45,7 @@ if ($this->session->userdata('settings')) {
     </div>
     <div class="bottom">
         <ul>
-            <li><a href="#."><i class="fa fas fa-search"></i></a></li>
+            <!-- <li><a href="#."><i class="fa fas fa-search"></i></a></li> -->
             <li><a href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count">0</span><img src="<?= base_url('assets/frontend/images/cart.svg') ?>" /></a></li>
         </ul>
     </div>

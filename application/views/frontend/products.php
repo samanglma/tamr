@@ -37,7 +37,7 @@ p{
 
 
 <!-- Page Header -->
-<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); height: 806px;">
+<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); ">
 
 </div>
 
@@ -59,10 +59,11 @@ p{
 
 				<div class="row g-3">
 				<?php
-				foreach($products as $p)
+				foreach($products as $key => $p)
 				{
+					$col = $key%2 == 1 ? 6 : 3;
 				?>
-					<div class="col-md-4">
+					<div class="col-md-<?= $col ?>">
 					<a href="<?= base_url($lang . '/product/'.$p->slug) ?>">
 						<div class=""> <img width='80%' src="<?= base_url('uploads/products/'.$p->image1) ?>" class="card-img-top">
 							<div class="card-body">

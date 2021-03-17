@@ -13,7 +13,7 @@ class Products_m extends CI_Model
 	public function save($data)
 	{
 		$this->db->insert('products', $data);
-		return true;
+		return $this->db->inset_id();
 	}
 
 	public function getAll()
@@ -175,9 +175,10 @@ class Products_m extends CI_Model
 
 	public function getProductDetailsBySlug($slug)
 	{
-		$this->db->select('*');
-		$this->db->where('slug', $slug);
+		$this->db->select('products.*, categories.title as category, categories.title_ar as category_ar');
+		$this->db->where('products.slug', $slug);
 		$this->db->from('products');
+		$this->db->join('categories', 'categories.id = products.cat_id');
 		// $this->db->join('product_variants', 'products.id = product_variants.product_id', 'left');
 		// $this->db->join('variants', 'product_variants.variant_id = variants.id', 'left');
 		// $this->db->join('variants_value', 'product_variants.variant_value_id = variants_value.id', 'left');

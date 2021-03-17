@@ -30,7 +30,6 @@ class Cart extends CI_Controller
 		$this->load->view('frontend/includes/header', $data);
 		$this->load->view('frontend/includes/navigation');
 		$this->load->view('frontend/includes/right-sidebar');
-		$this->load->view('frontend/includes/bottom-sidebar', $data);
 		$this->load->view('frontend/cart');
 		$this->load->view('frontend/includes/footer');
 	}

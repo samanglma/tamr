@@ -2,15 +2,6 @@
 
 <style>
 
-body{
-
-font-family: 'Roboto', sans-serif;
-}
-
-.masthead{
-/* margin: 90px;*/
-}
-
 .content{
   margin-top: -90px;
   background-color: white !important;
@@ -32,33 +23,6 @@ margin-top: 20px;
 margin: 15px;
 }
 
-input[type="text"]
-{
-    border: 0;
-    border-bottom: 1px solid gray;
-    outline: 0;
-    padding: 15px;
-    width: 55%;
-     margin-left: -127px;
-}
-
-input[type="submit"]
-{
-    border: 0;
-    border-bottom: 1px solid gray;
-    outline: 0;
-    padding: 15px;
-   
-}
-.msg{
-    border: 0;
-    border-bottom: 1px solid gray;
-    outline: 0;
-    padding: 15px;
-    width: 55%;
-    margin-left: 54px;
-
-}
 
 .addresss{
   text-align: right;
@@ -93,13 +57,7 @@ margin-right: 10px;
 padding-top: 15%;
 }
 
-.socialss{
 
-display: inline-grid !important;
-float: right;
-margin-top: 176px;
-font-size: 15px;
-}
 
 i{
 color:black !important;
@@ -109,33 +67,6 @@ color:black !important;
 
  
 <div class="masthead" style="background-image: url('<?= base_url("assets/frontend/images/about-bg.jpg") ?>'); height: 406px;">
-
-<ul class="list-inline text-right socialss">
-        <li class="">
-          <a href="#">
-            <span class="fa-stack fa-lg">
-              
-              <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-        <li class="">
-          <a href="#">
-            <span class="fa-stack fa-lg">
-             
-              <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-        <li class="">
-          <a href="#">
-            <span class="fa-stack fa-lg">
-
-              <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-</ul>
 
 </div>
 
@@ -150,20 +81,22 @@ color:black !important;
   <form action="#" id="contactForm">
   
     <div id="notification"></div>
-    <input type="text" placeholder="NAME" name='name'/>
-    </br>
-
-    <input type="text" placeholder="PHONE NUMBER" name='phone'/>
-      </br>
-
-    <input type="text" placeholder="EMAIL" name='email'/>
-    </br>
-
-    <textarea name="message" class='msg' placeholder="Message"></textarea>
-
-    <input type="submit" value='SUBMIT'/>
-
-  </form>
+    <div class="form-group">
+    <input type="text" placeholder="NAME" class="form-control" name='name'/>
+    </div>
+    <div class="form-group">
+    <input type="text" placeholder="PHONE NUMBER"  class="form-control"  name='phone'/>
+    </div>
+    <div class="form-group">
+    <input type="text" placeholder="EMAIL"  class="form-control"  name='email'/>
+    </div>
+    <div class="form-group">
+    <textarea name="message" rows="5" class="msg form-control"  placeholder="Message"></textarea>
+    </div>
+   <!--  <input type="text" placeholder="Message" name='msg' class="msg" />
+-->
+    <input type="submit" class="submit-btn btn" value='SUBMIT'/>
+</form>
    
   </div>
 

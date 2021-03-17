@@ -1,9 +1,9 @@
 <div class="bottom-sidebar">
     <ul class="categories">
         <?php 
-        foreach($categories as $category) {
+        foreach($categories as $key => $category) {
         ?>
-        <li><a href="<?= base_url('products/'.$category->slug) ?>"><?= $category ?></a></li>
+        <li><a class="cat" data-slide='slide-<?= $key ?>' href="javascript:;"><?= $category->title ?></a></li>
         <?php
         } ?>
     </ul>

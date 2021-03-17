@@ -42,7 +42,7 @@
 
               <div class="col-md-12 form-group">
                            <label>Template *</label>
-                           <textarea class="ckeditor1" name="template" id="editor"> <?= set_value('template') ?> </textarea>
+                           <textarea class="ckeditor1 ckeditor" name="template" id="editor"> <?= set_value('template') ?> </textarea>
                        </div>
 					  
                        <div class="col-md-7  form-group">

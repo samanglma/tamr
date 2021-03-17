@@ -1,68 +1,17 @@
 <style>
-  body {
-
-    font-family: 'Roboto', sans-serif;
-  }
-
-
-  .cart-socialss {
-
-    display: inline-grid !important;
-    float: right;
-    margin-top: 185px;
-    font-size: 15px;
-    margin-right: -105px;
-  }
-
 
   i {
     color: black !important;
   }
 
-  .cart-bg-text h2 {
-    font-size: 100px;
-    text-align: center;
-    padding-top: 10px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    position: relative;
-    top: 30px;
-    letter-spacing: -10px;
-    z-index: 2;
-    opacity: 0.1;
-    margin-left: 0px;
-  }
-
-  .cart-heading h1 {
-
-    text-align: center;
-
-    margin-bottom: -90px;
-
-  }
-
   #cart-overlay1 {
-    position: absolute;
-    /* Sit on top of the page content */
-    display: block;
-    /* Hidden by default */
-
-
-    background-color: rgba(255, 255, 255, 0.95);
-    /* Black background with opacity */
     z-index: 2;
-    /* Specify a stack order in case you're using a different order for other elements */
 
-  }
-
-  .cart-contact-us .cart-heading h1 {
-    font-size: 50px;
-    padding: 90px 130px;
   }
 
   .cart-contact-us {
     text-align: center;
-    margin-left: 190px;
+    /* margin-left: 190px; */
   }
 
   .rounded {
@@ -87,56 +36,26 @@
   }
 </style>
 
-
+<div class="page-holder">
 <div class="container cart-wrapper">
-
-  <ul class="list-inline text-right cart-socialss">
-    <li class="">
-      <a href="#">
-        <span class="fa-stack fa-lg">
-
-          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-    </li>
-    <li class="">
-      <a href="#">
-        <span class="fa-stack fa-lg">
-
-          <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-    </li>
-    <li class="">
-      <a href="#">
-        <span class="fa-stack fa-lg">
-
-          <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-    </li>
-  </ul>
-
   <div class="row">
 
     <div class="cart-contact-us">
       <div id="cart-overlay1">
+      <div class="cart-bg-text bg-text">
+        <h2>SHOPPING CART</h2>
+      </div>
         <div class="cart-heading">
-          <h1>SHOPPING CARD</h1>
+          <h1>SHOPPING CART</h1>
         </div>
         <?php
-        if ($this->cart->total_items() <= 0) {
+        if ($this->cart->total_items() > 0) {
         ?>
-          <p>There is no item in cart </p>
+         <p>SHOPPING CART (<?= $this->cart->total_items() ?>)<span>YOUR WHISTLIST (0)</span></p>
         <?php
-        } else {
-        ?>
-          <p>SHOPPING CARD (<?= $this->cart->total_items() ?>)<span>YOUR WHISTLIST (0)</span></p>
-        <?php } ?>
+        } ?>
       </div>
-      <div class="cart-bg-text">
-        <h2>SHOPPING CARD</h2>
-      </div>
+      
     </div>
 
     <div class="pb-5">
@@ -150,25 +69,11 @@
             <!-- Shopping cart table -->
             <div class="table-responsive">
               <table class="table">
-                <thead>
-                  <!-- <tr>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="p-2 px-3 text-uppercase">Product</div>
-                  </th> -->
-                  <!--    <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Price</div>
-                  </th> -->
-                  <!--  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Quantity</div>
-                  </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Remove</div>
-                  </th>
-                </tr> -->
-                </thead>
                 <tbody>
                   <!-- <form method="post" action=""> -->
-                  <?php foreach ($this->cart->contents() as $items) { ?>
+                  <?php foreach ($this->cart->contents() as $items) { 
+                    
+                    ?>
                     <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
                     <?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value) { ?>
                       <?php
@@ -190,56 +95,58 @@
 
                       ?>
 
-                    <?php }  ?>
+                    <?php } 
+                    $vat += ($vat_price - $items['price'])* $items['qty'];
+                    $this->db->select('products.*, b.brand_name_ar as brand_arabic_title, c.title_ar as cat_arabic_title')->from('products')->where('products.id', $items['id']);
+                    $this->db->join('brands as b', 'b.id = products.brand_id');
+                    $this->db->join('categories as c', 'c.id = products.cat_id');
+                    $arabic_data = $this->db->get()->result();?>
+                      
+                    <?php if($_SESSION['site_lang'] == 'arabic'){
+                      foreach ($arabic_data as $data) {
+  
+                        
+                        $title = $data->title_ar;
+  
+                        $cat_title = $data->cat_arabic_title;
+  
+                        $brand_title = $data->brand_arabic_title;
+                        $image = $data->thumbnail;											
+                      }
+  
+                      }
+  
+                      else{
+  
+                        $title = $items['name'];
+  
+                        $cat_title = $productCategory;
+  
+                        $brand_title = $brandName;
+                        $image = $items['options'] ? $items['options']['image'] : '';
+                        // $image = $data->thumbnail;
+  
+  
+                      }
+                      ?>
                     <tr>
                       <td>
 
                         <img src="<?= base_url("assets/frontend/images/Box1.png") ?>" alt="" width="150" class="img-fluid rounded shadow-sm">
                         <div class="ml-3 d-inline-block align-middle">
-                          <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5>
-                          <strong>AED 79.00</strong>
-                          <span class="text-muted font-weight-normal font-italic">Electronics</span>
+                          <h5 class="mb-0"><a href="#" class="text-dark d-inline-block"><?php echo $title; ?></a></h5>
+                          <strong>AED <?php echo number_format(getTruncatedValue($items['price'],2),2); ?></strong>
+                          <span class="text-muted font-weight-normal font-italic"><?php echo $cat_title; ?></span>
                         </div>
 
                       </td>
 
                       <td class="align-middle"><strong>QTY 1</strong></td>
-                      <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-times"></i></a>
-                      </td>
                     </tr>
-                  <?php } ?>
-                  <tr>
-                    <td>
+                    <?php
+                  }
+                  ?>
 
-                      <img src="<?= base_url("assets/frontend/images/Box3.png") ?>" alt="" width="150" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5>
-                        <strong>AED 79.00</strong>
-                        <span class="text-muted font-weight-normal font-italic">Electronics</span>
-                      </div>
-
-                    </td>
-
-                    <td class="align-middle"><strong>QTY 1</strong></td>
-                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-times"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-
-                      <img src="<?= base_url("assets/frontend/images/Box1.png") ?>" alt="" width="150" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5>
-                        <strong>AED 79.00</strong>
-                        <span class="text-muted font-weight-normal font-italic">Electronics</span>
-                      </div>
-
-                    </td>
-
-                    <td class="align-middle"><strong>QTY 1</strong></td>
-                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-times"></i></a>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -251,7 +158,10 @@
             <div class="p-4">
 
               <ul class="list-unstyled mb-4">
-                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal </strong><strong> 390.00 AED</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal
+                <input type="hidden" id="price-total-input" value="<?php echo getTruncatedValue($this->cart->total(),2); ?>" />
+								<input type="hidden" id="vat_inp" value="<?php echo getTruncatedValue($vat,2); ?>" />
+                 </strong><strong> <?php echo number_format(getTruncatedValue($this->cart->total(),2),2); ?> AED</strong></li>
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping</strong><strong> 10.00 AED</strong></li>
                 <!--  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li> -->
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
@@ -272,9 +182,5 @@
     </div>
 
   </div>
-  <hr>
-
-  </body>
-
-
-  </html>
+</div>
+</div>

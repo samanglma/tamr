@@ -194,3 +194,14 @@ function getTruncatedValue( $value, $precision )
 	//Returns the full pattern match
 	return $matches[0];            
 }
+
+function getVarianValues($variant_id )
+{
+	$CI = get_instance();
+
+	$CI->db->select('*');
+	$CI->db->where('variant_id', $variant_id);
+	$CI->db->from('variants_value');
+	$result = $CI->db->get()->result();
+	return $result;          
+}

@@ -1,90 +1,112 @@
 <style>
-.ours{
+  .ours {
 
-text-align: center;
-margin-top: 100px;
-}
+    text-align: center;
+    margin-top: 100px;
+  }
 
-.details-about p{
-  margin: 30px 0;
-}
-  </style>
- 
- <!-- Page Header -->
-  <div class="masthead" style="background-image: url('<?= base_url('assets/frontend/images/about.png') ?>'); height: 406px;">
-    
+  .details-about p {
+    margin: 30px 0;
+  }
+</style>
+<div class="page-holder">
+<?php
+
+$raw = json_decode($contents->content, true);
+$images = json_decode($contents->image, true);
+$raw_ar = json_decode($contents->content_ar, true);
+$headings = json_decode($raw['headings'], true);
+$headings_ar = json_decode($raw_ar['headings_ar'], true);
+$contents = json_decode($raw['contents'], true);
+$content_ar = json_decode($raw_ar['contents_ar'], true);
+?>
+  <!-- Page Header -->
+  <div class="about-banners">
+    <?php $first = true; foreach($images as $img) {  ?>
+    <img class="menu1 menu-image <?= $first ? 'active' : '' ?>" src="<?= base_url('uploads/pages/'.$img) ?>" width="100%">
+    <?php $first = false; } ?>
+    <!-- <img class="menu2 menu-image" src="<?= base_url('assets/frontend/images/about.png') ?>" width="100%">
+    <img class="menu3 menu-image" src="<?= base_url('assets/frontend/images/about.png') ?>" width="100%">
+    <img class="menu4 menu-image" src="<?= base_url('assets/frontend/images/about.png') ?>" width="100%"> -->
   </div>
 
-   <!-- Main Content -->
-   <div class="container content">
 
-<ul class="list-inline menu wrap_scroll">
-<li><a data-toggle="tab" href="#menu1">Our Mession</a></li>
-<li><a data-toggle="tab" href="#menu2">Our Value</a></li>
-<li><a data-toggle="tab" href="#menu3">Our Mession 2</a></li>
-<li><a data-toggle="tab" href="#menu3">Our Value 2</a></li>
-</ul>
-<div class="tab-content">
+  <!-- Main Content -->
+  <div class="container content about-us">
+   
+    <ul class="list-inline menu wrap_scroll">
+      <?php if ($headings[0] != '' && $contents[0]) { ?>
+        <li><a href="javascript:;" data-id="menu1"><?= $headings[0] ?></a></li>
+      <?php } ?>
+      <?php if ($headings[1] != '' && $contents[1]) { ?>
+        <li><a href="javascript:;" data-id="menu2"><?= $headings[1] ?></a></li>
+      <?php } ?>
+      <?php if ($headings[2] != '' && $contents[2]) { ?>
+        <li><a href="javascript:;" data-id="menu3"><?= $headings[2] ?></a></li>
+      <?php } ?>
+      <?php if ($headings[3] != '' && $contents[3]) { ?>
+        <li><a href="javascript:;" data-id="menu4"><?= $headings[3] ?></a></li>
+      <?php } ?>
+    </ul>
+    <div class="tab-content">
+      <?php if ($headings[0] != '' && $contents[0]) { ?>
+        <div id="menu1" class="menu1 row tab-pane active">
+          <div class="col-lg-6 col-md-6 mx-auto ours">
+            <h2><?= $headings[0] ?? '' ?></h2>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> -->
+          </div>
+          <div class="col-lg-6 col-md-6 mx-auto details-about">
+            <p><?= $contents[0] ?? '' ?></p>
+          </div>
+        </div>
+      <?php } ?>
 
-<div id="menu1" class="row tab-pane fade in active">
-  <div class="col-lg-6 col-md-6 mx-auto ours">
-    <h2>Our Mession</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-  </div>
-  <div class="col-lg-6 col-md-6 mx-auto details-about">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+      <?php if ($headings[1] != '' && $contents[1]) { ?>
+        <div id="menu2" class="menu2 tab-pane">
+          <div class="col-lg-6 col-md-6 mx-auto ours">
+            <h2><?= $headings[1] ?? '' ?></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+          </div>
+          <div class="col-lg-6 col-md-6 mx-auto details-about">
+            <p><?= $contents[1] ?? '' ?></p>
+          </div>
+        </div>
+      <?php } ?>
+
+      <?php if ($headings[2] != '' && $contents[2]) { ?>
+        <div id="menu3" class="menu3 tab-pane">
+          <div class="col-lg-6 col-md-6 mx-auto ours">
+            <h2><?= $headings[2] ?? '' ?></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+          </div>
+          <div class="col-lg-6 col-md-6 mx-auto details-about">
+            <p><?= $contents[2] ?? '' ?></p>
+          </div>
+        </div>
+      <?php } ?>
+      <?php if ($headings[3] != '' && $contents[3]) { ?>
+        <div id="menu4" class="menu4 tab-pane">
+          <div class="col-lg-6 col-md-6 mx-auto ours">
+            <h2><?= $headings[3] ?? '' ?></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+          </div>
+          <div class="col-lg-6 col-md-6 mx-auto details-about">
+            <p><?= $contents[3] ?? '' ?></p>
+          </div>
+        </div>
+      <?php } ?>
+
+
+    </div>
   </div>
 </div>
 
-
-<div id="menu2" class="tab-pane fade">
-  <div class="col-lg-6 col-md-6 mx-auto ours">
-    <h2>Our Values</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-  </div> 
-  <div class="col-lg-6 col-md-6 mx-auto details-about">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
-  </div>
-</div>
-
-
- <div id="menu3" class="tab-pane fade">
-  <div class="col-lg-6 col-md-6 mx-auto ours">
-    <h2>Our Mession 2</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-  </div>
-  <div class="col-lg-6 col-md-6 mx-auto details-about">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
-  </div>
-</div>
-
-
-  <div id="menu4" class="tab-pane fade">
-  <div class="col-lg-6 col-md-6 mx-auto ours">
-    <h2>Our Values 2</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-  </div>
-  <div class="col-lg-6 col-md-6 mx-auto details-about">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
-  </div>
-</div>
-
-
-
-</div>
-</div>
-
-<hr>
-
-</body>
-
-
-</html>
+<script>
+  $('.about-us .menu a').click(function() {
+    $id = $(this).data('id');
+    $('.tab-pane').removeClass('active');
+    $('.menu-image').removeClass('active');
+    $('.tab-content div.active').addClass('animate-out');
+    $('.' + $id).addClass('active');
+  });
+</script>

@@ -41,11 +41,11 @@
                        </div>
                        <div class="col-md-12 form-group">
                            <label>Content</label>
-                           <textarea class="ckeditor1" name="description" id="editor"> <?= set_value('description') ?> </textarea>
+                           <textarea class="ckeditor1 ckeditor" name="description" id="editor"> <?= set_value('description') ?> </textarea>
                        </div>
                        <div class="col-md-12 form-group">
                            <label>Arabic Content</label>
-                           <textarea class="ckeditor1" name="description_ar" id="editor_ar"> <?= set_value('description_ar') ?> </textarea>
+                           <textarea class="ckeditor1 ckeditor" name="description_ar" id="editor_ar"> <?= set_value('description_ar') ?> </textarea>
                        </div>
                        <div class="col-sm-7 form-group">
                            <label>Page Template *</label>
