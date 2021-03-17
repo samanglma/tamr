@@ -10,6 +10,14 @@ class Variant_m  extends CI_Model
         return true;
     }
 
+    public function getVariantValueByID($id)
+    {
+        $this->db->select('*');
+        $this->db->where("id", $id); 
+        return  $this->db->get('variants_value')->row();
+
+    }
+
     public function getAll()
     {
         $this->db->select('*');

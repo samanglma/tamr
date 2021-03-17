@@ -3,7 +3,7 @@
         <?php 
         foreach($categories as $key => $category) {
         ?>
-        <li><a data-slide='slide<?= $key ?>' href="<?= base_url('products/'.$category->slug) ?>"><?= $category->title ?></a></li>
+        <li><a class="cat" data-slide='slide-<?= $key ?>' href="javascript:;"><?= $category->title ?></a></li>
         <?php
         } ?>
     </ul>

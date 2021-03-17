@@ -1,3 +1,6 @@
+<?php
+$lang = lang() == 'english' ? 'en' : 'ar';
+?>
 <div class="home-wrapper">
     <div class="table height-v100">
         <div class="table-cell align-middle" id='slider'>
@@ -8,11 +11,12 @@
                 else
                 $slide = 2;
             ?>
-                <div class="narrow-content <?= $key == 0 ? 'active' : '' ?> slide-<?=$slide?>" id="">
+                <div class="narrow-content <?= $key == 0 ? 'active' : '' ?> slide-<?=$slide?>" id="slide-<?=$key?>">
                     <!-- <h2>Kids dates packages</h2> -->
-                    <h2 class="fade">Kids dates packages</h2><br>
+                    <h2 class="">Kids dates packages</h2><br>
                     <h1 class="slide-right seq-1"><?= $category->title ?></h1>
                     <img class="right-img slide-right seq-2" src="<?= base_url('uploads/categories/'.$category->image) ?>">
+               <a href="<?= base_url($lang.'/products/'.$category->slug) ?>" class="btn">SHOP NOW</a>
                 </div>
 
             <?php } ?>
@@ -28,11 +32,24 @@
 
 <script>
     $(document).ready(function() {
-        setInterval(function() {
+        $current = $('#slider').find('.active');
+        $($current).addClass('animate-in');
+
+        $('.cat').click(function(){
             $current = $('#slider').find('.active');
             $($current).removeClass('active');
-            $($current).next('.narrow-content').addClass('active');
-        }, 3000);
+            $($current).removeClass('animate-in');
+            $('.narrow-content').removeClass('animate-out');
+            $($current).addClass('animate-out');
+            $val = $(this).data('slide');
+            $('#'+$val).addClass('active');
+            $('#'+$val).addClass('animate-in');
+        });
+        // setInterval(function() {
+        //     $current = $('#slider').find('.active');
+        //     $($current).removeClass('active');
+        //     $($current).next('.narrow-content').addClass('active');
+        // }, 3000);
 
         //     setInterval(function() {
         //         $("#slider").load(location.href + " #slider");

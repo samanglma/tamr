@@ -1,5 +1,5 @@
 
-<footer style="position: fixed; bottom:0; width: 88%; margin-top: 200px;">
+<footer>
     <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-sm-6">
@@ -87,7 +87,18 @@
 
 <script>
 
-    CKEDITOR.replace( 'editor', {
+    // CKEDITOR.replace( 'editor', {
+    //     customConfig: '<?php echo base_url();?>assets/plugins/ckeditor/ckeditor.js">',
+    //     filebrowserImageBrowseUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/ckfinder.html?Type=Images',
+    //     filebrowserFlashBrowseUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/ckfinder.html?Type=Flash',
+    //     filebrowserUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    //     filebrowserImageUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    //     filebrowserFlashUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+
+    // } );
+    $('.ckeditor_ar').each(function(e){
+        CKEDITOR.replace( this.id, { 
+            contentsLangDirection: 'rtl',
         customConfig: '<?php echo base_url();?>assets/plugins/ckeditor/ckeditor.js">',
         filebrowserImageBrowseUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/ckfinder.html?Type=Images',
         filebrowserFlashBrowseUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/ckfinder.html?Type=Flash',
@@ -95,8 +106,9 @@
         filebrowserImageUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserFlashUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
 
-    } );
-
+         });
+    });
+    // $( '.ckeditor_ar' ).ckeditor(); 
     CKEDITOR.replace( 'editor_ar', {
         contentsLangDirection: 'rtl',
         customConfig: '<?php echo base_url();?>assets/plugins/ckeditor/ckeditor.js">',

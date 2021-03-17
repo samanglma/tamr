@@ -18,11 +18,11 @@ class Home extends MY_Controller
 			'robots' => ''
 		];
 
-		$data['breadcrumb'] = [
+		$bc['breadcrumb'] = [
 			'Home' => base_url(),
 		];
 
-		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
 		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
 		// echo '<pre>';
 		// print_r($data['categories']);

@@ -12,6 +12,7 @@ class Page extends CI_Controller
 
 	public function index($slug = '')
 	{
+		$lang = lang() == 'english' ? 'en' : 'ar';
 		$data['meta'] = [
 			'canonical_tag' => '',
 			'meta_title' => lang() == 'english' ? '' : '',
@@ -22,32 +23,31 @@ class Page extends CI_Controller
 
 		$data['contents'] = $this->Page_m->getPageBySlug($slug);
 
+		
+		if ($slug != 'about' && $slug != 'contact' && $slug != 'cart') {
+			$data['breadcrumb'] = [
+				'Home' => base_url(),
+				$slug => base_url($lang.'/page/' . $slug),
+			];
+		} else {
+			$data['info'] = $this->Settings_m->getInfo();
+			$bc['breadcrumb'] = [
+				'Home' => base_url(),
+				$slug => base_url($lang.'/'.$slug),
+			];
+		}
+	
+		
+		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
 		$this->load->view('frontend/includes/header', $data);
 		$this->load->view('frontend/includes/navigation');
 		$this->load->view('frontend/includes/right-sidebar');
 		$this->load->view('frontend/includes/bottom-sidebar');
 		if ($slug != 'about' && $slug != 'contact' && $slug != 'cart') {
-
-			
-
-			$data['breadcrumb'] = [
-				'Home' => base_url(),
-				$slug => base_url('page/'.$slug),
-			];
 			$this->load->view('frontend/page', $data);
 		} else {
-
-			
-
-			$data['info'] = $this->Settings_m->getInfo();
-
-			$data['breadcrumb'] = [
-				'Home' => base_url(),
-				$slug => base_url('page/'.$slug),
-			];
 			$this->load->view('frontend/' . $slug, $data);
 		}
-		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 		$this->load->view('frontend/includes/footer');
 	}
 
@@ -155,10 +155,9 @@ class Page extends CI_Controller
 			$this->email->subject('Contact Us');
 			$this->email->set_mailtype("html");
 			$this->email->message($message);
-			if(!$this->email->send())
-{
-die($this->email->print_debugger());
-}
+			if (!$this->email->send()) {
+				die($this->email->print_debugger());
+			}
 			$this->contact_m->submit($data);
 
 			if ($_SESSION['site_lang'] == 'arabic') {
@@ -167,7 +166,7 @@ die($this->email->print_debugger());
 
 				die();
 				echo json_encode(array('success' => "true", 'message' => 'لقد تمّ إرسال اِستفسارك بنجاح. '));
-			// } else {
+				// } else {
 
 
 				echo 'english';

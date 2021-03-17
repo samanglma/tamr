@@ -5,7 +5,7 @@ if (is_array($breadcrumb)) {
         <?php
         foreach ($breadcrumb as $key => $link) { ?>
             <li><a class="action-home" href="<?= $link ?>">
-                    <?= $key ?>
+                    <?= ucfirst($key) ?>
                 </a>
             </li>
         <?php

@@ -35,7 +35,7 @@
                   
                 <div class="col-md-12 form-group">
                            <label>Template *</label>
-                           <textarea name="template" id="editor"><?php echo $row->template;?></textarea>
+                           <textarea name="template" class="ckeditor" id="editor"><?php echo $row->template;?></textarea>
                        </div>
 
 					   <div class="col-md-7 form-group">

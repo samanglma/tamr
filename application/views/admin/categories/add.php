@@ -40,13 +40,18 @@
 
                        <div class="col-md-7  form-group">
                            <label>Category Name *</label>
-                           <input type="text" name="title" value="<?= set_value('title') ?>" class="form-control" placeholder="Category Name" />
+                           <input type="text" name="title" value="<?= set_value('title') == '' ? (isset($_SESSION['data']) && $_SESSION['data']['title']) ?? '' : set_value('title') ?>" class="form-control" placeholder="Category Name" />
                            <?php echo form_error('title', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
                        <div class="col-md-7  form-group">
                            <label>Arabic Category Name</label>
                            <input dir="rtl" type="text" name="title_ar" value="<?= set_value('title_ar') ?>" class="form-control" placeholder="Category Name" />
                        </div>
+                       <div class="col-md-7  form-group">
+        						   <label>Banner Image *</label>
+        						   <input type='file' required name='image' size='20' />
+        						   <span style="color: #97310e;"> Size ( 1200 * 900 ) </span>
+        					   </div>
 
                        <input type="hidden" name="parent_id" value="<?php echo $id; ?>">
 

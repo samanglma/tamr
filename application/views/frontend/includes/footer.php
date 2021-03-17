@@ -1,5 +1,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/jquery.validate.js" integrity="sha384-QYr0Jb/x/vYoPGUFXkCz0h5Aq5+wFwjsiwCWsbgGk+SoBt1NlaFip4L4AB1L3hGz" crossorigin="anonymous"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/bootstrap-confirmation.js" integrity="sha384-pKyMMamvoZ5Tl9dqLIriIOplxM4yl4lDiMikOIQh1X31VHB8qjVFXjNOAIFPGoar" crossorigin="anonymous"></script>
+
 <script>
 function updateAjaxQuantity(rowid, quantity) {
 		$.ajax({

@@ -1,68 +1,17 @@
 <style>
-  body {
-
-    font-family: 'Roboto', sans-serif;
-  }
-
-
-  .cart-socialss {
-
-    display: inline-grid !important;
-    float: right;
-    margin-top: 185px;
-    font-size: 15px;
-    margin-right: -105px;
-  }
-
 
   i {
     color: black !important;
   }
 
-  .cart-bg-text h2 {
-    font-size: 100px;
-    text-align: center;
-    padding-top: 10px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    position: relative;
-    top: 30px;
-    letter-spacing: -10px;
-    z-index: 2;
-    opacity: 0.1;
-    margin-left: 0px;
-  }
-
-  .cart-heading h1 {
-
-    text-align: center;
-
-    margin-bottom: -90px;
-
-  }
-
   #cart-overlay1 {
-    position: absolute;
-    /* Sit on top of the page content */
-    display: block;
-    /* Hidden by default */
-
-
-    background-color: rgba(255, 255, 255, 0.95);
-    /* Black background with opacity */
     z-index: 2;
-    /* Specify a stack order in case you're using a different order for other elements */
 
-  }
-
-  .cart-contact-us .cart-heading h1 {
-    font-size: 50px;
-    padding: 90px 130px;
   }
 
   .cart-contact-us {
     text-align: center;
-    margin-left: 190px;
+    /* margin-left: 190px; */
   }
 
   .rounded {
@@ -87,56 +36,26 @@
   }
 </style>
 
-
+<div class="page-holder">
 <div class="container cart-wrapper">
-
-  <ul class="list-inline text-right cart-socialss">
-    <li class="">
-      <a href="#">
-        <span class="fa-stack fa-lg">
-
-          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-    </li>
-    <li class="">
-      <a href="#">
-        <span class="fa-stack fa-lg">
-
-          <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-    </li>
-    <li class="">
-      <a href="#">
-        <span class="fa-stack fa-lg">
-
-          <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-    </li>
-  </ul>
-
   <div class="row">
 
     <div class="cart-contact-us">
       <div id="cart-overlay1">
+      <div class="cart-bg-text bg-text">
+        <h2>SHOPPING CART</h2>
+      </div>
         <div class="cart-heading">
-          <h1>SHOPPING CARD</h1>
+          <h1>SHOPPING CART</h1>
         </div>
         <?php
-        if ($this->cart->total_items() <= 0) {
+        if ($this->cart->total_items() > 0) {
         ?>
-          <p>There is no item in cart </p>
+         <p>SHOPPING CART (<?= $this->cart->total_items() ?>)<span>YOUR WHISTLIST (0)</span></p>
         <?php
-        } else {
-        ?>
-          <p>SHOPPING CARD (<?= $this->cart->total_items() ?>)<span>YOUR WHISTLIST (0)</span></p>
-        <?php } ?>
+        } ?>
       </div>
-      <div class="cart-bg-text">
-        <h2>SHOPPING CARD</h2>
-      </div>
+      
     </div>
 
     <div class="pb-5">
@@ -263,4 +182,5 @@
     </div>
 
   </div>
-  <hr>
+</div>
+</div>

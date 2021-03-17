@@ -17,6 +17,7 @@
     <link href="<?php echo base_url(); ?>assets/frontend/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/fonts/stylesheet.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/responsive.css">
     <link href="<?php echo base_url(); ?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/jquery.fancybox.min.css" />
