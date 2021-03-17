@@ -674,6 +674,7 @@ p {
   font-size: 1.5rem;
   line-height: 1.7rem;
 }
+#contactForm { padding: 0 10%;}
 
 .our {
   /*text-align: center;*/
@@ -691,14 +692,6 @@ p {
   margin: 15px;
 }
 
-.msg {
-  border: 0;
-  border-bottom: 1px solid gray;
-  outline: 0;
-  padding: 15px;
-  width: 55%;
-  margin-left: 54px;
-}
 
 .addresss {
   text-align: right;
@@ -1096,4 +1089,16 @@ body {
   color: #5f534a;
   font-size: 1.2rem;
   font-weight: 300;
+}
+
+.submit-btn.btn
+{
+  position: absolute;
+  bottom: 15px;
+  right:0
+}
+
+.contactForm
+{
+  position: relative;
 }
