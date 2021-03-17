@@ -1,6 +1,6 @@
 body, html {
-  font-size: 16px;
-  line-height: 18px;
+  /* font-size: 16px;
+  line-height: 18px; */
   font-family: 'HelveticaNeueCyr';
 }
 
@@ -296,11 +296,11 @@ aside a {
 }
 
 .home-wrapper h1 {
-  font-size: 6rem;
+  font-size:5rem;
   text-transform: uppercase;
   color: #5F534A;
   font-weight: bolder;
-  line-height: 6.5rem;
+  line-height: 6rem;
   margin: 0;
 }
 
@@ -672,6 +672,7 @@ p {
 
 p {
   font-size: 1.5rem;
+  line-height: 1.7rem;
 }
 
 .our {
@@ -1055,7 +1056,9 @@ body {
   left:0;
   margin: 0px;
 }
-.registerForm {  max-width: 500px; margin:5% auto;}
+.registerForm,
+.loginForm,
+.forgot-password {  max-width: 500px; margin:5% auto;}
 .register p { font-weight: 300; margin-top: 10px;}
 .form-control {
   border: 0;

@@ -81,12 +81,12 @@ class User extends CI_Controller
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
         $this->load->view('frontend/includes/bottom-sidebar');
-        $data['breadcrumb'] = [
+        $bc['breadcrumb'] = [
             'Home' => base_url(),
-            'Register' => base_url('register'),
+            'Login' => base_url('login'),
         ];
 
-        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
         $this->load->view('frontend/login', $data);
     }
 

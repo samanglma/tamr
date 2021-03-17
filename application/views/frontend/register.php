@@ -1,4 +1,7 @@
- <!-- Navigation -->
+<?php
+$lang = lang() == 'english' ? 'en' : 'ar';
+?>
+<!-- Navigation -->
  <style>
    .price {
      margin-top: 160px;
@@ -70,6 +73,7 @@
            <div class="cart-heading">
              <h1>REGISTER</h1>
            </div>
+           <br>
            <p>Wellcome to TAMR</p>
            <?php
             $error_msg = $this->session->flashdata('error_msg');
@@ -90,10 +94,11 @@
              <div class="form-group">
                <input type="text" class="form-control" placeholder="PHONE NUMBER" name='user_mobile' />
              </div>
+             <br>
              <div class="clearfix">
-               <p class="already float-left">Already a member? <a href="<?= base_url('login') ?>"><b>Login Now</b></a></p>
+               <p class="already float-left">Already a member? <a href="<?= base_url($lang.'/login') ?>"><b>Login Now</b></a></p>
 
-               <input type="submit" value='REGISTER' class="btn float-right" name="register" />
+               <input type="submit" value='REGISTER' class="btn float-right pull-right" name="register" />
              </div>
 
            </form>
