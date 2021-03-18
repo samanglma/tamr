@@ -2,6 +2,7 @@ body, html {
   /* font-size: 16px;
   line-height: 18px; */
   font-family: 'HelveticaNeueCyr';
+  position: relative;
 }
 
 p, ul, ol, body, html {
@@ -144,10 +145,19 @@ a, a:focus, a:hover {
   display: inline-block;
   padding: 0 10px;
 }
+.full-screen {
+  height: 100vh;
+  width: 100%;
+  display: table;
+}
+
 .cart-heading h1 {
-  font-size: 2rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
   text-align: center;
   color: #5f534a;
+  margin-top: -3%;
+  margin-bottom: 0;
 }
 /* .navigation { position: fixed; left:0; z-index: 1; width: 5%;} */
 
@@ -165,7 +175,7 @@ nav::after {
 }
 
 aside {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.8);
@@ -214,7 +224,7 @@ aside a {
   display: inline-block;
   padding: 1.4rem 0;
   text-decoration: none;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: bolder;
   text-transform: uppercase;
   color: #5F534A;
@@ -329,11 +339,7 @@ aside a {
   height: 706px;
   background-repeat: no-repeat;
 }
-.btn:hover,
-.btn:focus,
-.btn:active {
-  border:0
-}
+
 .btn {
     text-transform: uppercase;
     font-size: 1.5rem;
@@ -346,7 +352,12 @@ aside a {
 .right-img {
   transition: transform .2s;
 }
-.btn:hover,.btn:focus,.btn:active {
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:active:focus {
+  border:0;
+  outline: none;
   box-shadow: none;
   border-bottom: 5px solid #5f534a !important;
 }
@@ -671,8 +682,8 @@ p {
 }
 
 p {
-  font-size: 1.5rem;
-  line-height: 1.7rem;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
 }
 #contactForm { padding: 0 10%;}
 
@@ -1034,13 +1045,14 @@ body {
 }
 
 .bg-text h2 {
+  line-height: 3.5rem;
   color: #5f534a;
-  font-size: 5rem;
+  font-size: 4rem;
   text-align: center;
   padding-top: 0;
   margin-bottom: 0px;
+  text-transform: uppercase;
   padding-bottom: 0px;
-  position: absolute;
   top: 18%;
   letter-spacing: 0;
   z-index: 2;
@@ -1101,4 +1113,7 @@ body {
 .contactForm
 {
   position: relative;
+}
+.alert.alert-danger p {
+  margin:0;
 }

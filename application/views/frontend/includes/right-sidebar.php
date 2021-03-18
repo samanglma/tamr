@@ -1,8 +1,11 @@
 <?php
 $lang = lang() == 'english' ? 'en' : 'ar';
-$settings = [];
+$settings = '';
 if ($this->session->userdata('settings')) {
+    
+    // print_r($this->session->userdata('settings'));
     $settings = $this->session->userdata('settings');
+    // $settings = $settings[0];
 }
 ?>
 <div class="right-sidebar">

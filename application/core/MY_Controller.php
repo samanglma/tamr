@@ -12,9 +12,9 @@ class MY_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
         if (!$this->session->userdata('settings') && $this->session->userdata('settings') == '') {
             $this->websiteSettings();
+           
         }
     }
 
@@ -22,7 +22,9 @@ class MY_Controller extends CI_Controller
     {
         $this->db->select('*');
         $this->db->from('settings');
-        $settings = $this->db->get()->result();
+        $settings = $this->db->get()->row();
+        // print_r($settings);
+        // die();
         $this->session->set_userdata('settings', $settings);
     }
 

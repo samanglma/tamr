@@ -19,6 +19,15 @@ class Email_templates_m  extends CI_Model
 
     }
 
+    public function getTemplateBySlug($slug)
+    {
+        $this->db->select('*');
+        $this->db->where("slug", $slug); 
+        $query = $this->db->get('email_templates')->row();
+        return $query;
+
+    }
+
     public function edit($id)
     {
         $this->db->select('*');

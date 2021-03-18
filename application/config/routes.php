@@ -80,6 +80,9 @@ $route['^(en|ar)/products']                                 =  'Products/index';
 $route['^(en|ar)/product/(:any)']                                 =  'Products/details/$i';
 $route['^(en|ar)/register']                                 =  'User/index';
 $route['^(en|ar)/login']                                 =  'User/login_view';
+$route['^(en|ar)/forgot-password']                                 =  'User/forgotPassword';
+$route['^(en|ar)/change-password']                                 =  'User/ChangePassword';
+// $route['^(en|ar)/reset-password']                                 =  'User/resetPassword';
 $route['myform/ajax/(:any)'] = 'Products/myformAjax/$1';
 
 // $route['en/cart']                      =  'Home/cart'; 
