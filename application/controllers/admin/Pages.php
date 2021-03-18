@@ -83,9 +83,9 @@ class Pages extends My_Controller
                     // die();
                     $config['upload_path']          = './uploads/pages/';
                     $config['allowed_types']        = 'jpg|jpeg|png';
-                    $config['max_width']            = 1400;
-                    $config['encrypt_name'] = TRUE;
-                    $config['max_height']           = 406;
+                    //$config['max_width']            = 1400;
+                    //$config['encrypt_name'] = TRUE;
+                    //$config['max_height']           = 406;
                     $this->load->library('upload', $config);
                     if (!$this->upload->do_upload('images[]')) {
                         $this->session->set_flashdata('error', $this->upload->display_errors() . $file);

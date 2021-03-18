@@ -48,7 +48,7 @@
                            <input dir="rtl" type="text" name="title_ar" value="<?= set_value('title_ar') ?>" class="form-control" placeholder="Category Name" />
                        </div>
                        <div class="col-md-7  form-group">
-        						   <label>Banner Image *</label>
+        						   <label> Image *</label>
         						   <input type='file' required name='image' size='20' />
         						   <span style="color: #97310e;"> Size ( 1200 * 900 ) </span>
         					   </div>

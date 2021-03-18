@@ -45,24 +45,14 @@ class Categories extends My_Controller
 
 
 
-            $data = array(
-
-                'title' => $this->input->post('title'),
-                'slug' => $slug,
-                'title_ar' => $this->input->post('title_ar'),
-                'parent_id' => $this->input->post('parent_id'),
-                'status' => $this->input->post('status')
-
-            );
-
             if ($_FILES['image']['name'] != "") {
 
                 $config['upload_path']          = './uploads/categories/';
                 $config['allowed_types']        = 'jpg|jpeg|png';
                 /* $config['encrypt_name']          = TRUE;*/
-                $config['max_width']            = 1200;
+               /* $config['max_width']            = 1200;
                 $config['max_height']           = 900;
-                $this->load->library('upload', $config);
+                $this->load->library('upload', $config); */
 
 
                 if (!$this->upload->do_upload('image')) {
@@ -76,6 +66,21 @@ class Categories extends My_Controller
                     $data['image'] = $uploadData['file_name'];
                 }
             }
+
+
+            
+            $data = array(
+
+                'title' => $this->input->post('title'),
+                'slug' => $slug,
+                'title_ar' => $this->input->post('title_ar'),
+                'parent_id' => $this->input->post('parent_id'),
+                'status' => $this->input->post('status'),
+                'image' => $data['image']
+
+            );
+
+
             $this->categories_m->saveCategory($data);
             $this->session->set_flashdata('success', 'Category added successfully');
             redirect('admin/categories');
@@ -111,13 +116,13 @@ class Categories extends My_Controller
             redirect('admin/categories/edit/' . $id);
         } else {
 
-            /*  $config['upload_path']          = './uploads/categories/';
+              $config['upload_path']          = './uploads/categories/';
             $config['allowed_types']        = 'jpg|jpeg|png|gif';
-            $config['encrypt_name']          = TRUE;*/
-            /*$config['max_width']            = 1000;
-              $config['max_height']           = 1000;*/
+           /* $config['encrypt_name']          = TRUE;
+            $config['max_width']            = 1000;
+              $config['max_height']           = 1000; */
 
-            /* $this->load->library('upload', $config);
+             $this->load->library('upload', $config);
 
             if (!$this->upload->do_upload('image'))
             {
@@ -135,7 +140,7 @@ class Categories extends My_Controller
             if(empty($_FILES['image']['name'])){
 
                 $image = $this->input->post('image2');
-            }*/
+            }
 
             $data['id'] = $this->input->post('id');
             $data['data'] = array(
@@ -144,7 +149,8 @@ class Categories extends My_Controller
                 'slug' => $slug,
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+                'image' => $image
             );
 
             $this->categories_m->updateCategory($data);

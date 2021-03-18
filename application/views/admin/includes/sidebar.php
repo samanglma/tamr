@@ -240,14 +240,14 @@
             </li>
 
 
-            <li <?php if ($this->uri->segment(2) == "contactus") {
+          <!--  <li <?php if ($this->uri->segment(2) == "contactus") {
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/contactus" class="">
                     <i class="material-icons">info</i>
                     <span class="nav-label">Contact Us</span>
                 </a>
-            </li>
+            </li>-->
             <!---->
             <!--            <li>-->
             <!--                <a href="--><?php //echo base_url()
