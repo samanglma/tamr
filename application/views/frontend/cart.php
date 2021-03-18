@@ -9,31 +9,16 @@
 
   }
 
-  .cart-contact-us {
-    text-align: center;
-    /* margin-left: 190px; */
-  }
 
   .rounded {
     font-size: 14px;
   }
 
-  .cart-summary {
-    font-size: 14px;
-  }
 
   img {
     margin-bottom: -30px;
   }
 
-  input[type="submit"] {
-    border: 0;
-    border-bottom: 1px solid gray;
-    outline: 0;
-    padding: 15px;
-    margin-left: 90px;
-
-  }
 </style>
 
 <div class="page-holder">
@@ -171,7 +156,7 @@
 
               <!-- <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">CHECKOUT NOW</a> -->
 
-              <input type="submit" value='CHECKOUT NOW' />
+              <input type="submit" class="btn" value='CHECKOUT NOW' />
 
             </div>
           </div>

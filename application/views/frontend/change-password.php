@@ -61,21 +61,17 @@ $lang = lang() == 'english' ? 'en' : 'ar';
     
   </div> -->
 <div class="full-screen">
-<div class="table-cell align-middle">
+  <div class="table-cell align-middle">
   <div class="container">
-
-    
 
       <div class="contact-us register">
         <div class="bg-text">
-          <h2>REGISTER</h2>
+          <h2>Change password</h2>
         </div>
           <div class="cart-heading">
-            <h1>REGISTER</h1>
+            <h1>Change password</h1>
           </div>
-          <br>
-          <p>Wellcome to TAMR</p>
-          <form role="form" class="registerForm" method="post" action="<?php echo base_url('user/register_user'); ?>">
+          <form role="form" class="validate registerForm" method="post" action="<?php echo base_url($lang.'/change-password'); ?>">
             <?php
             $error_msg = $this->session->flashdata('error_msg');
             if ($error_msg) {
@@ -86,25 +82,31 @@ $lang = lang() == 'english' ? 'en' : 'ar';
               echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
             } ?>
             <div class="form-group">
-              <input type="text" class="form-control" value="<?php echo set_value('user_name'); ?>" placeholder="YOUR NAME" name='user_name' />
+              <input type="password" class="form-control" placeholder="NEW PASSWORD" value="<?php echo set_value('password'); ?>" name='password' />
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="YOUR EMAIL" value="<?php echo set_value('user_email'); ?>" name='user_email' />
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" value="<?php echo set_value('user_password'); ?>" placeholder="PASSWORD" name='user_password' />
-            </div>
-            
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="PHONE NUMBER" value="<?php echo set_value('user_mobile'); ?>" name='user_mobile' />
+              <input type="password" class="form-control" placeholder="RE-TYPE NEW PASSWORD" value="<?php echo set_value('re_password'); ?>" name='re_password' />
             </div>
             <br>
             <div class="clearfix">
-              <p class="already float-left">Already a member? <a href="<?= base_url($lang . '/login') ?>"><b>Login Now</b></a></p>
-              <input type="submit" value='REGISTER' class="btn float-right pull-right" name="register" />
+              <input type="submit" value='SUBMIT' class="btn float-right pull-right" name="change_pass" />
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    jQuery('.validate').validate({
+			rules : {
+				password : {
+					minlength : 5
+				},
+				re_password : {
+					minlength : 5,
+					equalTo : "#password"
+				}
+			}
+		});
+  </script>

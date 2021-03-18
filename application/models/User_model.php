@@ -8,19 +8,20 @@ class User_model extends CI_model
     {
 
 
-        $this->db->insert('user', $user);
+        $this->db->insert('users', $user);
+        return $this->db->insert_id();
     }
 
-    public function login_user()
+    public function login_user($email, $pass)
     {
         //$email,$pass
         $this->db->select('*');
-        $this->db->from('user');
-        // $this->db->where('user_email',$email);
-        // $this->db->where('user_password',$pass);
+        $this->db->from('users');
+        $this->db->where('email',$email);
+        $this->db->where('password',$pass);
 
         if ($query = $this->db->get()) {
-            return $query->result_array();
+            return $query->row_array();
         } else {
             return false;
         }
@@ -29,14 +30,31 @@ class User_model extends CI_model
     {
 
         $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('user_email', $email);
+        $this->db->from('users');
+        $this->db->where('email', $email);
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
             return false;
         } else {
             return true;
+        }
+    }
+
+
+    public function verify_code($code, $id)
+    {
+
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('activation_code', $code);
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

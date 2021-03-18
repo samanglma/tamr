@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session', 'database','form_validation','email','cart', 'quiqup');
+$autoload['libraries'] = array('session', 'parser', 'encryption', 'database','form_validation','email','cart', 'quiqup');
 
 /*
 | -------------------------------------------------------------------
@@ -132,5 +132,5 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('OrderItems_m', 'Order_m', 'Page_m', 'Common_model', 'Products_m', 'Categories_m', 'Settings_m');
+$autoload['model'] = array('OrderItems_m', 'Order_m', 'Page_m', 'Email_templates_m', 'Common_model', 'Products_m', 'Categories_m', 'Settings_m');
 

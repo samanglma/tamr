@@ -12,7 +12,7 @@ p{
 }
 
 .menu-products{
-  font-size: 14px;
+  font-size: 1.2rem;
   text-align: center;
   margin-top: 20px;
 }
