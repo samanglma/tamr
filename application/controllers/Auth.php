@@ -57,10 +57,10 @@ class Auth extends CI_Controller
                 'verification_code' => $code
             );
 
-            $email_check = $this->user_model->email_check($user['user_email']);
+            $email_check = $this->User_model->email_check($user['user_email']);
 
             if ($email_check) {
-                $id = $this->user_model->register_user($user);
+                $id = $this->User_model->register_user($user);
                 $template = $this->Email_templates_m->getTemplateBySlug('verify-email');
 
                 $data = array(
@@ -130,7 +130,8 @@ class Auth extends CI_Controller
             $this->session->set_userdata('user_email', $user['email']);
             $this->session->set_userdata('user_name', $user['username']);
             $this->session->set_userdata('user_mobile', $user['mobile']);
-            $this->load->view('frontend/user/user_profile', $data);
+            redirect($this->language.'/profile');
+            // $this->load->view('frontend/user/profile', $data);
         } else {
             $this->session->set_flashdata('error', 'Invalid login details');
             $this->login_view();

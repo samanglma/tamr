@@ -17,6 +17,7 @@ class Order extends CI_Controller
 
     public function index()
     {
+        $data['orders'] = $this->Order_m->getAll();
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',
@@ -35,12 +36,39 @@ class Order extends CI_Controller
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
 
-        $this->load->view('frontend/user/orders', $data);
+        $this->load->view('frontend/user/orders/index', $data);
+    }
+
+
+    public function details()
+    {
+        $id = $this->uri->segment('3');
+        $order_id = base64_decode($id);
+        $data['order'] = $this->Order_m->getOrdeById($order_id);
+
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+        $data['breadcrumb'] = [
+            'Home' => base_url(),
+            'Orders' => base_url($this->language . '/orders'),
+        ];
+
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders/details', $data);
     }
 
     public function track($id)
     {
-        die();
 
         $order_id = base64_decode($id);
         $lang = $this->uri->segment(1) == 'ar' ? 'ar' : 'en';

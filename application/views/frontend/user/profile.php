@@ -48,7 +48,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             <input type="text" class="form-control" value="<?php echo $this->session->userdata('user_name') ?>" placeholder="YOUR NAME" name='user_name' />
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" placeholder="YOUR EMAIL" value="<?php echo $this->session->userdata('user_email'); ?>" name='user_email' />
+            <input type="email" class="form-control" disabled placeholder="YOUR EMAIL" readonly value="<?php echo $this->session->userdata('user_email'); ?>" name='user_email' />
           </div>
           <div class="form-group">
             <input type="password" class="form-control" value="<?php echo set_value('user_password'); ?>" placeholder="PASSWORD" name='user_password' />

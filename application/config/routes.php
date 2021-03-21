@@ -50,7 +50,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 //$route['default_controller'] = 'admin/login';
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'Home';
 
 /*============================= Website Routes Arabic ======================================================================*/
 
@@ -85,6 +85,7 @@ $route['^(en|ar)/change-password']                                 =  'Auth/Chan
 //User dashboard
 $route['^(en|ar)/profile']                                 =  'User/index';
 $route['^(en|ar)/orders']                                 =  'Order/index';
+$route['^(en|ar)/order/(:any)']                                 =  'Order/details';
 
 
 

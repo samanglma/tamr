@@ -29,6 +29,7 @@ class Order_m extends CI_Model
 			'shipping_charges' => $post['shipping_charges'] ? $post['shipping_charges'] : 0,
 			'additional_notes' => $post['additional_notes'] ? $post['additional_notes'] : '',
 			'tax' => $tax,
+			'ref_number' => 'ORD-'.time(),
 			'delivery_date' => $post['delivery_date'] ? $post['delivery_date'] : '',
 			'delivery_time' => $post['delivery_time'] ? $post['delivery_time'] : '',
 			// 'promo_code' => $this->session->userdata('promo') ? $this->session->userdata('promo') : '',
@@ -43,13 +44,20 @@ class Order_m extends CI_Model
 	}
 
 	public function getAll(){
-		$this->db->select('orders.additional_notes, orders.total, orders.id as order_id,orders.tax,orders.sub_total,orders.created_at as date,orders.status,orders.payment_status,orders.total as order_total, billing_address.*');
+		$this->db->select('orders.additional_notes, orders.total, orders.id as order_id,orders.tax,orders.sub_total,orders.ref_number, orders.created_at as date,orders.status,orders.payment_status,orders.total as order_total, billing_address.*');
 		$this->db->join('billing_address','billing_address.id = orders.billing_id');
 		$this->db->order_by('orders.id','desc');
 		return $this->db->get('orders')->result();
 	}
 
 	public function getStatus($order_id){
+		$this->db->select('orders.created_at, orders.additional_notes, orders.status, orders.shipping_charges, orders.delivery_date,orders.delivery_time, orders.total, orders.id as order_id,orders.tax,orders.sub_total,orders.created_at as date,orders.status,orders.payment_status,orders.total as order_total, billing_address.*');
+		$this->db->join('billing_address','billing_address.id = orders.billing_id');
+		$this->db->where('orders.id',$order_id);
+		return $this->db->get('orders')->row_array();
+	}
+
+	public function getOrdeById($order_id){
 		$this->db->select('orders.created_at, orders.additional_notes, orders.status, orders.shipping_charges, orders.delivery_date,orders.delivery_time, orders.total, orders.id as order_id,orders.tax,orders.sub_total,orders.created_at as date,orders.status,orders.payment_status,orders.total as order_total, billing_address.*');
 		$this->db->join('billing_address','billing_address.id = orders.billing_id');
 		$this->db->where('orders.id',$order_id);

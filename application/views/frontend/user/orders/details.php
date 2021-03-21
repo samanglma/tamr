@@ -30,25 +30,29 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           </li>
         </ul>
         <hr>
-        <div class="table-responsive">
+        <div class="table-responsive orders-table">
           <table class="table">
             <?php
             if (count($orders) > 0 && $orders != '') {
+              $first = true;
               foreach ($orders as $order) {
             ?>
                 <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
+                  <td class='<?= $first ? 'no-border' : '' ?>'>Order Number <?= $order->ref_number ?></td>
+                  <td class='<?= $first ? 'no-border' : '' ?>'><?= date('F d, Y', strtotime($order->date)) ?></td>
+                  <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->total ?> AED</td>
+                  <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->status ?> </td>
+                  <td class='<?= $first ? 'no-border' : '' ?>'><a href="<?= base_url($lang.'/order/'.base64_encode($order->id)) ?>">Details</a></td>
                 </tr>
-            <?php }
-            } else
+            <?php $first = false; }
+            } else {
             ?>
             <tr class="">
               <td class="no-border">
                 <div class='alert alert-info'>No order found</div>
               </td>
             </tr>
+            <?php } ?>
           </table>
 
         </div>

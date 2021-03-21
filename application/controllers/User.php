@@ -39,4 +39,32 @@ class User extends CI_Controller
 
         $this->load->view('frontend/user/profile', $data);
     }
+
+    public function updateProfile()
+    {
+        $this->form_validation->set_rules('user_name', 'Name', 'required');
+        $id = $this->session->userdata('user_id');
+
+        if ($id != '') {
+            $userData = $this->User_model->getUserById($id);
+            if ($this->input->post('user_password') != '') {
+                $password = md5($this->input->post('user_password'));
+            } else {
+                $password = $userData['password'];
+            }
+            if ($this->form_validation->run() != FALSE) {
+                $user = array(
+                    'username' => $this->input->post('user_name'),
+                    'password' => $password,
+                    'mobile' => $this->input->post('user_mobile'),
+                    'role' => 2
+                );
+                $userData = $this->Common_model->update($id, 'users', $user);
+
+                $this->session->set_userdata('user_name', $user['username']);
+                $this->session->set_userdata('user_mobile', $user['mobile']);
+                redirect($this->language.'/profile');
+            }
+        }
+    }
 }
