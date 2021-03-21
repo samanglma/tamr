@@ -30,17 +30,19 @@ if ($this->session->userdata('settings')) {
             <?php
             }
             ?>
-            <?php
-            if (isset($settings->facebook) && $settings->facebook != null) {
-            ?>
-                <li><a href="<?= $settings->facebook ?>" target="_blank"><i class="fa fas fa-facebook"></i></a></li>
-            <?php
-            }
-            ?>
+
             <?php
             if (isset($settings->twitter) && $settings->twitter != null) {
             ?>
                 <li><a href="<?= $settings->twitter ?>" target="_blank"><i class="fa fas fa-twitter"></i></a></li>
+            <?php
+            }
+            ?>
+
+            <?php
+            if (isset($settings->facebook) && $settings->facebook != null) {
+            ?>
+                <li><a href="<?= $settings->facebook ?>" target="_blank"><i class="fa fas fa-facebook"></i></a></li>
             <?php
             }
             ?>
@@ -51,10 +53,9 @@ if ($this->session->userdata('settings')) {
             <?php
             if ($this->session->userdata('user_id')) {
 
-                $url = base_url($lang.'/profile');
-            }
-            else {
-                $url = base_url($lang.'/login');
+                $url = base_url($lang . '/profile');
+            } else {
+                $url = base_url($lang . '/login');
             }
             ?>
             <li><a href="<?= $url ?>"><img src="<?= base_url('assets/frontend/images/user.svg') ?>" /></a></li>

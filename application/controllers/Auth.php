@@ -2,18 +2,18 @@
 
 class Auth extends CI_Controller
 {
-    public $lang = 'en';
+    public $language = 'en';
 
     public function __construct()
     {
 
         parent::__construct();
 
-        $this->lang = lang() == 'english' ? 'en' : 'ar';
+        $this->language = lang() == 'english' ? 'en' : 'ar';
 
         if ($this->session->userdata('user_id')) {
 
-            redirect($this->lang . '/profile');
+            redirect($this->language . '/profile');
         }
     }
 
@@ -28,7 +28,7 @@ class Auth extends CI_Controller
         ];
         $data['breadcrumb'] = [
             'Home' => base_url(),
-            'Register' => base_url($this->lang . '/register'),
+            'Register' => base_url($this->language . '/register'),
         ];
 
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
@@ -79,11 +79,11 @@ class Auth extends CI_Controller
                 $this->email->send();
 
                 $this->session->set_flashdata('success', 'Verification email has been sent to your email address, please verify to proceed.');
-                redirect($this->lang. '/register');
+                redirect($this->language. '/register');
             } else {
 
                 $this->session->set_flashdata('error', 'Error occured,Try again.');
-                redirect($this->lang . '/register');
+                redirect($this->language . '/register');
             }
         }
         $this->index();
@@ -101,7 +101,7 @@ class Auth extends CI_Controller
 
         $bc['breadcrumb'] = [
             'Home' => base_url(),
-            'Login' => base_url($this->lang . '/login'),
+            'Login' => base_url($this->language . '/login'),
         ];
 
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
@@ -114,14 +114,15 @@ class Auth extends CI_Controller
 
     function login_user()
     {
+        $this->form_validation->set_rules('user_email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('user_password', 'Password', 'required');
+        
+        if ($this->form_validation->run() != FALSE) {
         $user_login = array(
-
             'email' => $this->input->post('user_email'),
             'password' => md5($this->input->post('user_password'))
-
         );
-        //$user_login['user_email'],$user_login['user_password']
-        $user = $this->user_model->login_user($user_login['email'], $user_login['password']);
+        $user = $this->User_model->login_user($user_login['email'], $user_login['password']);
         $data['user'] = $user;
         if (!empty($user)) {
 
@@ -131,9 +132,13 @@ class Auth extends CI_Controller
             $this->session->set_userdata('user_mobile', $user['mobile']);
             $this->load->view('frontend/user/user_profile', $data);
         } else {
-            $this->session->set_flashdata('error', 'Error occured,Try again.');
+            $this->session->set_flashdata('error', 'Invalid login details');
             $this->login_view();
         }
+    } else {
+        // $this->session->set_flashdata('error', 'Error occured,Try again.');
+        $this->login_view();
+    }
     }
 
     function user_profile()
@@ -162,7 +167,7 @@ class Auth extends CI_Controller
         $code = rand(0, 99999999999);
         $bc['breadcrumb'] = [
             'Home' => base_url(),
-            'Forgot Password' => base_url($this->lang . '/forgot-password'),
+            'Forgot Password' => base_url($this->language . '/forgot-password'),
         ];
 
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
@@ -221,7 +226,7 @@ Invalid Email ID !
 
         $bc['breadcrumb'] = [
             'Home' => base_url(),
-            'Forgot Password' => base_url($this->lang . '/forgot-password'),
+            'Forgot Password' => base_url($this->language . '/forgot-password'),
         ];
 
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);

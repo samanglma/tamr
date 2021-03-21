@@ -2,7 +2,7 @@
 
 <style>
 
-.content{
+/* .content{
   margin-top: -90px;
   background-color: white !important;
 }
@@ -61,7 +61,7 @@ padding-top: 15%;
 
 i{
 color:black !important;
-}
+} */
 
 </style>
 

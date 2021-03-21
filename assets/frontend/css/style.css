@@ -81,14 +81,13 @@ a, a:focus, a:hover {
 .right-sidebar {
   font-size: 2rem;
   display: table;
-  text-align: center;
+  text-align: right;
   position: fixed;
   z-index: 2;
   top:0;
   right: 0;
   height: 100%;
-  padding: 10px;
-  width: 100px;
+  padding: 1.3rem 3rem 1.3rem 0;
 }
 
 .bottom-sidebar {
@@ -98,14 +97,12 @@ a, a:focus, a:hover {
   position: fixed;
   z-index: 1;
   bottom: 0;
-  height: 80px;
-  padding: 10px;
   width: 100%;
 }
 
 .categories li a {
   display: inline-block;
-  padding: 10px 0;
+  padding: 1.8rem 0;
 }
 
 .right-sidebar .top, .right-sidebar .middle, .right-sidebar .bottom {
@@ -244,7 +241,7 @@ aside a {
 }
 
 .toggle-wrap.active .toggle-bar::after {
-  top: 137%;
+  top: 128%;
 }
 
 .toggle-bar::before, .toggle-bar::after {
@@ -761,6 +758,7 @@ p {
   width: 20px;
   height: 20px;
   color: #fff;
+  text-align: center;
   background: #5f534a;
   left: -15px;
   top: 0px;

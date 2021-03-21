@@ -74,8 +74,8 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             <h1>REGISTER</h1>
           </div>
           <br>
-          <p>Wellcome to TAMR</p>
-          <form role="form" class="registerForm" method="post" action="<?php echo base_url('user/register_user'); ?>">
+          <p>Welcome to TAMR</p>
+          <form role="form" class="registerForm" method="post" action="<?php echo base_url('auth/register_user'); ?>">
             <?php
             $error_msg = $this->session->flashdata('error');
             if ($error_msg) {

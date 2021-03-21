@@ -75,7 +75,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
         <p>Welcome back! Login to start shopping with TAMR<br>
           You <strong><a href="<?= base_url($lang . '/register') ?>">Don't have an account?</a></strong></p>
        
-        <form role="form" class="loginForm" method="post" action="<?php echo base_url('user/login_user'); ?>">
+        <form role="form" class="loginForm" method="post" action="<?php echo base_url('auth/login_user'); ?>">
         <?php
         $error_msg = $this->session->flashdata('error');
         if ($error_msg) {
