@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/bootstrap-confirmation.js" integrity="sha384-pKyMMamvoZ5Tl9dqLIriIOplxM4yl4lDiMikOIQh1X31VHB8qjVFXjNOAIFPGoar" crossorigin="anonymous"></script>
 
 <script>
-function updateAjaxQuantity(rowid, quantity) {
+	function updateAjaxQuantity(rowid, quantity) {
 		$.ajax({
 			url: "<?php echo base_url(); ?>cart/updateCartQuantity",
 			type: 'post',
@@ -21,7 +21,7 @@ function updateAjaxQuantity(rowid, quantity) {
 		})
 	}
 
-    $(".add-to-cart").click(function() {
+	$(".add-to-cart").click(function() {
 		id = $(this).attr('data-id');
 		quatity = $("#quantity").val();
 		$.ajax({
@@ -50,7 +50,7 @@ function updateAjaxQuantity(rowid, quantity) {
 	});
 
 
-    $(function() {
+	$(function() {
 		$('body').confirmation({
 			selector: '[data-toggle="confirmation"]'
 		});
@@ -63,6 +63,26 @@ function updateAjaxQuantity(rowid, quantity) {
 				alert('cancel')
 			}
 		});
+
+		// Open the full screen search box
+	
 	});
 
-    </script>
+	function openSearch() {
+			document.getElementById("myOverlay").style.display = "block";
+		}
+
+		// Close the full screen search box
+		function closeSearch() {
+			document.getElementById("myOverlay").style.display = "none";
+		}
+</script>
+<div id="myOverlay" class="overlay">
+	<span class="closebtn" onclick="closeSearch()" title="Close Overlay">x</span>
+	<div class="overlay-content">
+		<form action="action_page.php">
+			<input type="text" placeholder="SEARCH" class="form-control" name="search">
+			<button type="submit"><i class="fa fa-search"></i></button>
+		</form>
+	</div>
+</div>

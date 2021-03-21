@@ -77,9 +77,13 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           <p>Wellcome to TAMR</p>
           <form role="form" class="registerForm" method="post" action="<?php echo base_url('user/register_user'); ?>">
             <?php
-            $error_msg = $this->session->flashdata('error_msg');
+            $error_msg = $this->session->flashdata('error');
             if ($error_msg) {
-              echo $error_msg;
+              echo '<div class="alert alert-danger">'.$error_msg. '</div>';
+            }
+            $success = $this->session->flashdata('success');
+            if ($success) {
+              echo '<div class="alert alert-success">'.$success. '</div>';
             }
             ?>
             <?php if (!empty(validation_errors())) {

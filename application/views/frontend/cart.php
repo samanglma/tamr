@@ -1,10 +1,6 @@
 <style>
 
-  i {
-    color: black !important;
-  }
-
-  #cart-overlay1 {
+  /* #cart-overlay1 {
     z-index: 2;
 
   }
@@ -17,7 +13,7 @@
 
   img {
     margin-bottom: -30px;
-  }
+  } */
 
 </style>
 

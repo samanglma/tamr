@@ -1,35 +1,41 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: Dell
- * Date: 4/30/2019
- * Time: 8:47 AM
- */
-
 class Order extends CI_Controller
 {
+    public $language = '';
+
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Order_m');
 
+        $this->language = lang() == 'english' ? 'en' : 'ar';
 
-        $this->load->library('session');
+        if (!$this->session->userdata('user_id')) {
 
-        $this->load->library('Paypal_lib');
-        
-		$this->load->library('pdf');
-        $this->load->library('user_agent');
-        $this->load->model('Social_m');
-        $this->load->model('products_m');
-        $this->load->model('common_model');
-        $this->load->model('OrderItems_m');
+            redirect($this->lang . '/login');
+        }
+    }
 
-        $this->load->helper('language');
-        $this->load->helper('common_helper');
+    public function index()
+    {
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+        $data['breadcrumb'] = [
+            'Home' => base_url(),
+            'Orders' => base_url($this->language . '/orders'),
+        ];
 
-        $this->load->model('pages_m');
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders', $data);
     }
 
     public function track($id)
