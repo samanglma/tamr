@@ -19,6 +19,8 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        
+        $data['bodyClass'] = 'registration';
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',
@@ -91,6 +93,8 @@ class Auth extends CI_Controller
 
     public function login_view()
     {
+        
+        $data['bodyClass'] = 'login';
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',
@@ -141,23 +145,18 @@ class Auth extends CI_Controller
         $this->login_view();
     }
     }
-
-    function user_profile()
-    {
-
-        $this->load->view('user_profile.php');
-    }
     public function user_logout()
     {
-
         $this->session->sess_destroy();
-        redirect('user/login_view', 'refresh');
+        redirect($this->language.'/login', 'refresh');
     }
 
 
 
     public function forgotPassword()
     {
+        
+        $data['bodyClass'] = 'forgot-password';
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',
@@ -217,6 +216,8 @@ Invalid Email ID !
 
     public function changePassword()
     {
+        
+        $data['bodyClass'] = 'change-password';
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',

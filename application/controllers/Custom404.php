@@ -8,9 +8,9 @@ class Custom404 extends CI_Controller
  } 
 
  public function index() 
- { 
-
- 	die();
+ {
+    
+   $data['bodyClass'] = 'not-found';
     $this->output->set_status_header('404'); 
     $this->load->view('custom404');//loading in custom error view
  } 

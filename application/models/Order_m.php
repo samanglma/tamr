@@ -50,6 +50,14 @@ class Order_m extends CI_Model
 		return $this->db->get('orders')->result();
 	}
 
+	public function getOrdersByUserId($id){
+		$this->db->select('orders.additional_notes, orders.total, orders.id as order_id,orders.tax,orders.sub_total,orders.ref_number, orders.created_at as date,orders.status,orders.payment_status,orders.total as order_total, billing_address.*');
+		$this->db->join('billing_address','billing_address.id = orders.billing_id');
+		$this->db->where('orders.user_id', $id);
+		$this->db->order_by('orders.id','desc');
+		return $this->db->get('orders')->result();
+	}
+
 	public function getStatus($order_id){
 		$this->db->select('orders.created_at, orders.additional_notes, orders.status, orders.shipping_charges, orders.delivery_date,orders.delivery_time, orders.total, orders.id as order_id,orders.tax,orders.sub_total,orders.created_at as date,orders.status,orders.payment_status,orders.total as order_total, billing_address.*');
 		$this->db->join('billing_address','billing_address.id = orders.billing_id');

@@ -12,6 +12,8 @@ class Page extends CI_Controller
 
 	public function index($slug = '')
 	{
+		
+        $data['bodyClass'] = $slug;
 		$lang = lang() == 'english' ? 'en' : 'ar';
 		$data['meta'] = [
 			'canonical_tag' => '',

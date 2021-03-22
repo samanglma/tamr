@@ -1213,3 +1213,39 @@ hr {
   vertical-align: top;
   border-top: 1px solid #5f534a;
 }
+
+.orders-table,
+.order-items {
+  color: #5F534A;
+}
+.white-bg { background-color: #fff;}
+.pad-2rem { padding: 2rem;}
+.order-items tr>td {
+  border:none !important;
+  border:0
+}
+.order-items h3 { margin-top: 0.5rem;}
+.cat-circle {
+  padding-left: 1.5rem !important;
+  position: relative;
+}
+.cat-circle:after {
+  position: absolute;
+  content: '';
+  height: 1rem;
+  background-color: #5F534A;
+  width: 1rem;
+  left: 0.1rem;
+  top:25%;
+  border-radius: 50%;
+}
+.cat-circle:before {
+  position: absolute;
+  content: '';
+  height: 1.2rem;
+  left: 0;
+  top:20%;
+  border:1px solid #5F534A;
+  width: 1.2rem;
+  border-radius: 50%;
+}

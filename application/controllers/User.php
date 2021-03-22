@@ -19,6 +19,8 @@ class User extends CI_Controller
 
     public function index()
     {
+        
+        $data['bodyClass'] = 'profile';
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',

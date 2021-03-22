@@ -10,6 +10,7 @@ class Products extends CI_Controller
 
     public function index()
     {
+        $data['bodyClass'] = 'listings';
         $lang = lang() == 'english' ? 'en' : 'ar';
         $slug = $this->uri->segment('3');
         
@@ -32,6 +33,8 @@ class Products extends CI_Controller
 
     public function details()
     {
+        
+        $data['bodyClass'] = 'product-details';
         $slug = $this->uri->segment('3');
         $data['product'] = $this->Products_m->getProductDetailsBySlug($slug);
 		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
