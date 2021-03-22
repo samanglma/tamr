@@ -44,30 +44,32 @@ class Categories extends My_Controller
         } else {
 
 
-
             if ($_FILES['image']['name'] != "") {
 
-                $config['upload_path']          = './uploads/categories/';
-                $config['allowed_types']        = 'jpg|jpeg|png';
-                /* $config['encrypt_name']          = TRUE;*/
-               /* $config['max_width']            = 1200;
-                $config['max_height']           = 900;
-                $this->load->library('upload', $config); */
+
+                $config['upload_path'] = './uploads/categories/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                /*$config['encrypt_name'] = TRUE;*/
+                $config['max_width'] = 1202;
+                $config['max_height'] = 902;
 
 
+                $this->load->library('upload', $config);
+
+               
                 if (!$this->upload->do_upload('image')) {
-                    // $error = array('error' => $this->upload->display_errors());
-                    $this->session->set_flashdata('error', $this->upload->display_errors() . "image");
-                    $this->session->set_flashdata('data', $data);
 
+                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your  Image. Please upload correct Image');
                     redirect('admin/categories/add');
-                } else {
+                } elseif ($this->upload->do_upload('image')) {
+
                     $uploadData = $this->upload->data();
-                    $data['image'] = $uploadData['file_name'];
+
+                    $image = $uploadData['file_name'];
                 }
+            } else {
+                $image = '';
             }
-
-
             
             $data = array(
 
@@ -76,10 +78,9 @@ class Categories extends My_Controller
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
                 'status' => $this->input->post('status'),
-                'image' => $data['image']
+                'image' => $image
 
             );
-
 
             $this->categories_m->saveCategory($data);
             $this->session->set_flashdata('success', 'Category added successfully');
@@ -116,29 +117,31 @@ class Categories extends My_Controller
             redirect('admin/categories/edit/' . $id);
         } else {
 
-              $config['upload_path']          = './uploads/categories/';
-            $config['allowed_types']        = 'jpg|jpeg|png|gif';
-           /* $config['encrypt_name']          = TRUE;
-            $config['max_width']            = 1000;
-              $config['max_height']           = 1000; */
+            if ($_FILES['image']['name'] != "") {
 
-             $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload('image'))
-            {
-                $error = array('error' => $this->upload->display_errors());
+                $config['upload_path'] = './uploads/categories/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                /*$config['encrypt_name'] = TRUE;*/
+                $config['max_width'] = 1202;
+                $config['max_height'] = 902;
 
-                $this->load->view('admin/categories/add', $error);
-            }
-            else
-            {
-                $uploadData = $this->upload->data();
 
-                $image = $uploadData['file_name'];
-            }
+                $this->load->library('upload', $config);
 
-            if(empty($_FILES['image']['name'])){
+                $id = $this->input->post('id');
 
+                if (!$this->upload->do_upload('image')) {
+
+                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your Image. Please upload correct Image');
+                    redirect('admin/categories/edit/' . $id);
+                } elseif ($this->upload->do_upload('image')) {
+
+                    $uploadData = $this->upload->data();
+
+                    $image = $uploadData['file_name'];
+                }
+            } else {
                 $image = $this->input->post('image2');
             }
 

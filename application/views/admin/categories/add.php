@@ -33,8 +33,8 @@
                    <form method="post" action="<?php echo base_url()?>admin/categories/save" enctype="multipart/form-data">
 
                       <div class="col-md-7  form-group">
-                           <label>Patent Category</label>
-                           <input type="text" name="" value="<?php if(!empty($cat_name)){echo $cat_name->title;}else{ echo 'No Parent';}?>" class="form-control" placeholder="Category Name" disabled/>
+                           <label>Main Category</label>
+                           <input type="text" name="" value="<?php if(!empty($cat_name)){echo $cat_name->title;}else{ echo 'No Main Category';}?>" class="form-control" placeholder="Category Name" disabled/>
                           
                        </div>
 
@@ -49,8 +49,8 @@
                        </div>
                        <div class="col-md-7  form-group">
         						   <label> Image *</label>
-        						   <input type='file' required name='image' size='20' />
-        						   <span style="color: #97310e;"> Size ( 1200 * 900 ) </span>
+        						   <input type='file' Required  name='image' size='20' />
+        						   <span style="color: #97310e;"> Size ( 1200 * 900 ) </span> 
         					   </div>
 
                        <input type="hidden" name="parent_id" value="<?php echo $id; ?>">

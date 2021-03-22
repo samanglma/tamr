@@ -41,8 +41,6 @@ class Products extends My_Controller
     public function save()
     {
 
-
-
         $discounted_price = 'NULL';
         // $this->form_validation->set_rules('title', 'Brand Name', 'required');
         $this->form_validation->set_rules('description', 'Description', 'required');
@@ -54,16 +52,16 @@ class Products extends My_Controller
         $slugs = url_title($title);
         $slug = strtolower($slugs);
         $dataArray = array(
-            'slug' => $slug,
+            
             'title' => $this->input->post('title'),
             //'title_ar' => $this->input->post('title_ar'),
             'description' => $this->input->post('description'),
             //'description_ar' => $this->input->post('description_ar'),
             //'discounted_price' => $discounted_price,
             'price' => $this->input->post('price'),
-            'vat_price' => $this->input->post('vat_price'),
+           // 'vat_price' => $this->input->post('vat_price'),
             'alt' => $this->input->post('alt'),
-            'alt_ar' => $this->input->post('alt_ar'),
+           // 'alt_ar' => $this->input->post('alt_ar'),
             // 'alt_ar' => $this->input->post('alt_ar'),
             //'brand_id' => $this->input->post('brand_id'),   child_cat
             //'status' => $this->input->post('status'),
@@ -96,14 +94,7 @@ class Products extends My_Controller
 
                 $image1 = $uploadData['file_name'];
             }
-            if ($_FILES['image_ar']['name'] != "") {
-
-                if ($this->upload->do_upload('image_ar')) {
-                    $uploadData = $this->upload->data();
-
-                    $image_ar = $uploadData['file_name'];
-                }
-            }
+           
 
             if ($_FILES['image2']['name'] != "") {
 
@@ -112,6 +103,9 @@ class Products extends My_Controller
 
                     $image2 = $uploadData['file_name'];
                 }
+            }
+            else{
+                $image2 = '';
             }
 
             if ($_FILES['image3']['name'] != "") {
@@ -122,6 +116,10 @@ class Products extends My_Controller
                     $image3 = $uploadData['file_name'];
                 }
             }
+            else
+            {
+                $image3 = '';
+            }
 
             if ($_FILES['image4']['name'] != "") {
 
@@ -130,6 +128,9 @@ class Products extends My_Controller
 
                     $image4 = $uploadData['file_name'];
                 }
+            }
+            else{
+                $image4 = '';
             }
             //thumbnail
 
@@ -185,17 +186,17 @@ class Products extends My_Controller
                 'image2' => $image2,
                 'image3' => $image3,
                 'image4' => $image4,
-                'image_ar' => $image_ar,
+               // 'image_ar' => $image_ar,
                 'thumbnail' => $thumb,
-                'thumbnail_ar' => $thumb_ar,
-                'discounted_price' => $discounted_price,
+               // 'thumbnail_ar' => $thumb_ar,
+               // 'discounted_price' => $discounted_price,
                 'price' => $this->input->post('price'),
                 'vat_price' => $this->input->post('vat_price'),
                 'alt' => $this->input->post('alt'),
                 'alt_ar' => $this->input->post('alt_ar'),
                 // 'brand_id' => $this->input->post('brand_id'),  
                 'cat_id' => $this->input->post('cat_id'),
-                'cat_id' => $this->input->post('cat_id'),
+               // 'cat_id' => $this->input->post('cat_id'),
                 'status' => $this->input->post('status'),
                 'mark_as_new' => $this->input->post('markAsNew'),
                 'top_seller' => $this->input->post('topSeller'),
@@ -205,14 +206,31 @@ class Products extends My_Controller
 
             $id = $this->Products_m->save($data);
 
+        
             foreach ($variants as $v_value) {
-                $variant = $this->Variant_m->getVariantValueByID($v_value->id);
-                $variantData = array(
-                    'variant_id' => $variant->variant_id,
-                    'variant_value_id' => $variant->id,
+
+                $data_v = array(
+
+                    'variant_id' => $this->input->post('variant_id'),
+                    'variant_value_id' => $this->input->post('variant_value_id'),
                     'product_id' => $id,
                 );
-                $this->Common_model->save($variantData, 'product_variants');
+
+                echo '<pre>';
+                print_r($data_v);
+
+                die();
+              
+                //$variant = $this->Variant_m->getVariantValueByID($v_value->id);
+                //$variantData = array(
+                 //   'variant_id' => $variant->variant_id,
+                 //   'variant_value_id' => $variant->id,
+                 //   'product_id' => $id,
+               // );
+              //  $this->Common_model->save($data_v, 'product_variants');
+
+              $this->Variant_m->saveVariants($data_v);
+
             }
             $this->session->set_flashdata('success', 'Product added successfully');
             redirect('admin/products');

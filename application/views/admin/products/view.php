@@ -30,7 +30,7 @@
                            <th width="20%">Product Title</th>
                            <th width="20%">Product Title Arabic</th>
                            <!--<th width="10%">Brand</th> -->
-                            <th width="20%">Categories</th> 
+                             <!--<th width="20%">Categories</th>  -->
                            <th width="5%">Image</th>
                            <th width="10%">Net Price(AED)</th>
                            <th width="10%">Total Price(AED)</th>
@@ -45,7 +45,7 @@
                            <td ><?php echo $row->title; ?></td>
                            <td><?php echo $row->title_ar; ?></td>
                            <!-- <td><?php echo $row->brand_name; ?></td> -->
-                             <td><?php echo $row->cat_title; ?></td>
+                           <!--  <td><?php echo $row->cat_title; ?></td> -->
                            <td><?php if(!empty($row->image)){?><img style="max-width: 20px;" src="<?php echo base_url()?>uploads/products/<?php echo $row->image;?>" /><?php }?></td>
                            <td><?php echo $row->price; ?></td>
                            <td><?php echo $row->vat_price; ?></td>

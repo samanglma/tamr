@@ -46,7 +46,7 @@
                 </ul>
             </li>
 
-            <li <?php if ($this->uri->segment(2) == "gallery") {
+           <!-- <li <?php if ($this->uri->segment(2) == "gallery") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -65,7 +65,7 @@
                         <a href="<?php echo base_url() ?>admin/gallery">View Images</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
 
             <!-- <li <?php if ($this->uri->segment(2) == "brands") {
@@ -138,7 +138,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">Vv</i>
+                    <i class="material-icons">V</i>
                     <span class="nav-label">Variants Value</span>
                 </a>
                 <ul>

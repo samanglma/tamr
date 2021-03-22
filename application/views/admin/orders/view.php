@@ -1,5 +1,5 @@
-   <?php $this->load->view('admin/includes/header'); ?>
-   <?php $this->load->view('admin/includes/sidebar'); ?>
+<?php $this->load->view('admin/includes/header'); ?>
+<?php $this->load->view('admin/includes/sidebar'); ?>
    <section class="content">
        <div class="page-heading">
            <h1>Orders</h1>
@@ -86,7 +86,9 @@
            </div>
        </div>
    </section>
+
    <?php $this->load->view('admin/includes/footer') ?>
+
    <script>
        $(document).ready(function() {
         var dataTable = $('.dataTable').DataTable({
@@ -338,7 +340,7 @@ console.log(data);
         <div class="modal-body">
          
 
-    <div class="invoice-box">
+     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
           <tr class="top">
             <td colspan="3">
@@ -452,7 +454,7 @@ console.log(data);
   </div>
 
 
-<?php } ?>
+    <?php } ?>
 </div>
 
 <script type="text/javascript">
@@ -461,9 +463,6 @@ console.log(data);
     document.title = "Invoice"; js:window.print();
 
   }
-  
-
-
 </script>
 
    <!-- ///////// -->

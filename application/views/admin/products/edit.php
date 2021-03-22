@@ -55,7 +55,7 @@
                        </div>
 
                        <div class="col-md-7 form-group">
-                           <label for="title">Select Child Category:</label>
+                           <label for="title">Select Subcategory:</label>
                            <select name="child_cat" class="form-control">
                                <?php foreach ($chlid_categories as $category) { ?>
 

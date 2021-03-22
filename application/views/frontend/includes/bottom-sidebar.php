@@ -1,5 +1,7 @@
+
+
 <div class="bottom-sidebar">
-    <ul class="categories">
+    <ul class="categories bottom-cats">
         <?php 
         foreach($categories as $key => $category) {
         ?>

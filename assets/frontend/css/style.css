@@ -215,19 +215,27 @@ aside>ul>li.dropdown>a:after {
   margin-left: 2rem;
 }
 
-aside a {
-  line-height: 2rem;
+aside .menuss a {
+  line-height: 1rem;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;
-  padding: 1.4rem 0;
+  padding: 18px 0;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bolder;
   text-transform: uppercase;
   color: #5F534A;
+}
+
+
+aside .menuss {
+  list-style: none;
+    padding: 0px 9rem 96px !important;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .toggle-wrap {
@@ -323,8 +331,8 @@ aside a {
 }
 #slider .btn {opacity: 0;
   position: absolute;
-  right: 16%;
-  bottom: -6%;
+  right: 18%;
+  bottom: -12%;
   text-transform: uppercase;
   font-size: 1.5rem;
   border-bottom: 1px solid #5f534a;
@@ -900,12 +908,14 @@ i {
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #000\9;
+  background-color: #000;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #291a1a;
   margin: 6px;
   /* border-radius: 10px*/
 }
+
+
 
 .carousel-indicators .active {
   width: 25px;
@@ -1116,4 +1126,18 @@ body {
 }
 .alert.alert-danger p {
   margin:0;
+}
+
+/*   my css   */
+
+.bottom-cats a:focus  {font-weight:bold;}
+.bottom-cats a:hover  {transform: scale(1.2);}
+
+.menu-contact a{
+
+  font-size: 15px !important;
+  
+}
+.menu-footer a{
+  font-size: 15px !important;
 }
