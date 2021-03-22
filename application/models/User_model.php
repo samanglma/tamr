@@ -12,6 +12,23 @@ class User_model extends CI_model
         return $this->db->insert_id();
     }
 
+    public function getUserById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('id',$id);
+        $this->db->where('role',2);
+        $this->db->where('active',1);
+        $query  = $this->db->get();
+
+        if ($query) {
+            return $query->row_array();
+        } else {
+            return false;
+        }
+    }
+
+    
     public function login_user($email, $pass)
     {
         //$email,$pass
@@ -19,8 +36,11 @@ class User_model extends CI_model
         $this->db->from('users');
         $this->db->where('email',$email);
         $this->db->where('password',$pass);
+        $this->db->where('role',2);
+        $this->db->where('active',1);
+        $query  = $this->db->get();
 
-        if ($query = $this->db->get()) {
+        if ($query) {
             return $query->row_array();
         } else {
             return false;

@@ -1,40 +1,74 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: Dell
- * Date: 4/30/2019
- * Time: 8:47 AM
- */
-
 class Order extends CI_Controller
 {
+    public $language = '';
+
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Order_m');
+
+        $this->language = lang() == 'english' ? 'en' : 'ar';
+
+        if (!$this->session->userdata('user_id')) {
+
+            redirect($this->lang . '/login');
+        }
+    }
+
+    public function index()
+    {
+        $data['orders'] = $this->Order_m->getAll();
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+        $data['breadcrumb'] = [
+            'Home' => base_url(),
+            'Orders' => base_url($this->language . '/orders'),
+        ];
+
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders/index', $data);
+    }
 
 
-        $this->load->library('session');
+    public function details()
+    {
+        $id = $this->uri->segment('3');
+        $order_id = base64_decode($id);
+        $data['order'] = $this->Order_m->getOrdeById($order_id);
 
-        $this->load->library('Paypal_lib');
-        
-		$this->load->library('pdf');
-        $this->load->library('user_agent');
-        $this->load->model('Social_m');
-        $this->load->model('products_m');
-        $this->load->model('common_model');
-        $this->load->model('OrderItems_m');
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+        $data['breadcrumb'] = [
+            'Home' => base_url(),
+            'Orders' => base_url($this->language . '/orders'),
+        ];
 
-        $this->load->helper('language');
-        $this->load->helper('common_helper');
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 
-        $this->load->model('pages_m');
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders/details', $data);
     }
 
     public function track($id)
     {
-        die();
 
         $order_id = base64_decode($id);
         $lang = $this->uri->segment(1) == 'ar' ? 'ar' : 'en';
