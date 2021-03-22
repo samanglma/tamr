@@ -11,7 +11,7 @@
        </div>
        <div class="page-body">
            <div class="panel panel-default">
-               <div class="panel-heading">sliders List</div>
+               <div class="panel-heading">Sliders List</div>
                <div class="panel-body">
                    <?php if($this->session->flashdata('success')){?>
                        <div class="alert alert-success text-center" role="alert">

@@ -13,7 +13,12 @@ class Products_m extends CI_Model
 	public function save($data)
 	{
 		$this->db->insert('products', $data);
-		return $this->db->inset_id();
+		//return $this->db->inset_id();
+		$id = $this->db->insert_id();
+
+		return $id;
+
+		
 	}
 
 	public function getAll()

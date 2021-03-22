@@ -68,8 +68,8 @@
     <div class="background-layer"></div>
     <div class="copyright-info">
        <!-- This photo taken from <b>Unsplash.com</b>-->
-        <p><b>&copy; 2021 Adminpanel - Tamr</b>. All rights reserved.</p>
-        Design & Developed by <a style="color: white" target="_blank" href="https://glmaagency.com/">GLMA AGENCY</a>
+        <p><b>&copy; 2021 Admin Panel - Tamr</b>. All rights reserved.</p>
+        Designed & Developed by <a style="color: white" target="_blank" href="https://glmaagency.com/">GLMA AGENCY</a>
     </div>
 </div>
 <script src="<?php echo base_url();?>assets/plugins/jquery/dist/jquery.min.js"></script>

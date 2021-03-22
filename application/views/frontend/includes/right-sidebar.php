@@ -7,7 +7,26 @@ if ($this->session->userdata('settings')) {
     $settings = $this->session->userdata('settings');
     // $settings = $settings[0];
 }
+
 ?>
+
+<style>
+
+.top img{
+
+    margin-left: -93px;
+    margin-top: 34px;
+}
+
+nav{
+
+    padding: 4%;
+}
+.bottom:hover img{
+
+   
+}
+</style>
 <div class="right-sidebar">
     <div class="top">
         <ul>

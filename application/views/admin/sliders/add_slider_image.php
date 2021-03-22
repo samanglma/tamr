@@ -41,26 +41,26 @@
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
                        <input type='file' name='image' size='20' />
-                           <span style="color: #97310e;">Max Size ( 1920 * 1000 ) </span>
+                           <span style="color: #97310e;"> Size ( 1920 * 1000 ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">
                            <label>Arabic Image</label>
                            <input type='file' name='image_ar' size='20' />
-                           <span style="color: #97310e;">Max Size ( 1920 * 1000 ) </span>
+                           <span style="color: #97310e;"> Size ( 1920 * 1000 ) </span>
                        </div>
 
 
 					   <div class="col-md-7  form-group">
 						   <label>Logo *</label>
 						   <input type='file' name='logo' size='20' />
-						   <span style="color: #97310e;">Max Size ( 199 * 199 ) </span>
+						   <span style="color: #97310e;"> Size ( 199 * 199 ) </span>
 					   </div>
 
 					   <div class="col-md-7  form-group">
 						   <label>Arabic Logo</label>
 						   <input type='file' name='logo_ar' size='20' />
-						   <span style="color: #97310e;">Max Size ( 199 * 199 ) </span>
+						   <span style="color: #97310e;"> Size ( 199 * 199 ) </span>
 					   </div>
 
 					   <div class="col-md-7  form-group">

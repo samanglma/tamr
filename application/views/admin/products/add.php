@@ -64,7 +64,7 @@
                        </div>
 
                        <div class="col-md-7 form-group">
-                           <label for="title">Select Child Category:</label>
+                           <label for="title">Select Subcategory:</label>
                            <select name="child_cat" class="form-control">
                            </select>
                        </div>
@@ -220,7 +220,7 @@
                                        <label class="form-check-label" for="inlineRadio1"><?php echo $variant->type; ?></label>
                                        <?php $values = getVarianValues($variant->id);
                                         foreach ($values as $key => $value) { ?>
-                                           <input class="form-check-input" name="variants[]" type="checkbox" id="chkPassport" value="<?= $value->id; ?>">
+                                           <input class="form-check-input" name="variant_id[]" type="checkbox" id="chkPassport" value="<?= $value->id; ?>">
                                            <label class="form-check-label" for="inlineRadio1"><?php echo $value->title; ?></label>
                                        <?php } ?>
 
