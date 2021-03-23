@@ -184,7 +184,7 @@ aside {
   bottom: 0;
   box-sizing: border-box;
   transition: all 0.4s ease;
-  z-index: 9;
+  z-index: 2;
   display: table;
 }
 
