@@ -31,12 +31,14 @@ $description = lang() == 'english' ? 'description' : 'description_ar';
               foreach ($wishlist as $item) {
             ?>
                 <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="white-bg pad-2rem">
                   <div>
                     <img src="<?= base_url('/uploads/products/'.$item->thumbnail) ?>">
                   </div>
                   <h4><?= $item->$title ?></h4>
                   <p><?= $item->$description ?></p>
                   <p><span class="price-amount"><?= $item->price ?></span> AED</p>
+                  </div>
                 </div>
             <?php $first = false; }
             } else {
