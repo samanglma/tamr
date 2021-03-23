@@ -59,6 +59,12 @@ class User extends CI_Controller
             $this->lang->line('Profile') => base_url($this->language . '/profile'),
         ];
 
+        $wishlist = [];
+		if ($this->session->userdata('user_id')) {
+			$wishlist = $this->Wishlist_m->getUserWishlist($this->session->userdata('user_id'));
+		}
+		$data['wishlist'] = $wishlist;
+
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 
         $this->load->view('frontend/includes/header', $data);
