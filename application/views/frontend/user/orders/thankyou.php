@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/style.css">
   <link href="<?php echo base_url(); ?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
   <style>
-    .bg-text h2 { font-size: 14rem;}
+    .bg-text h2 { font-size: 7rem;}
     .cart-heading h1 {
-    margin-top: 0%;
+    margin-top: -1%;
 }
     body {
       background-image: url('<?php echo base_url(); ?>assets/frontend/images/home-bg.png') !important;
@@ -44,12 +44,14 @@
   <div class="mainbox">
     <div class="table-cell  align-middle">
     <div class="bg-text">
-      <h2>404</h2>
+      <h2>Thank you</h2>
     </div>
     <div class="cart-heading">
-      <h1>PAGE NOT FOUND</h1>
+      <h1>FOR ORDERING FROM TAMR</h1>
     </div>
-    <img class="date-image" src="<?= base_url('assets/frontend/images/404.png') ?>">
+    <br>
+    <br>
+    <a href="<?= base_url('/') ?>" class="btn">DISMISS</a>
   </div>
   </div>
 </body>

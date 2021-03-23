@@ -59,12 +59,26 @@ p{
 
 				<div class="row g-3">
 				<?php
+				$counter = 0;
 				foreach($products as $key => $p)
 				{
-					$col = $key%2 == 1 ? 6 : 3;
+					if ($counter != 0 && $counter % 3 == 0) {
+						echo '<div class="clearfix"></div>';
+					}
+					if ($key % 6 == 1 || $key % 6 == 3) {
+						$col = 6;
+					}
+					else
+					{
+						$col = 3;
+					}
 				?>
-					<div class="col-md-<?= $col ?>">
+					<div class="product-grid col-md-<?= $col ?>">
 					<a href="<?= base_url($lang . '/product/'.$p->slug) ?>">
+					<div class="product-details">
+						<a href="<?= base_url($lang.'/product/'.$p->slug) ?>">VIEW PRODUCT</a><br>
+						<a href="<?= base_url($lang.'/product/'.$p->slug) ?>">ADD TO CART</a>
+					</div>
 						<div class=""> <img width='80%' src="<?= base_url('uploads/products/'.$p->image1) ?>" class="card-img-top">
 							<div class="card-body">
 								<div class="d-flex justify-content-between"> <span class="font-weight-bold"><?= $p->title ?></span> </div>
@@ -77,6 +91,7 @@ p{
 					</a>
 					</div>
 					<?php
+					$counter++;
 				}
 				?>
 			

@@ -39,7 +39,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             ?>
                 <tr>
                   <td class='<?= $first ? 'no-border' : '' ?>'>Order Number <?= $order->ref_number ?></td>
-                  <td class='<?= $first ? 'no-border' : '' ?>'><?= date('F d, Y', strtotime($order->date)) ?></td>
+                  <td class='<?= $first ? 'no-border' : '' ?>'><?= date('M d, Y', strtotime($order->date)) ?></td>
                   <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->total ?> AED</td>
                   <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->status ?> </td>
                   <td class='<?= $first ? 'no-border' : '' ?>'><a href="<?= base_url($lang.'/order/'.base64_encode($order->id)) ?>">Details</a></td>

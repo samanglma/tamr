@@ -174,3 +174,16 @@ $lang['here'] = '<a style="color:#212529" href="'. base_url().$dn .'#section3"> 
 $lang['choose'] = 'لتختار بين الحجم الكبير والصّغير من فئة السّلال';
 $lang['dubai'] = 'دبي';
 $lang['united-arab-emirates'] = 'الإمارات العربية المتحدة';
+$lang['SEARCH'] = 'SEARCH';
+$lang['menu'] = 'menu';
+$lang['BASKET'] = 'BASKET';
+$lang['Welcome-back-Login-to-start-shopping-with-TAMR'] = 'Welcome back! Login to start shopping with TAMR';
+$lang['dont-have-an-accunt'] = "Don't have an account?";
+$lang['you'] = 'You';
+$lang['shopping-cart'] = 'Shopping cart';
+$lang['orders'] = 'Orders';
+$lang['my-wishlist'] = 'My wishlist';
+$lang['wishlist'] = 'wishlist';
+$lang['No-item-added-in-wishlist'] = 'No item added in wishlist';
+$lang['Profile'] = 'Profile';
+$lang['SHOP-NOW'] = 'SHOP NOW';

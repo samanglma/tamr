@@ -5,7 +5,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 <a class="toggle-wrap" href='javascript:;' onclick="toggleMenu(this)">
     <span class="toggle-bar"><span>menu</span></span>
 </a>
-<?= $breadcrumb ?>
+<?= $breadcrumb ?? '' ?>
 </nav>
 <aside>
     <ul class='menuss'>

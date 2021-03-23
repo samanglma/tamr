@@ -82,9 +82,12 @@ $route['^(en|ar)/register']                                 =  'Auth/index';
 $route['^(en|ar)/login']                                 =  'Auth/login_view';
 $route['^(en|ar)/forgot-password']                                 =  'Auth/forgotPassword';
 $route['^(en|ar)/change-password']                                 =  'Auth/ChangePassword';
+$route['^(en|ar)/thankyou']                                 =  'Order/thankyou';
+$route['^(en|ar)/checkout']                                 =  'Order/checkout';
 //User dashboard
 $route['^(en|ar)/profile']                                 =  'User/index';
 $route['^(en|ar)/orders']                                 =  'Order/index';
+$route['^(en|ar)/wishlist']                                 =  'User/wishlist';
 $route['^(en|ar)/order/(:any)']                                 =  'Order/details';
 
 

@@ -42,6 +42,32 @@ class Order extends CI_Controller
     }
 
 
+    public function checkout()
+    {
+        $id = $this->session->userdata('user_id');
+        $data['bodyClass'] = 'orders';
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+        $data['breadcrumb'] = [
+            'Home' => base_url(),
+            'Orders' => base_url($this->language . '/orders'),
+        ];
+
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders/checkout', $data);
+    }
+
+
     public function details()
     {
         $id = $this->uri->segment('3');
@@ -146,5 +172,25 @@ class Order extends CI_Controller
         echo json_encode($data);
 
         exit;
+    }
+
+
+    public function thankyou()
+    {
+        $id = $this->session->userdata('user_id');
+        $data['bodyClass'] = 'orders';
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders/thankyou', $data);
     }
 }

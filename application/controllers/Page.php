@@ -28,13 +28,13 @@ class Page extends CI_Controller
 		
 		if ($slug != 'about' && $slug != 'contact' && $slug != 'cart') {
 			$data['breadcrumb'] = [
-				'Home' => base_url(),
+				$this->lang->line('Home') => base_url(),
 				$slug => base_url($lang.'/page/' . $slug),
 			];
 		} else {
 			$data['info'] = $this->Settings_m->getInfo();
 			$bc['breadcrumb'] = [
-				'Home' => base_url(),
+				$this->lang->line('Home') => base_url(),
 				$slug => base_url($lang.'/'.$slug),
 			];
 		}
@@ -44,7 +44,7 @@ class Page extends CI_Controller
 		$this->load->view('frontend/includes/header', $data);
 		$this->load->view('frontend/includes/navigation');
 		$this->load->view('frontend/includes/right-sidebar');
-		$this->load->view('frontend/includes/bottom-sidebar');
+		// $this->load->view('frontend/includes/bottom-sidebar');
 		if ($slug != 'about' && $slug != 'contact' && $slug != 'cart') {
 			$this->load->view('frontend/page', $data);
 		} else {

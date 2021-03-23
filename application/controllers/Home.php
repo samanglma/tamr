@@ -10,7 +10,6 @@ class Home extends MY_Controller
 
 	public function index()
 	{
-        
         $data['bodyClass'] = 'home';
 		$data['meta'] = [
 			'canonical_tag' => '',
@@ -21,7 +20,7 @@ class Home extends MY_Controller
 		];
 
 		$bc['breadcrumb'] = [
-			'Home' => base_url(),
+			$this->lang->line('Home') => base_url(),
 		];
 
 		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);

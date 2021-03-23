@@ -79,7 +79,12 @@ nav{
             ?>
             <li><a href="<?= $url ?>"><img src="<?= base_url('assets/frontend/images/user.svg') ?>" /></a></li>
             <li><a href="javascript:;" onclick="openSearch()"><img src="<?= base_url('assets/frontend/images/search.svg') ?>" /></a></li>
-            <li><a href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count">0</span><img src="<?= base_url('assets/frontend/images/cart.svg') ?>" /></a></li>
+            <li><a href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count"><?= $this->cart->total_items() ?></span>
+            <?php
+            
+            ?><img <?= $this->cart->total_items() > 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart-full' src="<?= base_url('assets/frontend/images/cart-full.svg') ?>" />
+            <img <?= $this->cart->total_items() <= 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" />
+        </a></li>
         </ul>
     </div>
 </div>

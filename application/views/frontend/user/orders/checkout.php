@@ -13,27 +13,15 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
 
 
-      <div class="register">
+      <div class="contact-us register">
         <div class="bg-text">
-          <h2>Orders</h2>
+          <h2>checkout</h2>
         </div>
         <div class="cart-heading">
-          <h1>Orders</h1>
+          <h1>checkout</h1>
         </div>
         <br>
-        <ul class="profile-actions">
-          <li>
-            <a href="<?= base_url($lang . '/profile') ?>">My Profile</a>
-          </li>
-          <li>
-            <a href="<?= base_url($lang . '/orders') ?>" class="active">Orders</a>
-          </li>
-        </ul>
         <hr>
-        <div class="text-right">
-          <a href="<?= base_url($lang . '/orders') ?>" class="active">VIEW ALL ORDERS</a>
-        </div>
-        <br>
         <div class="row">
           <div class="col-md-8 col-sm-12 col-xs-12">
             <div class="white-bg pad-2rem">

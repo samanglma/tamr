@@ -13,7 +13,7 @@ class User extends CI_Controller
 
         if (!$this->session->userdata('user_id')) {
 
-            redirect($this->lang . '/login');
+            redirect($this->language . '/login');
         }
     }
 
@@ -40,6 +40,32 @@ class User extends CI_Controller
         $this->load->view('frontend/includes/right-sidebar');
 
         $this->load->view('frontend/user/profile', $data);
+    }
+
+
+    public function wishlist()
+    {
+        
+        $data['bodyClass'] = 'wishlist';
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+        $data['breadcrumb'] = [
+            $this->lang->line('Home') => base_url(),
+            $this->lang->line('Profile') => base_url($this->language . '/profile'),
+        ];
+
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/wishlist', $data);
     }
 
     public function updateProfile()
