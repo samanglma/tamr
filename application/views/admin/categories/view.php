@@ -30,7 +30,10 @@
                            <th>Title</th>
                            <th>Arabic Title</th>
                            <th>Category Type</th>
+                           <th>Last updated on</th>
+                           <th>Updated By</th>
                            <th>Status</th>
+
                            <th>Action</th>
                        </tr>
                        </thead>
@@ -40,7 +43,8 @@
                            <td width=""><?php echo $row->title; ?></td>
                            <td width=""><?php echo $row->title_ar; ?></td>
                             <td width=""><?php if($row->parent_id == 0){ echo 'Main Category';}else{ echo 'Subcategory';} ?></td>
-
+                            <td width=""><?php echo $row->updated_at; ?></td>
+                            <td width=""><?php echo $row->updated_by; ?></td>
                            <td width=""><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
 
                            <td width="">

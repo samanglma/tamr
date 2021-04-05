@@ -41,14 +41,13 @@ class Login extends CI_Controller {
         if($rcd)
         {
             $session_data = array(
+                    'userID' => $rcd->id,
                     'username' => $rcd->username,
                     'role'     => $rcd->role,
                     'email'    => $rcd->email,
                     'islogined'=> 1
                 );
             $this->session->set_userdata($session_data);
-
-
 
             redirect('admin/dashboard');
         }

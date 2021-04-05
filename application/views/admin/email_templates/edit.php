@@ -33,7 +33,7 @@
                        </div>
 
                   
-                <div class="col-md-12 form-group">
+                		<div class="col-md-12 form-group">
                            <label>Template *</label>
                            <textarea name="template" class="ckeditor" id="editor"><?php echo $row->template;?></textarea>
                        </div>

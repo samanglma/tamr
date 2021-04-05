@@ -60,6 +60,8 @@ class Auth extends CI_Controller
             $email_check = $this->User_model->email_check($user['user_email']);
 
             if ($email_check) {
+
+               
                 $id = $this->User_model->register_user($user);
                 $template = $this->Email_templates_m->getTemplateBySlug('verify-email');
 
@@ -147,14 +149,13 @@ class Auth extends CI_Controller
 
         $this->load->view('user_profile.php');
     }
+
     public function user_logout()
     {
 
         $this->session->sess_destroy();
         redirect('user/login_view', 'refresh');
     }
-
-
 
     public function forgotPassword()
     {

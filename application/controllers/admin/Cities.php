@@ -36,11 +36,13 @@ class Cities extends My_Controller {
         }
         else{
 
+            $user = $_SESSION["username"];
             $data = array(
 
                 'name' => $this->input->post('name'),
                'state_id' => $this->input->post('state_id'),
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+                'created_by' => $user
 
             );
              $this->cities_m->saveCity($data);
@@ -74,11 +76,18 @@ class Cities extends My_Controller {
         else{
 
             $data['id'] = $this->input->post('id');
+
+            $user = $_SESSION["username"];
+
+            $now = date('Y-m-d H:i:s');
+            
             $data['data'] = array(
 
                 'name' => $this->input->post('name'),
                'state_id' => $this->input->post('state_id'),
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+                'updated_by' =>  $user,
+                'updated_at' => $now
             );
 
             $this->cities_m->updateCity($data);

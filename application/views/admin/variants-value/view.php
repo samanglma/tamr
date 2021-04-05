@@ -31,6 +31,9 @@
                            <th>Variant Type</th>
                           
                            <th>Status</th>
+
+                           <th>Last updated on</th>
+                           <th>Updated by</th>
                            <th>Action</th>
                        </tr>
                        </thead>
@@ -40,7 +43,8 @@
                            <td width=""><?php echo $row->title; ?></td>
                             <td width=""><?php echo $row->type; ?></td>
                             <td width=""><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
-                           
+                            <td><?php echo $row->updated_at; ?></td>
+                                <td><?php echo $row->updated_by; ?></td>
                            <td width="">
                                <div class="btn-group">
                                    <a href="<?php echo base_url()?>admin/variant_value/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>

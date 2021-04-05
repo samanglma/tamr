@@ -9,14 +9,17 @@
         </ol>
     </div>
     
+	
     <div class="page-body">
     
         <div class="panel panel-default">
             <div class="panel-heading"><span class="pull-left">States List</span>
-           <!--  <div class="clearfix text-right">
-                    <a href="<?= base_url('admin/locations/cities/add') ?>" class="btn btn-primary">Add Location</a>
-                </div> -->
+             <div class="clearfix text-right">
+                    <a href="<?= base_url('admin/state/add') ?>" class="btn btn-primary">Add State</a>
+                </div>
             </div>
+
+           
             <div class="panel-body">
                 
                 <?php if ($this->session->flashdata('success')) { ?>
@@ -30,12 +33,15 @@
                     </div>
                 <?php } ?>
 
+               
+
                 <table class="table table-striped table-hover js-basic-example dataTable">
                     <thead>
                         <tr>
                             <th>State Name</th>
                             <th>Country Name</th>
-                            
+                            <th>Last updated on</th>
+                            <th>Updated by</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,6 +50,9 @@
                             <tr>
                                 <td><?php echo $row->name; ?></td>
                                 <td><?php echo $row->country_name; ?></td>
+
+                                <td><?php echo $row->updated_at; ?></td>
+                                <td><?php echo $row->updated_by; ?></td>
                                
                                 <td>
                                     <div class="btn-group">

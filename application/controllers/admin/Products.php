@@ -177,8 +177,11 @@ class Products extends My_Controller
 
             // $ex_val = implode(',', $variants);
 
+            $user = $_SESSION["username"];
+
             $data = array(
                 'title' => $this->input->post('title'),
+                'slug' => $slug,
                 'title_ar' => $this->input->post('title_ar'),
                 'description' => $desc,
                 'description_ar' => $desc_ar,
@@ -201,37 +204,25 @@ class Products extends My_Controller
                 'mark_as_new' => $this->input->post('markAsNew'),
                 'top_seller' => $this->input->post('topSeller'),
                 'out_of_stock' => $this->input->post('outofStock'),
+                'created_by' => $user
                 // 'variants' =>  $ex_val,
             );
 
             $id = $this->Products_m->save($data);
 
-        
+            $variants = $this->input->post('variants');
+       
             foreach ($variants as $v_value) {
-
-                $data_v = array(
-
-                    'variant_id' => $this->input->post('variant_id'),
-                    'variant_value_id' => $this->input->post('variant_value_id'),
-                    'product_id' => $id,
+                $variant = $this->Variant_m->getVariantValueByID($v_value);
+                $variantData = array(
+                    'variant_id' => $variant->variant_id,
+                    'variant_value_id' => $variant->id,
+                    'product_id' =>  $id,
                 );
-
-                echo '<pre>';
-                print_r($data_v);
-
-                die();
-              
-                //$variant = $this->Variant_m->getVariantValueByID($v_value->id);
-                //$variantData = array(
-                 //   'variant_id' => $variant->variant_id,
-                 //   'variant_value_id' => $variant->id,
-                 //   'product_id' => $id,
-               // );
-              //  $this->Common_model->save($data_v, 'product_variants');
-
-              $this->Variant_m->saveVariants($data_v);
-
+                $this->Common_model->save($variantData, 'product_variants');
             }
+    
+            
             $this->session->set_flashdata('success', 'Product added successfully');
             redirect('admin/products');
         }
@@ -451,6 +442,10 @@ class Products extends My_Controller
         $slugs = url_title($title);
         $slug = strtolower($slugs);
 
+        $user = $_SESSION["username"];
+
+        $now = date('Y-m-d H:i:s');
+
         $data['data'] = array(
             'slug' => $slug,
             'title' => $this->input->post('title'),
@@ -475,6 +470,8 @@ class Products extends My_Controller
             'mark_as_new' => $this->input->post('markAsNew'),
             'top_seller' => $this->input->post('topSeller'),
             'out_of_stock' => $this->input->post('outofStock'),
+            'updated_by' => $user,
+            'updated_at' => $now
         );
 
         if ($this->input->post('outofStock') !== 1 && $this->input->post('outofStock') != $old->out_of_stock) {

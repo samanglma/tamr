@@ -21,7 +21,9 @@
     <link href="<?php echo base_url(); ?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/jquery.fancybox.min.css" />
-    <link rel="icon" type="image/png"href="<?php echo base_url(); ?>assets/frontend/favicon/favicon.ico">
+   <!--  <link rel="icon" type="image/png"href="<?php echo base_url(); ?>assets/frontend/favicon/favicon.ico"> -->
+    <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/frontend/favicon/favicon-new.png">
+
     <link rel="manifest" href="<?php echo base_url(); ?>assets/frontend/favicon//manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">

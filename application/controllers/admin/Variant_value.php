@@ -35,12 +35,16 @@ class Variant_value extends My_Controller {
         }
         else{
 
+            $user = $_SESSION["username"];
+
             $data = array(
 
                 'title' => $this->input->post('title'),
                 'variant_id' => $this->input->post('variant_id'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'created_by' => $user
             );
 
              $this->variant_value_m->save($data);
@@ -74,12 +78,20 @@ class Variant_value extends My_Controller {
            
             $data['id'] = $this->input->post('id');
 
+            $user = $_SESSION["username"];
+
+            $now = date('Y-m-d H:i:s');
+
             $data['data'] = array(
 
                 'title' => $this->input->post('title'),
                  'variant_id' => $this->input->post('variant_id'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+
+                 'updated_at' => $now
             );
 
             $this->variant_value_m->update($data);

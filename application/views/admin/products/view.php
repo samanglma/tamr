@@ -35,7 +35,9 @@
                            <th width="10%">Net Price(AED)</th>
                            <th width="10%">Total Price(AED)</th>
                            <th width="5%">Status</th>
-                           <th width="20%">Stock</th>
+                           <th width="10%">Stock</th>
+                           <th>Last updated on</th>
+                            <th>Updated by</th>
                            <th width="10%">Action</th>
                        </tr>
                        </thead>
@@ -51,6 +53,8 @@
                            <td><?php echo $row->vat_price; ?></td>
                            <td><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
                            <td><?php if($row->out_of_stock == 1){ echo '<small class="alert alert-danger">Out of Stock</small>';}else{ echo '<small class="alert alert-success">In Stock</small>';} ?></td>
+                           <td><?php echo $row->updated_at; ?></td>
+                                <td><?php echo $row->updated_by; ?></td>
                            <td>
                                <div class="btn-group">
                                    <a href="<?php echo base_url()?>admin/products/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>

@@ -13,9 +13,9 @@
     
         <div class="panel panel-default">
             <div class="panel-heading"><span class="pull-left">Cities List</span>
-            <!-- <div class="clearfix text-right">
-                    <a href="<?= base_url('admin/locations/cities/add') ?>" class="btn btn-primary">Add Location</a>
-                </div> -->
+             <div class="clearfix text-right">
+                    <a href="<?= base_url('admin/cities/add') ?>" class="btn btn-primary">Add City</a>
+                </div> 
             </div>
             <div class="panel-body">
                 
@@ -35,6 +35,8 @@
                         <tr>
                             <th>Name</th>
                             <th>State Name</th>
+                            <th>Last updated on</th>
+                            <th>Updated by</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,6 +45,8 @@
                             <tr>
                                 <td><?php echo $row->name; ?></td>
                                 <td><?php echo $row->state_name; ?></td>
+                                <td><?php echo $row->updated_at; ?></td>
+                                <td><?php echo $row->updated_by; ?></td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="<?php echo base_url() ?>admin/cities/edit/<?php echo $row->id; ?>"><button class="btn btn-info btn-xs">Edit</button></a>

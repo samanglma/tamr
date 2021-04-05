@@ -51,6 +51,8 @@ class Pages extends My_Controller
             $content_ar = $this->input->post('content_ar');
         }
 
+        $user = $_SESSION["username"];
+        $now = date('Y-m-d H:i:s');
         $data = array(
 
             'title' => $this->input->post('title'),
@@ -60,7 +62,9 @@ class Pages extends My_Controller
             'mtitle' => $this->input->post('mtitle'),
             'mtitle_ar' => $this->input->post('mtitle_ar'),
             'mdesc' => $this->input->post('mdesc'),
-            'mdesc_ar' => $this->input->post('mdesc_ar')
+            'mdesc_ar' => $this->input->post('mdesc_ar'),
+            'updated_by' => $user,
+            'updated_at' => $now
 
         );
             $images = [];

@@ -123,8 +123,8 @@ class Slider extends My_Controller {
                 $config['upload_path'] = './uploads/sliders/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
-//                $config['max_width'] = 1920;
-//                $config['max_height'] = 1000;
+                //       $config['max_width'] = 1920;
+            //        $config['max_height'] = 1000;
 
                 $this->load->library('upload', $config);
 
@@ -183,83 +183,20 @@ class Slider extends My_Controller {
                 $image_ar = $this->input->post('image_ar2');
             }
 
-
-
-
-			if ($_FILES['logo']['name'] != "") {
-				$config['upload_path'] = './uploads/sliders/';
-				$config['allowed_types'] = 'jpg|jpeg|png|gif';
-				$config['encrypt_name'] = TRUE;
-//                $config['max_width'] = 1920;
-//                $config['max_height'] = 1000;
-
-				$this->load->library('upload', $config);
-
-				$id = $this->input->post('id');
-
-				if (!$this->upload->do_upload('logo')) {
-
-					$this->session->set_flashdata('error', 'There is a Problem Uploading Your Image. Please upload correct Image');
-					redirect('admin/slider/edit/'. $id);
-				}
-				elseif($this->upload->do_upload('logo'))
-				{
-
-					$uploadData = $this->upload->data();
-
-					$logo = $uploadData['file_name'];
-				}
-
-			}
-
-			else{
-				$image = $this->input->post('logo2');
-			}
-
-
-			if ($_FILES['logo_ar']['name'] != "") {
-
-				$config['upload_path'] = './uploads/sliders/';
-				$config['allowed_types'] = 'jpg|jpeg|png|gif';
-				$config['encrypt_name'] = TRUE;
-//				$config['max_width'] = 1920;
-//				$config['max_height'] = 1000;
-
-
-				$this->load->library('upload', $config);
-
-				$id = $this->input->post('id');
-
-				if (!$this->upload->do_upload('logo_ar')) {
-
-					$this->session->set_flashdata('error', 'There is a Problem Uploading Your Arabic Image. Please upload correct Image');
-					redirect('admin/slider/edit/'. $id);
-				}
-				elseif($this->upload->do_upload('logo_ar'))
-				{
-
-					$uploadData = $this->upload->data();
-
-					$logo_ar = $uploadData['file_name'];
-				}
-
-			}
-
-			else{
-				$logo_ar = $this->input->post('logo_ar2');
-			}
-
             }
             $data['id'] = $this->input->post('id');
+
+            $user = $_SESSION["username"];
+
             $data['data'] = array(
 
                 'title' => $this->input->post('title'),
                 'image' => $image,
                 'image_ar' => $image_ar,
                 'alt' => $this->input->post('alt'),
-                'logo' => $logo,
-                'logo_ar'=> $logo_ar,
-                'status' => $this->input->post('status')
+               
+                'status' => $this->input->post('status'),
+                'updated_by' => $user
             );
 
             $this->sliders_m->updateSlider($data);
@@ -332,6 +269,11 @@ class Slider extends My_Controller {
            }
        }
        $data['id'] = $this->input->post('id');
+
+       $user = $_SESSION["username"];
+
+       $now = date('Y-m-d H:i:s');
+
        $data['data'] = array(
 
         //   'title' => $this->input->post('title'),
@@ -344,7 +286,9 @@ class Slider extends My_Controller {
            'slider_sub_text_ar' => $this->input->post('slider_sub_text_ar'),
            'dispaly_text' => $this->input->post('dispaly_text'),
            'page_tempalet_id' => $this->input->post('page_tempalet_id'),
-           'status' => $this->input->post('status')
+           'status' => $this->input->post('status'),
+           'updated_by' => $user,
+           'updated_at' => $now
        );
 
        $this->sliders_m->updateSliders($data);
@@ -398,27 +342,6 @@ class Slider extends My_Controller {
                $image = $uploadData['file_name'];
            }
 
-
-
-
-		   if (!$this->upload->do_upload('logo'))
-		   {
-			   $da = ['error1' => 'There is a problem uploading your image. Please upload a correct image.', 'data' => $this->input->post()];
-			   $this->session->set_flashdata('error', $da);
-			   redirect('admin/slider/add_slider/'.$id);
-		   }
-		   else
-		   {
-			   $uploadData = $this->upload->data();
-
-			   $logo = $uploadData['file_name'];
-		   }
-
-
-
-
-
-
            $this->load->library('upload', $config);
 
            if ($this->upload->do_upload('image_ar')) {
@@ -427,22 +350,11 @@ class Slider extends My_Controller {
                $image_ar = $uploadData['file_name'];
            }
 
-
-
-		   if ($this->upload->do_upload('logo_ar')) {
-			   $uploadData = $this->upload->data();
-
-			   $logo_ar = $uploadData['file_name'];
-		   }
-
-
-
 		   $data = array(
                'image' => $image,
                'image_ar' => $image_ar,
                'alt' => $this->input->post('alt'),
-               'logo' => $logo,
-               'logo_ar' => $logo_ar,
+              
                'page_tempalet_id' => $this->input->post('page_tempalet_id'),
                'status' => $this->input->post('status')
            );

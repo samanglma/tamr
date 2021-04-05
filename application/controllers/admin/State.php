@@ -36,13 +36,18 @@ class State extends My_Controller {
         }
         else{
 
+            $user = $_SESSION["username"];
+            
+
             $data = array(
 
                 'name' => $this->input->post('name'),
 
                 'country_id' => $this->input->post('country_id'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'created_by' => $user
 
             );
              $this->states_m->saveState($data);
@@ -76,13 +81,20 @@ class State extends My_Controller {
         else{
 
             $data['id'] = $this->input->post('id');
+
+            $user = $_SESSION["username"];
+            $now = date('Y-m-d H:i:s');
+
             $data['data'] = array(
 
                 'name' => $this->input->post('name'),
 
                 'country_id' => $this->input->post('country_id'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+                'updated_at' => $now
             );
 
             $this->states_m->updateState($data);

@@ -63,23 +63,7 @@
                            <?php } ?>
                        </div>
 
-					   <div class="col-md-7  form-group">
-						   <label>Logo *</label>
-						   <span style="color: #97310e;">Size ( 1920 * 1000 ) </span>
-						   <input type='file' name='logo' size='20' /><br>
-						   <?php if(!empty($row->image)){?> <img width="20%" src="<?php echo base_url()?>uploads/sliders/<?php echo $row->logo;?>">
-							   <input type="hidden" value="<?php echo $row->image;?>" name="logo2">
-						   <?php } ?>
-					   </div>
-
-					   <div class="col-md-7  form-group">
-						   <label>Arabic Logo</label>
-						   <span style="color: #97310e;">Size ( 199 * 199 ) </span>
-						   <input type='file' name='logo_ar' size='20' /><br>
-						   <?php if(!empty($row->image_ar)){?> <img width="20%" src="<?php echo base_url()?>uploads/sliders/<?php echo $row->logo_ar;?>">
-							   <input type="hidden" value="<?php echo $row->image_ar;?>" name="logo_ar2">
-						   <?php } ?>
-					   </div>
+					
 
                        <div class="col-md-7  form-group">
                            <label>Alt *</label>

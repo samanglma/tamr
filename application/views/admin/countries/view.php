@@ -13,9 +13,9 @@
     
         <div class="panel panel-default">
             <div class="panel-heading"><span class="pull-left">Countries List</span>
-           <!--  <div class="clearfix text-right">
-                    <a href="<?= base_url('admin/locations/cities/add') ?>" class="btn btn-primary">Add Location</a>
-                </div> -->
+             <div class="clearfix text-right">
+                    <a href="<?= base_url('admin/countries/add') ?>" class="btn btn-primary">Add Country</a>
+                </div>
             </div>
             <div class="panel-body">
                 
@@ -34,7 +34,8 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            
+                            <th>Last updated on</th>
+                            <th>Updated by</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,6 +43,8 @@
                         <?php foreach ($rcd as $row) { ?>
                             <tr>
                                 <td><?php echo $row->name; ?></td>
+                                <td><?php echo $row->updated_at; ?></td>
+                                <td><?php echo $row->updated_by; ?></td>
                                
                                 <td>
                                     <div class="btn-group">

@@ -29,7 +29,6 @@
                        <thead>
                            <tr>
                                <th>Order ID</th>
-
                                <th>Name</th>
                                <th>Email</th>
                                <th>Phone</th>
@@ -99,15 +98,15 @@
 			buttons: [
             {
                 extend: 'excelHtml5',
-                title: 'Orders - Depachika'
+                title: 'Orders - Tamr'
             },
             {
                 extend: 'pdfHtml5',
-                title: 'Orders - Depachika'
+                title: 'Orders - Tamr'
             },
             {
                 extend: 'csvHtml5',
-                title: 'Orders - Depachika'
+                title: 'Orders - Tamr'
             }
         ]
         });
@@ -196,8 +195,6 @@ console.log(data);
            </div>
        </div>
    </div>
-
-
 
 <style>
         
@@ -321,13 +318,11 @@ console.log(data);
     $order_details = $this->db->get_Where('orders', ['id' => $r->order_id])->row_array();
     $billing_details = $this->db->get_Where('billing_address', ['id' => $order_details['billing_id']])->row_array();
 
-    $this->db->select('products.title,products.image,order_items.*');
+    $this->db->select('products.title,products.image1,order_items.*');
     $this->db->where('order_items.order_id', $r->order_id);
     $this->db->join('products','products.id = order_items.product_id');
     $order_items = $this->db->get('order_items')->result();
-/*print_r($order_items);*/
-
-    ?>
+/*print_r($order_items);*/ ?>
 
 
   <div class="modal fade" id="message<?php echo $r->order_id;?>" role="dialog">
@@ -335,11 +330,9 @@ console.log(data);
       <div class="modal-content" >
         <div class="modal-header">
            <button type="button" id='cross' class="close" data-dismiss="modal">&times;</button> 
-          <h4 class="modal-title">Final Invoice # <?php echo $order_details['id']; ?> from your recent purchase at Depachika Food Hall</h4>
+          <h4 class="modal-title">Final Invoice # <?php echo $order_details['id']; ?> from your recent purchase at Tamr</h4>
         </div>
         <div class="modal-body">
-         
-
      <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
           <tr class="top">
@@ -439,8 +432,6 @@ console.log(data);
           </tr>
         </table>
       </div>
-
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -453,8 +444,7 @@ console.log(data);
     </div>
   </div>
 
-
-    <?php } ?>
+<?php } ?>
 </div>
 
 <script type="text/javascript">
@@ -464,8 +454,6 @@ console.log(data);
 
   }
 </script>
-
-   <!-- ///////// -->
 
     <!--Cancel Prevent Order-->
     <div class="modal" id="cancelPreventModel" tabindex="-1" role="dialog">

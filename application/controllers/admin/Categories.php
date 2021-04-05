@@ -10,6 +10,8 @@ class Categories extends My_Controller
 
         $this->load->model('categories_m');
     }
+
+    
     public function index()
     {
         $data['rcd'] = $this->categories_m->getAllCategory();
@@ -29,6 +31,8 @@ class Categories extends My_Controller
 
         $this->load->view('admin/categories/add', $data);
     }
+
+
     public function save()
     {
         $this->form_validation->set_rules('title', 'Title', 'required');
@@ -70,6 +74,8 @@ class Categories extends My_Controller
             } else {
                 $image = '';
             }
+
+            $user = $_SESSION["username"];
             
             $data = array(
 
@@ -78,7 +84,8 @@ class Categories extends My_Controller
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
                 'status' => $this->input->post('status'),
-                'image' => $image
+                'image' => $image,
+                'created_by' =>  $user
 
             );
 
@@ -145,7 +152,12 @@ class Categories extends My_Controller
                 $image = $this->input->post('image2');
             }
 
+            $updated_by = $_SESSION["username"];
+
             $data['id'] = $this->input->post('id');
+
+            $now = date('Y-m-d H:i:s');
+
             $data['data'] = array(
 
                 'title' => $this->input->post('title'),
@@ -153,7 +165,9 @@ class Categories extends My_Controller
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
                 'status' => $this->input->post('status'),
-                'image' => $image
+                'image' => $image,
+                'updated_by' => $updated_by,
+                'updated_at' => $now
             );
 
             $this->categories_m->updateCategory($data);

@@ -35,11 +35,15 @@ class Countries extends My_Controller {
         }
         else{
 
+            $user = $_SESSION["username"];
+
             $data = array(
 
                 'name' => $this->input->post('name'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'created_by' => $user
 
             );
              $this->countries_m->saveCountry($data);
@@ -72,11 +76,18 @@ class Countries extends My_Controller {
         else{
 
             $data['id'] = $this->input->post('id');
+
+            $user = $_SESSION["username"];
+            $now = date('Y-m-d H:i:s');
             $data['data'] = array(
 
                 'name' => $this->input->post('name'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+                'updated_at' => $now
+
             );
 
             $this->countries_m->updateCountry($data);
