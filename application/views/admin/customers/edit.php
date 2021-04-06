@@ -24,7 +24,7 @@
                        </div>
                    <?php } ?>
 
-                   <form method="post" action="<?php echo base_url()?>admin/user/update" enctype="multipart/form-data">
+                   <form method="post" action="<?php echo base_url()?>admin/customers/update" enctype="multipart/form-data">
                        <input type="hidden" value="<?php echo $row->id; ?>" name="id">
                        <div class="col-md-7  form-group">
                            <label>Username *</label>
@@ -36,6 +36,7 @@
                            <label>Password *</label>
                            <input type="text" name="password"  class="form-control" placeholder="Password" />
                            <?php echo form_error('password', '<div class="error" style="color: red;">', '</div>'); ?>
+						   <input type="hidden" name="password_old"  value="<?php echo $row->password; ?>"  class="form-control" placeholder="Password" />
                        </div>
 
                         <div class="col-md-7  form-group">
@@ -50,7 +51,6 @@
                            <?php echo form_error('mobile', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-
 					   <div class="col-md-7 form-group">
                                <label>Status</label>
                                <select name="active" class="form-control">
@@ -62,11 +62,12 @@
                                    <option value="1">Active</option>
                                    <?php }?>
                                </select>
-                           </div>
+                        </div>
+
                        <div class="col-md-7 form-group">
                        <button type="submit" class="btn btn-sm btn-success pull-left">Update User</button>
                            &nbsp;&nbsp;
-                           <a href="<?php echo base_url()?>admin/user" type="submit" class="btn btn-sm btn-danger">Cancel</a>
+                           <a href="<?php echo base_url()?>admin/customers" type="submit" class="btn btn-sm btn-danger">Cancel</a>
                        </div>
                    </form>
                </div>

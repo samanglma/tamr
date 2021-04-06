@@ -9,6 +9,8 @@ class Variant_value extends My_Controller {
 
         $this->load->model('variant_value_m');
 
+		die();
+
     }
     public function index()
 	{
@@ -37,6 +39,8 @@ class Variant_value extends My_Controller {
 
             $user = $_SESSION["username"];
 
+			$now = date('Y-m-d H:i:s');
+
             $data = array(
 
                 'title' => $this->input->post('title'),
@@ -44,7 +48,9 @@ class Variant_value extends My_Controller {
                
                 'status' => $this->input->post('status'),
 
-                'created_by' => $user
+                'updated_by' => $user,
+
+				'updated_at' => $now
             );
 
              $this->variant_value_m->save($data);
@@ -58,6 +64,7 @@ class Variant_value extends My_Controller {
     {
         $data['row'] = $this->variant_value_m->edit($id);
         $data['rcd'] = $this->variant_value_m->getAllVariantsType();
+
         $this->load->view('admin/variants-value/edit', $data);
 
     }

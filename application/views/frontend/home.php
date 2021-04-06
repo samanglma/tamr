@@ -7,9 +7,9 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             <?php
             foreach ($categories as $key => $category) {
                 if($key%2 == 0 )
-                $slide = 1;
+                 $slide = 1;
                 else
-                $slide = 2;
+                 $slide = 2;
             ?>
                 <div class="narrow-content <?= $key == 0 ? 'active' : '' ?> slide-<?=$slide?>" id="slide-<?=$key?>">
                     <!-- <h2>Kids dates packages</h2> -->

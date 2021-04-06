@@ -44,7 +44,11 @@
                           
                            <td>
                                <div class="btn-group">
-                                   <a href="<?php echo base_url()?>admin/user/delete/<?php echo $row->id;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>
+
+							   		<a href="<?php echo base_url() ?>admin/customers/edit/<?php echo $row->id; ?>"> <button class="btn btn-info btn-xs">Edit</button></a>
+                                   <a href="<?php echo base_url()?>admin/customers/delete/<?php echo $row->id;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>
+								  
+                                    
                                </div>
                            </td>
                        </tr>

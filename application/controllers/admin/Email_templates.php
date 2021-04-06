@@ -41,6 +41,7 @@ class Email_templates extends My_Controller {
             $slug = strtolower($slugs);
 
             $user = $_SESSION["username"];
+			$now = date('Y-m-d H:i:s');
 
             $data = array(
 
@@ -48,7 +49,8 @@ class Email_templates extends My_Controller {
                 'slug' => $slug,
                'template' => $this->input->post('template'),
                 'status' => $this->input->post('status'),
-                'created_by' => $user
+                'updated_by' => $user,
+				'updated_at' => $now
             );
 
              $this->email_templates_m->save($data);

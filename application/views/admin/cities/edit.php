@@ -32,13 +32,9 @@
                    <form method="post" action="<?php echo base_url()?>admin/cities/update" enctype="multipart/form-data">
 
                     <input type="hidden" name="id" value="<?php echo $row->id;?>">
-                       <div class="col-md-7  form-group">
-                           <label>Name *</label>
-                           <input type="text" name="name" value="<?= set_value('name') != '' ? set_value('name') : $row->name ?>" class="form-control" placeholder="Add Name" />
-                           <?php echo form_error('name', '<div class="error" style="color: red;">', '</div>'); ?>
-                       </div>
 
-                       <div class="col-md-7 form-group">
+
+					<div class="col-md-7 form-group">
                                <label>State *</label>
                                <select name="state_id" class="form-control">
                                    <option value="">Select State</option>
@@ -53,18 +49,15 @@
                                <?php echo form_error('state_id', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                       <div class="col-md-7 form-group">
-                               <label>Status</label>
-                               <select name="status" class="form-control">
-                                   <?php if($row->status == 1){?>
-                                   <option value="1">Active</option>
-                                   <option value="0">Inactive</option>
-                                   <?php } else{?>
-                                   <option value="0">Inactive</option>
-                                   <option value="1">Active</option>
-                                   <?php }?>
-                               </select>
-                           </div>
+
+
+                       <div class="col-md-7  form-group">
+                           <label>Name *</label>
+                           <input type="text" name="name" value="<?= set_value('name') != '' ? set_value('name') : $row->name ?>" class="form-control" placeholder="Add Name" />
+                           <?php echo form_error('name', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+                  
 
                        <div class="col-md-7 form-group">
                        <button type="submit" class="btn btn-sm btn-success pull-left">Update</button>

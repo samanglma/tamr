@@ -70,7 +70,7 @@
                                </select>
                            </div>
 
-                           <div class="col-md-7  form-group">
+                       <!-- <    <div class="col-md-7  form-group">
                            <label>Image *</label>
                        <input type='file'  name='image' size='20' />
                        <span style="color: #97310e;"> Size ( 1200 * 900 ) </span> 
@@ -78,7 +78,7 @@
                           <?php if(!empty($row->image)){?> <img width="20%" src="<?php echo base_url()?>uploads/categories/<?php echo $row->image;?>">
                            <input type="hidden" value="<?php echo $row->image;?>" name="image2">
                            <?php } ?>
-                       </div>
+                       </div> -->
 
                            <div class="col-md-7 form-group">
                                <label>Status</label>

@@ -13,7 +13,7 @@ class Variant_value_m  extends CI_Model
     public function getAll()
     {
 
-    $this->db->select('a.*,b.*'); 
+    $this->db->select('a.*,b.type'); 
     $this->db->from('variants_value a');
     $this->db->order_by("title", "asc"); 
     $this->db->join('variants b', 'b.id = a.variant_id'); 

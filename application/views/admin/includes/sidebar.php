@@ -110,7 +110,7 @@
             </li>
 
 
-            <li <?php if ($this->uri->segment(2) == "variant") {
+            <!-- <li <?php if ($this->uri->segment(2) == "variant") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -150,9 +150,9 @@
                         <a href="<?php echo base_url() ?>admin/variant_value">View Variants Values</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
-         <!--   <li <?php if ($this->uri->segment(2) == "countries") {
+         	<!--   <li <?php if ($this->uri->segment(2) == "countries") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -236,7 +236,7 @@
             </li>
 
 
-          <!--  <li <?php if ($this->uri->segment(2) == "contactus") {
+          	<!--  <li <?php if ($this->uri->segment(2) == "contactus") {
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/contactus" class="">
@@ -326,23 +326,23 @@
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">content_copy</i>
-                    <span class="nav-label">Manage Locations</span>
+                    <span class="nav-label">Manage Localization</span>
                 </a>
                 <ul>
                      <li <?php if ($this->uri->segment(2) == "countries") {
                             echo 'class="active"';
                         } ?>>
-                        <a href="<?php echo base_url() ?>admin/countries"> Countries</a>
+                        <a href="<?php echo base_url() ?>admin/countries">Manage Countries</a>
                     </li>
                     <li <?php if ($this->uri->segment(2) == "state") {
                             echo 'class="active"';
                         } ?>>
-                        <a href="<?php echo base_url() ?>admin/state"> States</a>
+                        <a href="<?php echo base_url() ?>admin/state">Manage States</a>
                     </li> 
                     <li <?php if ($this->uri->segment(2) == "cities") {
                             echo 'class="active"';
                         } ?>>
-                        <a href="<?php echo base_url() ?>admin/cities"> Cities</a>
+                        <a href="<?php echo base_url() ?>admin/cities">Manage Cities</a>
                     </li>
                 </ul>
             </li>
@@ -384,7 +384,7 @@
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/customers" class="">
                     <i class="material-icons">C</i>
-                    <span class="nav-label"> Customers Managment</span>
+                    <span class="nav-label"> Customers</span>
                 </a>
             </li>
 

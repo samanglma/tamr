@@ -48,35 +48,35 @@ class Categories extends My_Controller
         } else {
 
 
-            if ($_FILES['image']['name'] != "") {
+            // if ($_FILES['image']['name'] != "") {
 
 
-                $config['upload_path'] = './uploads/categories/';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                $config['max_width'] = 1202;
-                $config['max_height'] = 902;
+            //     $config['upload_path'] = './uploads/categories/';
+            //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            //     $config['encrypt_name'] = TRUE;
+            //     $config['width'] = 1200;
+            //     $config['height'] = 900;
 
 
-                $this->load->library('upload', $config);
+            //     $this->load->library('upload', $config);
 
                
-                if (!$this->upload->do_upload('image')) {
+            //     if (!$this->upload->do_upload('image')) {
 
-                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your  Image. Please upload correct Image');
-                    redirect('admin/categories/add');
-                } elseif ($this->upload->do_upload('image')) {
+            //         $this->session->set_flashdata('error', 'There is a Problem Uploading Your  Image. Please upload correct Image');
+            //         redirect('admin/categories/add');
+            //     } elseif ($this->upload->do_upload('image')) {
 
-                    $uploadData = $this->upload->data();
+            //         $uploadData = $this->upload->data();
 
-                    $image = $uploadData['file_name'];
-                }
-            } else {
-                $image = '';
-            }
+            //         $image = $uploadData['file_name'];
+            //     }
+            // } else {
+            //     $image = '';
+            // }
 
             $user = $_SESSION["username"];
-            
+			$now = date('Y-m-d H:i:s');
             $data = array(
 
                 'title' => $this->input->post('title'),
@@ -84,8 +84,9 @@ class Categories extends My_Controller
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
                 'status' => $this->input->post('status'),
-                'image' => $image,
-                'created_by' =>  $user
+              //  'image' => $image,
+                'updated_by' =>  $user,
+				'updated_at' => $now
 
             );
 
@@ -124,33 +125,32 @@ class Categories extends My_Controller
             redirect('admin/categories/edit/' . $id);
         } else {
 
-            if ($_FILES['image']['name'] != "") {
+            // if ($_FILES['image']['name'] != "") {
 
 
-                $config['upload_path'] = './uploads/categories/';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                $config['max_width'] = 1202;
-                $config['max_height'] = 902;
+            //     $config['upload_path'] = './uploads/categories/';
+            //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            //     $config['encrypt_name'] = TRUE;
+			// 	$config['width'] = 1200;
+            //     $config['height'] = 900;
 
+            //     $this->load->library('upload', $config);
 
-                $this->load->library('upload', $config);
+            //     $id = $this->input->post('id');
 
-                $id = $this->input->post('id');
+            //     if (!$this->upload->do_upload('image')) {
 
-                if (!$this->upload->do_upload('image')) {
+            //         $this->session->set_flashdata('error', 'There is a Problem Uploading Your Image. Please upload correct Image');
+            //         redirect('admin/categories/edit/' . $id);
+            //     } elseif ($this->upload->do_upload('image')) {
 
-                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your Image. Please upload correct Image');
-                    redirect('admin/categories/edit/' . $id);
-                } elseif ($this->upload->do_upload('image')) {
+            //         $uploadData = $this->upload->data();
 
-                    $uploadData = $this->upload->data();
-
-                    $image = $uploadData['file_name'];
-                }
-            } else {
-                $image = $this->input->post('image2');
-            }
+            //         $image = $uploadData['file_name'];
+            //     }
+            // } else {
+            //     $image = $this->input->post('image2');
+            // }
 
             $updated_by = $_SESSION["username"];
 
@@ -165,7 +165,7 @@ class Categories extends My_Controller
                 'title_ar' => $this->input->post('title_ar'),
                 'parent_id' => $this->input->post('parent_id'),
                 'status' => $this->input->post('status'),
-                'image' => $image,
+               // 'image' => $image,
                 'updated_by' => $updated_by,
                 'updated_at' => $now
             );

@@ -257,7 +257,7 @@ aside .menuss {
   display: block;
   background: none;
   height: 2px;
-  width: 49px;
+  width: 52px;
   position: absolute;
   top: 0;
   -ms-transform: rotate(0deg);
@@ -905,11 +905,7 @@ p {
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
-<<<<<<< HEAD
   background-color: #000;
-=======
-  background-color: #0009;
->>>>>>> e5dd8058843562e46a25075e6b159a92abfda250
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #291a1a;
   margin: 6px;

@@ -48,6 +48,7 @@
                                
                                 <td>
                                     <div class="btn-group">
+									<a href="<?php echo base_url() ?>admin/state/add/<?php echo $row->id; ?>"><button class="btn btn-primary btn-xs">Add State</button></a>
                                         <a href="<?php echo base_url() ?>admin/countries/edit/<?php echo $row->id; ?>"><button class="btn btn-info btn-xs">Edit</button></a>
                                         <a href="<?php echo base_url() ?>admin/countries/delete/<?php echo $row->id; ?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>
                                     </div>

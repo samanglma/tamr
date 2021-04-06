@@ -203,7 +203,7 @@
                        <tbody>
 					   <?php foreach($rcd as $r){?>
 						   <tr>
-							   <td><img src="<?php echo base_url(); ?>uploads/products/<?php echo $r->image; ?>" style="width: 100px"> </td>
+							   <td><img src="<?php echo base_url(); ?>uploads/products/<?php echo $r->image1; ?>" style="width: 100px"> </td>
 							   <td><?php echo $r->title; ?></td>
 							   <td><?php echo $r->price; ?></td>
 							   <td><?php echo $r->qty; ?></td>

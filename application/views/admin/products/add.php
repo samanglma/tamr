@@ -144,8 +144,6 @@
                             ?>
                        </div> -->
 
-
-
                        <div class="col-md-7  form-group">
                            <label>Thumbnail *</label>
                            <input type='file' name='thumb' size='20' />
@@ -156,31 +154,31 @@
                            <label>Image 1 </label>
                            <input type='file' name='image1' size='20' />
 
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">
                            <label>Image 2 </label>
                            <input type='file' name='image2' size='20' />
 
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">
                            <label>Image 3 </label>
                            <input type='file' name='image3' size='20' />
 
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">
                            <label>Image 4 </label>
                            <input type='file' name='image4' size='20' />
 
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                        </div>
 
-                       <div class="col-md-7  form-group d-none" style="display: none">
+                       <!-- <div class="col-md-7  form-group d-none" style="display: none">
                            <label>Arabic Image</label>
                            <input type='file' name='thumb_ar' size='20' />
                            <span style="color: #97310e;"> Size (1000 * 810 ) </span>
@@ -190,7 +188,7 @@
                            <label>Arabic Thumbnail</label>
                            <input type='file' name='thumb_ar' size='20' />
                            <span style="color: #97310e;"> Size (225 * 210 ) </span>
-                       </div>
+                       </div> -->
 
                        <div class="col-md-7  form-group">
                            <label>Alt *</label>
@@ -202,7 +200,7 @@
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                       <div class="col-md-7  form-group">
+                       <!-- <div class="col-md-7  form-group">
                            <label>Alt Arabic*</label>
                            <input type="text" name="alt_ar" value="<?php if (empty(set_value('alt_ar')) && isset($data)) {
                                                                         echo $data['data']['alt_ar'];
@@ -210,8 +208,8 @@
                                                                         echo set_value('alt_ar');
                                                                     } ?>" class="form-control" placeholder="Alt Tag Arabic" />
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
-                       </div>
-                       <?php
+                       </div> -->
+                       <!-- <?php
                         if (!empty($variants)) { ?>
                            <div class="col-md-7  form-group">
                                <label>Variations</label>
@@ -228,11 +226,7 @@
                                <?php } ?>
 
                            </div>
-                       <?php } ?>
-
-
-
-
+                       <?php } ?> -->
 
                        <div class="col-md-7  form-group">
                            <label>Mark as New Product *</label>
@@ -245,6 +239,7 @@
                                <label class="form-check-label" for="inlineRadio2">No</label>
                            </div>
                        </div>
+
                        <div class="col-md-7  form-group">
                            <label>Mark as Top Seller *</label>
                            <div class="form-check form-check-inline">
@@ -287,6 +282,7 @@
            </div>
        </div>
    </section>
+
    <?php $this->load->view('admin/includes/footer') ?>
 
    <script type="text/javascript">
@@ -309,6 +305,7 @@
                    $('select[name="child_cat"]').empty();
                }
            });
+
            // $('.weight').hide();
            // $('select[name="cat_id"]').on('change', function() {
            //     var CatID = $(this).val();

@@ -47,6 +47,7 @@ class User extends My_Controller {
         else{
 
             $user = $_SESSION["username"];
+			$now = date('Y-m-d H:i:s');
 
             $data = array(
 
@@ -62,7 +63,8 @@ class User extends My_Controller {
 
                 'role' => '3',
 
-                'created_by' => $user
+                'updated_by' => $user,
+				'updated_at' => $now
             );
 
              $this->User_model->save($data);

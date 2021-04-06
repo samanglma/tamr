@@ -36,6 +36,7 @@ class Countries extends My_Controller {
         else{
 
             $user = $_SESSION["username"];
+			$now = date('Y-m-d H:i:s');
 
             $data = array(
 
@@ -43,7 +44,8 @@ class Countries extends My_Controller {
                
                 'status' => $this->input->post('status'),
 
-                'created_by' => $user
+                'updated_by' => $user,
+				'updated_at' => $now
 
             );
              $this->countries_m->saveCountry($data);

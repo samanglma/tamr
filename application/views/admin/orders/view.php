@@ -311,7 +311,7 @@ console.log(data);
 
 }
     
-      </style>
+</style>
   <?php foreach ($rcd as $r) { ?>
 
     <?php 

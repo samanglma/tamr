@@ -54,9 +54,9 @@ class Products extends My_Controller
         $dataArray = array(
             
             'title' => $this->input->post('title'),
-            //'title_ar' => $this->input->post('title_ar'),
+            'title_ar' => $this->input->post('title_ar'),
             'description' => $this->input->post('description'),
-            //'description_ar' => $this->input->post('description_ar'),
+            'description_ar' => $this->input->post('description_ar'),
             //'discounted_price' => $discounted_price,
             'price' => $this->input->post('price'),
            // 'vat_price' => $this->input->post('vat_price'),
@@ -78,9 +78,11 @@ class Products extends My_Controller
 
             $config['upload_path']          = './uploads/products/';
             $config['allowed_types']        = 'jpg|jpeg|png|gif';
-            /* $config['encrypt_name']          = TRUE;*/
-            /* $config['max_width']            = 700;
-            $config['max_height']           = 1000;*/
+             $config['encrypt_name']          = TRUE;
+			 $config['min_width']       = '1374';      
+			 $config['min_height']      = '1030';      
+			 $config['max_width']       = '1374';       
+			 $config['max_height']      = '1030'; 
 
             $this->load->library('upload', $config);
 
@@ -132,15 +134,18 @@ class Products extends My_Controller
             else{
                 $image4 = '';
             }
-            //thumbnail
-
+            
             //thumbnail
             if ($_FILES['thumb']['name'] != "") {
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                /*$config['max_width'] = 225;
-				$config['max_height'] = 210;*/
+               // $config['encrypt_name'] = TRUE;
+           		//  $config['max_width'] = 225;
+           		//  $config['max_height'] = 210;
+
+				$this->load->library('upload', $config);
+
+
                 if (!$this->upload->do_upload('thumb')) {
                     $this->session->set_flashdata('error', $this->upload->display_errors() . "thbmnail");
                     //$error = array('error' => $this->upload->display_errors());
@@ -151,33 +156,33 @@ class Products extends My_Controller
                     $thumb = $uploadData['file_name'];
                 }
             }
-            if ($_FILES['thumb_ar']['name'] != "") {
-                $config['upload_path'] = './uploads/products/';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                /*$config['max_width'] = 225;
-				$config['max_height'] = 210;*/
-                if (!$this->upload->do_upload('thumb_ar')) {
-                    //$error = array('error' => $this->upload->display_errors());
-                    $this->session->set_flashdata('error', $this->upload->display_errors() . "thbmnailar");
-                    redirect('admin/products/add', $dataArray);
-                } else {
-                    $uploadData = $this->upload->data();
+            // if ($_FILES['thumb_ar']['name'] != "") {
+            //     $config['upload_path'] = './uploads/products/';
+            //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            //     /*$config['encrypt_name'] = TRUE;*/
+            //     /*$config['max_width'] = 225;
+			// 	$config['max_height'] = 210;*/
+            //     if (!$this->upload->do_upload('thumb_ar')) {
+            //         //$error = array('error' => $this->upload->display_errors());
+            //         $this->session->set_flashdata('error', $this->upload->display_errors() . "thbmnailar");
+            //         redirect('admin/products/add', $dataArray);
+            //     } else {
+            //         $uploadData = $this->upload->data();
 
-                    $thumb_ar = $uploadData['file_name'];
-                }
-            }
+            //         $thumb_ar = $uploadData['file_name'];
+            //     }
+            // }
 
             $desc = $this->input->post('description');
             $desc_ar = $this->input->post('description_ar');
 
-            $variants = $this->input->post('variants');
-
-            
+           // $variants = $this->input->post('variants');
 
             // $ex_val = implode(',', $variants);
 
             $user = $_SESSION["username"];
+
+			$now = date('Y-m-d H:i:s');
 
             $data = array(
                 'title' => $this->input->post('title'),
@@ -196,7 +201,7 @@ class Products extends My_Controller
                 'price' => $this->input->post('price'),
                 'vat_price' => $this->input->post('vat_price'),
                 'alt' => $this->input->post('alt'),
-                'alt_ar' => $this->input->post('alt_ar'),
+             //   'alt_ar' => $this->input->post('alt_ar'),
                 // 'brand_id' => $this->input->post('brand_id'),  
                 'cat_id' => $this->input->post('cat_id'),
                // 'cat_id' => $this->input->post('cat_id'),
@@ -204,7 +209,8 @@ class Products extends My_Controller
                 'mark_as_new' => $this->input->post('markAsNew'),
                 'top_seller' => $this->input->post('topSeller'),
                 'out_of_stock' => $this->input->post('outofStock'),
-                'created_by' => $user
+                'updated_by' => $user,
+				'updated_at' => $now
                 // 'variants' =>  $ex_val,
             );
 
@@ -259,12 +265,14 @@ class Products extends My_Controller
             if ($_FILES['image1']['name'] != "") {
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                /*  $config['max_width'] = 225;
-            $config['max_height'] = 210;*/
+                $config['encrypt_name'] = TRUE;
+				$config['min_width']       = '1374';      
+				$config['min_height']      = '1030';      
+				$config['max_width']       = '1374';       
+				$config['max_height']      = '1030'; 
 
+				$this->load->library('upload', $config);  
 
-                $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image1')) {
                     $error = array('error' => $this->upload->display_errors());
                     $this->session->set_flashdata('error', $this->upload->display_errors());
@@ -282,11 +290,13 @@ class Products extends My_Controller
             if ($_FILES['image2']['name'] != "") {
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                /*  $config['max_width'] = 225;
-            $config['max_height'] = 210;*/
+                $config['encrypt_name'] = TRUE;
+				$config['min_width']       = '1374';      
+				$config['min_height']      = '1030';      
+				$config['max_width']       = '1374';       
+				$config['max_height']      = '1030'; 
 
-
+				
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image2')) {
                     $error = array('error' => $this->upload->display_errors());
@@ -303,11 +313,13 @@ class Products extends My_Controller
             }
 
             if ($_FILES['image3']['name'] != "") {
-                $config['upload_path'] = './uploads/products/';
+				$config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                /*  $config['max_width'] = 225;
-            $config['max_height'] = 210;*/
+                $config['encrypt_name'] = TRUE;
+				$config['min_width']       = '1374';      
+				$config['min_height']      = '1030';      
+				$config['max_width']       = '1374';       
+				$config['max_height']      = '1030'; 
 
 
                 $this->load->library('upload', $config);
@@ -329,12 +341,11 @@ class Products extends My_Controller
             if ($_FILES['image4']['name'] != "") {
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                /*  $config['max_width'] = 225;
-            $config['max_height'] = 210;*/
-                /*$config['max_width'] = 700;
-                $config['max_height'] = 1000;*/
-
+                $config['encrypt_name'] = TRUE;
+				$config['min_width']       = '1374';      
+				$config['min_height']      = '1030';      
+				$config['max_width']       = '1374';       
+				$config['max_height']      = '1030'; 
 
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image4')) {
@@ -352,33 +363,33 @@ class Products extends My_Controller
             }
 
 
-            if ($_FILES['image_ar']['name'] != "") {
+            // if ($_FILES['image_ar']['name'] != "") {
 
 
-                $config['upload_path'] = './uploads/products/';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                /*$config['encrypt_name'] = TRUE;*/
-                $config['max_width'] = 700;
-                $config['max_height'] = 1000;
+            //     $config['upload_path'] = './uploads/products/';
+            //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            //     /*$config['encrypt_name'] = TRUE;*/
+            //     $config['max_width'] = 700;
+            //     $config['max_height'] = 1000;
 
 
-                $this->load->library('upload', $config);
+            //     $this->load->library('upload', $config);
 
-                $id = $this->input->post('id');
+            //     $id = $this->input->post('id');
 
-                if (!$this->upload->do_upload('image_ar')) {
+            //     if (!$this->upload->do_upload('image_ar')) {
 
-                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your Arabic Image. Please upload correct Image');
-                    redirect('admin/products/edit/' . $id);
-                } elseif ($this->upload->do_upload('image_ar')) {
+            //         $this->session->set_flashdata('error', 'There is a Problem Uploading Your Arabic Image. Please upload correct Image');
+            //         redirect('admin/products/edit/' . $id);
+            //     } elseif ($this->upload->do_upload('image_ar')) {
 
-                    $uploadData = $this->upload->data();
+            //         $uploadData = $this->upload->data();
 
-                    $image_ar = $uploadData['file_name'];
-                }
-            } else {
-                $image_ar = $this->input->post('image_ar2');
-            }
+            //         $image_ar = $uploadData['file_name'];
+            //     }
+            // } else {
+            //     $image_ar = $this->input->post('image_ar2');
+            // }
         }
 
 
@@ -386,7 +397,7 @@ class Products extends My_Controller
         if ($_FILES['thumb']['name'] != "") {
             $config['upload_path'] = './uploads/products/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            /*$config['encrypt_name'] = TRUE;*/
+            $config['encrypt_name'] = TRUE;
             $config['max_width'] = 225;
             $config['max_height'] = 210;
 
@@ -406,24 +417,24 @@ class Products extends My_Controller
             $thumb = $this->input->post('thumb2');
         }
 
-        if (!empty($_FILES['thumb']['thumb_ar'])) {
-            $config['upload_path'] = './uploads/products/';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            /*$config['encrypt_name'] = TRUE;*/
-            $config['max_width'] = 225;
-            $config['max_height'] = 210;
+        // if (!empty($_FILES['thumb']['thumb_ar'])) {
+        //     $config['upload_path'] = './uploads/products/';
+        //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        //     /*$config['encrypt_name'] = TRUE;*/
+        //     $config['max_width'] = 225;
+        //     $config['max_height'] = 210;
 
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('thumb_ar')) {
-                $error = array('error' => $this->upload->display_errors());
-                $this->session->set_flashdata('error', $this->upload->display_errors());
-                redirect('admin/products/edit/' . $id);
-            } else {
-                $uploadData = $this->upload->data();
+        //     $this->load->library('upload', $config);
+        //     if (!$this->upload->do_upload('thumb_ar')) {
+        //         $error = array('error' => $this->upload->display_errors());
+        //         $this->session->set_flashdata('error', $this->upload->display_errors());
+        //         redirect('admin/products/edit/' . $id);
+        //     } else {
+        //         $uploadData = $this->upload->data();
 
-                $thumb_ar = $uploadData['file_name'];
-            }
-        }
+        //         $thumb_ar = $uploadData['file_name'];
+        //     }
+        // }
 
         $data['id'] = $this->input->post('id');
 
@@ -456,14 +467,14 @@ class Products extends My_Controller
             'image2' => $image2,
             'image3' => $image3,
             'image4' => $image4,
-            'image_ar' => $image_ar,
+           // 'image_ar' => $image_ar,
             'thumbnail' => $thumb,
-            'thumbnail_ar' => $thumb_ar,
+            //'thumbnail_ar' => $thumb_ar,
             'alt' => $this->input->post('alt'),
             'discounted_price' => $discounted_price,
             'price' => $this->input->post('price'),
             'vat_price' => $this->input->post('vat_price'),
-            'alt_ar' => $this->input->post('alt_ar'),
+           // 'alt_ar' => $this->input->post('alt_ar'),
             // 'brand_id' => $this->input->post('brand_id'), 
             'cat_id' => $this->input->post('child_cat'),
             'status' => $this->input->post('status'),

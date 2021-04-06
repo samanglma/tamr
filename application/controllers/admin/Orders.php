@@ -31,8 +31,6 @@ class Orders extends My_Controller
 	{
 		$data['rcd'] = $this->Order_m->getAll();
 
-		
-
 		$this->load->view('admin/orders/view', $data);
 	}
 
