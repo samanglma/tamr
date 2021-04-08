@@ -47,7 +47,7 @@
                       ?>
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
-                           <span style="color: #97310e;">Size ( 1920 * 1000 ) </span>
+                           <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
                        <input type='file' name='image' size='20' /><br>
                           <?php if(!empty($row->image)){?> <img width="20%" src="<?php echo base_url()?>uploads/sliders/<?php echo $row->image;?>">
                            <input type="hidden" value="<?php echo $row->image;?>" name="image2">
@@ -56,19 +56,58 @@
 
                        <div class="col-md-7  form-group">
                            <label>Arabic Image</label>
-                           <span style="color: #97310e;">Size ( 1920 * 1000 ) </span>
+                           <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
                            <input type='file' name='image_ar' size='20' /><br>
                            <?php if(!empty($row->image_ar)){?> <img width="20%" src="<?php echo base_url()?>uploads/sliders/<?php echo $row->image_ar;?>">
                                <input type="hidden" value="<?php echo $row->image_ar;?>" name="image_ar2">
                            <?php } ?>
                        </div>
 
-					
-
                        <div class="col-md-7  form-group">
                            <label>Alt *</label>
                            <input type="text" value="<?php echo $row->alt;?>" name="alt" class="form-control" placeholder="Alt Tag" />
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+
+					   <div class="col-md-7  form-group">
+                           <label>Slider Heading</label>
+                           <input type="text" name="slider_heading" value="<?php echo $row->slider_heading;?>"  class="form-control" placeholder="Slider Heading" />
+                           <?php echo form_error('slider_heading', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+
+					   <div class="col-md-7  form-group">
+                           <label>Slider Text</label>
+                           <input type="text" name="slider_text" value="<?php echo $row->slider_text;?>" class="form-control" placeholder="Slider Text" />
+                           <?php echo form_error('slider_text', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+
+					   <div class="col-md-7  form-group">
+                           <label>Slider Heading Arabic</label>
+                           <input dir="rtl" type="text" name="slider_heading_ar" value="<?php echo $row->slider_heading_ar;?>" class="form-control" placeholder="Slider Heading Arabic" />
+                           <?php echo form_error('slider_heading_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+
+					   <div class="col-md-7  form-group">
+                           <label>Slider Text Arabic</label>
+                           <input dir="rtl" type="text" name="slider_text_ar" value="<?php echo $row->slider_text_ar;?>" class="form-control" placeholder="Slider Text Arabic" />
+                           <?php echo form_error('slider_text_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+					   <div class="col-md-7 form-group">
+                           <label>Display Text on Slider</label>
+                           <select name="dispaly_text" class="form-control">
+                               <?php if($row->dispaly_text == 1){?>
+                               <option value="1">Yes</option>
+							   <option value="0">No</option>
+                               <?php } else{?>
+                               <option value="0">No</option>
+							   <option value="1">Yes</option>
+                               <?php }?>
+                           </select>
                        </div>
 
                   

@@ -18,8 +18,6 @@ class Cities extends My_Controller {
 
     public function add($id = '')
     {
-
-		
 		$data['state_id'] = $id;
 		
         $data['states'] = $this->cities_m->getAllStates();
@@ -66,7 +64,6 @@ class Cities extends My_Controller {
 
     }
 
-    
 
     public function update()
     {

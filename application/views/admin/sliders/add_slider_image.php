@@ -41,17 +41,14 @@
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
                        <input type='file' name='image' size='20' />
-                           <span style="color: #97310e;"> Size ( 1920 * 1000 ) </span>
+					   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">
                            <label>Arabic Image</label>
                            <input type='file' name='image_ar' size='20' />
-                           <span style="color: #97310e;"> Size ( 1920 * 1000 ) </span>
+						   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
                        </div>
-
-
-					 
 
 					   <div class="col-md-7  form-group">
                            <label>Alt *</label>
@@ -59,8 +56,42 @@
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                       <input type="hidden" value="1" name="dispaly_text">
+					   <div class="col-md-7  form-group">
+                           <label>Slider Heading</label>
+                           <input type="text" name="slider_heading" value="<?php if(empty(set_value('slider_heading')) && isset($data)){ echo $data['data']['slider_heading']; } else { echo set_value('slider_heading'); } ?>" class="form-control" placeholder="Slider Heading" />
+                           <?php echo form_error('slider_heading', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
 
+
+					   <div class="col-md-7  form-group">
+                           <label>Slider Text</label>
+                           <input type="text" name="slider_text" value="<?php if(empty(set_value('slider_text')) && isset($data)){ echo $data['data']['slider_text']; } else { echo set_value('slider_text'); } ?>" class="form-control" placeholder="Slider Text" />
+                           <?php echo form_error('slider_text', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+
+					   <div class="col-md-7  form-group">
+                           <label>Slider Heading Arabic</label>
+                           <input dir="rtl" type="text" name="slider_heading_ar" value="<?php if(empty(set_value('slider_heading_ar')) && isset($data)){ echo $data['data']['slider_heading_ar']; } else { echo set_value('slider_heading_ar'); } ?>" class="form-control" placeholder="Slider Heading Arabic" />
+                           <?php echo form_error('slider_heading_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+
+					   <div class="col-md-7  form-group">
+                           <label>Slider Text Arabic</label>
+                           <input dir="rtl" type="text" name="slider_text_ar" value="<?php if(empty(set_value('slider_text_ar')) && isset($data)){ echo $data['data']['slider_text_ar']; } else { echo set_value('slider_text_ar'); } ?>" class="form-control" placeholder="Slider Text Arabic" />
+                           <?php echo form_error('slider_text_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+
+                      
+                       <div class="col-md-7 from-group">
+                           <label>Slider Text Display</label>
+                           <select name="dispaly_text" class="form-control">
+                           <option value="1">Yes</option>
+                           <option value="0">No</option>
+                           </select>
+                       </div>
 
                            <div class="col-md-7 form-group">
                                <label>Status</label>

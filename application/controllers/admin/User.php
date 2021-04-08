@@ -31,7 +31,7 @@ class User extends My_Controller {
     }
 	public function save()
     {
-        $this->form_validation->set_rules('username', 'username', 'required|is_unique[users.username]');
+         $this->form_validation->set_rules('username', 'username', 'required|is_unique[users.username]');
          $this->form_validation->set_rules('email', 'email', 'required|is_unique[users.email]');
          $this->form_validation->set_rules('password', 'password', 'required');
         //$this->form_validation->set_rules('title', 'Name', 'trim|required|is_unique[pbk_groups.Name]');

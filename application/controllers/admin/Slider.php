@@ -12,6 +12,8 @@ class Slider extends My_Controller {
     }
     public function index()
 	{
+
+	
 	    $data['rcd'] = $this->sliders_m->getAllSlider();
 	    $this->load->view('admin/sliders/view', $data);
 	}
@@ -41,9 +43,11 @@ class Slider extends My_Controller {
             $config['upload_path']          = './uploads/sliders/';
             $config['allowed_types']        = 'jpg|jpeg|png|gif';
             $config['encrypt_name']          = TRUE;
-//            $config['max_width']            = 1920;
-//            $config['max_height']           = 1000;
-
+			
+			$config['max_width'] = 1920;
+			$config['max_height'] = 1080;
+			$config['min_width'] = 1920;
+			$config['min_height'] = 1080;
             $this->load->library('upload', $config);
 
             if (!$this->upload->do_upload('image'))
@@ -68,6 +72,10 @@ class Slider extends My_Controller {
                    $image_ar = $uploadData['file_name'];
                }
 
+			   $user = $_SESSION["username"];
+
+			   $now = date('Y-m-d H:i:s');
+
             $data = array(
 
                 'title' => $this->input->post('title'),
@@ -80,7 +88,9 @@ class Slider extends My_Controller {
                 'slider_sub_text_ar' => $this->input->post('slider_sub_text_ar'),
                 'dispaly_text' => $this->input->post('dispaly_text'),
                 'page_tempalet_id' => $this->input->post('page_tempalet_id'),
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+				'updated_by' => $user,
+				'updated_at' => $now
             );
 
              $this->sliders_m->saveSlider($data);
@@ -123,8 +133,10 @@ class Slider extends My_Controller {
                 $config['upload_path'] = './uploads/sliders/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
-                //       $config['max_width'] = 1920;
-            //        $config['max_height'] = 1000;
+                $config['max_width'] = 1920;
+                $config['max_height'] = 1080;
+				$config['min_width'] = 1920;
+                $config['min_height'] = 1080;
 
                 $this->load->library('upload', $config);
 
@@ -157,7 +169,9 @@ class Slider extends My_Controller {
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
                 $config['max_width'] = 1920;
-                $config['max_height'] = 1000;
+                $config['max_height'] = 1080;
+				$config['min_width'] = 1920;
+                $config['min_height'] = 1080;
 
 
                 $this->load->library('upload', $config);
@@ -188,15 +202,24 @@ class Slider extends My_Controller {
 
             $user = $_SESSION["username"];
 
+        $now = date('Y-m-d H:i:s');
+
+
             $data['data'] = array(
 
                 'title' => $this->input->post('title'),
                 'image' => $image,
                 'image_ar' => $image_ar,
                 'alt' => $this->input->post('alt'),
+				'slider_heading' => $this->input->post('slider_heading'),
+				'slider_text' => $this->input->post('slider_text'),
+				'slider_heading_ar' => $this->input->post('slider_heading_ar'),
+				'slider_text_ar' => $this->input->post('slider_text_ar'),
+				'dispaly_text' => $this->input->post('dispaly_text'),
                
                 'status' => $this->input->post('status'),
-                'updated_by' => $user
+				'updated_by' => $user,
+				'updated_at' => $now
             );
 
             $this->sliders_m->updateSlider($data);
@@ -222,8 +245,10 @@ class Slider extends My_Controller {
            $config['upload_path']          = './uploads/sliders/';
            $config['allowed_types']        = 'jpg|jpeg|png|gif';
            $config['encrypt_name']          = TRUE;
-//           $config['max_width']            = 1920;
-//           $config['max_height']           = 1000;
+           $config['max_width']            = 1920;
+           $config['max_height']           = 1080;
+		   $config['min_width']            = 1920;
+           $config['min_height']           = 1080;
 
            $this->load->library('upload', $config);
 
@@ -267,12 +292,12 @@ class Slider extends My_Controller {
 
                $image_ar = $this->input->post('image_ar2');
            }
-       }
-       $data['id'] = $this->input->post('id');
+        }
+			$data['id'] = $this->input->post('id');
 
-       $user = $_SESSION["username"];
+			$user = $_SESSION["username"];
 
-       $now = date('Y-m-d H:i:s');
+			$now = date('Y-m-d H:i:s');
 
        $data['data'] = array(
 
@@ -280,11 +305,11 @@ class Slider extends My_Controller {
            'image' => $image,
            'image_ar' => $image_ar,
            'alt' => $this->input->post('alt'),
+           'slider_heading' => $this->input->post('slider_heading'),
            'slider_text' => $this->input->post('slider_text'),
-           'slider_sub_text' => $this->input->post('slider_sub_text'),
+           'slider_heading_ar' => $this->input->post('slider_heading_ar'),
            'slider_text_ar' => $this->input->post('slider_text_ar'),
-           'slider_sub_text_ar' => $this->input->post('slider_sub_text_ar'),
-           'dispaly_text' => $this->input->post('dispaly_text'),
+		   'dispaly_text' => $this->input->post('dispaly_text'),
            'page_tempalet_id' => $this->input->post('page_tempalet_id'),
            'status' => $this->input->post('status'),
            'updated_by' => $user,
@@ -324,8 +349,10 @@ class Slider extends My_Controller {
            $config['upload_path']          = './uploads/sliders/';
            $config['allowed_types']        = 'jpg|jpeg|png|gif';
            $config['encrypt_name']          = TRUE;
-//           $config['max_width']            = 1920;
-//           $config['max_height']           = 1000;
+           $config['max_width']            = 1920;
+           $config['max_height']           = 1080;
+		   $config['min_width']            = 1920;
+           $config['min_height']           = 1080;
 
            $this->load->library('upload', $config);
 
@@ -350,13 +377,23 @@ class Slider extends My_Controller {
                $image_ar = $uploadData['file_name'];
            }
 
+		   $user = $_SESSION["username"];
+
+		   $now = date('Y-m-d H:i:s');
+
 		   $data = array(
                'image' => $image,
                'image_ar' => $image_ar,
                'alt' => $this->input->post('alt'),
-              
-               'page_tempalet_id' => $this->input->post('page_tempalet_id'),
-               'status' => $this->input->post('status')
+			   'slider_heading' => $this->input->post('slider_heading'),
+			   'slider_text' => $this->input->post('slider_text'),
+			   'slider_heading_ar' => $this->input->post('slider_heading_ar'),
+			   'slider_text_ar' => $this->input->post('slider_text_ar'),
+			   'dispaly_text' => $this->input->post('dispaly_text'),
+                'page_tempalet_id' => $this->input->post('page_tempalet_id'),
+               'status' => $this->input->post('status'),
+			   'updated_by' => $user,
+			   'updated_at' => $now
            );
 
            $this->sliders_m->saveSliderImage($data);
@@ -368,7 +405,6 @@ class Slider extends My_Controller {
    public function view_slider($id)
    {
       $data['rcd'] = $this->sliders_m->getSliderImagById($id);
-
 
       $this->load->view('admin/sliders/view_slider_images', $data);
    }

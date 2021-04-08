@@ -123,13 +123,23 @@
                        </div> -->
 
                        <div class="col-md-7  form-group">
-                           <label>Thumbnail Image *</label>
-                           <span style="color: #97310e;"> Size ( 225 * 210 ) </span>
-                           <input type='file' name='thumb' size='20' /><br>
-                           <?php if (!empty($row->thumbnail)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail; ?>">
-                               <input type="hidden" value="<?php echo $row->thumbnail; ?>" name="thumb2">
+                           <label>Thumbnail 1 Image *</label>
+                           <span style="color: #97310e;"> Size ( 321 * 282 ) </span>
+                           <input type='file' name='thumb1' size='20' /><br>
+                           <?php if (!empty($row->thumbnail1)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail1; ?>">
+                               <input type="hidden" value="<?php echo $row->thumbnail1; ?>" name="thumb12">
                            <?php } ?>
                        </div>
+
+					   <div class="col-md-7  form-group">
+                           <label>Thumbnail 2 Image *</label>
+                           <span style="color: #97310e;"> Size ( 508 * 391 ) </span>
+                           <input type='file' name='thumb2' size='20' /><br>
+                           <?php if (!empty($row->thumbnail2)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail2; ?>">
+                               <input type="hidden" value="<?php echo $row->thumbnail2; ?>" name="thumb22">
+                           <?php } ?>
+                       </div>
+
 
                        <div class="col-md-7  form-group">
                            <label>Image 1 </label>

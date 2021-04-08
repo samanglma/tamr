@@ -92,7 +92,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">P</i>
+                    <i class="material-icons">shopping_cart</i>
                     <span class="nav-label">Products</span>
                 </a>
                 <ul>
@@ -218,7 +218,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">E</i>
+                    <i class="material-icons">email</i>
                     <span class="nav-label">Email Templates</span>
                 </a>
                 <ul>
@@ -266,7 +266,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/inquiries" class="">
-                    <i class="material-icons">I</i>
+                    <i class="material-icons">feed</i>
                     <span class="nav-label">Inquiries</span>
                 </a>
             </li>
@@ -276,7 +276,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/subscribers" class="">
-                    <i class="material-icons">S</i>
+                    <i class="material-icons">subscriptions</i>
                     <span class="nav-label">Subscriber</span>
                 </a>
             </li>
@@ -325,7 +325,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">content_copy</i>
+                    <i class="material-icons">flag</i>
                     <span class="nav-label">Manage Localization</span>
                 </a>
                 <ul>
@@ -374,7 +374,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/rating" class="">
-                    <i class="material-icons">R</i>
+                    <i class="material-icons">star_border</i>
                     <span class="nav-label"> Products Rating</span>
                 </a>
             </li>
@@ -383,17 +383,16 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/customers" class="">
-                    <i class="material-icons">C</i>
+                    <i class="material-icons">people_outline</i>
                     <span class="nav-label"> Customers</span>
                 </a>
             </li>
-
 
             <li <?php if ($this->uri->segment(2) == "settings" && $this->uri->segment(3) == "edit") {
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/settings/edit" class="">
-                    <i class="material-icons">I</i>
+                    <i class="material-icons">settings</i> 
                     <span class="nav-label"> Settings</span>
                 </a>
             </li>
@@ -403,9 +402,11 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">U</i>
+                    <i class="material-icons">manage_accounts</i>
                     <span class="nav-label">Sub Admins</span>
                 </a>
+
+
                 <ul>
                     <li <?php if ($this->uri->segment(2) == "user" ) {
                             echo 'class="active"';

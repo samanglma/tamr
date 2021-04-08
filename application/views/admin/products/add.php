@@ -145,9 +145,15 @@
                        </div> -->
 
                        <div class="col-md-7  form-group">
-                           <label>Thumbnail *</label>
-                           <input type='file' name='thumb' size='20' />
-                           <span style="color: #97310e;"> Size ( 225 * 210 ) </span>
+                           <label>Thumbnail 1 *</label>
+                           <input type='file' name='thumb1' size='20' />
+                           <span style="color: #97310e;"> Size ( 321 * 282 ) </span>
+                       </div>
+
+					   <div class="col-md-7  form-group">
+                           <label>Thumbnail 2 *</label>
+                           <input type='file' name='thumb2' size='20' />
+                           <span style="color: #97310e;"> Size ( 508 * 210 ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">

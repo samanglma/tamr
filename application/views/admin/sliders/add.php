@@ -49,11 +49,13 @@
 
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
+						   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
                        <input type='file' name='image' size='20' />
                        </div>
 
                        <div class="col-md-7  form-group">
                            <label>Arabic Image</label>
+						   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
                            <input type='file' name='image_ar' size='20' />
                        </div>
 
@@ -86,15 +88,14 @@
 
                        </div>
 
-                       <div class="col-md-7 from-group">
-                           <label>Slider Text Display</label>
+
+					   <div class="col-md-7 form-group">
+					   <label>Display Text on Slider</label>
                            <select name="dispaly_text" class="form-control">
-                           <option value="1">Yes</option>
-                           <option value="0">No</option>
-                           </select>
-                       </div>
-
-
+                                   <option value="1">Yes</option>
+                                   <option value="0">No</option>
+                               </select>
+                            </div>
 
                            <div class="col-md-7 form-group">
                                <label>Status</label>
