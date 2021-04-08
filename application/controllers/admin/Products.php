@@ -11,6 +11,7 @@ class Products extends My_Controller
         $this->load->model('Products_m');
         $this->load->model('Brands_m');
         $this->load->model('Categories_m');
+		$this->load->model('sub_categories_m');
         $this->load->model('Variant_m');
     }
     public function index()
@@ -33,7 +34,7 @@ class Products extends My_Controller
     public function myformAjax($id)
     {
 
-        $result = $this->db->where("parent_id", $id)->get("categories")->result();
+        $result = $this->db->where("cat_id", $id)->get("sub_categories")->result();
         echo json_encode($result);
     }
 
@@ -60,8 +61,8 @@ class Products extends My_Controller
             'price' => $this->input->post('price'),
             'vat_price' => $this->input->post('vat_price'),
             'alt' => $this->input->post('alt'),
-            'alt_ar' => $this->input->post('alt_ar'),
-             'alt_ar' => $this->input->post('alt_ar'),
+           // 'alt_ar' => $this->input->post('alt_ar'),
+           
             //'brand_id' => $this->input->post('brand_id'), 
             //'status' => $this->input->post('status'),
             //'mark_as_new'=>$this->input->post('markAsNew'),
@@ -123,8 +124,6 @@ class Products extends My_Controller
                     $thumb2 = $uploadData['file_name'];
                 }
             }
-
-
 
             $config['upload_path']          = './uploads/products/';
             $config['allowed_types']        = 'jpg|jpeg|png|gif';
@@ -233,7 +232,8 @@ class Products extends My_Controller
                 'alt' => $this->input->post('alt'),
              //   'alt_ar' => $this->input->post('alt_ar'),
                 // 'brand_id' => $this->input->post('brand_id'),  
-                'cat_id' => $this->input->post('cat_id'),
+				'cat_id' => $this->input->post('cat_id'),
+				'child_cat' => $this->input->post('child_cat'),
                // 'cat_id' => $this->input->post('cat_id'),
                 'status' => $this->input->post('status'),
                 'mark_as_new' => $this->input->post('markAsNew'),
@@ -271,7 +271,7 @@ class Products extends My_Controller
         $data['brands'] = $this->Brands_m->getAll();
         //$data['categories'] = $this->Categories_m->getAllCategory(); 
         $data['categories'] = $this->Categories_m->getAllParentCategory();
-        $data['chlid_categories'] = $this->Categories_m->getAllChildCategory();
+        $data['chlid_categories'] = $this->sub_categories_m->getAllSubCategoryForProduct();
         $data['variantss'] = $this->Variant_m->getAll();
         $this->load->view('admin/products/edit', $data);
     }
@@ -509,7 +509,7 @@ class Products extends My_Controller
 
         $title = $this->input->post('title');
         $slugs = url_title($title);
-        $slug = strtolower($slugs);
+         $slug = strtolower($slugs);
 
         $user = $_SESSION["username"];
 
@@ -534,8 +534,9 @@ class Products extends My_Controller
             'price' => $this->input->post('price'),
             'vat_price' => $this->input->post('vat_price'),
            // 'alt_ar' => $this->input->post('alt_ar'),
-            // 'brand_id' => $this->input->post('brand_id'), 
-            'cat_id' => $this->input->post('child_cat'),
+            // 'brand_id' => $this->input->post('brand_id'),  child_cat
+            'cat_id' => $this->input->post('cat_id'),
+			'child_cat' => $this->input->post('child_cat'),
             'status' => $this->input->post('status'),
             'mark_as_new' => $this->input->post('markAsNew'),
             'top_seller' => $this->input->post('topSeller'),
@@ -549,38 +550,36 @@ class Products extends My_Controller
 
             $subscribers = $this->db->get_where('out_of_stock_subscribers', ['product_id' => $id, 'notified' => 0])->result();
             foreach ($subscribers as $sub) {
-
-
                 $this->email->from('saman@glmaagency.com', 'Tamr');
                 $this->email->to($sub->email);
                 $this->email->subject($this->input->post('title') . ' is back on stock at Tamr');
                 $name = 'Dear Subscriber';
 
                 $message2 = "
-            <html>
-            <head>
-            <title>DepaChika</title>
-            </head>
-            <body>
-            <p style='margin-bottom:0'>We’d like to notify you that the product you wanted from " . $brand['brand_name'] . " is back on stock!</p><p> Visit our <a href='" . base_url() . "'>website</a> to purchase it now.</p>
-            <br><table border='0' width='200px'>
-            <tr>
-            <td><a href='" . base_url() . "'><img src='" . base_url() . "uploads/products/$thumb1'><p>" . $this->input->post('title') . "</p></td></td>
-            </tr>
-            </table>
-            <table border='0' width='600px'>
-            <tr>
-            <td>
-            <br><p><strong>Regards,</strong></p>
-            <p><strong>Depachika Food Hall Customer Service Team</strong></p>
-            <img src='" . base_url() . "assets/frontend/images/invoiceLogo.png' width='200' style='width:200px'>
-            </td></td>
-            </tr>
-            </table>
-            
-            </body>
-            </html>
-            ";
+				<html>
+				<head>
+				<title>DepaChika</title>
+				</head>
+				<body>
+				<p style='margin-bottom:0'>We’d like to notify you that the product you wanted from " . $brand['brand_name'] . " is back on stock!</p><p> Visit our <a href='" . base_url() . "'>website</a> to purchase it now.</p>
+				<br><table border='0' width='200px'>
+				<tr>
+				<td><a href='" . base_url() . "'><img src='" . base_url() . "uploads/products/$thumb1'><p>" . $this->input->post('title') . "</p></td></td>
+				</tr>
+				</table>
+				<table border='0' width='600px'>
+				<tr>
+				<td>
+				<br><p><strong>Regards,</strong></p>
+				<p><strong>Depachika Food Hall Customer Service Team</strong></p>
+				<img src='" . base_url() . "assets/frontend/images/invoiceLogo.png' width='200' style='width:200px'>
+				</td></td>
+				</tr>
+				</table>
+				
+				</body>
+				</html>
+				";
 
                 $this->email->set_mailtype("html");
                 $this->email->message($message2);
@@ -594,6 +593,7 @@ class Products extends My_Controller
         $this->db->where('product_id', $data['id']);
         $this->db->delete('product_variants');
         $variants = $this->input->post('variants');
+
        
         foreach ($variants as $v_value) {
             $variant = $this->Variant_m->getVariantValueByID($v_value);

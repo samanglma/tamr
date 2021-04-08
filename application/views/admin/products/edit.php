@@ -57,11 +57,11 @@
                        <div class="col-md-7 form-group">
                            <label for="title">Select Subcategory:</label>
                            <select name="child_cat" class="form-control">
-                               <?php foreach ($chlid_categories as $category) { ?>
+                               <?php foreach ($chlid_categories as $sub) { ?>
 
-                                   <option value="<?php echo $category->id ?>" <?php if ($category->id == $row->child_cat) {
+                                   <option value="<?php echo $sub->id ?>" <?php if ($sub->id == $row->child_cat) {
                                                                                     echo "selected";
-                                                                                } ?>><?php echo $category->title; ?></option>
+                                                                                } ?>><?php echo $sub->title; ?></option>
                                <?php } ?>
 
                            </select>

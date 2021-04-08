@@ -32,6 +32,12 @@
 
                    <form method="post" action="<?php echo base_url()?>admin/categories/save" enctype="multipart/form-data">
 
+                      <div class="col-md-7  form-group">
+                           <label>Main Category</label>
+                           <input type="text" name="" value="<?php if(!empty($cat_name)){echo $cat_name->title;}else{ echo 'No Main Category';}?>" class="form-control" placeholder="Category Name" disabled/>
+                          
+                       </div>
+
                        <div class="col-md-7  form-group">
                            <label>Category Name *</label>
                            <input type="text" name="title" value="<?= set_value('title') == '' ? (isset($_SESSION['data']) && $_SESSION['data']['title']) ?? '' : set_value('title') ?>" class="form-control" placeholder="Category Name" />
@@ -41,11 +47,26 @@
                            <label>Arabic Category Name</label>
                            <input dir="rtl" type="text" name="title_ar" value="<?= set_value('title_ar') ?>" class="form-control" placeholder="Category Name" />
                        </div>
-                    
+                     <!--   <div class="col-md-7  form-group">
+        						   <label> Image *</label>
+        						   <input type='file' Required  name='image' size='20' />
+        						   <span style="color: #97310e;"> Size ( 1200 * 900 ) </span> 
+        					   </div> -->
 
-                       <input type="hidden" name="parent_id" value="0">
+                       <input type="hidden" name="parent_id" value="<?php echo $id; ?>">
 
-                  
+                      
+                   <!--  <div class="col-md-7 form-group">
+                               <label>Parent Category</label>
+                               <select name="parent_id" class="form-control">
+                                <option value="0">No Parent</option>
+                                   <?php foreach ($parents_cat as $cat) {?>
+                                   <option value="<?php echo $cat->id;?>"><?php echo $cat->title;?></option>
+                                   <?php } ?>
+                               </select>
+                           </div> -->
+
+
                        <div class="col-md-7 form-group">
                                <label>Status</label>
                                <select name="status" class="form-control">

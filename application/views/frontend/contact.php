@@ -63,6 +63,7 @@ i{
 color:black !important;
 } */
 
+
 </style>
 
  
@@ -91,7 +92,7 @@ color:black !important;
     <input type="text" placeholder="EMAIL"  class="form-control"  name='email'/>
     </div>
     <div class="form-group">
-    <textarea name="message" rows="5" class="msg form-control"  placeholder="Message"></textarea>
+    <textarea name="message" rows="3" class="msg form-control"  placeholder="MESSAGE"></textarea>
     </div>
    <!--  <input type="text" placeholder="Message" name='msg' class="msg" />
 -->

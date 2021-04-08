@@ -6,10 +6,6 @@ class Home extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
-   $this->load->model('categories_m');
-     $this->load->model('Sub_Categories_m');
-   $this->load->model('Sliders_m');
 	}
 
 	public function index()
@@ -26,19 +22,11 @@ class Home extends MY_Controller
 			'Home' => base_url(),
 		];
 
-        $cat_id = 1;
 		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
-		
-        $data['categories'] = $this->Sub_Categories_m->getSubCatbyId($cat_id);
-
-
-
-	//	$data['categories'] = $this->Categories_m->getCategoriesByParent($cat_id);
-
-    $data['sliders'] = $this->Sliders_m->getSliders();
-		/* echo '<pre>';
-		 print_r($data['categories']);
-		 die();*/
+		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
+		// echo '<pre>';
+		// print_r($data['categories']);
+		// die();
 
 		$this->load->view('frontend/includes/header', $data);
 		$this->load->view('frontend/includes/navigation');

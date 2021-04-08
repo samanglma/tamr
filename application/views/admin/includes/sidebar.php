@@ -26,6 +26,28 @@
                 </ul>
             </li>
 
+
+			<li <?php if ($this->uri->segment(2) == "subcategories") {
+                    echo 'class="active"';
+                } ?>>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">category</i>
+                    <span class="nav-label">Subcategories</span>
+                </a>
+                <ul>
+                    <li <?php if ($this->uri->segment(2) == "subcategories" && $this->uri->segment(3) == "add") {
+                            echo 'class="active"';
+                        } ?>>
+                        <a href="<?php echo base_url() ?>admin/subcategories/add">Add Subcategory</a>
+                    </li>
+                    <li <?php if ($this->uri->segment(2) == "subcategories" && $this->uri->segment(3) == "") {
+                            echo 'class="active"';
+                        } ?>>
+                        <a href="<?php echo base_url() ?>admin/subcategories">View Subcategories</a>
+                    </li>
+                </ul>
+            </li>
+
             <li <?php if ($this->uri->segment(2) == "slider") {
                     echo 'class="active"';
                 } ?>>

@@ -20,6 +20,17 @@ class Sliders_m  extends CI_Model
 
     }
 
+    public function getSliders()
+    {
+          $this->db->select('*');
+          $this->db->where('status', 1);
+        $this->db->from('sliders');
+        $query = $this->db->get()->result();
+
+        return $query;
+
+    }
+
     public function editSlider($id)
     {
         $this->db->select('sliders.*, sliders.id as sliderID');

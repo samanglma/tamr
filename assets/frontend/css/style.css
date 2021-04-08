@@ -252,20 +252,30 @@ aside .menuss {
   top: 128%;
 }
 
+.msg::placeholder {  
+                  
+		
+	padding-top: 50px;
+						
+	} 
+
+
 .toggle-bar::before, .toggle-bar::after {
   content: "";
   display: block;
   background: none;
-  height: 2px;
-  width: 52px;
+  height: 3px;
+  width: 28px;
   position: absolute;
-  top: 0;
+  top: 13px;
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
   -ms-transform-origin: 13%;
   -webkit-transform-origin: 13%;
   transform-origin: 13%;
+	margin-left: 15px;
+	margin-top: -2px;
 }
 
 .toggle-bar::after {
@@ -1111,20 +1121,7 @@ body {
   font-weight: 300;
 }
 
-.submit-btn.btn
-{
-  position: absolute;
-  bottom: 15px;
-  right:0
-}
 
-.contactForm
-{
-  position: relative;
-}
-.alert.alert-danger p {
-  margin:0;
-}
 
 /*   my css   */
 
@@ -1234,4 +1231,25 @@ hr {
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #5f534a;
+}
+
+.submit-btn.btn
+{
+  position: absolute;
+  bottom: 15px;
+  right:-30px;
+	font-size: 21px;
+}
+
+.submit-btn.btn:hover{
+
+	letter-spacing: 4px;
+	border-bottom: 1px solid #5f534A !important;
+}
+.contactForm
+{
+  position: relative;
+}
+.alert.alert-danger p {
+  margin:0;
 }

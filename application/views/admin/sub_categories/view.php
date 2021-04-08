@@ -2,16 +2,16 @@
     <?php $this->load->view('admin/includes/sidebar'); ?>
    <section class="content">
        <div class="page-heading">
-           <h1>Subcategories</h1>
+           <h1>Categories</h1>
            <ol class="breadcrumb">
                <li><a href="javascript:void(0);">Home</a></li>
                <li><a href="javascript:void(0);">Tables</a></li>
-               <li class="active">Subcategories List</li>
+               <li class="active">Categories List</li>
            </ol>
        </div>
        <div class="page-body">
            <div class="panel panel-default">
-               <div class="panel-heading">Subcategories List</div>
+               <div class="panel-heading">Categories List</div>
                <div class="panel-body">
                    <?php if($this->session->flashdata('success')){?>
                        <div class="alert alert-success text-center" role="alert">
@@ -29,10 +29,11 @@
                        <tr>
                            <th>Title</th>
                            <th>Arabic Title</th>
-                           <th>Main Categories</th>
+                           <th>Category Type</th>
+                           <th>Last updated on</th>
+                           <th>Updated By</th>
                            <th>Status</th>
-						   <th>Last updated on</th>
-                            <th>Updated by</th>
+
                            <th>Action</th>
                        </tr>
                        </thead>
@@ -41,14 +42,16 @@
                        <tr>
                            <td width=""><?php echo $row->title; ?></td>
                            <td width=""><?php echo $row->title_ar; ?></td>
-                           <td width=""><?php echo $row->catTitle; ?></td>
+                            <td width=""><?php if($row->parent_id == 0){ echo 'Main Category';}else{ echo 'Subcategory';} ?></td>
+                            <td width=""><?php echo $row->updated_at; ?></td>
+                            <td width=""><?php echo $row->updated_by; ?></td>
                            <td width=""><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
-						   <td><?php echo $row->updated_at; ?></td>
-                           <td><?php echo $row->updated_by; ?></td>
+
                            <td width="">
                                <div class="btn-group">
-                                   <a href="<?php echo base_url()?>admin/subcategories/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>
-                                   <a href="<?php echo base_url()?>admin/subcategories/delete/<?php echo $row->id;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>
+                                 <a href="<?php echo base_url()?>admin/categories/add_chlid/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Add Subcategory</button></a>
+                                   <a href="<?php echo base_url()?>admin/categories/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>
+                                   <a href="<?php echo base_url()?>admin/categories/delete/<?php echo $row->id;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>
                                </div>
                            </td>
                        </tr>
