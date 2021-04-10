@@ -15,7 +15,7 @@ class Report extends My_Controller
 
         $this->load->library('Paypal_lib');
         $this->load->library('user_agent');
-        $this->load->model('Social_m');
+      //  $this->load->model('Social_m');
         $this->load->model('products_m');
         $this->load->model('common_model');
         $this->load->model('OrderItems_m');

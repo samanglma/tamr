@@ -27,59 +27,17 @@
                    <form method="post" action="<?php echo base_url()?>admin/categories/update" enctype="multipart/form-data">
                        <input type="hidden" value="<?php echo $row->id; ?>" name="id">
                        <div class="col-md-7  form-group">
-                           <label>Category Name *</label>
+                           <label>Category Title *</label>
                            <input type="text" value="<?php echo $row->title;?>" name="title" class="form-control" placeholder="Category Name" />
                            <?php echo form_error('title', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
                        <div class="col-md-7  form-group">
-                           <label>Arabic Title</label>
+                           <label>Category Title Arabic</label>
                            <input dir="rtl" type="text" value="<?php echo $row->title_ar;?>" name="title_ar" class="form-control" placeholder="Category Name" />
                        </div>
 
-                      <!-- <div class="col-md-7  form-group">
-                           <label>Image *</label>
-                       <input type='file' name='image' size='20' /><br>
-                          <?php /*if(!empty($row->image)){*/?> <img width="20%" src="<?php /*echo base_url()*/?>uploads/categories/<?php /*echo $row->image;*/?>">
-                           <input type="hidden" value="<?php /*echo $row->image;*/?>" name="image2">
-                           <?php /*} */?>
-                       </div>
-
-                       <div class="col-md-7  form-group">
-                           <label>Alt *</label>
-                           <input type="text" value="<?php /*echo $row->alt;*/?>" name="alt" class="form-control" placeholder="Alt Tag" />
-                           <?php /*echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); */?>
-                       </div>-->
-
                     
-
-                        <div class="col-md-7 form-group">
-                               <label>Main Category</label>
-                               <select name="parent_id" class="form-control">
-                                <option value="0">No Main Category</option>
-                                   <?php foreach ($parents_cat as $cat) {?>
-                                   
-                                   <option value="<?= $cat->id; ?>"
-                                       <?php if ($cat->id == $row->parent_id) :
-                                           echo "selected=selected";
-                                       endif; ?>>
-                                       <?= $cat->title; ?>
-                                   </option>
-
-                                   <?php } ?>
-                               </select>
-                           </div>
-
-                           <div class="col-md-7  form-group">
-                           <label>Image *</label>
-                       <input type='file' Required name='image' size='20' />
-                       <span style="color: #97310e;"> Size ( 1200 * 900 ) </span> 
-                       <br>
-                          <?php if(!empty($row->image)){?> <img width="20%" src="<?php echo base_url()?>uploads/categories/<?php echo $row->image;?>">
-                           <input type="hidden" value="<?php echo $row->image;?>" name="image2">
-                           <?php } ?>
-                       </div>
-
                            <div class="col-md-7 form-group">
                                <label>Status</label>
                                <select name="status" class="form-control">

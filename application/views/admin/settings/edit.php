@@ -48,14 +48,24 @@
                        </div>
 
                        <div class="col-md-7  form-group">
-                           <label>Logo <small>(69*65px)</small></label>
+                          
                            <input type="file" value="<?php echo $row->logo; ?>" name="logo" class="form-control" placeholder="Logo" />
+
+                           <?php if($row->logo) { ?>
+                           <input type='hidden' name='logo' value='<?php echo $row->logo; ?>'>
+                               <img src='<?= base_url('uploads/settings/'.$row->logo) ?>'  width="60px" />
+                               <?php } ?>
                            
                        </div>
 
                        <div class="col-md-7  form-group">
-                           <label>Favicon <small>(32*32px)</small></label>
+                           <label>Favicon <small>(69*65px)</small></label>
                            <input type="file" value="<?php echo $row->favicon; ?>" name="favicon" class="form-control" placeholder="Favicon" />
+
+                           <?php if($row->favicon) { ?>
+                            <input type='hidden' name='favicon' value='<?php echo $row->favicon; ?>'>
+                               <img src='<?= base_url('uploads/settings/'.$row->favicon) ?>'  width="60px" />
+                               <?php } ?>
                            
                        </div>
 

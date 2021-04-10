@@ -28,18 +28,20 @@
                        <tr>
                            <th>Title</th>
                            <th>Arabic Title</th>
-                          
-                          
+                           <th>Last updated on</th>
+                           <th>Updated by</th>
                            <th>Action</th>
                        </tr>
                        </thead>
                        <tbody>
                        <?php foreach ($rcd as $row) {?>
                        <tr>
-                           <td width="30%"><?php echo $row->title; ?></td>
-                           <td width="30%"><?php echo $row->title_ar; ?></td>
+                           <td ><?php echo $row->title; ?></td>
+                           <td><?php echo $row->title_ar; ?></td>
+                           <td><?php echo $row->updated_at; ?></td>
+                           <td><?php echo $row->updated_by; ?></td>
                           
-                           <td width="30%">
+                           <td>
                                <div class="btn-group">
                                    <a href="<?php echo base_url()?>admin/pages/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>
                                   <!--  <a href="<?php echo base_url()?>admin/pages/delete/<?php echo $row->id;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a> -->

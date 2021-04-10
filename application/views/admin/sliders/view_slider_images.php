@@ -31,8 +31,9 @@
                            <th>Page Template</th>
                            <th>Image</th>
                            <th>Arabic Image</th>
-                           <th>Logo</th>
                            <th>Status</th>
+						   <th>Last updated on</th>
+                            <th>Updated by</th>
                            <th>Action</th>
                        </tr>
                        </thead>
@@ -44,14 +45,18 @@
                        <tr>
 
                            <!--<td width="20%"><?php /*echo $row->title; */?></td>-->
-                          <td width="20%"><?php echo $row->page_template_title; ?></td>
+                          <td width=""><?php echo $row->page_template_title; ?></td>
                           <td width="20%"><?php if(!empty($row->image)){ ?><img alt='' width="28%" src="<?php echo base_url() ?>uploads/sliders/<?php echo $row->image;?>" /><?php }?></td>
                            <td width="20%"><?php if(!empty($row->image_ar)){?><img alt='' width="28%" src="<?php echo base_url() ?>uploads/sliders/<?php echo $row->image_ar; ?>" /><?php } ?></td>
-						   <td width="20%"><?php if(!empty($row->image_ar)){?><img alt='' width="28%" src="<?php echo base_url() ?>uploads/sliders/<?php echo $row->logo; ?>" /><?php } ?></td>
 						   <!--<td><a href="<?php /*echo base_url()*/?>admin/slider/view_slider/<?php /*echo $row->pageTemID;*/?>"><button class="btn btn-info btn-xs">Sliders</button></a></td>-->
                            <!--<td><a href="<?php /*echo base_url()*/?>admin/slider/add_slider/<?php /*echo $row->pageTemID;*/?>"><button class="btn btn-info btn-xs">Sliders</button></a></td>-->
-                             <td width="10%"><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
-                           <td width="30%">
+						   
+							 <td width=""><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
+
+							 <td><?php echo $row->slider_updated_at; ?></td>
+                            <td><?php echo $row->updated_by; ?></td>
+
+                           <td width="">
                                <div class="btn-group">
                                    <a href="<?php echo base_url()?>admin/slider/edit/<?php echo $row->sliderID;?>"><button class="btn btn-info btn-xs">Edit</button></a>
                                    <a href="<?php echo base_url()?>admin/slider/delete/<?php echo $row->sliderID;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>

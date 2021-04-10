@@ -39,19 +39,6 @@
                            <?php echo form_error('name', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                         <div class="col-md-7 form-group">
-                               <label>Status</label>
-                               <select name="status" class="form-control">
-                                   <?php if($row->status == 1){?>
-                                   <option value="1">Active</option>
-                                   <option value="0">Inactive</option>
-                                   <?php } else{?>
-                                   <option value="0">Inactive</option>
-                                   <option value="1">Active</option>
-                                   <?php }?>
-                               </select>
-                           </div>
-
 
                        <!-- <div class="col-md-7 form-group">
                                <label>State *</label>

@@ -16,9 +16,10 @@ class Cities extends My_Controller {
         $this->load->view('admin/cities/view', $data);
     }
 
-    public function add()
+    public function add($id = '')
     {
-          
+		$data['state_id'] = $id;
+		
         $data['states'] = $this->cities_m->getAllStates();
 
         $this->load->view('admin/cities/add', $data);
@@ -36,11 +37,15 @@ class Cities extends My_Controller {
         }
         else{
 
+            $user = $_SESSION["username"];
+			$now = date('Y-m-d H:i:s');
             $data = array(
 
                 'name' => $this->input->post('name'),
                'state_id' => $this->input->post('state_id'),
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+                'updated_by' => $user,
+				'updated_at' => $now
 
             );
              $this->cities_m->saveCity($data);
@@ -59,7 +64,6 @@ class Cities extends My_Controller {
 
     }
 
-    
 
     public function update()
     {
@@ -74,11 +78,18 @@ class Cities extends My_Controller {
         else{
 
             $data['id'] = $this->input->post('id');
+
+            $user = $_SESSION["username"];
+
+            $now = date('Y-m-d H:i:s');
+            
             $data['data'] = array(
 
                 'name' => $this->input->post('name'),
                'state_id' => $this->input->post('state_id'),
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+                'updated_by' =>  $user,
+                'updated_at' => $now
             );
 
             $this->cities_m->updateCity($data);

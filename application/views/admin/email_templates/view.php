@@ -31,6 +31,8 @@
                            <th>Template</th>
                           
                            <th>Status</th>
+                           <th>Last updated on</th>
+                           <th>Updated by</th>
                            <th>Action</th>
                        </tr>
                        </thead>
@@ -41,7 +43,8 @@
                            <td><?php echo $row->template; ?></td>
 
                             <td><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';}?></td>
-
+                            <td><?php echo $row->updated_at; ?></td>
+                                <td><?php echo $row->updated_by; ?></td>
                            <td>
                                <div class="btn-group">
                                    <a href="<?php echo base_url()?>admin/email_templates/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>

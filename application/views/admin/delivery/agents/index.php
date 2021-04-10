@@ -45,7 +45,8 @@
                                     <?php foreach ($row->availability as $val) {
                                         echo ucfirst($val->day) . ' => ' . date("h:ia", strtotime($val->available_from)) . ' - ' . date("h:ia", strtotime($val->available_till)) . '<br>';
                                     }
-                                    ?></td>
+                                    ?>
+								</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="<?php echo base_url() ?>admin/agents/edit/<?php echo $row->ID; ?>"><button class="btn btn-info btn-xs">Edit</button></a>

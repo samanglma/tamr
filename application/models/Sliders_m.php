@@ -20,6 +20,17 @@ class Sliders_m  extends CI_Model
 
     }
 
+    public function getSliders()
+    {
+          $this->db->select('*');
+          $this->db->where('status', 1);
+        $this->db->from('sliders');
+        $query = $this->db->get()->result();
+
+        return $query;
+
+    }
+
     public function editSlider($id)
     {
         $this->db->select('sliders.*, sliders.id as sliderID');
@@ -77,7 +88,7 @@ class Sliders_m  extends CI_Model
 
     public function getSliderImagById($id)
     {
-        $this->db->select('sliders.*,sliders.*, sliders.id as sliderID, pages_template.*, pages_template.id as pageTemID, page_template_code');
+        $this->db->select('sliders.*,sliders.updated_at as slider_updated_at, sliders.id as sliderID, pages_template.*, pages_template.id as pageTemID, page_template_code');
         $this->db->where('page_tempalet_id', $id);
         $this->db->from('sliders');
         $this->db->join('pages_template', 'pages_template.id = sliders.page_tempalet_id');

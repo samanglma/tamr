@@ -30,49 +30,40 @@
 
                <div class="panel-body">
 
-                   <form method="post" action="<?php echo base_url()?>admin/sub_categories/save" enctype="multipart/form-data">
+                   <form method="post" action="<?php echo base_url()?>admin/subcategories/save" enctype="multipart/form-data">
                        <div class="col-md-7  form-group">
                            <label>Title *</label>
                            <input type="text" name="title" value="<?= set_value('title') ?>" class="form-control" placeholder="Subcategory Title" />
                            <?php echo form_error('title', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
+					   
                        <div class="col-md-7  form-group">
                            <label>Arabic Title</label>
                            <input dir="rtl" type="text" name="title_ar" value="<?= set_value('title_ar') ?>" class="form-control" placeholder="Subcategory Title" />
                        </div>
 
                        <div class="col-sm-7 form-group">
-                           <label>Categories *</label>
+                           <label>Main Categories *</label>
                            <select name="cat_id" class="form-control">
                                <option value="">Select Category</option>
-                               <?php foreach ($categories as $cat){?>
+                               <?php foreach ($parents_cat as $cat){?>
                                    <option value="<?php echo $cat->id;?>"><?php echo $cat->title;?></option>
                                <?php } ?>
 
                            </select>
+						   <?php echo form_error('cat_id', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                       <div class="col-md-7  form-group">
-                           <label>Meta Title *</label>
-                           <input type="text" name="mtitle" value="<?= set_value('mtitle') ?>" class="form-control" placeholder="Meta Title" />
-                           <?php echo form_error('mtitle', '<div class="error" style="color: red;">', '</div>'); ?>
+					   <div class="col-md-12 form-group">
+                           <label>Description</label>
+                           <textarea class="ckeditor1 ckeditor" name="description" id="editor"> <?= set_value('description') ?> </textarea>
                        </div>
 
-                       <div class="col-md-7  form-group">
-                           <label>Arabic Meta Title</label>
-                           <input dir="rtl" type="text" name="mtitle_ar" value="<?= set_value('mtitle_ar') ?>" class="form-control" placeholder="Arabic Meta Title" />
+                       <div class="col-md-12 form-group">
+                           <label>Arabic Description</label>
+                           <textarea class="ckeditor1 ckeditor" name="description_ar" id="editor_ar"> <?= set_value('description_ar') ?> </textarea>
                        </div>
 
-                       <div class="col-md-7  form-group">
-                           <label>Meta Description *</label>
-                           <input  type="text" name="mdesc" value="<?= set_value('mdesc') ?>" class="form-control" placeholder="Meta Description" />
-                           <?php echo form_error('mdesc', '<div class="error" style="color: red;">', '</div>'); ?>
-                       </div>
-
-                       <div class="col-md-7  form-group">
-                           <label>Arabic Meta Description</label>
-                           <input dir="rtl" type="text" name="mdesc_ar" value="<?= set_value('mdesc_ar') ?>" class="form-control" placeholder="Arabic Meta Description" />
-                       </div>
 
                        <div class="col-md-7 form-group">
                                <label>Status</label>

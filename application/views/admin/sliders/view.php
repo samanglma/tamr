@@ -32,6 +32,10 @@
 
                            <th>Slider Images</th>
 
+                         <!--   <th>Created by</th>
+
+                           <th>Updated by</th> -->
+
                        </tr>
                        </thead>
                        <tbody>
@@ -41,6 +45,9 @@
                            <td width=""><?php echo $row->page_template_title; ?></td>
 
                            <td><a href="<?php echo base_url()?>admin/slider/view_slider/<?php echo $row->id;?>"><button class="btn btn-info btn-sm">View Sliders</button></a></td>
+
+                               <!-- <td><?php echo $row->created_by; ?></td>
+                                <td><?php echo $row->updated_by; ?></td> -->
 
                        </tr>
                        <?php } ?>

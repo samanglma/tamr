@@ -37,7 +37,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
               $first = true;
               foreach ($orders as $order) {
             ?>
-                <tr>
+                <tr>aasdasdas
                   <td class='<?= $first ? 'no-border' : '' ?>'>Order Number <?= $order->ref_number ?></td>
                   <td class='<?= $first ? 'no-border' : '' ?>'><?= date('M d, Y', strtotime($order->date)) ?></td>
                   <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->total ?> AED</td>

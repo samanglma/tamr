@@ -38,7 +38,6 @@
 
     <!-- <script src="svg-injector.min.js"></script> -->
 
-
 </head>
 <body>
 <div class="all-content-wrapper">
@@ -77,12 +76,12 @@
 
                         <li class="dropdown user-menu">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                               <!--  <img src="<?php echo base_url();?>assets/images/avatars/face2.png" alt="User Avatar" /> -->
+                               <!-- <img src="<?php echo base_url();?>assets/images/avatars/logo.png" alt="User Avatar" />  -->
                                 <span class="hidden-xs"> <?php echo strtoupper($this->session->userdata('username'));?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="header">
-                                  <!--   <img src="<?php echo base_url();?>assets/images/avatars/face2.png" alt="User Avatar" /> -->
+                                  <!-- <img src="<?php echo base_url();?>assets/images/avatars/logo.png" alt="User Avatar" />  -->
                                     <div class="user">
                                         <?php echo strtoupper($this->session->userdata('username'));?>
                                 </li>

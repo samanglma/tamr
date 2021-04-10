@@ -31,7 +31,7 @@ class Email_templates extends My_Controller {
             $this->session->set_flashdata('error', 'Fill all the Required Fields/Unique Title and try again.. ');
           //  $data['data'] = array('error1' => 'test');
         
-            redirect('admin/email_templates/add', $data);
+            redirect('admin/email_templates/add');
 
         }
         else{
@@ -40,12 +40,17 @@ class Email_templates extends My_Controller {
             $slugs = url_title($title);
             $slug = strtolower($slugs);
 
+            $user = $_SESSION["username"];
+			$now = date('Y-m-d H:i:s');
+
             $data = array(
 
                 'title' => $this->input->post('title'),
                 'slug' => $slug,
                'template' => $this->input->post('template'),
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+                'updated_by' => $user,
+				'updated_at' => $now
             );
 
              $this->email_templates_m->save($data);
@@ -81,13 +86,18 @@ class Email_templates extends My_Controller {
 
             $data['id'] = $this->input->post('id');
 
+            $user = $_SESSION["username"];
+            $now = date('Y-m-d H:i:s');
             $data['data'] = array(
 
                 'title' => $this->input->post('title'),
                  'slug' => $slug,
                'template' => $this->input->post('template'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+                'updated_at' =>  $now
             );
 
             $this->email_templates_m->update($data);

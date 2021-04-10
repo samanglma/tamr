@@ -31,20 +31,24 @@
                            <th>Arabic Title</th>
                            <th>Main Categories</th>
                            <th>Status</th>
+						   <th>Last updated on</th>
+                            <th>Updated by</th>
                            <th>Action</th>
                        </tr>
                        </thead>
                        <tbody>
                        <?php foreach ($rcd as $row) {?>
                        <tr>
-                           <td width="20%"><?php echo $row->title; ?></td>
-                           <td width="20%"><?php echo $row->title_ar; ?></td>
-                           <td width="20%"><?php echo $row->catTitle; ?></td>
-                           <td width="10%"><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
-                           <td width="30%">
+                           <td width=""><?php echo $row->title; ?></td>
+                           <td width=""><?php echo $row->title_ar; ?></td>
+                           <td width=""><?php echo $row->catTitle; ?></td>
+                           <td width=""><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>
+						   <td><?php echo $row->updated_at; ?></td>
+                           <td><?php echo $row->updated_by; ?></td>
+                           <td width="">
                                <div class="btn-group">
-                                   <a href="<?php echo base_url()?>admin/sub_categories/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>
-                                   <a href="<?php echo base_url()?>admin/sub_categories/delete/<?php echo $row->id;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>
+                                   <a href="<?php echo base_url()?>admin/subcategories/edit/<?php echo $row->id;?>"><button class="btn btn-info btn-xs">Edit</button></a>
+                                   <a href="<?php echo base_url()?>admin/subcategories/delete/<?php echo $row->id;?>"> <button class="btn btn-danger btn-xs" Onclick="return ConfirmDelete()">Delete</button></a>
                                </div>
                            </td>
                        </tr>

@@ -57,11 +57,11 @@
                        <div class="col-md-7 form-group">
                            <label for="title">Select Subcategory:</label>
                            <select name="child_cat" class="form-control">
-                               <?php foreach ($chlid_categories as $category) { ?>
+                               <?php foreach ($chlid_categories as $sub) { ?>
 
-                                   <option value="<?php echo $category->id ?>" <?php if ($category->id == $row->child_cat) {
+                                   <option value="<?php echo $sub->id ?>" <?php if ($sub->id == $row->child_cat) {
                                                                                     echo "selected";
-                                                                                } ?>><?php echo $category->title; ?></option>
+                                                                                } ?>><?php echo $sub->title; ?></option>
                                <?php } ?>
 
                            </select>
@@ -123,17 +123,27 @@
                        </div> -->
 
                        <div class="col-md-7  form-group">
-                           <label>Thumbnail Image *</label>
-                           <span style="color: #97310e;"> Size ( 225 * 210 ) </span>
-                           <input type='file' name='thumb' size='20' /><br>
-                           <?php if (!empty($row->thumbnail)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail; ?>">
-                               <input type="hidden" value="<?php echo $row->thumbnail; ?>" name="thumb2">
+                           <label>Thumbnail 1 Image *</label>
+                           <span style="color: #97310e;"> Size ( 321 * 282 ) </span>
+                           <input type='file' name='thumb1' size='20' /><br>
+                           <?php if (!empty($row->thumbnail1)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail1; ?>">
+                               <input type="hidden" value="<?php echo $row->thumbnail1; ?>" name="thumb12">
                            <?php } ?>
                        </div>
 
+					   <div class="col-md-7  form-group">
+                           <label>Thumbnail 2 Image *</label>
+                           <span style="color: #97310e;"> Size ( 508 * 391 ) </span>
+                           <input type='file' name='thumb2' size='20' /><br>
+                           <?php if (!empty($row->thumbnail2)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail2; ?>">
+                               <input type="hidden" value="<?php echo $row->thumbnail2; ?>" name="thumb22">
+                           <?php } ?>
+                       </div>
+
+
                        <div class="col-md-7  form-group">
                            <label>Image 1 </label>
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                            <input type='file' name='image1' size='20' /><br>
                            <?php if (!empty($row->image1)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->image1; ?>">
                                <input type="hidden" value="<?php echo $row->image1; ?>" name="image1_2">
@@ -142,7 +152,7 @@
 
                        <div class="col-md-7  form-group">
                            <label>Image 2</label>
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                            <input type='file' name='image2' size='20' /><br>
                            <?php if (!empty($row->image2)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->image2; ?>">
                                <input type="hidden" value="<?php echo $row->image2; ?>" name="image2_2">
@@ -151,7 +161,7 @@
 
                        <div class="col-md-7  form-group">
                            <label>Image 3 </label>
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                            <input type='file' name='image3' size='20' /><br>
                            <?php if (!empty($row->image3)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->image3; ?>">
                                <input type="hidden" value="<?php echo $row->image3; ?>" name="image3_2">
@@ -160,14 +170,14 @@
 
                        <div class="col-md-7  form-group">
                            <label>Image 4 </label>
-                           <span style="color: #97310e;"> Size ( 700 * 1000px ) </span>
+                           <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                            <input type='file' name='image4' size='20' /><br>
                            <?php if (!empty($row->image4)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->image4; ?>">
                                <input type="hidden" value="<?php echo $row->image4; ?>" name="image4_2">
                            <?php } ?>
                        </div>
 
-
+<!-- 
                        <div class="col-md-7  form-group d-none" style="display: none">
                            <label>Arabic Image</label>
                            <span style="color: #97310e;"> Size ( 1000 * 810 ) </span>
@@ -183,21 +193,21 @@
                            <?php if (!empty($row->thumbnail_ar)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail_ar; ?>">
                                <input type="hidden" value="<?php echo $row->image_ar; ?>" name="image_ar2">
                            <?php } ?>
-                       </div>
+                       </div> -->
                        <div class="col-md-7  form-group">
                            <label>Alt *</label>
                            <input type="text" value="<?php echo $row->alt; ?>" name="alt" class="form-control" placeholder="Alt Tag" />
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                       <div class="col-md-7  form-group">
+                       <!-- <div class="col-md-7  form-group">
                            <label>Arabic Alt *</label>
                            <input type="text" value="<?php echo $row->alt_ar; ?>" name="alt_ar" class="form-control" placeholder="Alt Tag" />
                            <?php echo form_error('alt_ar', '<div class="error" style="color: red;">', '</div>'); ?>
-                       </div>
+                       </div> -->
 
 
-                       <div class="col-md-7  form-group">
+                       <!-- <div class="col-md-7  form-group">
                            <label>Variations</label>
                            <?php
 
@@ -207,11 +217,10 @@
 
                             foreach ($variantss as $variant) {
 
-
-                            ?>
-                               <div class="form-check">
-                                   <!-- <input class="form-check-input" type="checkbox" name="variants[]" id="" value="<?php echo $variant->id; ?>" <?php if (in_array($variant->id, $bidang)) echo "checked = 'checked' : ''"; ?>/> -->
-                                   <label class="form-check-label" for="inlineRadio1"><?php echo $variant->type; ?></label>
+                            ?> -->
+                               <!-- <div class="form-check"> -->
+                                   <!-- from before this line was comment <input class="form-check-input" type="checkbox" name="variants[]" id="" value="<?php echo $variant->id; ?>" <?php if (in_array($variant->id, $bidang)) echo "checked = 'checked' : ''"; ?>/> -->
+                                   <!-- <label class="form-check-label" for="inlineRadio1"><?php echo $variant->type; ?></label>
 
                                    <?php $values = getVarianValues($variant->id);
                                     foreach ($values as $key => $value) { 
@@ -227,7 +236,7 @@
                                </div>
                            <?php } ?>
 
-                       </div>
+                       </div> -->
 
                        <div class="col-md-7 form-group">
                            <label>Status</label>

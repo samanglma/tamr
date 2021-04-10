@@ -17,8 +17,11 @@ class State extends My_Controller {
         $this->load->view('admin/states/view', $data);
     }
 
-    public function add()
+    public function add($id = '')
     {
+	
+		$data['country_id'] = $id;
+	
           
          $data['countries'] = $this->states_m->getAllCountries();
         $this->load->view('admin/states/add', $data);
@@ -36,13 +39,21 @@ class State extends My_Controller {
         }
         else{
 
+            $user = $_SESSION["username"];
+            
+			$now = date('Y-m-d H:i:s');
+
             $data = array(
 
                 'name' => $this->input->post('name'),
 
                 'country_id' => $this->input->post('country_id'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+
+				'updated_at' => $now = $now
 
             );
              $this->states_m->saveState($data);
@@ -59,9 +70,10 @@ class State extends My_Controller {
         
         $this->load->view('admin/states/edit', $data);
 
+	
+
     }
 
-    
 
     public function update()
     {
@@ -76,13 +88,20 @@ class State extends My_Controller {
         else{
 
             $data['id'] = $this->input->post('id');
+
+            $user = $_SESSION["username"];
+            $now = date('Y-m-d H:i:s');
+
             $data['data'] = array(
 
                 'name' => $this->input->post('name'),
 
                 'country_id' => $this->input->post('country_id'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+                'updated_at' => $now
             );
 
             $this->states_m->updateState($data);

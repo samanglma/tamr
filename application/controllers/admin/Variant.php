@@ -9,6 +9,7 @@ class Variant extends My_Controller {
 
         $this->load->model('variant_m');
 
+		die();
     }
     public function index()
 	{
@@ -31,16 +32,24 @@ class Variant extends My_Controller {
             $this->session->set_flashdata('error', 'Fill all the Required Fields/Unique Title and try again.. ');
           //  $data['data'] = array('error1' => 'test');
         
-            redirect('admin/variant/add', $data);
+            redirect('admin/variant/add');
 
         }
         else{
+
+            $user = $_SESSION["username"];
+
+			$now = date('Y-m-d H:i:s');
 
             $data = array(
 
                 'type' => $this->input->post('type'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+
+				'updated_at' => $now
             );
 
              $this->variant_m->save($data);
@@ -72,11 +81,18 @@ class Variant extends My_Controller {
 
             $data['id'] = $this->input->post('id');
 
+            $user = $_SESSION["username"];
+            
+            $now = date('Y-m-d H:i:s');
+
             $data['data'] = array(
 
                 'type' => $this->input->post('type'),
                
-                'status' => $this->input->post('status')
+                'status' => $this->input->post('status'),
+
+                'updated_by' => $user,
+                 'updated_at' => $now
             );
 
             $this->variant_m->update($data);

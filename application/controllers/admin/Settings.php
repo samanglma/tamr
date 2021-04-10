@@ -15,24 +15,76 @@ class Settings extends My_Controller
     {
         $data['row'] = $this->Settings_m->getInfo();
         if ($this->input->post()) {
-            if (!empty($_FILES['logo']['name'])) {
-                $name = time() . $_FILES["logo"]['name'];
-                $config['file_name'] = $name;
-                $name = time() . $_FILES['logo']['name'];
+         
+
+
+            if ($_FILES['logo']['name'] != "") {
+
+
                 $config['upload_path']   = './uploads/settings/';
-                $config['allowed_types'] = 'jpg|png';
-                $config['max_size']      = '1000';
-                $config['max_width']     = '69';
-                $config['max_height']    = '65';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+               // $config['encrypt_name'] = TRUE;
+                // $config['max_width'] = 1920;
+                // $config['max_height'] = 1000;
 
                 $this->load->library('upload', $config);
 
-                if (!$this->upload->do_upload($config['file_name'], FALSE)) {
-                    $this->session->set_flashdata('error', $this->upload->display_errors());
+              //  $id = $this->input->post('id');
+
+                if (!$this->upload->do_upload('logo')) {
+
+                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your Logo. Please upload correct Logo');
+                    redirect('admin/settings/edit');
                 }
-                redirect('admin/settings/edit');
+                elseif($this->upload->do_upload('logo'))
+                {
+
+                    $uploadData = $this->upload->data();
+
+                    $name = $uploadData['file_name'];
+                }
+
             }
+            else
+            {
+                $name = $this->input->post('logo');
+            }
+
+            if ($_FILES['favicon']['name'] != "") {
+
+
+                $config['upload_path']   = './uploads/settings/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+               // $config['encrypt_name'] = TRUE;
+                 $config['max_width'] = 70;
+                 $config['max_height'] = 66;
+
+                $this->load->library('upload', $config);
+
+              //  $id = $this->input->post('id');
+
+                if (!$this->upload->do_upload('favicon')) {
+
+                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your Favicon. Please upload correct Favicon');
+                    redirect('admin/settings/edit');
+                }
+                elseif($this->upload->do_upload('favicon'))
+                {
+
+                    $uploadData = $this->upload->data();
+
+                    $favicon = $uploadData['file_name'];
+                }
+
+            }
+
+            else{
+
+                $favicon = $this->input->post('favicon');;
+            }
+
             $_POST['logo'] = $name;
+            $_POST['favicon'] = $favicon;
             $data = $this->input->post();
             $rcd = $this->Settings_m->updateInfo($data);
 

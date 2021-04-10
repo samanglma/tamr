@@ -41,13 +41,32 @@ class Sub_Categories_m  extends CI_Model
         return true;
     }
 
-    public function getAllCat()
+    public function getAllParentsCat()
     {
         $this->db->select('*');
         $this->db->from('categories');
         $q = $this->db->get()->result();
 
         return $q;
+    }
+
+	public function getAllSubCategoryForProduct()
+	{
+		$this->db->select('*');
+		$this->db->where('status', 1);
+        $this->db->from('sub_categories');
+        $query = $this->db->get()->result();
+        return $query;
+	}
+
+    public function getSubCatbyId($cat_id)
+    {
+        $this->db->select('*');
+        $this->db->where('cat_id', $cat_id);
+        $this->db->where('status', 1);
+        $this->db->from('sub_categories');
+        $query = $this->db->get()->result();
+        return $query;
     }
 
 }

@@ -37,28 +37,7 @@
                            <?php echo form_error('name', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                          <div class="col-md-7 form-group">
-                               <label>Status</label>
-                               <select name="status" class="form-control">
-                                   <option value="1">Active</option>
-                                   <option value="0">Inactive</option>
-                               </select>
-                       </div>
-
-                       <!-- <div class="col-md-7 form-group">
-                               <label>State *</label>
-                               <select name="state_id" class="form-control">
-                                   <option value="">Select State</option>
-                                   <?php
-                                    foreach($states as $state) {
-                                   ?>
-                                   <option value="<?= $state->ID ?>" <?= set_value('state_id') == $state->ID ? 'selected' : '' ?>><?= $state->name ?></option>
-                                   <?php
-                                    }
-                                    ?>
-                               </select>
-                               <?php echo form_error('state_id', '<div class="error" style="color: red;">', '</div>'); ?>
-                       </div> -->
+					   <input type='hidden' value='1' name='status'>
 
                        <div class="col-md-7 form-group">
                        <button type="submit" class="btn btn-sm btn-success pull-left">Save</button>

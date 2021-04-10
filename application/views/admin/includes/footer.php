@@ -1,5 +1,5 @@
 
-<footer>
+<footer style="margin-top: 59px;">
     <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-sm-6">
@@ -11,8 +11,8 @@
         </div>
     </div>
 </footer>
-
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 <script src="<?php echo base_url();?>assets/plugins/moment/moment.js"></script>
@@ -79,6 +79,8 @@
 
 <script src="<?php echo base_url();?>assets/plugins/summernote/dist/summernote.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script> -->
+
+
 <script>
     function ConfirmDelete() {
         return confirm("Are you sure you want to delete?");
@@ -98,7 +100,7 @@
     // } );
     $('.ckeditor_ar').each(function(e){
         CKEDITOR.replace( this.id, { 
-            contentsLangDirection: 'rtl',
+        contentsLangDirection: 'rtl',
         customConfig: '<?php echo base_url();?>assets/plugins/ckeditor/ckeditor.js">',
         filebrowserImageBrowseUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/ckfinder.html?Type=Images',
         filebrowserFlashBrowseUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/ckfinder.html?Type=Flash',
@@ -118,7 +120,7 @@
         filebrowserImageUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserFlashUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
 
-    } );
+    });
 
 
 
@@ -130,7 +132,7 @@
         filebrowserImageUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserFlashUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
 
-    } );
+    });
 
     CKEDITOR.replace( 'editor1_ar', {
         contentsLangDirection: 'rtl',
@@ -141,14 +143,7 @@
         filebrowserImageUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
         filebrowserFlashUploadUrl : '<?php echo base_url(); ?>assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
 
-    } );
-
-</script>
-
-<script>
-
-    // $('.js-dtp').datepicker({
-    // });
+    });
 
 </script>
 

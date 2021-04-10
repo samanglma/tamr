@@ -32,17 +32,24 @@
                            <?php echo form_error('title', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-
-             <div class="col-md-7 form-group">
+					
+					   <div class="col-md-7 form-group">
                                <label>Variant Type</label>
                                <select name="variant_id" class="form-control">
-                                  
-                                   <option value="1">Size</option>
-                                   <option value="0">Color</option>
+                                <?php foreach($rcd as $r){?>
+            
+								  
+								   <option value="<?= $r->id; ?>"
+                                       <?php if ($r->id == $row->variant_id) :
+                                           echo "selected=selected";
+                                       endif; ?>>
+                                       <?= $r->type; ?>
+                                   </option>
+							   
+							     <?php } ?>
                                   
                                </select>
-                           </div>
-
+                       </div>
 
 					   <div class="col-md-7 form-group">
                                <label>Status</label>

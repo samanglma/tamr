@@ -30,13 +30,32 @@
                <div class="panel-body">
 
                    <form method="post" action="<?php echo base_url()?>admin/cities/save" enctype="multipart/form-data">
-                       <div class="col-md-7  form-group">
-                           <label>Name *</label>
-                           <input type="text" name="name" value="<?= set_value('name') ?>" class="form-control" placeholder="Add Name" />
-                           <?php echo form_error('name', '<div class="error" style="color: red;">', '</div>'); ?>
+
+
+				   
+
+
+				<?php if(!empty( $state_id)){?>
+
+					<input type='hidden' name='state_id' value="<?php echo $state_id;?>">
+
+				   <div class="col-md-7 form-group">
+                               <label>State *</label>
+                               <select name="state_id" class="form-control" disabled>
+                                   <option value="">Select Country</option>
+                                   <?php
+                                    foreach($states as $state) {
+                                   ?>
+                                   <option  value="<?= $state->id ?>" <?= set_value('state_id') == $state->id ? 'selected' : ($state_id== $state->id ? 'selected' : '') ?>><?= $state->name ?></option>
+                                   <?php
+                                    }
+                                    ?>
+                               </select>
+                               <?php echo form_error('state_id', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                       <div class="col-md-7 form-group">
+						<?php } else{?>
+				   <div class="col-md-7 form-group">
                                <label>State *</label>
                                <select name="state_id" class="form-control">
                                    <option value="">Select State</option>
@@ -52,14 +71,18 @@
                                </select>
                                <?php echo form_error('state_id', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
+					   
+					   <?php } ?>
 
-                        <div class="col-md-7 form-group">
-                               <label>Status</label>
-                               <select name="status" class="form-control">
-                                   <option value="1">Active</option>
-                                   <option value="0">Inactive</option>
-                               </select>
+                       <div class="col-md-7  form-group">
+                           <label>Name *</label>
+                           <input type="text" name="name" value="<?= set_value('name') ?>" class="form-control" placeholder="Add Name" />
+                           <?php echo form_error('name', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
+
+                    
+					   <input type='hidden' value='1' name='status'>
+                    
                        <div class="col-md-7 form-group">
                        <button type="submit" class="btn btn-sm btn-success pull-left">Save</button>
                            &nbsp;&nbsp;

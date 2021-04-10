@@ -5,7 +5,6 @@
                 MAIN NAVIGATION
             </li>
 
-
             <li <?php if ($this->uri->segment(2) == "categories") {
                     echo 'class="active"';
                 } ?>>
@@ -23,6 +22,28 @@
                             echo 'class="active"';
                         } ?>>
                         <a href="<?php echo base_url() ?>admin/categories">View Categories</a>
+                    </li>
+                </ul>
+            </li>
+
+
+			<li <?php if ($this->uri->segment(2) == "subcategories") {
+                    echo 'class="active"';
+                } ?>>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">category</i>
+                    <span class="nav-label">Subcategories</span>
+                </a>
+                <ul>
+                    <li <?php if ($this->uri->segment(2) == "subcategories" && $this->uri->segment(3) == "add") {
+                            echo 'class="active"';
+                        } ?>>
+                        <a href="<?php echo base_url() ?>admin/subcategories/add">Add Subcategory</a>
+                    </li>
+                    <li <?php if ($this->uri->segment(2) == "subcategories" && $this->uri->segment(3) == "") {
+                            echo 'class="active"';
+                        } ?>>
+                        <a href="<?php echo base_url() ?>admin/subcategories">View Subcategories</a>
                     </li>
                 </ul>
             </li>
@@ -89,13 +110,11 @@
                 </ul>
             </li> -->
 
-
-
             <li <?php if ($this->uri->segment(2) == "products") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">P</i>
+                    <i class="material-icons">shopping_cart</i>
                     <span class="nav-label">Products</span>
                 </a>
                 <ul>
@@ -113,7 +132,7 @@
             </li>
 
 
-            <li <?php if ($this->uri->segment(2) == "variant") {
+            <!-- <li <?php if ($this->uri->segment(2) == "variant") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -153,9 +172,9 @@
                         <a href="<?php echo base_url() ?>admin/variant_value">View Variants Values</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
-            <li <?php if ($this->uri->segment(2) == "countries") {
+         	<!--   <li <?php if ($this->uri->segment(2) == "countries") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -216,13 +235,12 @@
                         <a href="<?php echo base_url() ?>admin/cities">View Cities</a>
                     </li>
                 </ul>
-            </li>
-
+            </li>  -->
              <li <?php if ($this->uri->segment(2) == "email_templates") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">E</i>
+                    <i class="material-icons">email</i>
                     <span class="nav-label">Email Templates</span>
                 </a>
                 <ul>
@@ -240,7 +258,7 @@
             </li>
 
 
-          <!--  <li <?php if ($this->uri->segment(2) == "contactus") {
+          	<!--  <li <?php if ($this->uri->segment(2) == "contactus") {
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/contactus" class="">
@@ -270,7 +288,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/inquiries" class="">
-                    <i class="material-icons">I</i>
+                    <i class="material-icons">feed</i>
                     <span class="nav-label">Inquiries</span>
                 </a>
             </li>
@@ -280,7 +298,7 @@
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/subscribers" class="">
-                    <i class="material-icons">S</i>
+                    <i class="material-icons">subscriptions</i>
                     <span class="nav-label">Subscriber</span>
                 </a>
             </li>
@@ -325,28 +343,28 @@
                 </ul>
             </li> -->
 
-            <li <?php if ($this->uri->segment(2) == "locations") {
+            <li <?php if ($this->uri->segment(2) == "countries" OR $this->uri->segment(2) == "state" OR $this->uri->segment(2) == "cities") {
                     echo 'class="active"';
                 } ?>>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">content_copy</i>
-                    <span class="nav-label">Manage Locations</span>
+                    <i class="material-icons">flag</i>
+                    <span class="nav-label">Manage Localization</span>
                 </a>
                 <ul>
-                    <!-- <li <?php if ($this->uri->segment(3) == "countries") {
+                     <li <?php if ($this->uri->segment(2) == "countries") {
                             echo 'class="active"';
                         } ?>>
-                        <a href="<?php echo base_url() ?>admin/locations/countries"> Countries</a>
+                        <a href="<?php echo base_url() ?>admin/countries">Manage Countries</a>
                     </li>
-                    <li <?php if ($this->uri->segment(3) == "states") {
+                    <li <?php if ($this->uri->segment(2) == "state") {
                             echo 'class="active"';
                         } ?>>
-                        <a href="<?php echo base_url() ?>admin/locations/states"> States</a>
-                    </li> -->
-                    <li <?php if ($this->uri->segment(3) == "cities") {
+                        <a href="<?php echo base_url() ?>admin/state">Manage States</a>
+                    </li> 
+                    <li <?php if ($this->uri->segment(2) == "cities") {
                             echo 'class="active"';
                         } ?>>
-                        <a href="<?php echo base_url() ?>admin/locations/cities"> Locations</a>
+                        <a href="<?php echo base_url() ?>admin/cities">Manage Cities</a>
                     </li>
                 </ul>
             </li>
@@ -373,14 +391,58 @@
                 </ul>
             </li> -->
 
+
+            <li <?php if ($this->uri->segment(2) == "rating") {
+                    echo 'class="active"';
+                } ?>>
+                <a href="<?php echo base_url() ?>admin/rating" class="">
+                    <i class="material-icons">star_border</i>
+                    <span class="nav-label"> Products Rating</span>
+                </a>
+            </li>
+
+            <li <?php if ($this->uri->segment(2) == "customers") {
+                    echo 'class="active"';
+                } ?>>
+                <a href="<?php echo base_url() ?>admin/customers" class="">
+                    <i class="material-icons">people_outline</i>
+                    <span class="nav-label"> Customers</span>
+                </a>
+            </li>
+
             <li <?php if ($this->uri->segment(2) == "settings" && $this->uri->segment(3) == "edit") {
                     echo 'class="active"';
                 } ?>>
                 <a href="<?php echo base_url() ?>admin/settings/edit" class="">
-                    <i class="material-icons">I</i>
+                    <i class="material-icons">settings</i> 
                     <span class="nav-label"> Settings</span>
                 </a>
             </li>
+
+            <?php if($_SESSION["role"] == 1){ ?>
+            <li <?php if ($this->uri->segment(2) == "user") {
+                    echo 'class="active"';
+                } ?>>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">manage_accounts</i>
+                    <span class="nav-label">Sub Admins</span>
+                </a>
+
+
+                <ul>
+                    <li <?php if ($this->uri->segment(2) == "user" ) {
+                            echo 'class="active"';
+                        } ?>>
+                        <a href="<?php echo base_url() ?>admin/user"> View Sub Admins</a>
+                    </li>
+                    <li <?php if ($this->uri->segment(2) == "user" && $this->uri->segment(3) == "add" ) {
+                            echo 'class="active"';
+                        } ?>>
+                        <a href="<?php echo base_url() ?>admin/user/add"> Add Sub Admin</a>
+                    </li>
+                </ul>
+            </li>
+            <?php } ?>
 
 
         </ul>
