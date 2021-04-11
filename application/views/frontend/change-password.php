@@ -11,12 +11,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
     margin-top: 160px;
   }
 
-  .currancy {
-
-    font-weight: bold;
-    font-size: 13px;
-  }
-
   .price p {
 
     font-weight: bold;

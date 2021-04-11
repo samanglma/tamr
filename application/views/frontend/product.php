@@ -1,3 +1,8 @@
+<?php
+$lang = lang() == 'english' ? 'en' : 'ar';
+$title = lang() == 'arabic' ? 'title_ar' : 'title';
+$description = lang() == 'arabic' ? 'description_ar' : 'description';
+?>
 <div class="page-holder">
   <div class="container ">
 
@@ -6,7 +11,7 @@
         <div class="">
 
           <div class="col-md-3 mx-auto price">
-            <p> <span class="currancy">AED</span> <?= $product->price ?></p>
+            <p> <span class="currency">AED</span> <?= $product->price ?></p>
             <p class="p-category"><?= $product->category ?></p>
 
             <button id="toggle">CHANGE DATES KINDS <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
@@ -17,7 +22,7 @@
               <div class="col-md-6 kinds"> <?php
                                             foreach ($categories as $key => $category) {
                                             ?>
-                  <a href="javascript:;"> <?= $category->title ?> </a>
+                  <a href="javascript:;"> <?= $category->$title ?> </a>
                   <?php
                                               if ($key == $half) {
                   ?>
@@ -67,7 +72,7 @@
           </div>
           <div class="col-md-3 mx-auto pcs">
             <p class="product-details-tamr">TAMR</p>
-            <p class="product-details-name"><?= $product->title ?></p>
+            <p class="product-details-name"><?= $product->$title ?></p>
 
             <?php
             if (!empty($variants)) {
@@ -78,7 +83,7 @@
                   <div class="col-md-12 kinds">
                     <?php $values = getVarianValues($variant->id);
                     foreach ($values as $key => $value) { ?>
-                      <a href=""> <?php echo $value->title; ?> </a>
+                      <a href=""> <?php echo $value->$title; ?> </a>
                     <?php } ?>
                   </div>
 
@@ -116,3 +121,32 @@
       $('.p-category').text(cat);
     });
   </script>
+
+<div class="cart-item">
+  <div>
+<div class="row">
+<div class="col-xs-4"><img src="<?= base_url('uploads/products/' . $product->thumbnail1) ?>"></div>
+<div class="col-xs-8"><div class="cart-p-title"><?= $product->$title ?></div>
+<div class="cart-p-desc"><?= $product->$description ?></div>
+<span class="font-weight-bold price price-amount"><?= $product->price ?></span> <span class='currency'>AED</span>
+</div>
+</div>
+<div class="text-right"><a href="<?= base_url($lang.'/cart') ?>" class="btn"><?= $this->lang->line('view-cart') ?></a></div>
+    </div>
+</div>
+
+<?php
+if($product->theme_color != '')
+{
+  ?>
+  <style> 
+    .p-category:after {
+      background-color: <?= $product->theme_color ?>;
+    }
+    .p-category:before {
+    border: 1px solid <?= $product->theme_color ?>;
+}
+    </style>
+    <?php
+}
+?>

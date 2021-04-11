@@ -72,6 +72,7 @@ $lang['Tenant-List'] = 'قائمة المُستأجرين';
 $lang['Products'] = 'المُنتَجات ';
 $lang['contact-us'] = 'تواصل معنا';
 $lang['cart'] = 'عربة التَّسوُّق ';
+$lang['view-cart'] = 'View Cart';
 
 $lang['Depachika-Location'] = 'موقع دوباتشيكا ';  
 $lang['Privacy-Policy'] = 'سياسة الخصوصيَّة ';
@@ -191,3 +192,4 @@ $lang['about-us'] = 'About us';
 $lang['dates'] = 'Dates';
 $lang['debes'] = 'Debes';
 $lang['gifts'] = 'Gifts';
+$lang['kind'] = 'Kind'; 

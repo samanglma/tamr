@@ -19,7 +19,7 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        
+
         $data['bodyClass'] = 'registration';
         $data['meta'] = [
             'canonical_tag' => '',
@@ -38,6 +38,7 @@ class Auth extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
+        $this->load->view('frontend/includes/footer');
 
         $this->load->view('frontend/register', $data);
     }
@@ -63,7 +64,7 @@ class Auth extends CI_Controller
 
             if ($email_check) {
 
-               
+
                 $id = $this->User_model->register_user($user);
                 $template = $this->Email_templates_m->getTemplateBySlug('verify-email');
 
@@ -83,7 +84,7 @@ class Auth extends CI_Controller
                 $this->email->send();
 
                 $this->session->set_flashdata('success', 'Verification email has been sent to your email address, please verify to proceed.');
-                redirect($this->language. '/register');
+                redirect($this->language . '/register');
             } else {
 
                 $this->session->set_flashdata('error', 'Error occured,Try again.');
@@ -95,7 +96,7 @@ class Auth extends CI_Controller
 
     public function login_view()
     {
-        
+
         $data['bodyClass'] = 'login';
         $data['meta'] = [
             'canonical_tag' => '',
@@ -115,6 +116,7 @@ class Auth extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
+        $this->load->view('frontend/includes/footer');
         $this->load->view('frontend/login', $data);
     }
 
@@ -122,30 +124,30 @@ class Auth extends CI_Controller
     {
         $this->form_validation->set_rules('user_email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('user_password', 'Password', 'required');
-        
-        if ($this->form_validation->run() != FALSE) {
-        $user_login = array(
-            'email' => $this->input->post('user_email'),
-            'password' => md5($this->input->post('user_password'))
-        );
-        $user = $this->User_model->login_user($user_login['email'], $user_login['password']);
-        $data['user'] = $user;
-        if (!empty($user)) {
 
-            $this->session->set_userdata('user_id', $user['id']);
-            $this->session->set_userdata('user_email', $user['email']);
-            $this->session->set_userdata('user_name', $user['username']);
-            $this->session->set_userdata('user_mobile', $user['mobile']);
-            redirect($this->language.'/profile');
-            // $this->load->view('frontend/user/profile', $data);
+        if ($this->form_validation->run() != FALSE) {
+            $user_login = array(
+                'email' => $this->input->post('user_email'),
+                'password' => md5($this->input->post('user_password'))
+            );
+            $user = $this->User_model->login_user($user_login['email'], $user_login['password']);
+            $data['user'] = $user;
+            if (!empty($user)) {
+
+                $this->session->set_userdata('user_id', $user['id']);
+                $this->session->set_userdata('user_email', $user['email']);
+                $this->session->set_userdata('user_name', $user['username']);
+                $this->session->set_userdata('user_mobile', $user['mobile']);
+                redirect($this->language . '/profile');
+                // $this->load->view('frontend/user/profile', $data);
+            } else {
+                $this->session->set_flashdata('error', 'Invalid login details');
+                $this->login_view();
+            }
         } else {
-            $this->session->set_flashdata('error', 'Invalid login details');
+            // $this->session->set_flashdata('error', 'Error occured,Try again.');
             $this->login_view();
         }
-    } else {
-        // $this->session->set_flashdata('error', 'Error occured,Try again.');
-        $this->login_view();
-    }
     }
 
     function user_profile()
@@ -157,13 +159,13 @@ class Auth extends CI_Controller
     public function user_logout()
     {
         $this->session->sess_destroy();
-        redirect($this->language.'/login', 'refresh');
+        redirect($this->language . '/login', 'refresh');
     }
 
     public function forgotPassword()
     {
-        
-        $data['bodyClass'] = 'forgot-password';
+
+        $data['bodyClass'] = 'forgotpassword';
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',
@@ -186,22 +188,29 @@ class Auth extends CI_Controller
             $email = $this->input->post('email');
             $que = $this->db->query("select id,password,email from users where email='$email'");
             $row = $que->row();
-            $user_email = $row->email;
-            if ((!strcmp($email, $user_email))) {
-                $pass = $row->pass;
-                $template = $this->Email_templates_m->getTemplateBySlug('forgot-password');
+            if ($row != '') {
+                $user_email = $row->email;
+                if ((!strcmp($email, $user_email))) {
+                    $pass = $row->pass;
+                    $template = $this->Email_templates_m->getTemplateBySlug('forgot-password');
 
-                $data = array(
-                    '{name}'  =>  $this->input->post('name'),
-                    '{link}' =>  base_url('user/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code),
-                );
+                    $data = array(
+                        '{name}'  =>  $this->input->post('name'),
+                        '{link}' =>  base_url('user/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code),
+                    );
 
-                $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
-                $this->email->to($user_email);
-                $this->email->subject($template->title);
-                $body = strtr($template->template, $data);
-                $this->email->message($body);
-                $this->email->send();
+                    $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
+                    $this->email->to($user_email);
+                    $this->email->subject($template->title);
+                    $body = strtr($template->template, $data);
+                    $this->email->message($body);
+                    $this->email->send();
+                }
+                else {
+                    $data['error'] = "
+    Invalid Email ID !
+    ";
+                }
             } else {
                 $data['error'] = "
 Invalid Email ID !
@@ -223,7 +232,7 @@ Invalid Email ID !
 
     public function changePassword()
     {
-        
+
         $data['bodyClass'] = 'change-password';
         $data['meta'] = [
             'canonical_tag' => '',

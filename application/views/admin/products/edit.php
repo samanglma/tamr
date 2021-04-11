@@ -60,8 +60,8 @@
                                <?php foreach ($chlid_categories as $sub) { ?>
 
                                    <option value="<?php echo $sub->id ?>" <?php if ($sub->id == $row->child_cat) {
-                                                                                    echo "selected";
-                                                                                } ?>><?php echo $sub->title; ?></option>
+                                                                                echo "selected";
+                                                                            } ?>><?php echo $sub->title; ?></option>
                                <?php } ?>
 
                            </select>
@@ -131,7 +131,7 @@
                            <?php } ?>
                        </div>
 
-					   <div class="col-md-7  form-group">
+                       <div class="col-md-7  form-group">
                            <label>Thumbnail 2 Image *</label>
                            <span style="color: #97310e;"> Size ( 508 * 391 ) </span>
                            <input type='file' name='thumb2' size='20' /><br>
@@ -177,7 +177,7 @@
                            <?php } ?>
                        </div>
 
-<!-- 
+                       <!-- 
                        <div class="col-md-7  form-group d-none" style="display: none">
                            <label>Arabic Image</label>
                            <span style="color: #97310e;"> Size ( 1000 * 810 ) </span>
@@ -205,7 +205,11 @@
                            <input type="text" value="<?php echo $row->alt_ar; ?>" name="alt_ar" class="form-control" placeholder="Alt Tag" />
                            <?php echo form_error('alt_ar', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div> -->
-
+                       <div class="col-md-7  form-group">
+                           <label>Product theme Color (e.g. #000000)</label>
+                           <input type="text" maxlength="7" name="theme_color" value="<?php echo $row->theme_color;?>" class="form-control" placeholder="Product Theme Color" />
+                           <?php echo form_error('theme_color', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
 
                        <!-- <div class="col-md-7  form-group">
                            <label>Variations</label>
@@ -218,18 +222,19 @@
                             foreach ($variantss as $variant) {
 
                             ?> -->
-                               <!-- <div class="form-check"> -->
-                                   <!-- from before this line was comment <input class="form-check-input" type="checkbox" name="variants[]" id="" value="<?php echo $variant->id; ?>" <?php if (in_array($variant->id, $bidang)) echo "checked = 'checked' : ''"; ?>/> -->
-                                   <!-- <label class="form-check-label" for="inlineRadio1"><?php echo $variant->type; ?></label>
+                       <!-- <div class="form-check"> -->
+                       <!-- from before this line was comment <input class="form-check-input" type="checkbox" name="variants[]" id="" value="<?php echo $variant->id; ?>" <?php if (in_array($variant->id, $bidang)) echo "checked = 'checked' : ''"; ?>/> -->
+                       <!-- <label class="form-check-label" for="inlineRadio1"><?php echo $variant->type; ?></label>
 
                                    <?php $values = getVarianValues($variant->id);
-                                    foreach ($values as $key => $value) { 
-                                         ?>
+                                    foreach ($values as $key => $value) {
+                                    ?>
                                        <input class="form-check-input" name="variants[]" type="checkbox" id="chkPassport" <?php
-                                       foreach($product_variants as $p_variants) {
-                                                                                                                            if($value->id === $p_variants->variant_value_id && $variant->id === $p_variants->variant_id) {
-                                                                                                                                echo 'checked=checked';
-                                                                                                                            } }
+                                                                                                                            foreach ($product_variants as $p_variants) {
+                                                                                                                                if ($value->id === $p_variants->variant_value_id && $variant->id === $p_variants->variant_id) {
+                                                                                                                                    echo 'checked=checked';
+                                                                                                                                }
+                                                                                                                            }
                                                                                                                             ?> value="<?= $value->id; ?>">
                                        <label class="form-check-label" for="inlineRadio1"><?php echo $value->title; ?></label>
                                    <?php } ?>

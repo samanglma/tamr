@@ -5,12 +5,12 @@
 			<div class="container">
 				<?php
 
-				print_r($contents);
+				//print_r($contents);
 				?>
-				<!-- <h1><?php //echo $contents->title; 
+				 <h1><?php echo $contents->title; 
 							?></h1>
-                <?php //echo $contents->content; 
-				?> -->
+                <?php echo $contents->content; 
+				?>
 			</div>
 		</div>
 		</br></br>

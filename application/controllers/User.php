@@ -38,6 +38,7 @@ class User extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
+		$this->load->view('frontend/includes/footer');
 
         $this->load->view('frontend/user/profile', $data);
     }
@@ -72,6 +73,22 @@ class User extends CI_Controller
         $this->load->view('frontend/includes/right-sidebar');
 
         $this->load->view('frontend/user/wishlist', $data);
+    }
+
+    public function addToWishlist($id)
+    {
+
+        $wishlist = [
+            'user_id' => $this->session->userdata('user_id'),
+            'product_id' => $id,
+        ];
+		if ($this->session->userdata('user_id')) {
+			$wishlist = $this->Wishlist_m->save($wishlist);
+		}
+
+        $this->load->view('frontend/user/wishlist', $wishlist);
+
+        redirect($this->language.'/wishlist');
     }
 
     public function updateProfile()

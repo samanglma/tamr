@@ -9,7 +9,7 @@
 .product-detail-currancy{
 
   font-weight: bold;
-  font-size: 13px;
+  font-size: 0.7rem;
 }
 
 .product-detail-price p{
@@ -150,7 +150,7 @@ a:hover{
    <div class="row">
 
 <div class="col-lg-2 col-md-2 mx-auto product-detail-price">
-<p> <span class="currancy">AED</span> 38.00</p>
+<p> <span class="currency">AED</span> 38.00</p>
 <p>KHOLAS</p>
 
 <button id="toggle">CHANGE DATES KINDS  <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>

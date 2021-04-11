@@ -11,7 +11,7 @@ class Products extends My_Controller
         $this->load->model('Products_m');
         $this->load->model('Brands_m');
         $this->load->model('Categories_m');
-		$this->load->model('sub_categories_m');
+        $this->load->model('sub_categories_m');
         $this->load->model('Variant_m');
     }
     public function index()
@@ -45,28 +45,29 @@ class Products extends My_Controller
         // $this->form_validation->set_rules('title', 'Brand Name', 'required');
         //$this->form_validation->set_rules('description', 'Description', 'required');
         //$this->form_validation->set_rules('brand_id', 'Brand', 'required');
-	
+
         $this->form_validation->set_rules('price', 'Price', 'required');
         $this->form_validation->set_rules('vat_price', 'Price Including VAT', 'required');
         $this->form_validation->set_rules('alt', 'Alt', 'required');
-		// $this->form_validation->set_rules('thumb1', 'thumb1', 'required');
-		// $this->form_validation->set_rules('thumb2', 'thumb2', 'required');
+        // $this->form_validation->set_rules('thumb1', 'thumb1', 'required');
+        // $this->form_validation->set_rules('thumb2', 'thumb2', 'required');
         $title = $this->input->post('title');
         $slugs = url_title($title);
         $slug = strtolower($slugs);
 
         $dataArray = array(
-            
+
             'title' => $this->input->post('title'),
             'title_ar' => $this->input->post('title_ar'),
             'description' => $this->input->post('description'),
             'description_ar' => $this->input->post('description_ar'),
+            'theme_color' => $this->input->post('theme_color'),
             //'discounted_price' => $discounted_price,
             'price' => $this->input->post('price'),
             'vat_price' => $this->input->post('vat_price'),
             'alt' => $this->input->post('alt'),
-           // 'alt_ar' => $this->input->post('alt_ar'),
-           
+            // 'alt_ar' => $this->input->post('alt_ar'),
+
             //'brand_id' => $this->input->post('brand_id'), 
             //'status' => $this->input->post('status'),
             //'mark_as_new'=>$this->input->post('markAsNew'),
@@ -79,112 +80,103 @@ class Products extends My_Controller
         if ($this->form_validation->run() == FALSE) {
             // $this->session->set_flashdata('error', 'Fill all the Required Fields and try again.. ');
             // redirect('admin/products/add', array('data' => $dataArray));
-			$da = ['error1' => 'Fill all the Required Fields.', 'data' => $this->input->post()];
+            $da = ['error1' => 'Fill all the Required Fields.', 'data' => $this->input->post()];
             $this->session->set_flashdata('error', $da);
-			redirect('admin/products/add');
-
+            redirect('admin/products/add');
         } else {
 
-			  
-			
 
-             $config['upload_path']     = './uploads/products/';
-             $config['allowed_types']   = 'jpg|jpeg|png|gif';
-             $config['encrypt_name']    = TRUE;
-			 $config['min_width']       = '1374';      
-			 $config['min_height']      = '1030';      
-			 $config['max_width']       = '1374';       
-			 $config['max_height']      = '1030'; 
+
+
+            $config['upload_path']     = './uploads/products/';
+            $config['allowed_types']   = 'jpg|jpeg|png|gif';
+            $config['encrypt_name']    = TRUE;
+            $config['min_width']       = '1374';
+            $config['min_height']      = '1030';
+            $config['max_width']       = '1374';
+            $config['max_height']      = '1030';
 
             $this->load->library('upload', $config);
 
             if (!$this->upload->do_upload('image1')) {
                 // $error = array('error' => $this->upload->display_errors());
-				$da = ['error1' => 'Upload the Image 1 with correct dimmisions.', 'data' => $this->input->post()];
-				$this->session->set_flashdata('error', $da);
-				redirect('admin/products/add');
-	
+                $da = ['error1' => 'Upload the Image 1 with correct dimmisions.', 'data' => $this->input->post()];
+                $this->session->set_flashdata('error', $da);
+                redirect('admin/products/add');
             } else {
                 $uploadData = $this->upload->data();
 
                 $image1 = $uploadData['file_name'];
             }
-           
+
             if ($_FILES['image2']['name'] != "") {
 
 
-				if (!$this->upload->do_upload('image2')) {
-					// $error = array('error' => $this->upload->display_errors());
-					$da = ['error1' => 'Upload the Image 2 with correct dimmisions.', 'data' => $this->input->post()];
-					$this->session->set_flashdata('error', $da);
-					redirect('admin/products/add');
-		
-				} else {
-					$uploadData = $this->upload->data();
-	
-					$image2 = $uploadData['file_name'];
-				}
-            }
-            else{
+                if (!$this->upload->do_upload('image2')) {
+                    // $error = array('error' => $this->upload->display_errors());
+                    $da = ['error1' => 'Upload the Image 2 with correct dimmisions.', 'data' => $this->input->post()];
+                    $this->session->set_flashdata('error', $da);
+                    redirect('admin/products/add');
+                } else {
+                    $uploadData = $this->upload->data();
+
+                    $image2 = $uploadData['file_name'];
+                }
+            } else {
                 $image2 = '';
             }
 
-			if ($_FILES['image3']['name'] != "") {
+            if ($_FILES['image3']['name'] != "") {
 
 
-				if (!$this->upload->do_upload('image3')) {
-					// $error = array('error' => $this->upload->display_errors());
-					$da = ['error1' => 'Upload the Image 3 with correct dimmisions.', 'data' => $this->input->post()];
-					$this->session->set_flashdata('error', $da);
-					redirect('admin/products/add');
-		
-				} else {
-					$uploadData = $this->upload->data();
-	
-					$image3 = $uploadData['file_name'];
-				}
-            }
-            else{
+                if (!$this->upload->do_upload('image3')) {
+                    // $error = array('error' => $this->upload->display_errors());
+                    $da = ['error1' => 'Upload the Image 3 with correct dimmisions.', 'data' => $this->input->post()];
+                    $this->session->set_flashdata('error', $da);
+                    redirect('admin/products/add');
+                } else {
+                    $uploadData = $this->upload->data();
+
+                    $image3 = $uploadData['file_name'];
+                }
+            } else {
                 $image3 = '';
             }
 
-			if ($_FILES['image4']['name'] != "") {
+            if ($_FILES['image4']['name'] != "") {
 
 
-				if (!$this->upload->do_upload('image4')) {
-					// $error = array('error' => $this->upload->display_errors());
-					$da = ['error1' => 'Upload the Image 4 with correct dimmisions.', 'data' => $this->input->post()];
-					$this->session->set_flashdata('error', $da);
-					redirect('admin/products/add');
-		
-				} else {
-					$uploadData = $this->upload->data();
-	
-					$image4 = $uploadData['file_name'];
-				}
-            }
-            else{
+                if (!$this->upload->do_upload('image4')) {
+                    // $error = array('error' => $this->upload->display_errors());
+                    $da = ['error1' => 'Upload the Image 4 with correct dimmisions.', 'data' => $this->input->post()];
+                    $this->session->set_flashdata('error', $da);
+                    redirect('admin/products/add');
+                } else {
+                    $uploadData = $this->upload->data();
+
+                    $image4 = $uploadData['file_name'];
+                }
+            } else {
                 $image4 = '';
             }
 
-			 //thumbnail 1
-			 if ($_FILES['thumb1']['name'] != "") {
+            //thumbnail 1
+            if ($_FILES['thumb1']['name'] != "") {
                 $config2['upload_path'] = './uploads/products/';
                 $config2['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config2['encrypt_name'] = TRUE;
-           		$config2['max_width'] = 321;
-           		$config2['max_height'] = 282;
-				$config2['min_width'] = 321;
-           		$config2['min_height'] = 282;
+                $config2['max_width'] = 321;
+                $config2['max_height'] = 282;
+                $config2['min_width'] = 321;
+                $config2['min_height'] = 282;
 
-				$this->load->library('upload', $config2);
-				$this->upload->initialize($config2);
+                $this->load->library('upload', $config2);
+                $this->upload->initialize($config2);
 
                 if (!$this->upload->do_upload('thumb1')) {
-					$da = ['error1' => 'Upload the Thumnail 1 with correct dimmisions.', 'data' => $this->input->post()];
-					$this->session->set_flashdata('error', $da);
-					redirect('admin/products/add');
-		
+                    $da = ['error1' => 'Upload the Thumnail 1 with correct dimmisions.', 'data' => $this->input->post()];
+                    $this->session->set_flashdata('error', $da);
+                    redirect('admin/products/add');
                 } else {
                     $uploadData = $this->upload->data();
 
@@ -193,39 +185,38 @@ class Products extends My_Controller
             }
 
 
-		
-
-		 //thumbnail 2
-		 if ($_FILES['thumb2']['name'] != "") {
-			$config3['upload_path'] = './uploads/products/';
-			$config3['allowed_types'] = 'jpg|jpeg|png|gif';
-			$config3['encrypt_name'] = TRUE;
-			 $config3['max_width'] = 508;
-			 $config3['max_height'] = 391;
-			 $config3['min_width'] = 508;
-		  $config3['min_height'] = 391;
 
 
-			$this->load->library('upload', $config3);
-			$this->upload->initialize($config3);
-			if (!$this->upload->do_upload('thumb2')) {
-				$da = ['error1' => 'Upload the Thumnail 2 with correct dimmisions.', 'data' => $this->input->post()];
-				$this->session->set_flashdata('error', $da);
-				redirect('admin/products/add');
-	
-			} else {
-				$uploadData = $this->upload->data();
+            //thumbnail 2
+            if ($_FILES['thumb2']['name'] != "") {
+                $config3['upload_path'] = './uploads/products/';
+                $config3['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config3['encrypt_name'] = TRUE;
+                $config3['max_width'] = 508;
+                $config3['max_height'] = 391;
+                $config3['min_width'] = 508;
+                $config3['min_height'] = 391;
 
-				$thumb2 = $uploadData['file_name'];
-			}
-		}
-            	
+
+                $this->load->library('upload', $config3);
+                $this->upload->initialize($config3);
+                if (!$this->upload->do_upload('thumb2')) {
+                    $da = ['error1' => 'Upload the Thumnail 2 with correct dimmisions.', 'data' => $this->input->post()];
+                    $this->session->set_flashdata('error', $da);
+                    redirect('admin/products/add');
+                } else {
+                    $uploadData = $this->upload->data();
+
+                    $thumb2 = $uploadData['file_name'];
+                }
+            }
+
             // if ($_FILES['thumb_ar']['name'] != "") {
             //     $config['upload_path'] = './uploads/products/';
             //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
             //     /*$config['encrypt_name'] = TRUE;*/
             //     /*$config['max_width'] = 225;
-			// 	$config['max_height'] = 210;*/
+            // 	$config['max_height'] = 210;*/
             //     if (!$this->upload->do_upload('thumb_ar')) {
             //         //$error = array('error' => $this->upload->display_errors());
             //         $this->session->set_flashdata('error', $this->upload->display_errors() . "thbmnailar");
@@ -240,13 +231,13 @@ class Products extends My_Controller
             $desc = $this->input->post('description');
             $desc_ar = $this->input->post('description_ar');
 
-           // $variants = $this->input->post('variants');
+            // $variants = $this->input->post('variants');
 
             // $ex_val = implode(',', $variants);
 
             $user = $_SESSION["username"];
 
-			$now = date('Y-m-d H:i:s');
+            $now = date('Y-m-d H:i:s');
 
             $data = array(
                 'title' => $this->input->post('title'),
@@ -258,32 +249,33 @@ class Products extends My_Controller
                 'image2' => $image2,
                 'image3' => $image3,
                 'image4' => $image4,
-               // 'image_ar' => $image_ar,
+                // 'image_ar' => $image_ar,
                 'thumbnail1' => $thumb1,
-				'thumbnail2' => $thumb2,
-               // 'thumbnail_ar' => $thumb_ar,
-               // 'discounted_price' => $discounted_price,
+                'thumbnail2' => $thumb2,
+                // 'thumbnail_ar' => $thumb_ar,
+                // 'discounted_price' => $discounted_price,
                 'price' => $this->input->post('price'),
                 'vat_price' => $this->input->post('vat_price'),
                 'alt' => $this->input->post('alt'),
-             //   'alt_ar' => $this->input->post('alt_ar'),
+                'theme_color' => $this->input->post('theme_color'),
+                //   'alt_ar' => $this->input->post('alt_ar'),
                 // 'brand_id' => $this->input->post('brand_id'),  
-				'cat_id' => $this->input->post('cat_id'),
-				'child_cat' => $this->input->post('child_cat'),
-               // 'cat_id' => $this->input->post('cat_id'),
+                'cat_id' => $this->input->post('cat_id'),
+                'child_cat' => $this->input->post('child_cat'),
+                // 'cat_id' => $this->input->post('cat_id'),
                 'status' => $this->input->post('status'),
                 'mark_as_new' => $this->input->post('markAsNew'),
                 'top_seller' => $this->input->post('topSeller'),
                 'out_of_stock' => $this->input->post('outofStock'),
                 'updated_by' => $user,
-				'updated_at' => $now
+                'updated_at' => $now
                 // 'variants' =>  $ex_val,
             );
 
             $id = $this->Products_m->save($data);
 
             $variants = $this->input->post('variants');
-       
+
             foreach ($variants as $v_value) {
                 $variant = $this->Variant_m->getVariantValueByID($v_value);
                 $variantData = array(
@@ -293,7 +285,7 @@ class Products extends My_Controller
                 );
                 $this->Common_model->save($variantData, 'product_variants');
             }
-    
+
             $this->session->set_flashdata('success', 'Product added successfully');
             redirect('admin/products');
         }
@@ -302,7 +294,7 @@ class Products extends My_Controller
     public function edit($id)
     {
         $data['row'] = $this->Products_m->edit($id);
-        $data['product_variants'] = $this->db->get_Where('product_variants', ['product_id'=> $id])->result();
+        $data['product_variants'] = $this->db->get_Where('product_variants', ['product_id' => $id])->result();
         $data['brands'] = $this->Brands_m->getAll();
         //$data['categories'] = $this->Categories_m->getAllCategory(); 
         $data['categories'] = $this->Categories_m->getAllParentCategory();
@@ -331,12 +323,12 @@ class Products extends My_Controller
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
-				$config['min_width']       = '1374';      
-				$config['min_height']      = '1030';      
-				$config['max_width']       = '1374';       
-				$config['max_height']      = '1030'; 
+                $config['min_width']       = '1374';
+                $config['min_height']      = '1030';
+                $config['max_width']       = '1374';
+                $config['max_height']      = '1030';
 
-				$this->load->library('upload', $config);  
+                $this->load->library('upload', $config);
 
                 if (!$this->upload->do_upload('image1')) {
                     $error = array('error' => $this->upload->display_errors());
@@ -356,12 +348,12 @@ class Products extends My_Controller
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
-				$config['min_width']       = '1374';      
-				$config['min_height']      = '1030';      
-				$config['max_width']       = '1374';       
-				$config['max_height']      = '1030'; 
+                $config['min_width']       = '1374';
+                $config['min_height']      = '1030';
+                $config['max_width']       = '1374';
+                $config['max_height']      = '1030';
 
-				
+
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image2')) {
                     $error = array('error' => $this->upload->display_errors());
@@ -378,13 +370,13 @@ class Products extends My_Controller
             }
 
             if ($_FILES['image3']['name'] != "") {
-				$config['upload_path'] = './uploads/products/';
+                $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
-				$config['min_width']       = '1374';      
-				$config['min_height']      = '1030';      
-				$config['max_width']       = '1374';       
-				$config['max_height']      = '1030'; 
+                $config['min_width']       = '1374';
+                $config['min_height']      = '1030';
+                $config['max_width']       = '1374';
+                $config['max_height']      = '1030';
 
 
                 $this->load->library('upload', $config);
@@ -407,10 +399,10 @@ class Products extends My_Controller
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
-				$config['min_width']       = '1374';      
-				$config['min_height']      = '1030';      
-				$config['max_width']       = '1374';       
-				$config['max_height']      = '1030'; 
+                $config['min_width']       = '1374';
+                $config['min_height']      = '1030';
+                $config['max_width']       = '1374';
+                $config['max_height']      = '1030';
 
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image4')) {
@@ -465,7 +457,7 @@ class Products extends My_Controller
             $config['encrypt_name'] = TRUE;
             $config['max_width'] = 321;
             $config['max_height'] = 282;
-			$config['min_width'] = 321;
+            $config['min_width'] = 321;
             $config['min_height'] = 282;
 
 
@@ -484,14 +476,14 @@ class Products extends My_Controller
             $thumb1 = $this->input->post('thumb12');
         }
 
-		//thumbnail 2
+        //thumbnail 2
         if ($_FILES['thumb2']['name'] != "") {
             $config['upload_path'] = './uploads/products/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['encrypt_name'] = TRUE;
             $config['max_width'] = 508;
             $config['max_height'] = 391;
-			$config['min_width'] = 508;
+            $config['min_width'] = 508;
             $config['min_height'] = 391;
 
 
@@ -544,7 +536,7 @@ class Products extends My_Controller
 
         $title = $this->input->post('title');
         $slugs = url_title($title);
-         $slug = strtolower($slugs);
+        $slug = strtolower($slugs);
 
         $user = $_SESSION["username"];
 
@@ -557,21 +549,22 @@ class Products extends My_Controller
             'description' => $desc,
             'description_ar' => $desc_ar,
             'image1' => $image1,
+            'theme_color' => $this->input->post('theme_color'),
             'image2' => $image2,
             'image3' => $image3,
             'image4' => $image4,
-           // 'image_ar' => $image_ar,
+            // 'image_ar' => $image_ar,
             'thumbnail1' => $thumb1,
-			'thumbnail2' => $thumb2,
+            'thumbnail2' => $thumb2,
             //'thumbnail_ar' => $thumb_ar,
             'alt' => $this->input->post('alt'),
             'discounted_price' => $discounted_price,
             'price' => $this->input->post('price'),
             'vat_price' => $this->input->post('vat_price'),
-           // 'alt_ar' => $this->input->post('alt_ar'),
+            // 'alt_ar' => $this->input->post('alt_ar'),
             // 'brand_id' => $this->input->post('brand_id'),  child_cat
             'cat_id' => $this->input->post('cat_id'),
-			'child_cat' => $this->input->post('child_cat'),
+            'child_cat' => $this->input->post('child_cat'),
             'status' => $this->input->post('status'),
             'mark_as_new' => $this->input->post('markAsNew'),
             'top_seller' => $this->input->post('topSeller'),
@@ -629,7 +622,7 @@ class Products extends My_Controller
         $this->db->delete('product_variants');
         $variants = $this->input->post('variants');
 
-       
+
         foreach ($variants as $v_value) {
             $variant = $this->Variant_m->getVariantValueByID($v_value);
             $variantData = array(

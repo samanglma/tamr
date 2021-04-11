@@ -1,8 +1,15 @@
+<?php
+$lang = lang() == 'english' ? 'en' : 'ar';
+$settings = '';
+if ($this->session->userdata('settings')) {
+    $settings = $this->session->userdata('settings');
+}
+
+?>
 <!-- Page Header -->
 
 <style>
-
-/* .content{
+	/* .content{
   margin-top: -90px;
   background-color: white !important;
 }
@@ -62,70 +69,70 @@ padding-top: 15%;
 i{
 color:black !important;
 } */
-
-
 </style>
 
- 
-<div class="masthead" style="background-image: url('<?= base_url("assets/frontend/images/about-bg.jpg") ?>'); height: 606px;">
 
+<div class="masthead" style="background-image: url('<?= base_url("assets/frontend/images/about-bg.jpg") ?>'); height: 606px;">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465130.3070457445!2d54.278426719568124!3d24.38719838149888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e440f723ef2b9%3A0xc7cc2e9341971108!2sAbu%20Dhabi%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1618173974859!5m2!1sen!2s" width="100%" height="500"></iframe>
 </div>
 
 <!-- Main Content -->
-<div class="container content ">
+<div class="container content contact-us ">
 
-<div class="tab-content">
 
-<div id="menu1" class="row tab-pane fade in active">
-  <div class="col-lg-8 col-md-8 mx-auto our">
+	<div id="menu1">
+		<div class="col-lg-7 col-md-6 mx-auto our">
 
-  <form action="#" id="contactForm">
-  
-    <div id="notification"></div>
-    <div class="form-group">
-    <input type="text" placeholder="NAME" class="form-control" name='name'/>
-    </div>
-    <div class="form-group">
-    <input type="text" placeholder="PHONE NUMBER"  class="form-control"  name='phone'/>
-    </div>
-    <div class="form-group">
-    <input type="text" placeholder="EMAIL"  class="form-control"  name='email'/>
-    </div>
-    <div class="form-group">
-    <textarea name="message" rows="3" class="msg form-control"  placeholder="MESSAGE"></textarea>
-    </div>
-   <!--  <input type="text" placeholder="Message" name='msg' class="msg" />
+			<form action="#" id="contactForm">
+
+				<div id="notification"></div>
+				<div class="form-group">
+					<input type="text" placeholder="NAME" class="form-control" name='name' />
+				</div>
+				<div class="form-group">
+					<input type="text" placeholder="PHONE NUMBER" class="form-control" name='phone' />
+				</div>
+				<div class="form-group">
+					<input type="text" placeholder="EMAIL" class="form-control" name='email' />
+				</div>
+				<div class="form-group">
+					<textarea name="message" rows="5" class="msg form-control" placeholder="MESSAGE"></textarea>
+				</div>
+				<!--  <input type="text" placeholder="Message" name='msg' class="msg" />
 -->
-    <input type="submit" class="submit-btn btn" value='SUBMIT'/>
-</form>
-   
-  </div>
+				<input type="submit" class="submit-btn btn" value='SUBMIT' />
+			</form>
 
-  <div class="col-lg-4 col-md-4 mx-auto addresss">
+		</div>
 
-    <div class="logo"> 
-      <img src="<?= base_url("assets/frontend/images/tamr.png") ?>" width="30%">
-    </div>
+		<div class="col-lg-5 col-md-6 mx-auto addresss">
 
-    <div class='head'>
-      TAMR HEAD OFFICE
-    </div>
+			<div class="logo">
+				<?php
+				if (isset($settings->logo) && $settings->logo != null) {
+				?>
+					<img src="<?= base_url('uploads/settings/' . $settings->logo) ?>">
+				<?php } else { ?>
+					<img src="<?= base_url('assets/frontend/images/tamr.png') ?>">
+				<?php } ?>
+			</div>
 
-    <div class="address">
+			<div class='head'>
+				TAMR HEAD OFFICE
+			</div>
 
-      <?php echo $info->address; ?>
-    </div>
+			<div class="address">
 
-  </div>
+				<?php echo $info->address; ?>
+			</div>
+
+		</div>
+
+	</div>
 
 </div>
-
-</div>
-</div>
-
 <script>
-
-$("#contactForm").validate({
+	$("#contactForm").validate({
 		rules: {
 			name: "required",
 			email: {
@@ -174,5 +181,4 @@ $("#contactForm").validate({
 			})
 		}
 	});
-
-  </script>
+</script>

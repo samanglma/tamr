@@ -13,6 +13,10 @@ class Products extends CI_Controller
 
     public function index()
     {
+        $data['wishlist'] = [];
+        if ($this->session->userdata('user_id')) {
+			$data['wishlist'] = $this->Wishlist_m->getUserWishlistItemIds($this->session->userdata('user_id'));
+		}
         $data['bodyClass'] = 'listings';
         $slug = $this->uri->segment('3');
         
@@ -28,8 +32,11 @@ class Products extends CI_Controller
         $bc['breadcrumb'] = [
             'Home' => base_url(),
             'products' => base_url($this->language.'/products/'),
-            $slug => base_url($this->language.'/products/'.$slug),
         ];
+        if($slug != '')
+        {
+            $bc['breadcrumb'][$slug] = base_url($this->language.'/products/'.$slug);
+        }
         
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
         $this->load->view('frontend/includes/header', $data);

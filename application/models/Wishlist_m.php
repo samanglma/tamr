@@ -20,6 +20,14 @@ class Wishlist_m  extends CI_Model
 
     }
 
+    public function getUserWishlistItemIds($id)
+    {
+        $this->db->select('product_id as id');
+        $this->db->where("user_id", $id); 
+		return $this->db->get('wishlist')->result_array();
+
+    }
+
     public function delete($itemid)
     {
         $this->db->where('id', $itemid);

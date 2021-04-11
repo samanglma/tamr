@@ -152,7 +152,7 @@ class Products_m extends CI_Model
 	{
 
 		
-		$this->db->select('products.*, categories.title, categories.title_ar');
+		$this->db->select('products.*, categories.title as cat_title, categories.title_ar as cat_title_ar');
 		if($category!= '')
 		{
 			$this->db->where('categories.slug', $category);
@@ -204,6 +204,18 @@ class Products_m extends CI_Model
 		$query = $this->db->get()->result();
 
 		return $query;
+	}
+
+	public function search($search)
+	{
+		$this->db->select('*');
+		$this->db->from('products');
+		$this->db->like('title',$search);
+		// $this->db->or_like('fname',$search);
+		// $this->db->or_like('lname',$search);
+		// $this->db->or_like('mname',$search);
+		$query = $this->db->get();
+		return $query->result();
 	}
 
 }

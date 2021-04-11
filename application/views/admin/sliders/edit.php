@@ -55,18 +55,21 @@
                        </div>
 
                        <div class="col-md-7  form-group">
-                           <label>Arabic Image</label>
-                           <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
-                           <input type='file' name='image_ar' size='20' /><br>
-                           <?php if(!empty($row->image_ar)){?> <img width="20%" src="<?php echo base_url()?>uploads/sliders/<?php echo $row->image_ar;?>">
-                               <input type="hidden" value="<?php echo $row->image_ar;?>" name="image_ar2">
-                           <?php } ?>
-                       </div>
-
-                       <div class="col-md-7  form-group">
                            <label>Alt *</label>
                            <input type="text" value="<?php echo $row->alt;?>" name="alt" class="form-control" placeholder="Alt Tag" />
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+                       <div class="col-md-7  form-group">
+                           <label>Arabic Alt</label>
+                           <input type="text" name="alt_ar"  value="<?= set_value('alt_ar') ?>" class="form-control" placeholder="Arabic Alt Tag" />
+                           <?php echo form_error('alt_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+                       <div class="col-md-7  form-group">
+                           <label>Arabic Alt</label>
+                           <input type="text" value="<?php echo $row->alt_ar;?>" name="alt_ar" class="form-control" placeholder="Arabic Alt Tag" />
+                           <?php echo form_error('alt_ar', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
 
@@ -95,6 +98,12 @@
                            <label>Slider Text Arabic</label>
                            <input dir="rtl" type="text" name="slider_text_ar" value="<?php echo $row->slider_text_ar;?>" class="form-control" placeholder="Slider Text Arabic" />
                            <?php echo form_error('slider_text_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+                       <div class="col-md-7  form-group">
+                           <label>Slide Text Color (e.g. #000000)</label>
+                           <input type="text" maxlength="7" name="text_color" value="<?php echo $row->text_color;?>" class="form-control" placeholder="Slide Text Color" />
+                           <?php echo form_error('text_color', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
 					   <div class="col-md-7 form-group">

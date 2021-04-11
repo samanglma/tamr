@@ -11,12 +11,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
     margin-top: 160px;
   }
 
-  .currancy {
-
-    font-weight: bold;
-    font-size: 13px;
-  }
-
   .price p {
 
     font-weight: bold;
@@ -84,7 +78,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
               echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
             } ?>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="YOUR EMAIL" value="<?php echo set_value('email'); ?>" name='email' />
+              <input type="email" required class="form-control" placeholder="YOUR EMAIL" value="<?php echo set_value('email'); ?>" name='email' />
             </div>
             <br>
             <div class="clearfix">

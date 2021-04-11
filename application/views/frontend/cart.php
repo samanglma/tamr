@@ -55,18 +55,34 @@ $lang = lang() == 'english' ? 'en' : 'ar';
                       foreach ($this->cart->contents() as $items) {
 
                     ?>
+                    <?php
+if($items['color'] != '')
+{
+  ?>
+  <style> 
+    .cat-circle:after {
+      background-color: <?= $items['color'] ?>;
+    }
+    .cat-circle:before {
+    border: 1px solid <?= $items['color'] ?>;
+}
+    </style>
+    <?php
+}
+?>
                         <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
 
                         <tr>
                           <td><a href="<?= base_url($lang . '/product/' . $items['slug']) ?>"><img src="<?= base_url('uploads/products/' . $items['image']) ?>" /></a></td>
-                          <td><a href="<?= base_url($lang . '/product/' . $items['slug']) ?>"><?php echo $items['name']; ?><br>
-                              <?= 'AED ' . $items['price'] ?>
+                          <td class="cart-item-detail"><a href="<?= base_url($lang . '/product/' . $items['slug']) ?>">
+                          <p><?php echo $items['name']; ?></p>
+                             <p> <?= 'AED ' . $items['price'] ?></p>
                               <?php if ($this->cart->has_options($items['rowid']) == TRUE) :
                               ?>
                                 <p>
                                   <?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value) : ?>
                                     <?php if ($option_name === 'category') { ?>
-                                      <span class="cat-circle text-uppercase"><?php echo $option_value; ?></span><br />
+                                      <span class="cat-circle text-uppercase bold-text"><?php echo $option_value; ?></span><br />
                                     <?php } ?>
                                   <?php endforeach; ?>
                                 </p>
@@ -94,19 +110,19 @@ $lang = lang() == 'english' ? 'en' : 'ar';
                 <h3 class="text-uppercase"><?php echo $this->lang->line('Order-Summary'); ?></h3>
                 <br><br>
                 <div class="row">
-                  <div class="col-md-6 col-sm-6 col-xs-6">
+                  <div class="col-md-8 col-sm-6 col-xs-6">
                     <?php echo $this->lang->line('Sub-Total-(AED)'); ?>
                   </div>
-                  <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                  <div class="col-md-4 col-sm-6 col-xs-6 text-right">
                     <?php echo $this->cart->format_number($this->cart->total()); ?>
                   </div>
                 </div>
                 <br>
                 <div class="row">
-                  <div class="col-md-6 col-sm-6 col-xs-6">
+                  <div class="col-md-8 col-sm-6 col-xs-6">
                     Delivery Charges
                   </div>
-                  <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                  <div class="col-md-4 col-sm-6 col-xs-6 text-right">
                     10 AED
                   </div>
                 </div>
@@ -116,13 +132,13 @@ $lang = lang() == 'english' ? 'en' : 'ar';
                     <b><?php echo $this->lang->line('Total-(AED)'); ?></b>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                    <?php echo $this->cart->format_number($this->cart->total()); ?> AED
+                    <b><?php echo $this->cart->format_number($this->cart->total()); ?> AED</b>
                   </div>
                 </div>
                 <?php
                 if ($this->cart->total_items() > 0) { ?>
                   <div class="text-center">
-                    <a href="#." class="btn"><?php echo $this->lang->line('CHECKOUT'); ?></a>
+                    <a href="#." class="btn checkout-btn"><?php echo $this->lang->line('CHECKOUT'); ?></a>
                   </div>
                 <?php } ?>
               </div>

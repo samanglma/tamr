@@ -74,6 +74,7 @@ $route['default_controller'] = 'Home';
 $route['^(en|ar)']                                 =  'Home/index';
 $route['^(en|ar)/about']                                 =  'Page/index/about';
 $route['^(en|ar)/contact']                                 =  'Page/index/contact';
+$route['^(en|ar)/privacy-policy']                                 =  'Page/index/privacy-policy';
 $route['^(en|ar)/cart']                                 =  'Cart/index';
 $route['^(en|ar)/products/(:any)']                                 =  'Products/index/$i';
 $route['^(en|ar)/products']                                 =  'Products/index';

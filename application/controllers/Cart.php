@@ -53,8 +53,9 @@ class Cart extends CI_Controller
 			'qty'     => $quantity,
 			'price'   => $product->price,
 			'name'    => $product->title,
-			'image'    => $product->thumbnail,
+			'image'    => $product->thumbnail1,
 			'slug'    => $product->slug,
+			'color'    => $product->theme_color,
 			'options' => array('vat_price' => $product->vat_price, 'category' => $product->cat_title)
 		);
 		if ($this->cart->insert($data)) {

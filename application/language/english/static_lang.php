@@ -63,16 +63,18 @@ $lang['Tenant-List'] = 'Tenant List';
 $lang['Products'] = 'Products';
 $lang['contact-us'] = 'contact us';
 $lang['cart'] = 'cart';
+$lang['view-cart'] = 'View Cart';
 
 $lang['Depachika-Location'] = 'Depachika Location';  
-$lang['Privacy-Policy'] = 'Privacy Policy';
+$lang['Privacy-Policy'] = 'Privacy & Policy';
 $lang['Terms-Conditions'] = 'Terms & Conditions';  
 $lang['Created-by-GLMA-Agency'] = 'Created by GLMA Agency'; 
 
 
 $lang['All'] = 'All';
 $lang['New-Products'] = 'New Products';
-$lang['Top-Sellers'] = 'Top Sellers'; 
+$lang['Top-Selling'] = 'Top Selling'; 
+$lang['kind'] = 'DATE Kind'; 
 $lang['Select-Category'] = 'All Categories';
 $lang['Categories'] = 'Categories';
 
@@ -164,7 +166,7 @@ $lang['here'] = '<a style="color:#212529" href="'. base_url().$dn .'#section3"> 
 $lang['choose'] = 'to choose between small and large in the hamper category.';
 $lang['dubai'] = 'Dubai';
 $lang['united-arab-emirates'] = 'United Arab Emirates';
-$lang['SEARCH'] = 'SEARCH';
+$lang['SEARCH'] = 'TYPE TO SEARCH';
 $lang['menu'] = 'menu';
 $lang['basket'] = 'basket';
 $lang['Welcome-back-Login-to-start-shopping-with-TAMR'] = 'Welcome back! Login to start shopping with TAMR';
