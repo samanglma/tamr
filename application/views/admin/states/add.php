@@ -53,7 +53,7 @@
 
 				   <div class="col-md-7 form-group">
                                <label>Countries *</label>
-                               <select name="country_id" class="form-control">
+                               <select name="country_id" class="form-control" required>
                                    <option value="">Select Country</option>
                                    <?php
                                     foreach($countries as $country) {

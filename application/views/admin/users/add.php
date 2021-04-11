@@ -35,7 +35,7 @@
                    <form method="post" action="<?php echo base_url()?>admin/user/save" enctype="multipart/form-data">
                        <div class="col-md-7  form-group">
                            <label>Username *</label>
-                           <input type="text" name="username"  value="<?php echo set_value('username');?>" class="form-control" placeholder="Username" />
+                           <input type="text" name="username"  value="<?php  echo set_value('username');  ?>" class="form-control" placeholder="Username" />
                            <?php echo form_error('username', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 

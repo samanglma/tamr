@@ -57,7 +57,7 @@
                                <input type='text' class="form-control" value="<?= $headings[0] ?? '' ?>" name="headings[]">
 
                                <label>Tab One Content</label>
-                               <textarea  name="content[]" class="ckeditor" id="editor1"><?= $content[0] ?? '' ?></textarea>
+                               <textarea  name="content[]" class="ckeditor"><?= $content[0] ?? '' ?></textarea>
                            </div>
 
                            <div class="col-md-12 form-group">
@@ -81,7 +81,8 @@
                                <label>Tab Two Heading</label>
                                <input type='text' value="<?= $headings[1] ?? '' ?>" class="form-control" name="headings[]">
                                <label>Tab Two Content</label>
-                               <textarea name="content[]" class="ckeditor"><?= $content[1] ?? '' ?></textarea>
+                               <textarea name="content[]" class="ckeditor" id='editor2'><?= $content[1] ?? '' ?></textarea>
+							   
                            </div>
 
                            <div class="col-md-12 form-group">
@@ -104,7 +105,7 @@
                                <label>Tab Three Arabic Heading</label>
                                <input type='text' value="<?= $headings[2] ?? '' ?>" class="form-control" name="headings[]">
                                <label>Tab Three Content</label>
-                               <textarea name="content[]" class="ckeditor"><?= $content[2] ?? '' ?></textarea>
+                               <textarea name="content[]" class="ckeditor" id='editor3'><?= $content[2] ?? '' ?></textarea>
                            </div>
 
                            <div class="col-md-12 form-group">
@@ -127,7 +128,7 @@
                                <label>Tab Four Arabic Heading</label>
                                <input type='text' value="<?= $headings[3] ?? '' ?>" class="form-control" name="headings[]">
                                <label>Tab Four Content</label>
-                               <textarea name="content[]" class="ckeditor"><?= $content[3] ?? '' ?></textarea>
+                               <textarea name="content[]" class="ckeditor" id='editor4'><?= $content[3] ?? '' ?></textarea>
                            </div>
 
                            <div class="col-md-12 form-group">
