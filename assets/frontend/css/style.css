@@ -242,9 +242,9 @@ aside .menuss a {
 
 aside .menuss {
   list-style: none;
-  padding: 0px 12rem 4rem !important;
+  padding: 0px 12rem 0 !important;
   display: table-cell;
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
 .toggle-wrap {
@@ -1519,6 +1519,7 @@ hr {
   display: table-row;
   vertical-align: bottom;
   bottom: 0;
+  height: 60px;
   width: 100%;
   font-size: 0.8rem;
 }
