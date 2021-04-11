@@ -27,18 +27,18 @@
                    <table class="table table-striped table-hover js-basic-example dataTable">
                        <thead>
                        <tr>
-                           <th width="20%">Product Title</th>
-                           <th width="20%">Product Title Arabic</th>
+                           <th width="">Product Title</th>
+                           <th width="">Product Title Arabic</th>
                            <!--<th width="10%">Brand</th> -->
                              <!--<th width="20%">Categories</th>  -->
-                           <th width="5%">Image</th>
-                           <th width="10%">Net Price(AED)</th>
-                           <th width="10%">Total Price(AED)</th>
-                           <th width="5%">Status</th>
-                           <th width="10%">Stock</th>
+                           <th width="">Image</th>
+                           <th width="">Net Price(AED)</th>
+                           <th width="">Total Price(AED)</th>
+                           <th width="">Status</th>
+                           <th width="">Stock</th>
                            <th>Last updated on</th>
                             <th>Updated by</th>
-                           <th width="10%">Action</th>
+                           <th width="">Action</th>
                        </tr>
                        </thead>
                        <tbody>
@@ -48,7 +48,7 @@
                            <td><?php echo $row->title_ar; ?></td>
                            <!-- <td><?php echo $row->brand_name; ?></td> -->
                            <!--  <td><?php echo $row->cat_title; ?></td> -->
-                           <td><?php if(!empty($row->image)){?><img style="max-width: 20px;" src="<?php echo base_url()?>uploads/products/<?php echo $row->image;?>" /><?php }?></td>
+                           <td><?php if(!empty($row->thumbnail1)){?><img style="max-width: 50px;" src="<?php echo base_url()?>uploads/products/<?php echo $row->thumbnail1;?>" /><?php }?></td>
                            <td><?php echo $row->price; ?></td>
                            <td><?php echo $row->vat_price; ?></td>
                            <td><?php if($row->status == 1){ echo 'Active';}else{ echo 'Inactive';} ?></td>

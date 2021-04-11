@@ -24,14 +24,20 @@ class Email_templates extends My_Controller {
 	public function save()
     {
         $this->form_validation->set_rules('title', 'title', 'required');
-        //$this->form_validation->set_rules('title', 'Name', 'trim|required|is_unique[pbk_groups.Name]');
+		$this->form_validation->set_rules('template', 'template', 'required');
       
+		$dataarry = array(
+			'title' => $this->input->post('title'),
+			'template' => $this->input->post('template')
+		);
         if($this->form_validation->run() == FALSE)
         {
-            $this->session->set_flashdata('error', 'Fill all the Required Fields/Unique Title and try again.. ');
-          //  $data['data'] = array('error1' => 'test');
-        
-            redirect('admin/email_templates/add');
+            $this->session->set_flashdata('error', 'Fill all the Required Fields and try again.. ');
+          //  $data['data'] = array('error1' => $dataarry);
+           // redirect('admin/email_templates/add', $data);
+			//redirect('admin/email_templates/add', array('emails' => $dataarry));
+
+			$this->load->view('admin/email_templates/add');
 
         }
         else{

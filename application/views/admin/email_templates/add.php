@@ -22,12 +22,13 @@
                    </div>
                <?php } ?>
 
-               <?php if($this->session->flashdata('error')){?>
+			   <?php if ($this->session->flashdata('error')) { ?>
                    <div class="alert alert-danger text-center" role="alert">
-                       <?php $data =  $this->session->flashdata('error');
-                       echo $data['error1'];
-                       ?>
+                       <?php echo $data =  $this->session->flashdata('error');
+                     //   echo $emails['error'];
+                        ?>
                    </div>
+
                <?php } ?>
 
                <div class="panel-body">
@@ -35,19 +36,20 @@
                    <form method="post" action="<?php echo base_url()?>admin/email_templates/save" enctype="multipart/form-data">
                        <div class="col-md-7  form-group">
                            <label>Title *</label>
-                           <input type="text" name="title"  value="<?php if(empty(set_value('title')) && isset($data)){ echo $data['data']['title']; } else { echo set_value('title'); } ?>" class="form-control" placeholder="Title" />
+                           <input type="text" name="title"  value="<?php  echo set_value('title');  ?>" class="form-control" placeholder="Title" />
                            <?php echo form_error('title', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
            
 
               <div class="col-md-12 form-group">
                            <label>Template *</label>
+						   <p style="color:cadetblue">Use variables {name}, {email}, {message}, {verification_code}, {forget_password_link}</p>
                            <textarea class="ckeditor1 ckeditor" name="template" id="editor"> <?= set_value('template') ?> </textarea>
+						   <?php echo form_error('description', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 					  
                        <div class="col-md-7  form-group">
                       
-
                        <div class="col-md-7 form-group">
                                <label>Status</label>
                                <select name="status" class="form-control">

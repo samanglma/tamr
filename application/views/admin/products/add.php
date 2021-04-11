@@ -20,19 +20,13 @@
                        <?php echo $this->session->flashdata('success'); ?>
                    </div>
                <?php } ?>
-               <?php if ($this->session->flashdata('error')) { ?>
-                   <div class="alert alert-danger text-center" role="alert">
-                       <?php echo $this->session->flashdata('error'); ?>
-                   </div>
-               <?php } ?>
-
-               <?php if ($this->session->flashdata('error')) { ?>
+              
+			   <?php if($this->session->flashdata('error')){?>
                    <div class="alert alert-danger text-center" role="alert">
                        <?php $data =  $this->session->flashdata('error');
-                        echo $data['error'];
-                        ?>
+                       echo $data['error1'];
+                       ?>
                    </div>
-
                <?php } ?>
 
                <div class="panel-body">
@@ -153,7 +147,7 @@
 					   <div class="col-md-7  form-group">
                            <label>Thumbnail 2 *</label>
                            <input type='file' name='thumb2' size='20' />
-                           <span style="color: #97310e;"> Size ( 508 * 210 ) </span>
+                           <span style="color: #97310e;"> Size ( 508 * 391 ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">

@@ -31,10 +31,6 @@
 
                    <form method="post" action="<?php echo base_url()?>admin/cities/save" enctype="multipart/form-data">
 
-
-				   
-
-
 				<?php if(!empty( $state_id)){?>
 
 					<input type='hidden' name='state_id' value="<?php echo $state_id;?>">
@@ -55,13 +51,11 @@
                        </div>
 
 						<?php } else{?>
-				   <div class="col-md-7 form-group">
+				  	 <div class="col-md-7 form-group">
                                <label>State *</label>
-                               <select name="state_id" class="form-control">
+                               <select name="state_id" class="form-control" required>
                                    <option value="">Select State</option>
                                    <?php
-
-
                                     foreach($states as $state) {
                                    ?>
                                    <option value="<?= $state->id ?>" <?= set_value('state_id') == $state->id ? 'selected' : '' ?>><?= $state->name ?></option>
@@ -80,7 +74,6 @@
                            <?php echo form_error('name', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                    
 					   <input type='hidden' value='1' name='status'>
                     
                        <div class="col-md-7 form-group">

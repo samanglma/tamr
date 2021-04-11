@@ -39,9 +39,9 @@ class User extends My_Controller {
         if($this->form_validation->run() == FALSE)
         {
             $this->session->set_flashdata('error', 'Fill all the Required Fields/Unique Title and try again.. ');
-          //  $data['data'] = array('error1' => 'test');
+           // $data['data'] = array('error1' => 'test');
         
-            redirect('admin/users/add');
+		   $this->load->view('admin/users/add');
 
         }
         else{

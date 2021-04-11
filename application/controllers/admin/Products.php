@@ -45,12 +45,16 @@ class Products extends My_Controller
         // $this->form_validation->set_rules('title', 'Brand Name', 'required');
         //$this->form_validation->set_rules('description', 'Description', 'required');
         //$this->form_validation->set_rules('brand_id', 'Brand', 'required');
+	
         $this->form_validation->set_rules('price', 'Price', 'required');
         $this->form_validation->set_rules('vat_price', 'Price Including VAT', 'required');
         $this->form_validation->set_rules('alt', 'Alt', 'required');
+		// $this->form_validation->set_rules('thumb1', 'thumb1', 'required');
+		// $this->form_validation->set_rules('thumb2', 'thumb2', 'required');
         $title = $this->input->post('title');
         $slugs = url_title($title);
         $slug = strtolower($slugs);
+
         $dataArray = array(
             
             'title' => $this->input->post('title'),
@@ -71,63 +75,22 @@ class Products extends My_Controller
             'cat_id' => $this->input->post('cat_id'),
 
         );
+
         if ($this->form_validation->run() == FALSE) {
-            $this->session->set_flashdata('error', 'Fill all the Required Fields and try again.. ');
-            redirect('admin/products/add', array('data' => $dataArray));
+            // $this->session->set_flashdata('error', 'Fill all the Required Fields and try again.. ');
+            // redirect('admin/products/add', array('data' => $dataArray));
+			$da = ['error1' => 'Fill all the Required Fields.', 'data' => $this->input->post()];
+            $this->session->set_flashdata('error', $da);
+			redirect('admin/products/add');
+
         } else {
 
-			   //thumbnail 1
-			   if ($_FILES['thumb1']['name'] != "") {
-                $config2['upload_path'] = './uploads/products/';
-                $config2['allowed_types'] = 'jpg|jpeg|png|gif';
-                $config['encrypt_name'] = TRUE;
-           		$config['max_width'] = 321;
-           		$config['max_height'] = 282;
-				$config['min_width'] = 321;
-           		$config['min_height'] = 282;
+			  
+			
 
-				$this->load->library('upload', $config2);
-
-
-                if (!$this->upload->do_upload('thumb1')) {
-                    $this->session->set_flashdata('error', $this->upload->display_errors() . "thbmnail 1");
-                    //$error = array('error' => $this->upload->display_errors());
-                    redirect('admin/products/add', $dataArray);
-                } else {
-                    $uploadData = $this->upload->data();
-
-                    $thumb1 = $uploadData['file_name'];
-                }
-            }
-
-
-			 //thumbnail 2
-			 if ($_FILES['thumb2']['name'] != "") {
-                $config3['upload_path'] = './uploads/products/';
-                $config3['allowed_types'] = 'jpg|jpeg|png|gif';
-                $config['encrypt_name'] = TRUE;
-           		$config['max_width'] = 508;
-           		$config['max_height'] = 391;
-				$config['min_width'] = 508;
-           		$config['min_height'] = 391;
-
-				$this->load->library('upload', $config3);
-
-
-                if (!$this->upload->do_upload('thumb2')) {
-                    $this->session->set_flashdata('error', $this->upload->display_errors() . "thbmnail 2");
-                    //$error = array('error' => $this->upload->display_errors());
-                    redirect('admin/products/add', $dataArray);
-                } else {
-                    $uploadData = $this->upload->data();
-
-                    $thumb2 = $uploadData['file_name'];
-                }
-            }
-
-            $config['upload_path']          = './uploads/products/';
-            $config['allowed_types']        = 'jpg|jpeg|png|gif';
-             $config['encrypt_name']          = TRUE;
+             $config['upload_path']     = './uploads/products/';
+             $config['allowed_types']   = 'jpg|jpeg|png|gif';
+             $config['encrypt_name']    = TRUE;
 			 $config['min_width']       = '1374';      
 			 $config['min_height']      = '1030';      
 			 $config['max_width']       = '1374';       
@@ -137,52 +100,125 @@ class Products extends My_Controller
 
             if (!$this->upload->do_upload('image1')) {
                 // $error = array('error' => $this->upload->display_errors());
-                $this->session->set_flashdata('error', $this->upload->display_errors() . "image1");
-
-                redirect('admin/products/add', $dataArray);
+				$da = ['error1' => 'Upload the Image 1 with correct dimmisions.', 'data' => $this->input->post()];
+				$this->session->set_flashdata('error', $da);
+				redirect('admin/products/add');
+	
             } else {
                 $uploadData = $this->upload->data();
 
                 $image1 = $uploadData['file_name'];
             }
            
-
             if ($_FILES['image2']['name'] != "") {
 
-                if ($this->upload->do_upload('image2')) {
-                    $uploadData = $this->upload->data();
 
-                    $image2 = $uploadData['file_name'];
-                }
+				if (!$this->upload->do_upload('image2')) {
+					// $error = array('error' => $this->upload->display_errors());
+					$da = ['error1' => 'Upload the Image 2 with correct dimmisions.', 'data' => $this->input->post()];
+					$this->session->set_flashdata('error', $da);
+					redirect('admin/products/add');
+		
+				} else {
+					$uploadData = $this->upload->data();
+	
+					$image2 = $uploadData['file_name'];
+				}
             }
             else{
                 $image2 = '';
             }
 
-            if ($_FILES['image3']['name'] != "") {
+			if ($_FILES['image3']['name'] != "") {
 
-                if ($this->upload->do_upload('image3')) {
-                    $uploadData = $this->upload->data();
 
-                    $image3 = $uploadData['file_name'];
-                }
+				if (!$this->upload->do_upload('image3')) {
+					// $error = array('error' => $this->upload->display_errors());
+					$da = ['error1' => 'Upload the Image 3 with correct dimmisions.', 'data' => $this->input->post()];
+					$this->session->set_flashdata('error', $da);
+					redirect('admin/products/add');
+		
+				} else {
+					$uploadData = $this->upload->data();
+	
+					$image3 = $uploadData['file_name'];
+				}
             }
-            else
-            {
+            else{
                 $image3 = '';
             }
 
-            if ($_FILES['image4']['name'] != "") {
+			if ($_FILES['image4']['name'] != "") {
 
-                if ($this->upload->do_upload('image4')) {
-                    $uploadData = $this->upload->data();
 
-                    $image4 = $uploadData['file_name'];
-                }
+				if (!$this->upload->do_upload('image4')) {
+					// $error = array('error' => $this->upload->display_errors());
+					$da = ['error1' => 'Upload the Image 4 with correct dimmisions.', 'data' => $this->input->post()];
+					$this->session->set_flashdata('error', $da);
+					redirect('admin/products/add');
+		
+				} else {
+					$uploadData = $this->upload->data();
+	
+					$image4 = $uploadData['file_name'];
+				}
             }
             else{
                 $image4 = '';
             }
+
+			 //thumbnail 1
+			 if ($_FILES['thumb1']['name'] != "") {
+                $config2['upload_path'] = './uploads/products/';
+                $config2['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config2['encrypt_name'] = TRUE;
+           		$config2['max_width'] = 321;
+           		$config2['max_height'] = 282;
+				$config2['min_width'] = 321;
+           		$config2['min_height'] = 282;
+
+				$this->load->library('upload', $config2);
+				$this->upload->initialize($config2);
+
+                if (!$this->upload->do_upload('thumb1')) {
+					$da = ['error1' => 'Upload the Thumnail 1 with correct dimmisions.', 'data' => $this->input->post()];
+					$this->session->set_flashdata('error', $da);
+					redirect('admin/products/add');
+		
+                } else {
+                    $uploadData = $this->upload->data();
+
+                    $thumb1 = $uploadData['file_name'];
+                }
+            }
+
+
+		
+
+		 //thumbnail 2
+		 if ($_FILES['thumb2']['name'] != "") {
+			$config3['upload_path'] = './uploads/products/';
+			$config3['allowed_types'] = 'jpg|jpeg|png|gif';
+			$config3['encrypt_name'] = TRUE;
+			 $config3['max_width'] = 508;
+			 $config3['max_height'] = 391;
+			 $config3['min_width'] = 508;
+		  $config3['min_height'] = 391;
+
+
+			$this->load->library('upload', $config3);
+			$this->upload->initialize($config3);
+			if (!$this->upload->do_upload('thumb2')) {
+				$da = ['error1' => 'Upload the Thumnail 2 with correct dimmisions.', 'data' => $this->input->post()];
+				$this->session->set_flashdata('error', $da);
+				redirect('admin/products/add');
+	
+			} else {
+				$uploadData = $this->upload->data();
+
+				$thumb2 = $uploadData['file_name'];
+			}
+		}
             	
             // if ($_FILES['thumb_ar']['name'] != "") {
             //     $config['upload_path'] = './uploads/products/';
@@ -258,7 +294,6 @@ class Products extends My_Controller
                 $this->Common_model->save($variantData, 'product_variants');
             }
     
-            
             $this->session->set_flashdata('success', 'Product added successfully');
             redirect('admin/products');
         }
