@@ -164,11 +164,12 @@ a, a:focus, a:hover {
   margin-top: -2%;
   margin-bottom: 0;
 }
+.menuss li a.active { color:#E8DBCA;}
 
 /* .navigation { position: fixed; left:0; z-index: 1; width: 5%;} */
 
 nav {
-  padding: 4rem;
+  padding: 4rem 0 0 4rem;
   position: fixed;
   top: 0;
   z-index: 3;
@@ -452,7 +453,7 @@ body:not([class^="home"])   aside {
   width: 70%;
   position: absolute;
   padding: 0;
-  left: 10%;
+  left: 20%;
   top: 0;
   transition: all 0.4s ease;
   /* max-width: 300px; */
@@ -1636,9 +1637,19 @@ body:not('.home') .dropdown ul {
 }
 
 .menu-products li {
-  margin: 0 15px;
+  min-width: 160px;
+  margin: 0;
 }
-
+.menu-products li a {
+  transition: all ease-in-out 0.3s;
+}
+.menu-products li:hover a {
+  font-size: 1.2rem;
+}
+  a:focus {
+    outline: 0;
+    outline-offset: none;
+}
 /*
  *  SCROLL
  */

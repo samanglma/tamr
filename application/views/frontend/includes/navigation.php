@@ -1,6 +1,7 @@
 <?php
 $lang = lang() == 'english' ? 'en' : 'ar';
 $categories = getCategoriesByParentId(1);
+$segment = $this->uri->segment('2');
 ?>
 <nav>
     <a class="toggle-wrap" href='javascript:;' onclick="toggleMenu(this)">
@@ -11,8 +12,8 @@ $categories = getCategoriesByParentId(1);
 <aside>
     <div class="menuss">
         <ul>
-            <li><a href="<?= base_url() ?>"><?= $this->lang->line('Home') ?></a></li>
-            <li class="dropdown level1"><a href="javascript:;"><?= $this->lang->line('Products') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+            <li><a href="<?= base_url() ?>" class="<?= $segment == '' || $segment == '/' ? 'active' : '' ?>"><?= $this->lang->line('Home') ?></a></li>
+            <li class="dropdown level1"><a href="javascript:;" class="<?= $segment == 'products' || $segment == '/products' || $segment == 'product' ? 'active' : '' ?>"><?= $this->lang->line('Products') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
                 <ul>
                     <li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
                         <ul>
@@ -34,11 +35,11 @@ $categories = getCategoriesByParentId(1);
                     <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
                 </ul>
             </li>
-            <li><a href="<?= base_url($lang . '/contact') ?>"><?= $this->lang->line('contact-us') ?></a></li>
-            <li><a href="<?= base_url($lang . '/about') ?>"><?= $this->lang->line('about-us') ?></a></li>
-            <li><a href="<?= base_url($lang . '/wishlist') ?>"><?= $this->lang->line('wishlist') ?></a></li>
-            <li><a href="<?= base_url($lang . '/cart') ?>"><?= $this->lang->line('basket') ?></a></li>
-            <li><a href="<?= base_url($lang . '/login') ?>"><?= $this->lang->line('login_heading') ?></a></li>
+            <li><a href="<?= base_url($lang . '/contact') ?>" class="<?= $segment == 'contact' || $segment == '/contact' ? 'active' : '' ?>"><?= $this->lang->line('contact-us') ?></a></li>
+            <li><a href="<?= base_url($lang . '/about') ?>" class="<?= $segment == 'about' || $segment == '/about' ? 'active' : '' ?>"><?= $this->lang->line('about-us') ?></a></li>
+            <li><a href="<?= base_url($lang . '/wishlist') ?>" class="<?= $segment == 'wishlist' || $segment == '/wishlist' ? 'active' : '' ?>"><?= $this->lang->line('wishlist') ?></a></li>
+            <li><a href="<?= base_url($lang . '/cart') ?>" class="<?= $segment == 'cart' || $segment == '/cart' ? 'active' : '' ?>"><?= $this->lang->line('basket') ?></a></li>
+            <li><a href="<?= base_url($lang . '/login') ?>" class="<?= $segment == 'login' || $segment == '/login' ? 'active' : '' ?>"><?= $this->lang->line('login_heading') ?></a></li>
 
 
         </ul>
