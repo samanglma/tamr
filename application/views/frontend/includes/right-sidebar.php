@@ -100,10 +100,9 @@ content: url('<?= base_url('assets/frontend/images/Basket_StateHover.png') ?>');
 			
 			</a></li>
             <li><a  href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count"><?= $this->cart->total_items() ?></span>
-            <?php
-            
-            ?><img class="cart-icons" <?= $this->cart->total_items() > 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart-full' src="<?= base_url('assets/frontend/images/cart-full.svg') ?>" />
-            <img class="cart-icons" <?= $this->cart->total_items() <= 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" />
+			<img class="cart-icons" id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" />
+			<!-- <img class="cart-icons" <?= $this->cart->total_items() > 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart-full' src="<?= base_url('assets/frontend/images/cart-full.svg') ?>" /> -->
+            <!-- <img class="cart-icons" <?= $this->cart->total_items() <= 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" /> -->
         </a></li>
         </ul>
     </div>
