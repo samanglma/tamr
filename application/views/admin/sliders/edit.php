@@ -47,7 +47,7 @@
                       ?>
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
-                           <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
+                           <span style="color: #97310e;">Size ( 1200 * 900 ) </span>
                        <input type='file' name='image' size='20' /><br>
                           <?php if(!empty($row->image)){?> <img width="20%" src="<?php echo base_url()?>uploads/sliders/<?php echo $row->image;?>">
                            <input type="hidden" value="<?php echo $row->image;?>" name="image2">

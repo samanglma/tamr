@@ -40,7 +40,7 @@
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
                        <input type='file' name='image' size='20' />
-					   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
+					   <span style="color: #97310e;">Size ( 1200 * 900 ) </span>
                        </div>
 
 					   <div class="col-md-7  form-group">
