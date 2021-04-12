@@ -205,10 +205,11 @@ class Slider extends My_Controller {
            $config['upload_path']          = './uploads/sliders/';
            $config['allowed_types']        = 'jpg|jpeg|png|gif';
            $config['encrypt_name']          = TRUE;
-           $config['max_width']            = 1200;
-           $config['max_height']           = 900;
-		   $config['min_width']            = 1200;
-           $config['min_height']           = 900;
+		   $config['max_width'] = 1200;
+		   $config['max_height'] = 900;
+		   $config['min_width'] = 1200;
+		   $config['min_height'] = 900;
+           
 
            $this->load->library('upload', $config);
 
@@ -292,10 +293,11 @@ class Slider extends My_Controller {
            $config['upload_path']          = './uploads/sliders/';
            $config['allowed_types']        = 'jpg|jpeg|png|gif';
            $config['encrypt_name']          = TRUE;
-           $config['max_width']            = 1200;
-           $config['max_height']           = 900;
-		   $config['min_width']            = 1200;
-           $config['min_height']           = 900;
+           $config['max_width'] = 1200;
+                $config['max_height'] = 900;
+				$config['min_width'] = 1200;
+                $config['min_height'] = 900;
+        
 
            $this->load->library('upload', $config);
 

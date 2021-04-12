@@ -48,7 +48,7 @@
 
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
-						   <span style="color: #97310e;">Size ( 1199 * 946 ) </span>
+						   <span style="color: #97310e;">Size ( 1200 * 900 ) </span>
                        <input type='file' name='image' size='20' />
                        </div>
 
@@ -58,11 +58,11 @@
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-                       <div class="col-md-7  form-group">
+                       <!-- <div class="col-md-7  form-group">
                            <label>Arabic Alt</label>
                            <input type="text" name="alt_ar"  value="<?= set_value('alt_ar') ?>" class="form-control" placeholder="Arabic Alt Tag" />
                            <?php echo form_error('alt_ar', '<div class="error" style="color: red;">', '</div>'); ?>
-                       </div>
+                       </div> -->
 
                        <div class="col-md-7  form-group">
                            <label>Slider Text</label>

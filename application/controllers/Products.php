@@ -50,6 +50,7 @@ class Products extends CI_Controller
 
     public function details()
     {
+		
         $data['meta'] = [
 			'canonical_tag' => '',
 			'meta_title' => lang() == 'english' ? '' : '',
@@ -57,11 +58,15 @@ class Products extends CI_Controller
 			'schema' => '',
 			'robots' => ''
 		];
+
+		$cat_id = 1;
         
         $data['bodyClass'] = 'product-details';
         $slug = $this->uri->segment('3');
         $data['product'] = $this->Products_m->getProductDetailsBySlug($slug);
-		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
+		//$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
+		$data['categories'] = $this->Sub_categories_m->getSubCatbyId($cat_id);
+		$data['categories_upper'] = $this->Sub_categories_m->getSubCatbyIdUpper($cat_id);
         $data['variants'] = $this->Products_m->getProductVariants($data['product']->id);
         $bc['breadcrumb'] = [
             'Home' => base_url(),

@@ -140,19 +140,19 @@
 
                        <div class="col-md-7  form-group">
                            <label>Thumbnail 1 *</label>
-                           <input type='file' name='thumb1' size='20' />
+                           <input type='file' name='thumb1' size='20' required/>
                            <span style="color: #97310e;"> Size ( 321 * 282 ) </span>
                        </div>
 
 					   <div class="col-md-7  form-group">
                            <label>Thumbnail 2 *</label>
-                           <input type='file' name='thumb2' size='20' />
+                           <input type='file' name='thumb2' size='20' required/>
                            <span style="color: #97310e;"> Size ( 508 * 391 ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">
                            <label>Image 1 </label>
-                           <input type='file' name='image1' size='20' />
+                           <input type='file' name='image1' size='20' required />
 
                            <span style="color: #97310e;"> Size ( 1374 * 1030px ) </span>
                        </div>

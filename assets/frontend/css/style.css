@@ -330,7 +330,8 @@ aside .menuss {
 }
 
 .home-wrapper h1 {
-  font-size: 9rem;
+  /* font-size: 9rem; */
+	font-size: 9rem;
   text-transform: uppercase;
   color: #5F534A;
   font-weight: bolder;
@@ -481,6 +482,7 @@ body:not([class^="home"])   aside {
   display: inline-block;
   position: relative;
   z-index: 99;
+	font-weight: 900;
 }
 
 .slide-1 .right-img {
@@ -1216,12 +1218,14 @@ body {
 
 /*   my css   */
 
-.bottom-cats a:focus {
+/* .bottom-cats a:focus {
   font-weight: bold;
-}
+} */
 
 .bottom-cats a:hover {
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
+
+	color: #e8dbca;
 }
 
 .menu-contact a {
@@ -1499,7 +1503,9 @@ hr {
 }
 
 .submit-btn.btn:hover {
-  letter-spacing: 4px;
+  
+	letter-spacing: 4px;
+  background-size: 100% 100%;
   border-bottom: 1px solid #5f534A !important;
 }
 
@@ -1741,3 +1747,15 @@ body.about .page-holder { margin: 12%;}
 .content.contact-us { padding: 5rem;}
 .privacy-policy .my-container { margin-top: 10%; }
 .product-details .currency { font-size: 1.7rem;}
+.social li a:hover{
+
+	-webkit-transform: scale(1.3);
+	-moz-transform: scale(1.3);
+	-ms-transform: scale(1.3);
+	-o-transform: scale(1.3);
+	transform: scale(1.3); 
+}
+.product-details .price,
+.product-details .pcs { margin-top: 8vw;}
+
+

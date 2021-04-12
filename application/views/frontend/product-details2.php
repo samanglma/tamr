@@ -52,7 +52,7 @@ i{
     margin: 1px;
     text-indent: -999px;
     cursor: pointer;
-    background-color: #000\9;
+    background-color: #000;
     background-color: rgba(0,0,0,0);
     border: 1px solid #291a1a;
     margin:6px;

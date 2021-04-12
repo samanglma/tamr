@@ -86,8 +86,6 @@ class Products extends My_Controller
         } else {
 
 
-
-
             $config['upload_path']     = './uploads/products/';
             $config['allowed_types']   = 'jpg|jpeg|png|gif';
             $config['encrypt_name']    = TRUE;

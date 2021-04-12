@@ -17,10 +17,10 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
             <button id="toggle">CHANGE DATES KINDS <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
             <div class="row" id="content">
               <?php
-              $half = ceil(count($categories) / 2);
+              $half = ceil(count($categories_upper) / 2);
               ?>
               <div class="col-md-6 kinds"> <?php
-                                            foreach ($categories as $key => $category) {
+                                            foreach ($categories_upper as $key => $category) {
                                             ?>
                   <a href="javascript:;"> <?= $category->$title ?> </a>
                   <?php
@@ -55,15 +55,15 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
               <!-- <img src="img/Box1.png" width="100%"> -->
 
               <div class="item active">
-                <img src="<?= base_url('uploads/products/' . $product->image1) ?>" alt="Los Angeles">
+                <img src="<?= base_url('uploads/products/' . $product->image1) ?>" alt="Tamr">
               </div>
 
               <div class="item">
-                <img src="<?= base_url('uploads/products/' . $product->image1) ?>" alt="Chicago">
+                <img src="<?= base_url('uploads/products/' . $product->image2) ?>" alt="Tamr">
               </div>
 
               <div class="item">
-                <img src="<?= base_url('uploads/products/' . $product->image1) ?>" alt="New York">
+                <img src="<?= base_url('uploads/products/' . $product->image3) ?>" alt="Tamr">
               </div>
 
 
