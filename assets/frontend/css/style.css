@@ -350,7 +350,7 @@ aside .menuss {
   opacity: 0;
   position: absolute;
   right: 16%;
-  bottom: -5%;
+  bottom: -4%;
   text-transform: uppercase;
   font-size: 1.5rem;
   border-bottom: 1px solid #5f534a;
@@ -488,7 +488,7 @@ body:not([class^="home"])   aside {
   top: 0;
   max-width: 55%;
   position: absolute;
-  right: 0%;
+  right: 100%;
 }
 
 /* #slider .slide-1.active .right-img {
