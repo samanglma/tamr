@@ -1,32 +1,44 @@
 <?php
+
+use Dompdf\Css\Style;
+
 $lang = lang() == 'english' ? 'en' : 'ar';
 $settings = '';
 if ($this->session->userdata('settings')) {
-
-    // print_r($this->session->userdata('settings'));
     $settings = $this->session->userdata('settings');
-    // $settings = $settings[0];
 }
+
+
 
 ?>
 
 <style>
 
-.top img{
+.serch:hover{
 
-    margin-left: -93px;
-    margin-top: 34px;
+
+content: url('<?= base_url('assets/frontend/images/new-search.png') ?>');
+
+
 }
 
-nav{
+.user_img:hover{
 
-    padding: 4%;
-}
-.bottom:hover img{
+	content: url('<?= base_url('assets/frontend/images/new-user.png') ?>');
 
-   
+	
+	
 }
+
+.cart-icons:hover{
+
+content: url('<?= base_url('assets/frontend/images/Basket_StateHover.png') ?>');
+
+}
+
+
 </style>
+
 <div class="right-sidebar">
     <div class="top">
         <ul>
@@ -77,9 +89,22 @@ nav{
                 $url = base_url($lang . '/login');
             }
             ?>
-            <li><a href="<?= $url ?>"><img src="<?= base_url('assets/frontend/images/user.svg') ?>" /></a></li>
-            <li><a href="javascript:;" onclick="openSearch()"><img src="<?= base_url('assets/frontend/images/search.svg') ?>" /></a></li>
-            <li><a href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count">0</span><img src="<?= base_url('assets/frontend/images/cart.svg') ?>" /></a></li>
+
+            <li><a class='serch' href="javascript:;" onclick="openSearch()"><img   src="<?= base_url('assets/frontend/images/search.svg') ?>" />
+
+
+            <li><a class='user_img' href="<?= $url ?>"><img   src="<?= base_url('assets/frontend/images/user.svg') ?>" /></a></li>
+
+           
+
+			
+			</a></li>
+            <li><a  href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count"><?= $this->cart->total_items() ?></span>
+            <?php
+            
+            ?><img class="cart-icons" <?= $this->cart->total_items() > 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart-full' src="<?= base_url('assets/frontend/images/cart-full.svg') ?>" />
+            <img class="cart-icons" <?= $this->cart->total_items() <= 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" />
+        </a></li>
         </ul>
     </div>
 </div>

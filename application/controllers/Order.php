@@ -7,17 +7,19 @@ class Order extends CI_Controller
     {
         parent::__construct();
 
-        $this->language = lang() == 'english' ? 'en' : 'ar';
+        $this->language = lang() == 'arabic' ? 'ar' : 'en';
 
         if (!$this->session->userdata('user_id')) {
 
-            redirect($this->lang . '/login');
+            redirect($this->language . '/login');
         }
     }
 
     public function index()
     {
-        $data['orders'] = $this->Order_m->getAll();
+        $id = $this->session->userdata('user_id');
+        $data['orders'] = $this->Order_m->getOrdersByUserId($id);
+        $data['bodyClass'] = 'orders';
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',
@@ -40,12 +42,39 @@ class Order extends CI_Controller
     }
 
 
+    public function checkout()
+    {
+        $id = $this->session->userdata('user_id');
+        $data['bodyClass'] = 'orders';
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+        $data['breadcrumb'] = [
+            'Home' => base_url(),
+            'Orders' => base_url($this->language . '/orders'),
+        ];
+
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders/checkout', $data);
+    }
+
+
     public function details()
     {
         $id = $this->uri->segment('3');
+        $data['bodyClass'] = 'order-details';
         $order_id = base64_decode($id);
         $data['order'] = $this->Order_m->getOrdeById($order_id);
-
+        $data['orderItems'] = $this->OrderItems_m->getProducts($order_id);
         $data['meta'] = [
             'canonical_tag' => '',
             'meta_title' => lang() == 'english' ? '' : '',
@@ -71,6 +100,7 @@ class Order extends CI_Controller
     {
 
         $order_id = base64_decode($id);
+        $data['bodyClass'] = 'order-tracking';
         $lang = $this->uri->segment(1) == 'ar' ? 'ar' : 'en';
         if ($this->input->post()) {
             $data['order_id'] = $order_id;
@@ -101,7 +131,7 @@ class Order extends CI_Controller
     {
 
         die();
-        
+
         if ($this->input->post()) {
             $data['code'] = $this->input->post('p_code');
             $data['billing_email'] = $this->input->post('billing_email');
@@ -117,16 +147,16 @@ class Order extends CI_Controller
                 if (lang() == 'arabic') {
                     echo json_encode(['success' => 'false', 'message' => '<span class="alert alert-danger">   لقد تمَّ اِستخدام هذا الرَّمز التَّرويجيّ سابقاً</span><br><br>']);
                 } else {
-                echo json_encode(['success' => 'false', 'message' => '<span class="alert alert-danger">you have already used this code</span><br><br>']);
+                    echo json_encode(['success' => 'false', 'message' => '<span class="alert alert-danger">you have already used this code</span><br><br>']);
                 }
                 exit;
             } else if ($p == 'out-of-used') {
                 if (lang() == 'arabic') {
                     echo json_encode(['success' => 'false', 'message' => '<span class="alert alert-danger">هذا الرَّمز التَّرويجيّ مُنتهي الصلاحيَّة</span><br><br>']);
                 } else {
-                echo json_encode(['success' => 'false', 'message' => '<span class="alert alert-danger">Promo Code is expired</span><br><br>']);
-            }
-            exit;
+                    echo json_encode(['success' => 'false', 'message' => '<span class="alert alert-danger">Promo Code is expired</span><br><br>']);
+                }
+                exit;
             } else {
                 $this->session->set_userdata('promo', $p['id']);
                 $this->session->set_userdata('discount', $p['discount']);
@@ -136,13 +166,31 @@ class Order extends CI_Controller
         }
     }
 
-    public  function getCityBySate($state_id) {
-        $data= $this->db->get_where('city', ['state_id'=> $state_id])->result();
+    public  function getCityBySate($state_id)
+    {
+        $data = $this->db->get_where('city', ['state_id' => $state_id])->result();
         echo json_encode($data);
 
         exit;
     }
 
 
-    
+    public function thankyou()
+    {
+        $id = $this->session->userdata('user_id');
+        $data['bodyClass'] = 'orders';
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+
+        $this->load->view('frontend/user/orders/thankyou', $data);
+    }
 }

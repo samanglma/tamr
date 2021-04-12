@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session', 'parser', 'encryption', 'database','form_validation','email','cart', 'quiqup');
+$autoload['libraries'] = array('parser', 'encryption', 'database','form_validation','email','cart', 'quiqup', 'session');
 
 /*
 | -------------------------------------------------------------------
@@ -117,7 +117,7 @@ $autoload['config'] = array();
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-$autoload['language'] = array();
+$autoload['language'] = array('auth');
 
 /*
 | -------------------------------------------------------------------
@@ -132,5 +132,5 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('OrderItems_m', 'Order_m', 'Page_m', 'Email_templates_m', 'Common_model', 'Products_m', 'Categories_m', 'Settings_m', 'User_model');
+$autoload['model'] = array('OrderItems_m', 'Order_m','Sub_Categories_m', 'Page_m', 'Wishlist_m', 'Email_templates_m', 'Common_model', 'Products_m', 'Categories_m', 'Settings_m', 'User_model');
 

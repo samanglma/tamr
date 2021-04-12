@@ -13,7 +13,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
 
 
-      <div class="contact-us register">
+      <div class="register">
         <div class="bg-text">
           <h2>Orders</h2>
         </div>
@@ -30,31 +30,84 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           </li>
         </ul>
         <hr>
-        <div class="table-responsive orders-table">
-          <table class="table">
-            <?php
-            if (count($orders) > 0 && $orders != '') {
-              $first = true;
-              foreach ($orders as $order) {
-            ?>
-                <tr>
-                  <td class='<?= $first ? 'no-border' : '' ?>'>Order Number <?= $order->ref_number ?></td>
-                  <td class='<?= $first ? 'no-border' : '' ?>'><?= date('F d, Y', strtotime($order->date)) ?></td>
-                  <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->total ?> AED</td>
-                  <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->status ?> </td>
-                  <td class='<?= $first ? 'no-border' : '' ?>'><a href="<?= base_url($lang.'/order/'.base64_encode($order->id)) ?>">Details</a></td>
-                </tr>
-            <?php $first = false; }
-            } else {
-            ?>
-            <tr class="">
-              <td class="no-border">
-                <div class='alert alert-info'>No order found</div>
-              </td>
-            </tr>
-            <?php } ?>
-          </table>
+        <div class="text-right">
+          <a href="<?= base_url($lang . '/orders') ?>" class="active">VIEW ALL ORDERS</a>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="white-bg pad-2rem">
+              <h3 class="text-uppercase">Order Items</h3>
+              <div class="table-responsive">
+                <table class="table order-items">
+                  <?php
+                  if ($orderItems != '' && !empty($orderItems)) {
+                    foreach ($orderItems as $items) {
+                  ?>
+                      <tr>
+                        <td><img src="<?= base_url('uploads/products/' . $items->thumbnail) ?>" </td>
+                        <td><?= $items->title ?></td>
+                        <td class="text-uppercase cat-circle"><?= $items->cat_name ?></td>
+                        <td><?= 'AED' . $items->price ?></td>
+                        <td>QTY <?= $items->qty ?></td>
+                      </tr>
+                  <?php
+                    }
+                  }
+                  ?>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 col-xs-12 order-right">
+            <div class="white-bg pad-2rem">
+              <h3 class="text-uppercase">Order Details</h3>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  Ordered On
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                  <?= date('M d, Y', strtotime($order['date'])) ?>
+                </div>
+              </div>
 
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <b>Status</b>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                  <?= ucfirst($order['status']) ?>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <b>Sub Total</b>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                  <?= $order['sub_total'] ?> AED
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <b>Delivery Charges</b>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                  <?= $order['shipping_charges'] ?> AED
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <b>Total</b>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                  <?= $order['total'] ?> AED
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>

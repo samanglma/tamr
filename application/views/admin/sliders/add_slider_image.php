@@ -5,7 +5,6 @@
            <h1>Add Slider Image</h1>
            <ol class="breadcrumb">
                <li><a href="javascript:void(0);">Home</a></li>
-               <li><a href="javascript:void(0);">Forms</a></li>
                <li class="active">Add Slider Image</li>
            </ol>
        </div>
@@ -44,12 +43,6 @@
 					   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
                        </div>
 
-                       <div class="col-md-7  form-group">
-                           <label>Arabic Image</label>
-                           <input type='file' name='image_ar' size='20' />
-						   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
-                       </div>
-
 					   <div class="col-md-7  form-group">
                            <label>Alt *</label>
                            <input type="text" name="alt" value="<?php if(empty(set_value('alt')) && isset($data)){ echo $data['data']['alt']; } else { echo set_value('alt'); } ?>" class="form-control" placeholder="Alt Tag" />
@@ -81,6 +74,12 @@
                            <label>Slider Text Arabic</label>
                            <input dir="rtl" type="text" name="slider_text_ar" value="<?php if(empty(set_value('slider_text_ar')) && isset($data)){ echo $data['data']['slider_text_ar']; } else { echo set_value('slider_text_ar'); } ?>" class="form-control" placeholder="Slider Text Arabic" />
                            <?php echo form_error('slider_text_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+                       <div class="col-md-7  form-group">
+                           <label>Slide Text Color (e.g. #000000)</label>
+                           <input type="text" maxlength="7" name="text_color" value="<?= set_value('text_color') ?>" class="form-control" placeholder="Slide text color" />
+
                        </div>
 
 

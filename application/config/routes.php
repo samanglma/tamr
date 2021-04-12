@@ -74,6 +74,7 @@ $route['default_controller'] = 'Home';
 $route['^(en|ar)']                                 =  'Home/index';
 $route['^(en|ar)/about']                                 =  'Page/index/about';
 $route['^(en|ar)/contact']                                 =  'Page/index/contact';
+$route['^(en|ar)/privacy-policy']                                 =  'Page/index/privacy-policy';
 $route['^(en|ar)/cart']                                 =  'Cart/index';
 $route['^(en|ar)/products/(:any)']                                 =  'Products/index/$i';
 $route['^(en|ar)/products']                                 =  'Products/index';
@@ -82,9 +83,12 @@ $route['^(en|ar)/register']                                 =  'Auth/index';
 $route['^(en|ar)/login']                                 =  'Auth/login_view';
 $route['^(en|ar)/forgot-password']                                 =  'Auth/forgotPassword';
 $route['^(en|ar)/change-password']                                 =  'Auth/ChangePassword';
+$route['^(en|ar)/thankyou']                                 =  'Order/thankyou';
+$route['^(en|ar)/checkout']                                 =  'Order/checkout';
 //User dashboard
 $route['^(en|ar)/profile']                                 =  'User/index';
 $route['^(en|ar)/orders']                                 =  'Order/index';
+$route['^(en|ar)/wishlist']                                 =  'User/wishlist';
 $route['^(en|ar)/order/(:any)']                                 =  'Order/details';
 
 

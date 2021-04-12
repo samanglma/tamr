@@ -66,12 +66,6 @@ class Slider extends My_Controller {
 
                $this->load->library('upload', $config);
 
-               if ($this->upload->do_upload('image_ar')) {
-                   $uploadData = $this->upload->data();
-
-                   $image_ar = $uploadData['file_name'];
-               }
-
 			   $user = $_SESSION["username"];
 
 			   $now = date('Y-m-d H:i:s');
@@ -80,7 +74,6 @@ class Slider extends My_Controller {
 
                 'title' => $this->input->post('title'),
                 'image' => $image,
-                'image_ar' => $image_ar,
                 'alt' => $this->input->post('alt'),
                 'slider_text' => $this->input->post('slider_text'),
                 'slider_sub_text' => $this->input->post('slider_sub_text'),
@@ -126,6 +119,8 @@ class Slider extends My_Controller {
 
         }
         else{
+            
+        $sliderData = $this->sliders_m->editSlider($id);
 
             if ($_FILES['image']['name'] != "") {
 
@@ -133,22 +128,23 @@ class Slider extends My_Controller {
                 $config['upload_path'] = './uploads/sliders/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['encrypt_name'] = TRUE;
-                $config['max_width'] = 1920;
-                $config['max_height'] = 1080;
-				$config['min_width'] = 1920;
-                $config['min_height'] = 1080;
+                $config['max_width'] = 1200;
+                $config['max_height'] = 900;
+				$config['min_width'] = 1200;
+                $config['min_height'] = 900;
 
                 $this->load->library('upload', $config);
 
                 $id = $this->input->post('id');
 
                 if (!$this->upload->do_upload('image')) {
-
-                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your Image. Please upload correct Image');
+                    $this->session->set_flashdata('error', $this->upload->display_errors());
                     redirect('admin/slider/edit/'. $id);
                 }
-                elseif($this->upload->do_upload('image'))
+                else
                 {
+                    
+       unlink('./uploads/sliders/'.$sliderData->image);
 
                     $uploadData = $this->upload->data();
 
@@ -159,42 +155,6 @@ class Slider extends My_Controller {
 
             else{
                 $image = $this->input->post('image2');
-            }
-
-
-            if ($_FILES['image_ar']['name'] != "") {
-
-
-                $config['upload_path'] = './uploads/sliders/';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                $config['encrypt_name'] = TRUE;
-                $config['max_width'] = 1920;
-                $config['max_height'] = 1080;
-				$config['min_width'] = 1920;
-                $config['min_height'] = 1080;
-
-
-                $this->load->library('upload', $config);
-
-                $id = $this->input->post('id');
-
-                if (!$this->upload->do_upload('image_ar')) {
-
-                    $this->session->set_flashdata('error', 'There is a Problem Uploading Your Arabic Image. Please upload correct Image');
-                    redirect('admin/slider/edit/'. $id);
-                }
-                elseif($this->upload->do_upload('image_ar'))
-                {
-
-                    $uploadData = $this->upload->data();
-
-                    $image_ar = $uploadData['file_name'];
-                }
-
-            }
-
-            else{
-                $image_ar = $this->input->post('image_ar2');
             }
 
             }
@@ -209,10 +169,10 @@ class Slider extends My_Controller {
 
                 'title' => $this->input->post('title'),
                 'image' => $image,
-                'image_ar' => $image_ar,
                 'alt' => $this->input->post('alt'),
 				'slider_heading' => $this->input->post('slider_heading'),
 				'slider_text' => $this->input->post('slider_text'),
+				'text_color' => $this->input->post('text_color'),
 				'slider_heading_ar' => $this->input->post('slider_heading_ar'),
 				'slider_text_ar' => $this->input->post('slider_text_ar'),
 				'dispaly_text' => $this->input->post('dispaly_text'),
@@ -245,10 +205,10 @@ class Slider extends My_Controller {
            $config['upload_path']          = './uploads/sliders/';
            $config['allowed_types']        = 'jpg|jpeg|png|gif';
            $config['encrypt_name']          = TRUE;
-           $config['max_width']            = 1920;
-           $config['max_height']           = 1080;
-		   $config['min_width']            = 1920;
-           $config['min_height']           = 1080;
+		   $config['max_width'] = 1200;
+		   $config['max_height'] = 900;
+		   $config['min_width'] = 1200;
+		   $config['min_height'] = 900;
 
            $this->load->library('upload', $config);
 
@@ -275,23 +235,6 @@ class Slider extends My_Controller {
 
            $this->load->library('upload', $config);
 
-           if (!$this->upload->do_upload('image_ar')) {
-
-               $da = ['error1' => 'There is a problem uploading your image. Please upload a correct image.', 'data' => $this->input->post()];
-               $this->session->set_flashdata('error', $da);
-               redirect('admin/slider/add_slider/'.$id);
-
-           }
-           else {
-               $uploadData = $this->upload->data();
-
-               $image_ar = $uploadData['file_name'];
-           }
-
-           if (empty($_FILES['image_ar']['name'])) {
-
-               $image_ar = $this->input->post('image_ar2');
-           }
         }
 			$data['id'] = $this->input->post('id');
 
@@ -303,13 +246,13 @@ class Slider extends My_Controller {
 
         //   'title' => $this->input->post('title'),
            'image' => $image,
-           'image_ar' => $image_ar,
            'alt' => $this->input->post('alt'),
            'slider_heading' => $this->input->post('slider_heading'),
            'slider_text' => $this->input->post('slider_text'),
            'slider_heading_ar' => $this->input->post('slider_heading_ar'),
            'slider_text_ar' => $this->input->post('slider_text_ar'),
 		   'dispaly_text' => $this->input->post('dispaly_text'),
+           'text_color' => $this->input->post('text_color'),
            'page_tempalet_id' => $this->input->post('page_tempalet_id'),
            'status' => $this->input->post('status'),
            'updated_by' => $user,
@@ -349,10 +292,10 @@ class Slider extends My_Controller {
            $config['upload_path']          = './uploads/sliders/';
            $config['allowed_types']        = 'jpg|jpeg|png|gif';
            $config['encrypt_name']          = TRUE;
-           $config['max_width']            = 1920;
-           $config['max_height']           = 1080;
-		   $config['min_width']            = 1920;
-           $config['min_height']           = 1080;
+           $config['max_width'] = 1200;
+                $config['max_height'] = 900;
+				$config['min_width'] = 1200;
+                $config['min_height'] = 900;
 
            $this->load->library('upload', $config);
 
@@ -371,11 +314,6 @@ class Slider extends My_Controller {
 
            $this->load->library('upload', $config);
 
-           if ($this->upload->do_upload('image_ar')) {
-               $uploadData = $this->upload->data();
-
-               $image_ar = $uploadData['file_name'];
-           }
 
 		   $user = $_SESSION["username"];
 
@@ -383,10 +321,10 @@ class Slider extends My_Controller {
 
 		   $data = array(
                'image' => $image,
-               'image_ar' => $image_ar,
                'alt' => $this->input->post('alt'),
 			   'slider_heading' => $this->input->post('slider_heading'),
 			   'slider_text' => $this->input->post('slider_text'),
+               'text_color' => $this->input->post('text_color'),
 			   'slider_heading_ar' => $this->input->post('slider_heading_ar'),
 			   'slider_text_ar' => $this->input->post('slider_text_ar'),
 			   'dispaly_text' => $this->input->post('dispaly_text'),

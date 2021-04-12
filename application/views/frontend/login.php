@@ -11,12 +11,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
     margin-top: 160px;
   }
 
-  .currancy {
-
-    font-weight: bold;
-    font-size: 13px;
-  }
-
   .price p {
 
     font-weight: bold;
@@ -62,14 +56,14 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
       <div class="contact-us register">
         <div class="bg-text">
-          <h2>LOGIN</h2>
+          <h2><?= $this->lang->line('login_heading') ?></h2>
         </div>
         <div class="cart-heading">
-          <h1>LOGIN</h1>
+          <h1><?= $this->lang->line('login_heading') ?></h1>
         </div>
         <br>
-        <p>Welcome back! Login to start shopping with TAMR<br>
-          You <strong><a href="<?= base_url($lang . '/register') ?>">Don't have an account?</a></strong></p>
+        <p><?= $this->lang->line('Welcome-back-Login-to-start-shopping-with-TAMR') ?><br>
+        <?= $this->lang->line('you') ?> <strong><a href="<?= base_url($lang . '/register') ?>"><?= $this->lang->line('dont-have-an-accunt') ?></a></strong></p>
        
         <form role="form" class="loginForm" method="post" action="<?php echo base_url('auth/login_user'); ?>">
         <?php
@@ -86,16 +80,16 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
         } ?>
           <div class="form-group">
-            <input type="email" class="form-control" placeholder="YOUR EMAIL" name='user_email' />
+            <input type="email" class="form-control" placeholder="<?= $this->lang->line('EMAIL') ?>" name='user_email' />
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" placeholder="PASSWORD" name='user_password' />
+            <input type="password" class="form-control" placeholder="<?= $this->lang->line('login_password_label') ?>" name='user_password' />
           </div>
           <br>
           <div class="clearfix">
             <p class="already float-left">Did you <a href="<?= base_url($lang . '/forgot-password') ?>"><b><strong>Forget your password?</strong> </b></a></p>
 
-            <input type="submit" value='LOGIN' class="btn float-right pull-right" name="login" />
+            <input type="submit" value='<?= $this->lang->line('login_heading') ?>' class="btn float-right pull-right" name="login" />
           </div>
 
         </form>

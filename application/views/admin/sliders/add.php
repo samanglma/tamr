@@ -5,7 +5,6 @@
            <h1>Add Slider</h1>
            <ol class="breadcrumb">
                <li><a href="javascript:void(0);">Home</a></li>
-               <li><a href="javascript:void(0);">Forms</a></li>
                <li class="active">Add Slider</li>
            </ol>
        </div>
@@ -49,14 +48,8 @@
 
                        <div class="col-md-7  form-group">
                            <label>Image *</label>
-						   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
+						   <span style="color: #97310e;">Size ( 1200 * 900 ) </span>
                        <input type='file' name='image' size='20' />
-                       </div>
-
-                       <div class="col-md-7  form-group">
-                           <label>Arabic Image</label>
-						   <span style="color: #97310e;">Size ( 1920 * 1080 ) </span>
-                           <input type='file' name='image_ar' size='20' />
                        </div>
 
                        <div class="col-md-7  form-group">
@@ -64,6 +57,12 @@
                            <input type="text" name="alt"  value="<?= set_value('alt') ?>" class="form-control" placeholder="Alt Tag" />
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
+
+                       <!-- <div class="col-md-7  form-group">
+                           <label>Arabic Alt</label>
+                           <input type="text" name="alt_ar"  value="<?= set_value('alt_ar') ?>" class="form-control" placeholder="Arabic Alt Tag" />
+                           <?php echo form_error('alt_ar', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div> -->
 
                        <div class="col-md-7  form-group">
                            <label>Slider Text</label>
@@ -85,6 +84,12 @@
                        <div class="col-md-7  form-group">
                            <label>Arabic Slider Sub Text</label>
                            <input dir="rtl" type="text" name="slider_sub_text_ar" value="<?= set_value('slider_sub_text_ar') ?>" class="form-control" placeholder="Arabic Slider Sub Text" />
+
+                       </div>
+
+                       <div class="col-md-7  form-group">
+                           <label>Slide Text Color (e.g. #000000)</label>
+                           <input type="text" maxlength="7" name="text_color" value="<?= set_value('text_color') ?>" class="form-control" placeholder="Slide text color" />
 
                        </div>
 

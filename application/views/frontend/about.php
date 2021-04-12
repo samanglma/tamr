@@ -22,8 +22,8 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
 ?>
   <!-- Page Header -->
   <div class="about-banners">
-    <?php $first = true; foreach($images as $img) {  ?>
-    <img class="menu1 menu-image <?= $first ? 'active' : '' ?>" src="<?= base_url('uploads/pages/'.$img) ?>" width="100%">
+    <?php $first = true; foreach($images as $key=> $img) { $i = $key+1; ?>
+    <img class="menu<?=$i?> menu-image <?= $first ? 'active' : '' ?>" src="<?= base_url('uploads/pages/'.$img) ?>" width="100%">
     <?php $first = false; } ?>
     <!-- <img class="menu2 menu-image" src="<?= base_url('assets/frontend/images/about.png') ?>" width="100%">
     <img class="menu3 menu-image" src="<?= base_url('assets/frontend/images/about.png') ?>" width="100%">

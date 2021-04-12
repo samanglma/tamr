@@ -44,5 +44,5 @@
 </style>
 
 
-<body class="<?php //echo $bodyClass; 
+<body class="<?php echo $bodyClass; 
                 ?>">

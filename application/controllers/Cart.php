@@ -3,14 +3,16 @@
 
 class Cart extends CI_Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function index()
+	public function __construct()
 	{
+		parent::__construct();
+	}
 
+	public function index()
+	{
+		// echo '<pre>';
+		// print_r($this->cart->contents());
+		// die();
 		$data['meta'] = [
 			'canonical_tag' => '',
 			'meta_title' => lang() == 'english' ? '' : '',
@@ -18,7 +20,7 @@ class Cart extends CI_Controller
 			'schema' => '',
 			'robots' => ''
 		];
-        $data['breadcrumb'] = [
+		$data['breadcrumb'] = [
 			'Home' => base_url(),
 		];
 
@@ -26,6 +28,11 @@ class Cart extends CI_Controller
 
 		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
+		$wishlist = [];
+		if ($this->session->userdata('user_id')) {
+			$wishlist = $this->db->get_Where('wishlist', ['user_id' => $this->session->userdata('user_id')])->get();
+		}
+		$data['wishlist'] = $wishlist;
 
 		$this->load->view('frontend/includes/header', $data);
 		$this->load->view('frontend/includes/navigation');
@@ -34,11 +41,10 @@ class Cart extends CI_Controller
 		$this->load->view('frontend/includes/footer');
 	}
 
-    public function add($id, $quantity)
+	public function add($id, $quantity)
 	{
-		$this->db->select("products.*,brands.brand_name,categories.title as cat_title");
+		$this->db->select("products.*,categories.title as cat_title");
 		$this->db->where('products.id', $id);
-		$this->db->join('brands', 'brands.id = products.brand_id');
 		$this->db->join('categories', 'categories.id = products.cat_id');
 		$product = $this->db->get('products')->row();
 
@@ -47,7 +53,10 @@ class Cart extends CI_Controller
 			'qty'     => $quantity,
 			'price'   => $product->price,
 			'name'    => $product->title,
-			'options' => array('vat_price' => $product->vat_price, 'image' => $product->image, 'brand' => $product->brand_name, 'category' => $product->cat_title)
+			'image'    => $product->thumbnail1,
+			'slug'    => $product->slug,
+			'color'    => $product->theme_color,
+			'options' => array('vat_price' => $product->vat_price, 'category' => $product->cat_title)
 		);
 		if ($this->cart->insert($data)) {
 			echo json_encode(array('success' => 'true'));
@@ -73,7 +82,7 @@ class Cart extends CI_Controller
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-    public function updateCartQuantity()
+	public function updateCartQuantity()
 	{
 		$data = array(
 			'rowid' => $this->security->xss_clean($this->input->post('rowid')),

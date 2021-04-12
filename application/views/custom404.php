@@ -1,95 +1,55 @@
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/bootstrap.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/vendor/fullpage/dist/fullpage.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/vendor/owl/dist/assets/owl.carousel.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/fonts/stylesheet.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/style.css">
-    <link href="<?php echo base_url(); ?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/bootstrap.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/vendor/fullpage/dist/fullpage.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/vendor/owl/dist/assets/owl.carousel.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/fonts/stylesheet.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/style.css">
+  <link href="<?php echo base_url(); ?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
   <style>
-  
-body {
-    background-image: url('<?php echo base_url(); ?>assets/frontend/images/@cart-bg.png') !important;
-    background-size: cover;
-    background-position:0 100%;
-    font-size: 14px;
+    .bg-text h2 { font-size: 14rem;}
+    .cart-heading h1 {
+    margin-top: 0%;
 }
-img { width: 100%; margin-top: 20%;}
+    body {
+      background-image: url('<?php echo base_url(); ?>assets/frontend/images/home-bg.png') !important;
+      background-size: cover;
+      background-position: 0 100%;
+      font-size: 14px;
+    }
 
-.mainbox {
-    text-align: center;
-    padding: 0 15px;
-  /* background-color: #95c2de; */
-  margin: auto;
-  /* max-height: 600px; */
-  max-width: 600px;
-  position: relative;
+    body .mainbox { text-align: center;}
+
+    .date-image {
+      max-width: 300px;
+      width: 100%;
+      margin: 5rem auto auto;
+    }
+    .mainbox { height: 100vh; width: 100%; display: table;position: relative;}
+  @media (max-width:767px) {
+    .date-image {
+      max-width: 200px;
+    }
+    .bg-text h2 { font-size: 7rem;}
+    .cart-heading h1 {
+    margin-top: 0%;
+    font-size: 1rem;
 }
-@media (max-width:767px) {
-    img { width: 80%; }
-    body,html { font-size: 10px;}
-}
-  .err {
-    color: #D9CE46;
-    font-size: 11rem;
-    position:absolute;
-    left: 20%;
-    top: 8%;
+
   }
-
-
-
- .err2 {
-    color: #D9CE46;
-    font-size: 11rem;
-    position:absolute;
-    left: 68%;
-    top: 8%;
-  }
-
-.msg {
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 1.5rem;
-    width: 100%;
-    margin-top: 2rem;
-    top:60%;
-  }
-  .msg p {
-      line-height: 1.6rem;
-    font-family: "gothamlight";
-    margin-bottom: 0;
-  }
-
-a {
-    margin-top: 1rem;
-    display: inline-block;
-    background-color:#d9ce46;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.7rem;
-  color: #232323;
-  border-radius:1rem;
-  padding: 1rem 3rem;
-  transition: all ease-in-out 0.3s;
-}
-
-a:hover {
-    color: #fff;
-  text-decoration: none;
-}
-.or {
-    font-weight: bold;
-    margin: 1rem 0;
-}
-</style>
+  </style>
 </head>
+
 <body>
   <div class="mainbox">
-    <img src="<?= base_url('assets/frontend/images/404.png') ?>">
-    <div class="msg">
-    <p>THE PAGE YOU REQUESTED WAS NOT FOUND</p><p>
-    PLEASE MAKE SURE YOU HAVE TYPED THE CORRECT URL
-   <div class="or"> OR</div>
-<a href="<?= base_url() ?>">GO BACK HOME</a></div>
-</div>
+    <div class="table-cell  align-middle">
+    <div class="bg-text">
+      <h2>404</h2>
+    </div>
+    <div class="cart-heading">
+      <h1>PAGE NOT FOUND</h1>
+    </div>
+    <img class="date-image" src="<?= base_url('assets/frontend/images/404.png') ?>">
+  </div>
+  </div>
+</body>

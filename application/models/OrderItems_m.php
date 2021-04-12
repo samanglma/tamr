@@ -25,10 +25,12 @@ class OrderItems_m  extends CI_Model
 	}
 
 	public function getProducts($id){
+		// $this->db->select('products.title,categories.title as cat_name, categories.title_ar as cat_name_ar, products.thumbnail,order_items.*');
 
 		$this->db->select('products.title,products.image1,order_items.*');
 		$this->db->where('order_items.order_id', $id);
 		$this->db->join('products','products.id = order_items.product_id');
+		$this->db->join('categories','products.cat_id = categories.id');
 		return $this->db->get('order_items')->result();
 	}
  

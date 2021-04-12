@@ -205,3 +205,9 @@ function getVarianValues($variant_id )
 	$result = $CI->db->get()->result();
 	return $result;          
 }
+
+function getCategoriesByParentId($parent = 1)
+{
+	$CI = get_instance();
+	return $CI->Sub_Categories_m->getSubCatbyId($parent);
+}

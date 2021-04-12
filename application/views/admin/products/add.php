@@ -52,7 +52,7 @@
                            <select name="cat_id" class="form-control">
                                <option value="">Select Category</option>
                                <?php foreach ($categories as $category) { ?>
-                                   <option data-slug='<?php echo $category->slug ?>' value="<?php echo $category->id ?>"><?php echo $category->title; ?></option>
+                                   <option data-slug='<?php echo $category->slug ?>' <?= set_value('cat_id') == $category->id ? 'selected' : '' ?> value="<?php echo $category->id ?>"><?php echo $category->title; ?></option>
                                <?php } ?>
                            </select>
                        </div>
@@ -198,6 +198,14 @@
                                                                     echo set_value('alt');
                                                                 } ?>" class="form-control" placeholder="Alt Tag" required />
                            <?php echo form_error('alt', '<div class="error" style="color: red;">', '</div>'); ?>
+                       </div>
+
+                      
+
+                       <div class="col-md-7  form-group">
+                           <label>Product theme Color (e.g. #000000)</label>
+                           <input type="text" maxlength="7" name="theme_color" value="<?= set_value('theme_color') ?>" class="form-control" placeholder="Product Theme color" />
+
                        </div>
 
                        <!-- <div class="col-md-7  form-group">
