@@ -904,7 +904,7 @@ p {
 } */
 
 .pcs {
-  margin-top: 160px;
+  /* margin-top: 160px; */
 }
 
 .price p {
@@ -1740,3 +1740,4 @@ body.about .page-holder { margin: 12%;}
 .bold-text { font-weight: bold;}
 .content.contact-us { padding: 5rem;}
 .privacy-policy .my-container { margin-top: 10%; }
+.product-details .currency { font-size: 1.7rem;}
