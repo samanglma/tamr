@@ -3,6 +3,13 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 $title = lang() == 'arabic' ? 'title_ar' : 'title';
 $description = lang() == 'arabic' ? 'description_ar' : 'description';
 ?>
+
+<style>
+.total_amm{
+
+	display: none;
+}
+	</style>
 <div class="page-holder">
   <div class="container ">
 

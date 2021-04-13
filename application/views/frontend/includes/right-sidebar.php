@@ -105,5 +105,10 @@ content: url('<?= base_url('assets/frontend/images/cart-new22.png') ?>');
             <!-- <img class="cart-icons" <?= $this->cart->total_items() <= 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" /> -->
         </a></li>
         </ul>
-    </div>
+
+	
+    <div class="pull-right cart-totals total_amm"><?= $this->cart->format_number($this->cart->total()) ?> <span class="currency">AED</span></div>
+</div>
+
+
 </div>
