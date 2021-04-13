@@ -1,6 +1,6 @@
 <?php
 
-class Sub_Categories_m  extends CI_Model
+class Subcategories_m  extends CI_Model
 {
 
     public function saveSubCategory($data)

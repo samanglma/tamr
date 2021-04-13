@@ -48,24 +48,32 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
               <li data-target="#demo" data-slide-to="0" class="active"></li>
               <li data-target="#demo" data-slide-to="1"></li>
               <li data-target="#demo" data-slide-to="2"></li>
+							<li data-target="#demo" data-slide-to="3"></li>
             </ul>
 
             <div class="carousel-inner">
 
               <!-- <img src="img/Box1.png" width="100%"> -->
-
+						  <?php if(!empty($product->image1)){?>																		
               <div class="item active">
                 <img src="<?= base_url('uploads/products/' . $product->image1) ?>" alt="Tamr">
               </div>
-
+							<?php } ?>
+							<?php if(!empty($product->image2)){?>		
               <div class="item">
                 <img src="<?= base_url('uploads/products/' . $product->image2) ?>" alt="Tamr">
               </div>
-
+							<?php } ?>
+							<?php if(!empty($product->image3)){?>	
               <div class="item">
                 <img src="<?= base_url('uploads/products/' . $product->image3) ?>" alt="Tamr">
               </div>
-
+							<?php }?>
+							<?php if(!empty($product->image4)){?>	
+							<div class="item">
+                <img src="<?= base_url('uploads/products/' . $product->image4) ?>" alt="Tamr">
+              </div>
+							<?php }?>
 
             </div>
 
@@ -74,10 +82,10 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
             <p class="product-details-tamr">TAMR</p>
             <p class="product-details-name"><?= $product->$title ?></p>
 
-            <?php
-            if (!empty($variants)) {
-              foreach ($variants as $variant) {
-            ?>
+								<?php
+								if (!empty($variants)) {
+									foreach ($variants as $variant) {
+								?>
                 <button id="toggle2">CHANGE <?= $variant->type ?> <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
                 <div class="row" id="size">
                   <div class="col-md-12 kinds">
@@ -89,8 +97,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
                 </div>
             <?php
-              }
-            }
+						 }}
             ?>
             <br>
 

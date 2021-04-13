@@ -132,5 +132,5 @@ $autoload['language'] = array('auth');
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('OrderItems_m', 'Order_m','Sub_Categories_m', 'Page_m', 'Wishlist_m', 'Email_templates_m', 'Common_model', 'Products_m', 'Categories_m', 'Settings_m', 'User_model');
+$autoload['model'] = array('OrderItems_m', 'Order_m','Subcategories_m', 'Page_m', 'Wishlist_m', 'Email_templates_m', 'Common_model', 'Products_m', 'Categories_m', 'Settings_m', 'User_model');
 

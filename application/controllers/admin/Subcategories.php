@@ -8,19 +8,19 @@ class Subcategories extends My_Controller
     {
         parent::__construct();
 
-        $this->load->model('Sub_categories_m');
+        $this->load->model('Subcategories_m');
     }
 
     
     public function index()
     {
-        $data['rcd'] = $this->Sub_categories_m->getAllSubCategory();
+        $data['rcd'] = $this->Subcategories_m->getAllSubCategory();
         $this->load->view('admin/sub-categories/view', $data);
     }
 
     public function add()
     {
-        $data['parents_cat'] = $this->Sub_categories_m->getAllParentsCat();
+        $data['parents_cat'] = $this->Subcategories_m->getAllParentsCat();
 
         $this->load->view('admin/sub-categories/add', $data);
     }
@@ -60,7 +60,7 @@ class Subcategories extends My_Controller
 
             );
 
-            $this->Sub_categories_m->saveSubCategory($data);
+            $this->Subcategories_m->saveSubCategory($data);
             $this->session->set_flashdata('success', 'Category added successfully');
             redirect('admin/subcategories');
         }
@@ -68,8 +68,8 @@ class Subcategories extends My_Controller
 
     public function edit($id)
     {
-        $data['row'] = $this->Sub_categories_m->editSubCategory($id);
-        $data['parents_cat'] = $this->Sub_categories_m->getAllParentsCat();
+        $data['row'] = $this->Sub_categSubcategories_mories_m->editSubCategory($id);
+        $data['parents_cat'] = $this->Subcategories_m->getAllParentsCat();
 
         $this->load->view('admin/sub-categories/edit', $data);
     }
@@ -115,7 +115,7 @@ class Subcategories extends My_Controller
                 'updated_at' => $now
             );
 
-            $this->Sub_categories_m->updateSubCategory($data);
+            $this->Subcategories_m->updateSubCategory($data);
             $this->session->set_flashdata('success', 'Category updated successfully');
             redirect('admin/subcategories');
         }
@@ -123,7 +123,7 @@ class Subcategories extends My_Controller
 
     public function delete($id)
     {
-        $this->Sub_categories_m->deleteSubCategory($id);
+        $this->Subcategories_m->deleteSubCategory($id);
 
         $this->session->set_flashdata('success', 'Category Deleted Successfully');
         redirect('admin/subcategories');
