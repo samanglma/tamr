@@ -1682,11 +1682,13 @@ body:not('.home') .dropdown ul {
 }
 
 .p-holder {
+  margin-bottom: 30px;
   background-color: #fff;
 }
 
 .p-holder img {
   max-width: 100%;
+  max-height: 230px;
 }
 
 .p-title {
@@ -1757,5 +1759,3 @@ body.about .page-holder { margin: 12%;}
 }
 .product-details .price,
 .product-details .pcs { margin-top: 8vw;}
-
-

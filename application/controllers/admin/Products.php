@@ -84,7 +84,12 @@ class Products extends My_Controller
             $this->session->set_flashdata('error', $da);
             redirect('admin/products/add');
         } else {
-
+            if($_FILES['image1'] == '' || $_FILES['image2'] == '' || $_FILES['image3'] == '')
+            {
+                $da = ['error1' => 'Please upload all images with correct dimentions', 'data' => $this->input->post()];
+                $this->session->set_flashdata('error', $da);
+                redirect('admin/products/add'); 
+            }
 
             $config['upload_path']     = './uploads/products/';
             $config['allowed_types']   = 'jpg|jpeg|png|gif';
@@ -191,9 +196,9 @@ class Products extends My_Controller
                 $config3['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config3['encrypt_name'] = TRUE;
                 $config3['max_width'] = 508;
-                $config3['max_height'] = 391;
+                $config3['max_height'] = 230;
                 $config3['min_width'] = 508;
-                $config3['min_height'] = 391;
+                $config3['min_height'] = 230;
 
 
                 $this->load->library('upload', $config3);
@@ -315,7 +320,11 @@ class Products extends My_Controller
             $this->session->set_flashdata('error', 'Fill all the Required Fields.');
             redirect('admin/products/edit/' . $id);
         } else {
-
+            if($_FILES['image1'] == '' || $_FILES['image2'] == '' || $_FILES['image3'] == '')
+            {
+                $this->session->set_flashdata('error','Please upload all images with correct dimentions');
+                redirect('admin/products/edit/'.$id);
+            }
 
             if ($_FILES['image1']['name'] != "") {
                 $config['upload_path'] = './uploads/products/';
@@ -480,9 +489,9 @@ class Products extends My_Controller
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['encrypt_name'] = TRUE;
             $config['max_width'] = 508;
-            $config['max_height'] = 391;
+            $config['max_height'] = 230;
             $config['min_width'] = 508;
-            $config['min_height'] = 391;
+            $config['min_height'] = 230;
 
 
             $this->load->library('upload', $config);

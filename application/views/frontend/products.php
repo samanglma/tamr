@@ -62,8 +62,10 @@ $categories = getCategoriesByParentId(1);
 						}
 						if ($key % 6 == 1 || $key % 6 == 3) {
 							$col = 6;
+							$thumb = $p->thumbnail2;
 						} else {
 							$col = 3;
+							$thumb = $p->thumbnail1;
 						}
 					?>
 						<div class="product-grid col-md-<?= $col ?>">
@@ -81,7 +83,7 @@ $categories = getCategoriesByParentId(1);
 										<a href="<?= base_url($lang . '/product/' . $p->slug) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
 									<?php } ?>
 								</div>
-								<div class=""> <img src="<?= base_url('uploads/products/' . $p->thumbnail1) ?>" class="card-img-top">
+								<div class=""> <img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top">
 									<div class="card-body">
 										<div class="d-flex justify-content-between"> <span class="font-weight-bold p-title"><?= $p->title ?></span> </div>
 										<div class="details-products"><?= substr($p->description, 0, 50) ?? "" ?></div>

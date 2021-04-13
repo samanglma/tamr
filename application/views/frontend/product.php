@@ -53,19 +53,19 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
             <div class="carousel-inner">
 
               <!-- <img src="img/Box1.png" width="100%"> -->
-
+<?php if($product->image1 != '') { ?>
               <div class="item active">
                 <img src="<?= base_url('uploads/products/' . $product->image1) ?>" alt="Tamr">
               </div>
-
+              <?php } if($product->image2 != '') { ?>
               <div class="item">
                 <img src="<?= base_url('uploads/products/' . $product->image2) ?>" alt="Tamr">
               </div>
-
+              <?php } if($product->image3 != '') { ?>
               <div class="item">
                 <img src="<?= base_url('uploads/products/' . $product->image3) ?>" alt="Tamr">
               </div>
-
+              <?php } ?>
 
             </div>
 

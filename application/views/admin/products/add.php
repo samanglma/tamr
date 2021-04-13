@@ -147,7 +147,7 @@
 					   <div class="col-md-7  form-group">
                            <label>Thumbnail 2 *</label>
                            <input type='file' name='thumb2' size='20' required/>
-                           <span style="color: #97310e;"> Size ( 508 * 391 ) </span>
+                           <span style="color: #97310e;"> Size ( 508 * 230 ) </span>
                        </div>
 
                        <div class="col-md-7  form-group">
