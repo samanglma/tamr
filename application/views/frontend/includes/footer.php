@@ -53,26 +53,29 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 		if ($(window).width() < 768) {
 			mobile = true;
 		}
-		$(".dropdown")
-			.mouseover(function() {
-				var url = '<?= base_url('./assets/frontend/images/chevron-over.png') ?>';
-				$(this).closest('img').attr("src", url); //URL @the time of mouse over on image
-			})
-			.mouseout(function() {
-				var url = '<?= base_url('./assets/frontend/images/chevron.png') ?>';
-				$(this).closest('img').attr("src", url); //default URL
-			});
+		$(".level1 a").click(function(){
+			$('.level1').children('ul').addClass('dropdown-opened');
+		});
+		$(".level2 a").click(function(){
+			$('.level2').children('ul').addClass('dropdown-opened');
+		});
 		if (!mobile) {
 			$(".level1")
 				.mouseover(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					$('.home-wrapper').css('left', '25%');
+					var url = '<?= base_url('./assets/frontend/images/chevron-over.png') ?>';
+				$(this).children('a').find('img').attr("src", url); //URL @the time of mouse over on image
 				})
 				.mouseout(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					$('.home-wrapper').css('left', 'auto');
+					var url = '<?= base_url('./assets/frontend/images/chevron.png') ?>';
+				$(this).find('img').attr("src", url); //URL @the time of mouse over on image
+				// $('.level2').children('ul').removeClass('dropdown-opened');
+				// $('.level1').children('ul').removeClass('dropdown-opened');
 				});
 			$(".level2")
 				.mouseover(function(e) {
@@ -202,25 +205,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 				alert("There is something Wrong,")
 			}
 		});
-	});
-
-
-	$(function() {
-		$('body').confirmation({
-			selector: '[data-toggle="confirmation"]'
-		});
-
-		$('.delete-cart').confirmation({
-			onConfirm: function(event, element) {
-				alert('confirm')
-			},
-			onCancel: function(event, element) {
-				alert('cancel')
-			}
-		});
-
-		// Open the full screen search box
-
 	});
 
 	function openSearch() {

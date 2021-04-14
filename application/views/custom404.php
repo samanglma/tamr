@@ -1,11 +1,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/bootstrap.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/vendor/fullpage/dist/fullpage.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/vendor/owl/dist/assets/owl.carousel.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/fonts/stylesheet.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/style.css">
-  <link href="<?php echo base_url(); ?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
   <style>
     .bg-text h2 { font-size: 14rem;}
     .cart-heading h1 {
@@ -15,7 +11,6 @@
       background-image: url('<?php echo base_url(); ?>assets/frontend/images/home-bg.png') !important;
       background-size: cover;
       background-position: 0 100%;
-      font-size: 14px;
     }
 
     body .mainbox { text-align: center;}

@@ -68,7 +68,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
       <?php } ?>
 
       <?php if ($headings[1] != '' && $contents[1]) { ?>
-        <div id="menu2" class="menu2 tab-pane">
+        <div id="menu2" class="menu2 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
             <h2><?= $headings[1] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -80,7 +80,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
       <?php } ?>
 
       <?php if ($headings[2] != '' && $contents[2]) { ?>
-        <div id="menu3" class="menu3 tab-pane">
+        <div id="menu3" class="menu3 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
             <h2><?= $headings[2] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -91,7 +91,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
         </div>
       <?php } ?>
       <?php if ($headings[3] != '' && $contents[3]) { ?>
-        <div id="menu4" class="menu4 tab-pane">
+        <div id="menu4" class="menu4 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
             <h2><?= $headings[3] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>

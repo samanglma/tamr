@@ -57,12 +57,20 @@ select>option:hover
 <div class="container content-products ">
 
 	<ul class="list-inline menu-products wrap_scroll">
+<<<<<<< HEAD
 		<li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
 		<li><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
 		<li><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
 		<li class="custom-select">
 			<select name="category" class='eee'>
 				<option><?= $this->lang->line('VARIETY') ?></option>
+=======
+		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
+		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
+		<li class="custom-select"><select name="category">
+				<option><?= $this->lang->line('kind') ?></option>
+>>>>>>> 200192299e051c63af205c55ec24b55d98dc64ac
 				<?php
 				foreach ($categories as $category) {
 				?>
@@ -89,8 +97,10 @@ select>option:hover
 						}
 						if ($key % 6 == 1 || $key % 6 == 3) {
 							$col = 6;
+							$thumb = $p->thumbnail2;
 						} else {
 							$col = 3;
+							$thumb = $p->thumbnail1;
 						}
 					?>
 						<div class="product-grid col-md-<?= $col ?>">
@@ -108,7 +118,16 @@ select>option:hover
 										<a href="<?= base_url($lang . '/product/' . $p->slug) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
 									<?php } ?>
 								</div>
-								<div class=""> <img src="<?= base_url('uploads/products/' . $p->thumbnail1) ?>" class="card-img-top">
+								<div class=""> 
+								<?php
+								if($col == 6) { ?>
+								<div class="text-right">
+								<?php } ?>
+								<img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top">
+								<?php
+								if($col == 6) { ?>
+								</div>
+								<?php } ?>
 									<div class="card-body">
 										<div class="d-flex justify-content-between"> <span class="font-weight-bold p-title"><?= $p->title ?></span> </div>
 										<div class="details-products"><?= substr($p->description, 0, 50) ?? "" ?></div>

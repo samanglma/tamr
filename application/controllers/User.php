@@ -73,6 +73,7 @@ class User extends CI_Controller
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
 		$this->load->view('frontend/includes/bottom-sidebar');
+        $this->load->view('frontend/includes/footer');
 
         $this->load->view('frontend/user/wishlist', $data);
     }

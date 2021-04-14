@@ -22,7 +22,7 @@ class Custom404 extends CI_Controller
       $this->load->view('frontend/includes/navigation');
       $this->load->view('frontend/includes/right-sidebar');
       $this->output->set_status_header('404');
-      $this->load->view('custom404'); //loading in custom error view
       $this->load->view('frontend/includes/footer');
+      $this->load->view('custom404'); //loading in custom error view
    }
 }
