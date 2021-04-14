@@ -44,7 +44,7 @@ $segment = $this->uri->segment('2');
                             <?php
                             foreach ($categories as $key => $cat) {
                             ?>
-                                <li><a href="<?= base_url($lang . '/products/dates/' . $cat->slug) ?>"><?= $cat->title ?></a></li>
+                                <li><a href="<?= base_url($lang . '/products/' . $cat->slug) ?>"><?= $cat->title ?></a></li>
                             <?php
                         if($key == 10)
                         {
