@@ -1,4 +1,15 @@
+<style>
+	
+
+	.bottom-cats{
+
+		display: none;
+	}
+</style>
+
+
 <div class="main">
+
 	<div class="my-container">
 		<div class="clearfix">
 

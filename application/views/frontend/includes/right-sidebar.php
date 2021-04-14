@@ -107,7 +107,7 @@ content: url('<?= base_url('assets/frontend/images/cart-new22.png') ?>');
         </ul>
 
 	
-    <div class="pull-right cart-totals total_amm"><?= $this->cart->format_number($this->cart->total()) ?> <span class="currency">AED</span></div>
+    <!-- <div class="pull-right cart-totals total_amm"><?= $this->cart->format_number($this->cart->total()) ?> <span class="currency">AED</span></div> -->
 </div>
 
 

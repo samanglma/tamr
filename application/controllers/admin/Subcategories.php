@@ -68,7 +68,7 @@ class Subcategories extends My_Controller
 
     public function edit($id)
     {
-        $data['row'] = $this->Sub_categSubcategories_mories_m->editSubCategory($id);
+        $data['row'] = $this->Subcategories_m->editSubCategory($id);
         $data['parents_cat'] = $this->Subcategories_m->getAllParentsCat();
 
         $this->load->view('admin/sub-categories/edit', $data);

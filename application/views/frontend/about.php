@@ -8,6 +8,12 @@
   .details-about p {
     margin: 30px 0;
   }
+
+	.bottom-cats{
+
+		display: none;
+	}
+
 </style>
 <div class="page-holder">
 <?php

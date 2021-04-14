@@ -17,6 +17,11 @@ $categories = getCategoriesByParentId(1);
 
 		padding: 5px;
 	}
+
+	.bottom-cats{
+
+		display: none;
+	}
 </style>
 
 

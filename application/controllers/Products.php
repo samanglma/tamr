@@ -43,7 +43,7 @@ class Products extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
-
+		$this->load->view('frontend/includes/bottom-sidebar');
         $this->load->view('frontend/products', $data);
 
         $this->load->view('frontend/includes/footer');

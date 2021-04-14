@@ -38,6 +38,7 @@ class Auth extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
+		$this->load->view('frontend/includes/bottom-sidebar');
         $this->load->view('frontend/includes/footer');
 
         $this->load->view('frontend/register', $data);
@@ -116,6 +117,8 @@ class Auth extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
+		$this->load->view('frontend/includes/bottom-sidebar');
+		$this->load->view('frontend/includes/bottom-sidebar');
         $this->load->view('frontend/includes/footer');
         $this->load->view('frontend/login', $data);
     }
@@ -184,6 +187,7 @@ class Auth extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
+		$this->load->view('frontend/includes/bottom-sidebar');
         if ($this->input->post('forgot_pass')) {
             $email = $this->input->post('email');
             $que = $this->db->query("select id,password,email from users where email='$email'");
@@ -252,6 +256,7 @@ Invalid Email ID !
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
+		$this->load->view('frontend/includes/bottom-sidebar');
 
         $this->load->view('frontend/change-password', $data);
     }

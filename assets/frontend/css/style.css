@@ -1033,6 +1033,7 @@ p {
   margin-top: 30px;
   width: 100%;
   text-align: right;
+	margin-left: -35px;
 }
 
 button:focus {
@@ -1046,7 +1047,7 @@ button:focus {
 }
 
 .kinds a {
-  margin: 11px 16px 0px 51px;
+  margin: 11px 16px 0px ;
   display: block;
   text-transform: uppercase;
 }
@@ -1058,10 +1059,11 @@ button:focus {
   margin-top: 30px;
   font-size: 1.3rem;
   background: none;
+	
 }
 
 #addToCart {
-  margin-top: 20%;
+  margin-top: 29%;
 }
 
 /* .view-all {

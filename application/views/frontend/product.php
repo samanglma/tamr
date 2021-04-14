@@ -9,36 +9,39 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
 	display: none;
 }
+
+#content{
+
+	margin-left: 220px;
+}
 	</style>
 <div class="page-holder">
-  <div class="container ">
+  <div class="container-fluid">
 
     <div class="row">
-      <div class="">
-        <div class="">
-
+      
           <div class="col-md-3 mx-auto price">
             <p> <span class="currency">AED</span> <?= $product->price ?></p>
             <p class="p-category"><?= $product->category ?></p>
 
-            <button id="toggle">CHANGE DATES KINDS <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
+            <button id="toggle">SELECT A VARIETY <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
             <div class="row" id="content">
               <?php
               $half = ceil(count($categories_upper) / 2);
               ?>
-              <div class="col-md-6 kinds"> <?php
-                                            foreach ($categories_upper as $key => $category) {
-                                            ?>
-                  <a href="javascript:;"> <?= $category->$title ?> </a>
+              <div class="col-md-6 kinds"> 
+							<?php
+						   	foreach ($categories_upper as $key => $category) {
+							?>
+                  <a href="javascript:;"> 	<?= $category->$title ?> </a>
                   <?php
-                                              if ($key == $half) {
+                     if ($key == $half) {
                   ?>
               </div>
 
               <div class="col-md-6 kinds">
               <?php } ?>
-            <?php }
-            ?>
+         	    <?php }  ?>
               </div>
 
             </div>
@@ -111,9 +114,6 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
             <a href="javascript:void(0);" class="add-to-cart btn" id="addToCart" data-id="<?= $product->id ?>" class="view-all"> ADD TO CART </a>
 
           </div>
-        </div>
-      </div>
-
     </div>
   </div>
   <script type="text/javascript">
