@@ -1585,10 +1585,7 @@ body:not('.home') .dropdown ul {
 
 .custom-select {
   position: relative;
-  text-align: left;
 }
-
-.select-selected { padding: 2px 5px !important;}
 .custom-select select {
   display: none
 }
