@@ -207,25 +207,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 		});
 	});
 
-
-	$(function() {
-		$('body').confirmation({
-			selector: '[data-toggle="confirmation"]'
-		});
-
-		$('.delete-cart').confirmation({
-			onConfirm: function(event, element) {
-				alert('confirm')
-			},
-			onCancel: function(event, element) {
-				alert('cancel')
-			}
-		});
-
-		// Open the full screen search box
-
-	});
-
 	function openSearch() {
 		document.getElementById("myOverlay").style.display = "block";
 	}

@@ -7,9 +7,9 @@ $segment = $this->uri->segment('2');
 
 <nav>
     <a class="toggle-wrap" href='javascript:;'>
-        <span onclick="toggleMenu(this)" class="menusss"><span><?= $this->lang->line('menu') ?></span></span>
+        <span onclick="toggleMenu(this)" class=" toggle-wrap menusss"><span><?= $this->lang->line('menu') ?></span></span>
 
-        <span onclick="toggleMenu(this)" class="closs"><i class="far  fa-times"></i></span>
+        <span onclick="toggleMenu(this)" class=" toggle-wrap closs"><i class="far  fa-times"></i></span>
     </a>
 
 

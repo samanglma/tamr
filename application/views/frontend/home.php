@@ -50,52 +50,10 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
 <script>
     $(document).ready(function() {
-
-        // $('.narrow-content').each(function(i) {
-        //     (function(self) {
-        //         setTimeout(function() {
-        //             $(self).addClass('animate-in');
-        //         }, (i * 3000) + 1500);
-        //     })(this);
-        // });
-        var funky;
-
         $current = $('#slider').find('.active');
         $($current).addClass('animate-in');
 
-        // $('.cat').click(function() {
-            funky = setInterval(function() {
 
-            // $current = $('#slider').find('.active');
-            // $($current).removeClass('active');
-            // $($current).removeClass('animate-in');
-            // $('.narrow-content').removeClass('animate-out');
-            // $($current).addClass('animate-out');
-            // if($($current).next('.narrow-content').length)
-            // {
-            // $($current).next('.narrow-content').addClass('active');
-            // $($current).next('.narrow-content').addClass('animate-in');
-            // }
-            // else {
-            //     $('#slide-0').addClass('active');
-            // $('#slide-0').addClass('animate-in');
-            // }
-            // $('.narrow-content').addClass('animate-out');
-        }, 10000);
-
-        //     $val = $(this).data('slide');
-        //     $('#' + $val).addClass('active');
-        //     $('#' + $val).addClass('animate-in');
-        // });
-        // setInterval(function() {
-        //     $current = $('#slider').find('.active');
-        //     $($current).removeClass('active');
-        //     $($current).next('.narrow-content').addClass('active');
-        // }, 3000);
-
-        //     setInterval(function() {
-        //         $("#slider").load(location.href + " #slider");
-        //     }, 7000);
     });
 
 </script>

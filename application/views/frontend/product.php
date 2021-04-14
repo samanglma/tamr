@@ -52,7 +52,6 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
       </div>
 
       <div id="demo" class="col-md-6 mx-auto carousel slide" data-ride="carousel">
-
         <!-- Indicators -->
         <ul class="carousel-indicators">
           <?php if (!empty($product->image1)) { ?>
@@ -144,6 +143,9 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
       var cat = $(this).text();
       $('.p-category').text(cat);
     });
+    setTimeout(function(){ 
+    $('#demo').css('opacity', 1);
+}, 1000); // it will remove after 5 seconds
   </script>
 
   <div class="cart-item">

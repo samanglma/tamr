@@ -34,9 +34,9 @@ $categories = getCategoriesByParentId(1);
 <div class="container content-products ">
 
 	<ul class="list-inline menu-products wrap_scroll">
-		<li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
-		<li><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
-		<li><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
+		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
+		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
 		<li class="custom-select"><select name="category">
 				<option><?= $this->lang->line('kind') ?></option>
 				<?php
@@ -88,7 +88,16 @@ $categories = getCategoriesByParentId(1);
 										<a href="<?= base_url($lang . '/product/' . $p->slug) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
 									<?php } ?>
 								</div>
-								<div class=""> <img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top">
+								<div class=""> 
+								<?php
+								if($col == 6) { ?>
+								<div class="text-right">
+								<?php } ?>
+								<img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top">
+								<?php
+								if($col == 6) { ?>
+								</div>
+								<?php } ?>
 									<div class="card-body">
 										<div class="d-flex justify-content-between"> <span class="font-weight-bold p-title"><?= $p->title ?></span> </div>
 										<div class="details-products"><?= substr($p->description, 0, 50) ?? "" ?></div>
