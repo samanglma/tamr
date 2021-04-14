@@ -8,6 +8,15 @@ if ($this->session->userdata('settings')) {
 ?>
 <!-- Page Header -->
 
+
+<style>
+	
+
+	.bottom-cats{
+
+		display: none;
+	}
+</style>
 <style>
 	/* .content{
   margin-top: -90px;

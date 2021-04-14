@@ -3,10 +3,16 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 $categories = getCategoriesByParentId(1);
 $segment = $this->uri->segment('2');
 ?>
+
+
 <nav>
-    <a class="toggle-wrap" href='javascript:;' onclick="toggleMenu(this)">
-        <span class="toggle-bar"><span><?= $this->lang->line('menu') ?></span></span>
+    <a class="toggle-wrap" href='javascript:;'>
+        <span onclick="toggleMenu(this)" class="menusss"><span><?= $this->lang->line('menu') ?></span></span>
+
+		<span onclick="toggleMenu(this)" class="closs"><i class="far  fa-times"></i></span>
     </a>
+
+	
     <?= $breadcrumb ?? '' ?>
 </nav>
 <aside>
@@ -62,3 +68,21 @@ $segment = $this->uri->segment('2');
 
 
 </aside>
+
+<script>
+
+$(document).ready(function() {
+ $('.closs').hide();
+});
+
+$(".menusss").click(function(){
+$(".closs").show();
+$('.menusss').hide();
+});
+
+$(".closs").click(function(){
+$(".menusss").show();
+$('.closs').hide();
+});
+
+</script>

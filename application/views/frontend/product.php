@@ -3,35 +3,45 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 $title = lang() == 'arabic' ? 'title_ar' : 'title';
 $description = lang() == 'arabic' ? 'description_ar' : 'description';
 ?>
+
+<style>
+.total_amm{
+
+	display: none;
+}
+
+#content{
+
+	margin-left: 220px;
+}
+	</style>
 <div class="page-holder">
-  <div class="container ">
+  <div class="container-fluid">
 
     <div class="row">
-      <div class="">
-        <div class="">
-
+      
           <div class="col-md-3 mx-auto price">
             <p> <span class="currency">AED</span> <?= $product->price ?></p>
             <p class="p-category"><?= $product->category ?></p>
 
-            <button id="toggle">CHANGE DATES KINDS <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
+            <button id="toggle">SELECT A VARIETY <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
             <div class="row" id="content">
               <?php
               $half = ceil(count($categories_upper) / 2);
               ?>
-              <div class="col-md-6 kinds"> <?php
-                                            foreach ($categories_upper as $key => $category) {
-                                            ?>
-                  <a href="javascript:;"> <?= $category->$title ?> </a>
+              <div class="col-md-6 kinds"> 
+							<?php
+						   	foreach ($categories_upper as $key => $category) {
+							?>
+                  <a href="javascript:;"> 	<?= $category->$title ?> </a>
                   <?php
-                                              if ($key == $half) {
+                     if ($key == $half) {
                   ?>
               </div>
 
               <div class="col-md-6 kinds">
               <?php } ?>
-            <?php }
-            ?>
+         	    <?php }  ?>
               </div>
 
             </div>
@@ -48,24 +58,32 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
               <li data-target="#demo" data-slide-to="0" class="active"></li>
               <li data-target="#demo" data-slide-to="1"></li>
               <li data-target="#demo" data-slide-to="2"></li>
+							<li data-target="#demo" data-slide-to="3"></li>
             </ul>
 
             <div class="carousel-inner">
 
               <!-- <img src="img/Box1.png" width="100%"> -->
-<?php if($product->image1 != '') { ?>
+						  <?php if(!empty($product->image1)){?>																		
               <div class="item active">
                 <img src="<?= base_url('uploads/products/' . $product->image1) ?>" alt="Tamr">
               </div>
-              <?php } if($product->image2 != '') { ?>
+							<?php } ?>
+							<?php if(!empty($product->image2)){?>		
               <div class="item">
                 <img src="<?= base_url('uploads/products/' . $product->image2) ?>" alt="Tamr">
               </div>
-              <?php } if($product->image3 != '') { ?>
+							<?php } ?>
+							<?php if(!empty($product->image3)){?>	
               <div class="item">
                 <img src="<?= base_url('uploads/products/' . $product->image3) ?>" alt="Tamr">
               </div>
-              <?php } ?>
+							<?php }?>
+							<?php if(!empty($product->image4)){?>	
+							<div class="item">
+                <img src="<?= base_url('uploads/products/' . $product->image4) ?>" alt="Tamr">
+              </div>
+							<?php }?>
 
             </div>
 
@@ -74,10 +92,10 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
             <p class="product-details-tamr">TAMR</p>
             <p class="product-details-name"><?= $product->$title ?></p>
 
-            <?php
-            if (!empty($variants)) {
-              foreach ($variants as $variant) {
-            ?>
+								<?php
+								if (!empty($variants)) {
+									foreach ($variants as $variant) {
+								?>
                 <button id="toggle2">CHANGE <?= $variant->type ?> <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
                 <div class="row" id="size">
                   <div class="col-md-12 kinds">
@@ -89,17 +107,13 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
                 </div>
             <?php
-              }
-            }
+						 }}
             ?>
             <br>
 
             <a href="javascript:void(0);" class="add-to-cart btn" id="addToCart" data-id="<?= $product->id ?>" class="view-all"> ADD TO CART </a>
 
           </div>
-        </div>
-      </div>
-
     </div>
   </div>
   <script type="text/javascript">

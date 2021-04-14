@@ -1,6 +1,13 @@
 <?php
 $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
+
+<style>
+.total_amm{
+
+	display: none;
+}
+	</style>
 <div class="home-wrapper">
     <div class="table height-v100">
         <div class="table-cell align-middle" id='slider'>

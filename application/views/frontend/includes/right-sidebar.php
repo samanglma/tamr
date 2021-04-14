@@ -32,7 +32,7 @@ content: url('<?= base_url('assets/frontend/images/new-search.png') ?>');
 
 .cart-icons:hover{
 
-content: url('<?= base_url('assets/frontend/images/Basket_StateHover.png') ?>');
+content: url('<?= base_url('assets/frontend/images/cart-new22.png') ?>');
 
 }
 
@@ -57,7 +57,7 @@ content: url('<?= base_url('assets/frontend/images/Basket_StateHover.png') ?>');
             <?php
             if (isset($settings->instagram) && $settings->instagram != null) {
             ?>
-                <li><a href="<?= $settings->instagram ?>" target="_blank"><i class="fa fas fa-instagram"></i></a></li>
+                <li><a href="<?= $settings->instagram ?>" target="_blank"><i class="fa fa fa-instagram"></i></a></li>
             <?php
             }
             ?>
@@ -65,7 +65,7 @@ content: url('<?= base_url('assets/frontend/images/Basket_StateHover.png') ?>');
             <?php
             if (isset($settings->twitter) && $settings->twitter != null) {
             ?>
-                <li><a href="<?= $settings->twitter ?>" target="_blank"><i class="fa fas fa-twitter"></i></a></li>
+                <li><a href="<?= $settings->twitter ?>" target="_blank"><i class="fa fa fa-twitter"></i></a></li>
             <?php
             }
             ?>
@@ -73,7 +73,7 @@ content: url('<?= base_url('assets/frontend/images/Basket_StateHover.png') ?>');
             <?php
             if (isset($settings->facebook) && $settings->facebook != null) {
             ?>
-                <li><a href="<?= $settings->facebook ?>" target="_blank"><i class="fa fas fa-facebook"></i></a></li>
+                <li><a href="<?= $settings->facebook ?>" target="_blank"><i class="fa fa fa-facebook"></i></a></li>
             <?php
             }
             ?>
@@ -105,5 +105,10 @@ content: url('<?= base_url('assets/frontend/images/Basket_StateHover.png') ?>');
             <!-- <img class="cart-icons" <?= $this->cart->total_items() <= 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" /> -->
         </a></li>
         </ul>
-    </div>
+
+	
+    <!-- <div class="pull-right cart-totals total_amm"><?= $this->cart->format_number($this->cart->total()) ?> <span class="currency">AED</span></div> -->
+</div>
+
+
 </div>

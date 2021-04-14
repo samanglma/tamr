@@ -11,7 +11,7 @@ class Products extends My_Controller
         $this->load->model('Products_m');
         $this->load->model('Brands_m');
         $this->load->model('Categories_m');
-        $this->load->model('sub_categories_m');
+        $this->load->model('subcategories_m');
         $this->load->model('Variant_m');
     }
     public function index()
@@ -301,7 +301,7 @@ class Products extends My_Controller
         $data['brands'] = $this->Brands_m->getAll();
         //$data['categories'] = $this->Categories_m->getAllCategory(); 
         $data['categories'] = $this->Categories_m->getAllParentCategory();
-        $data['chlid_categories'] = $this->sub_categories_m->getAllSubCategoryForProduct();
+        $data['chlid_categories'] = $this->subcategories_m->getAllSubCategoryForProduct();
         $data['variantss'] = $this->Variant_m->getAll();
         $this->load->view('admin/products/edit', $data);
     }

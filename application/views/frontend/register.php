@@ -3,6 +3,13 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
 <!-- Navigation -->
 <style>
+
+
+	.bottom-cats{
+
+		display: none;
+	}
+
   .price {
     margin-top: 160px;
   }

@@ -8,7 +8,7 @@ class Home extends MY_Controller
 		parent::__construct();
 
    $this->load->model('categories_m');
-     $this->load->model('Sub_Categories_m');
+     $this->load->model('Subcategories_m');
    $this->load->model('Sliders_m');
 	}
 
@@ -30,7 +30,7 @@ class Home extends MY_Controller
         $cat_id = 1;
 		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
 		
-        $data['categories'] = $this->Sub_Categories_m->getSubCatbyId($cat_id);
+        $data['categories'] = $this->Subcategories_m->getSubCatbyId($cat_id);
 
 
 

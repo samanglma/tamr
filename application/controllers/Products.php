@@ -17,6 +17,7 @@ class Products extends CI_Controller
         if ($this->session->userdata('user_id')) {
 			$data['wishlist'] = $this->Wishlist_m->getUserWishlistItemIds($this->session->userdata('user_id'));
 		}
+		
         $data['bodyClass'] = 'listings';
         $slug = $this->uri->segment('3');
         
@@ -42,7 +43,7 @@ class Products extends CI_Controller
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
-
+		$this->load->view('frontend/includes/bottom-sidebar');
         $this->load->view('frontend/products', $data);
 
         $this->load->view('frontend/includes/footer');
@@ -65,8 +66,8 @@ class Products extends CI_Controller
         $slug = $this->uri->segment('3');
         $data['product'] = $this->Products_m->getProductDetailsBySlug($slug);
 		//$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
-		$data['categories'] = $this->Sub_Categories_m->getSubCatbyId($cat_id);
-		$data['categories_upper'] = $this->Sub_Categories_m->getSubCatbyIdUpper($cat_id);
+		$data['categories'] = $this->Subcategories_m->getSubCatbyId($cat_id);
+		$data['categories_upper'] = $this->Subcategories_m->getSubCatbyIdUpper($cat_id);
         $data['variants'] = $this->Products_m->getProductVariants($data['product']->id);
         $bc['breadcrumb'] = [
             'Home' => base_url(),

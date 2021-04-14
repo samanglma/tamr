@@ -209,5 +209,5 @@ function getVarianValues($variant_id )
 function getCategoriesByParentId($parent = 1)
 {
 	$CI = get_instance();
-	return $CI->Sub_Categories_m->getSubCatbyId($parent);
+	return $CI->Subcategories_m->getSubCatbyId($parent);
 }
