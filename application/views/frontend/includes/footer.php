@@ -54,9 +54,13 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 			mobile = true;
 		}
 		$(".level1 a").click(function(){
+			$(this).css('padding','1.3rem 0');
+			$(this).find('img').hide();
 			$('.level1').children('ul').addClass('dropdown-opened');
 		});
 		$(".level2 a").click(function(){
+			$(this).css('padding','1.3rem 0');
+			$(this).find('img').hide();
 			$('.level2').children('ul').addClass('dropdown-opened');
 		});
 		if (!mobile) {
@@ -276,6 +280,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 			timer.resume();
 		}
 	}
+	
 </script>
 <div id="myOverlay" class="overlay">
 	<span class="closebtn" onclick="closeSearch()" title="Close Overlay"><img src="<?= base_url('assets/frontend/images/close-search.svg') ?>" /></span>
