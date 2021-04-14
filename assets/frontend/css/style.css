@@ -1739,6 +1739,8 @@ body:not('.home') .dropdown ul {
 .wishlist-icon {
   font-size: 2rem;
   text-decoration: none !important;
+  border-bottom: none;
+  border-bottom: 0 !important;
 }
 
 .cart-item {

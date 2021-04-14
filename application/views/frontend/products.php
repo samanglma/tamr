@@ -57,20 +57,11 @@ select>option:hover
 <div class="container content-products ">
 
 	<ul class="list-inline menu-products wrap_scroll">
-<<<<<<< HEAD
-		<li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
-		<li><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
-		<li><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
-		<li class="custom-select">
-			<select name="category" class='eee'>
-				<option><?= $this->lang->line('VARIETY') ?></option>
-=======
 		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
 		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
 		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
-		<li class="custom-select"><select name="category">
-				<option><?= $this->lang->line('kind') ?></option>
->>>>>>> 200192299e051c63af205c55ec24b55d98dc64ac
+		<li class="custom-select"><select name="category" class='eee'>
+				<option><?= $this->lang->line('VARIETY') ?></option>
 				<?php
 				foreach ($categories as $category) {
 				?>
