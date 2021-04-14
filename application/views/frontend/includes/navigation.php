@@ -39,7 +39,7 @@ $segment = $this->uri->segment('2');
                     <?php } ?></a>
                 <ul>
 				<?php if(!empty($categories)){ ?>
-                    <li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+                    <li class="dropdown level2"><a href="javascript:;"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
                         <ul>
                             <?php
                             foreach ($categories as $key => $cat) {

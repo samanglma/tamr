@@ -225,8 +225,8 @@ aside ul>li.dropdown img {
   opacity: 1;
 }
 
-aside ul>li.dropdown:hover img {
-  margin-left: 5rem;
+aside ul li.dropdown:hover img {
+  margin-left: 5rem !important;
   /* opacity: 0; */
 }
 

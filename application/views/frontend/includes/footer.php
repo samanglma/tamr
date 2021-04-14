@@ -60,7 +60,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 			$('.level2').children('ul').addClass('dropdown-opened');
 		});
 		if (!mobile) {
-			$(".level1")
+			$(".dropdown")
 				.mouseover(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
