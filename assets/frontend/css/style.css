@@ -226,7 +226,7 @@ aside ul>li.dropdown img {
 }
 
 aside ul>li.dropdown:hover img {
-  margin-left: 8rem;
+  margin-left: 5rem;
   /* opacity: 0; */
 }
 
@@ -460,9 +460,9 @@ body:not([class^="home"])   aside {
   /* max-width: 300px; */
 }
 
-.dropdown:hover>ul {
-  opacity: 1;
-  left: 30%;
+.dropdown-opened {
+  opacity: 1 !important;
+  left: 30% !important;
 }
 
 .dropdown>a {
