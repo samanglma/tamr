@@ -69,6 +69,16 @@ class Subcategories_m  extends CI_Model
         return $query;
     }
 
+	public function getSubCatDebbyId($cat_id)
+    {
+        $this->db->select('*');
+        $this->db->where('cat_id', $cat_id);
+        $this->db->where('status', 1);
+        $this->db->from('sub_categories');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
 	public function getSubCatbyIdUpper($cat_id)
 	{
 		$this->db->select('*');

@@ -211,3 +211,16 @@ function getCategoriesByParentId($parent = 1)
 	$CI = get_instance();
 	return $CI->Subcategories_m->getSubCatbyId($parent);
 }
+
+
+function getDebCategoriesByParentId($parent = 2)
+{
+	$CI = get_instance();
+	return $CI->Subcategories_m->getSubCatDebbyId($parent);
+}
+
+function getGiftsCategoriesByParentId($parent = 3)
+{
+	$CI = get_instance();
+	return $CI->Subcategories_m->getSubCatDebbyId($parent);
+}

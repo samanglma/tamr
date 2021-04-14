@@ -22,6 +22,29 @@ $categories = getCategoriesByParentId(1);
 
 		display: none;
 	}
+
+	select{
+    scrollbar-width: none; /*For Firefox*/;
+    -ms-overflow-style: none;  /*For Internet Explorer 10+*/;
+}
+
+select:-webkit-scrollbar { /*For WebKit Browsers*/
+    width: 0;
+    height: 0;
+}
+
+
+
+select>option:hover
+    {
+		letter-spacing: 5px;
+    }
+
+	.same-as-selected, .select-items div:hover
+	{
+		letter-spacing: 5px;
+		background-color: rgb(255 255 255)  !important;
+	}
 </style>
 
 
@@ -37,8 +60,9 @@ $categories = getCategoriesByParentId(1);
 		<li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
 		<li><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
 		<li><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
-		<li class="custom-select"><select name="category">
-				<option><?= $this->lang->line('kind') ?></option>
+		<li class="custom-select">
+			<select name="category" class='eee'>
+				<option><?= $this->lang->line('VARIETY') ?></option>
 				<?php
 				foreach ($categories as $category) {
 				?>
@@ -51,8 +75,6 @@ $categories = getCategoriesByParentId(1);
 		</li>
 
 	</ul>
-
-
 	<div class="tab-content">
 
 		<div class="products">

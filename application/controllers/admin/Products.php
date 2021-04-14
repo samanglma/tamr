@@ -182,9 +182,6 @@ class Products extends My_Controller
                 }
             }
 
-
-
-
             //thumbnail 2
             if ($_FILES['thumb2']['name'] != "") {
                 $config3['upload_path'] = './uploads/products/';
@@ -616,9 +613,9 @@ class Products extends My_Controller
                 $this->db->update('out_of_stock_subscribers');
             }
         }
-        $this->db->where('product_id', $data['id']);
-        $this->db->delete('product_variants');
-        $variants = $this->input->post('variants');
+			$this->db->where('product_id', $data['id']);
+			$this->db->delete('product_variants');
+			$variants = $this->input->post('variants');
 
 
         foreach ($variants as $v_value) {

@@ -178,13 +178,14 @@ class Products_m extends CI_Model
 		return $query;
 	}
 
-	public function getProductDetailsBySlug($slug)
+	public function getProductDetailsBySlug($slug) 
 	{
-		$this->db->select('products.*, categories.title as category, categories.title_ar as category_ar');
+		$this->db->select('products.*, categories.title as category, categories.title_ar as category_ar, sub_categories.title as sub_cat_title, sub_categories.title_ar as sub_cat_title_ar');
 		$this->db->where('products.slug', $slug);
 		$this->db->from('products');
 		$this->db->join('categories', 'categories.id = products.cat_id');
-		// $this->db->join('product_variants', 'products.id = product_variants.product_id', 'left');
+		$this->db->join('sub_categories', 'sub_categories.id = products.child_cat');
+		// $this->db->join('product_variants', 'products.id = product_variants.product_id', 'left');   child_cat
 		// $this->db->join('variants', 'product_variants.variant_id = variants.id', 'left');
 		// $this->db->join('variants_value', 'product_variants.variant_value_id = variants_value.id', 'left');
 

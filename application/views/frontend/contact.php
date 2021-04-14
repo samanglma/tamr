@@ -16,6 +16,21 @@ if ($this->session->userdata('settings')) {
 
 		display: none;
 	}
+
+	input:hover::placeholder {
+  color: #d8d5d3;
+}
+
+input:focus::placeholder {
+  color: #d8d5d3;
+}
+.msg:hover::placeholder{
+	color: #d8d5d3;
+}
+
+.msg:focus::placeholder{
+	color: #d8d5d3;
+}
 </style>
 <style>
 	/* .content{

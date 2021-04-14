@@ -182,4 +182,5 @@ $lang['SHOP-NOW'] = 'SHOP NOW';
 $lang['about-us'] = 'About us';
 $lang['dates'] = 'Dates';
 $lang['debes'] = 'Debes';
-$lang['gifts'] = 'Gifts';
+$lang['gifts'] = 'Gifts';  
+$lang['VARIETY'] = 'VARIETY'; 

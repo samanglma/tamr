@@ -1,8 +1,19 @@
 <?php
 $lang = lang() == 'english' ? 'en' : 'ar';
 $categories = getCategoriesByParentId(1);
+$categories_debes = getDebCategoriesByParentId(2);
+$categories_gifts = getGiftsCategoriesByParentId(3);
 $segment = $this->uri->segment('2');
 ?>
+
+<style>
+
+	.level2 img{
+
+		margin-left: 30px  !important;
+	}
+
+	</style>
 
 
 <nav>
@@ -21,6 +32,7 @@ $segment = $this->uri->segment('2');
             <li><a href="<?= base_url() ?>" class="<?= $segment == '' || $segment == '/' ? 'active' : '' ?>"><?= $this->lang->line('Home') ?></a></li>
             <li class="dropdown level1"><a href="javascript:;" class="<?= $segment == 'products' || $segment == '/products' || $segment == 'product' ? 'active' : '' ?>"><?= $this->lang->line('Products') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
                 <ul>
+				<?php if(!empty($categories)){ ?>
                     <li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
                         <ul>
                             <?php
@@ -33,11 +45,62 @@ $segment = $this->uri->segment('2');
                             break;
                         }
                         } ?>
+
                         <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
                         </ul>
                     </li>
-                    <li><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?></a></li>
-                    <li><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?></a></li>
+					<?php }else{?>
+						<li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?>
+						<?php }?>
+					<?php if(!empty($categories_debes)){ ?>
+					<li class="dropdown level2"><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?>
+				
+					<img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+                        <ul>
+                            <?php
+                            foreach ($categories_debes as $key => $cat) {
+                            ?>
+                                <li><a href="<?= base_url($lang . '/products/debes/'. $cat->slug) ?>"><?=  $cat->title ?></a></li>
+                            <?php
+                        if($key == 10)
+                        {
+                            break;
+                        }
+                        } ?>
+
+                        <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+                        </ul>
+					
+                    </li>
+					<?php } else{?>
+					
+
+						<li class="dropdown level2"><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?>
+						<?php }?>
+
+						<?php if(!empty($categories_gifts)){?>
+					<li class="dropdown level2"><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?>
+				
+					<img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+                        <ul>
+                            <?php
+                            foreach ($categories_gifts as $key => $cat) {
+                            ?>
+                                <li><a href="<?= base_url($lang . '/products/gifts/'. $cat->slug) ?>"><?=  $cat->title ?></a></li>
+                            <?php
+                        if($key == 10)
+                        {
+                            break;
+                        }
+                        } ?>
+
+                        <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+                        </ul>
+						
+                    </li>
+					<?php }else{ ?>
+						<li class="dropdown level2"><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?>
+						<?php } ?>
                     <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
                 </ul>
             </li>

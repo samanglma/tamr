@@ -193,3 +193,4 @@ $lang['dates'] = 'Dates';
 $lang['debes'] = 'Debes';
 $lang['gifts'] = 'Gifts';
 $lang['kind'] = 'Kind'; 
+$lang['VARIETY'] = 'VARIETY'; 
