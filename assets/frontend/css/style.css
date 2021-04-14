@@ -477,7 +477,7 @@ body:not([class^="home"])   aside {
 
 .dropdown-opened {
   opacity: 1 !important;
-  left: 30% !important;
+  left: 25% !important;
 }
 
 .dropdown>a {
@@ -717,7 +717,7 @@ p {
 }
 .content.about-us {
   position: relative;
-  margin: -33% 5% auto;
+  margin: -7% 5% auto;
   width: auto;
 }
 
@@ -761,7 +761,7 @@ p {
 
 .content {
   position: relative;
-  margin-top: -15%;
+  margin-top: -27%;
   background-color: white !important;
 }
 
@@ -1117,13 +1117,13 @@ body {
 
 .about-us .tab-content {
   position: relative;
-  height: 60rem;
+  height: 20vw;
   overflow: hidden;
 }
 
 .about-banners {
   position: relative;
-  height: 670px;
+  height: 31vw;
 }
 
 .page-holder {
@@ -1773,7 +1773,7 @@ img {
 }
 
 .cart-item a { display: inline-block; font-size: 1.1rem; text-transform: uppercase; margin-top: 1rem;margin-bottom: 2rem;}
-body.about .page-holder { margin: 12%;}
+body.about .page-holder { margin: 10%;}
 .bold-text { font-weight: bold;}
 .content.contact-us { padding: 5rem;}
 .privacy-policy .my-container { margin-top: 10%; }
@@ -1787,3 +1787,6 @@ body.about .page-holder { margin: 12%;}
 }
 .product-details .price,
 .product-details .pcs { margin-top: 8vw;}
+
+textarea.form-control { height: 150px; padding-top: 10px;}
+.details-about { height: 300px; overflow-y: scroll;}

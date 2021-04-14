@@ -9,34 +9,42 @@ $segment = $this->uri->segment('2');
     <a class="toggle-wrap" href='javascript:;'>
         <span onclick="toggleMenu(this)" class="menusss"><span><?= $this->lang->line('menu') ?></span></span>
 
-		<span onclick="toggleMenu(this)" class="closs"><i class="far  fa-times"></i></span>
+        <span onclick="toggleMenu(this)" class="closs"><i class="far  fa-times"></i></span>
     </a>
 
-	
+
     <?= $breadcrumb ?? '' ?>
 </nav>
 <aside>
     <div class="menuss">
         <ul>
             <li><a href="<?= base_url() ?>" class="<?= $segment == '' || $segment == '/' ? 'active' : '' ?>"><?= $this->lang->line('Home') ?></a></li>
-            <li class="dropdown level1"><a href="javascript:;" class="<?= $segment == 'products' || $segment == '/products' || $segment == 'product' ? 'active' : '' ?>"><?= $this->lang->line('Products') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+            <li class="dropdown level1"><a href="javascript:;" class="<?= $segment == 'products' || $segment == '/products' || $segment == 'product' ? 'active' : '' ?>"><?= $this->lang->line('Products') ?>
+                    <?php if ($segment == 'products' || $segment == '/products' || $segment == 'product') {
+                    ?>
+                        <img src="<?= base_url('./assets/frontend/images/chevron-over.png') ?>">
+                    <?php } else { ?>
+                        <img src="<?= base_url('./assets/frontend/images/chevron.png') ?>">
+                    <?php } ?></a>
                 <ul>
-                    <li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+                    <li class="dropdown level2"><a href="javascript:;"><?= $this->lang->line('dates') ?>
+                            <img src="<?= base_url('./assets/frontend/images/chevron.png') ?>">
+                        </a>
                         <ul>
                             <?php
                             foreach ($categories as $key => $cat) {
                             ?>
-                                <li><a href="<?= base_url($lang . '/products/dates/'. $cat->slug) ?>"><?=  $cat->title ?></a></li>
+                                <li><a href="<?= base_url($lang . '/products/dates/' . $cat->slug) ?>"><?= $cat->title ?></a></li>
                             <?php
-                        if($key == 10)
-                        {
-                            break;
-                        }
-                        } ?>
-                        <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+                                if ($key == 10) {
+                                    break;
+                                }
+                            } ?>
+                            <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
                         </ul>
                     </li>
-                    <li><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?></a></li>
+                    <li><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?> </a>
+                    </li>
                     <li><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?></a></li>
                     <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
                 </ul>
@@ -70,19 +78,17 @@ $segment = $this->uri->segment('2');
 </aside>
 
 <script>
+    $(document).ready(function() {
+        $('.closs').hide();
+    });
 
-$(document).ready(function() {
- $('.closs').hide();
-});
+    $(".menusss").click(function() {
+        $(".closs").show();
+        $('.menusss').hide();
+    });
 
-$(".menusss").click(function(){
-$(".closs").show();
-$('.menusss').hide();
-});
-
-$(".closs").click(function(){
-$(".menusss").show();
-$('.closs').hide();
-});
-
+    $(".closs").click(function() {
+        $(".menusss").show();
+        $('.closs').hide();
+    });
 </script>

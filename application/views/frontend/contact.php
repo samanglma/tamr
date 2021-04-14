@@ -81,8 +81,8 @@ color:black !important;
 </style>
 
 
-<div class="masthead" style="background-image: url('<?= base_url("assets/frontend/images/about-bg.jpg") ?>'); height: 606px;">
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465130.3070457445!2d54.278426719568124!3d24.38719838149888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e440f723ef2b9%3A0xc7cc2e9341971108!2sAbu%20Dhabi%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1618173974859!5m2!1sen!2s" width="100%" height="500"></iframe>
+<div class="masthead" style="background-image: url('<?= base_url("assets/frontend/images/about-bg.jpg") ?>'); background-repeat:no-repeat; background-position:100%; ">
+<a href="https://www.google.com/maps" target="_blank"><img src="<?= base_url('assets/frontend/images/about-bg.jpg') ?>" ></a>
 </div>
 
 <!-- Main Content -->
@@ -96,16 +96,16 @@ color:black !important;
 
 				<div id="notification"></div>
 				<div class="form-group">
-					<input type="text" placeholder="NAME" class="form-control" name='name' />
+					<input type="text" placeholder="<?= $this->lang->line('NAME') ?>" class="form-control" name='name' />
 				</div>
 				<div class="form-group">
-					<input type="text" placeholder="PHONE NUMBER" class="form-control" name='phone' />
+					<input type="text" placeholder="<?= $this->lang->line('PHONE-NUMBER') ?>" class="form-control" name='phone' />
 				</div>
 				<div class="form-group">
-					<input type="text" placeholder="EMAIL" class="form-control" name='email' />
+					<input type="text" placeholder="<?= $this->lang->line('EMAIL') ?>" class="form-control" name='email' />
 				</div>
 				<div class="form-group">
-					<textarea name="message" rows="5" class="msg form-control" placeholder="MESSAGE"></textarea>
+					<textarea name="message" class=" form-control" placeholder="<?= $this->lang->line('MESSAGE') ?>"></textarea>
 				</div>
 				<!--  <input type="text" placeholder="Message" name='msg' class="msg" />
 -->
@@ -191,3 +191,4 @@ color:black !important;
 		}
 	});
 </script>
+<br>

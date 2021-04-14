@@ -66,14 +66,16 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 					e.stopPropagation();
 					$('.home-wrapper').css('left', '25%');
 					var url = '<?= base_url('./assets/frontend/images/chevron-over.png') ?>';
-				$(this).closest('img').attr("src", url); //URL @the time of mouse over on image
+				$(this).children('a').find('img').attr("src", url); //URL @the time of mouse over on image
 				})
 				.mouseout(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					$('.home-wrapper').css('left', 'auto');
 					var url = '<?= base_url('./assets/frontend/images/chevron.png') ?>';
-				$(this).closest('img').attr("src", url); //URL @the time of mouse over on image
+				$(this).find('img').attr("src", url); //URL @the time of mouse over on image
+				// $('.level2').children('ul').removeClass('dropdown-opened');
+				// $('.level1').children('ul').removeClass('dropdown-opened');
 				});
 			$(".level2")
 				.mouseover(function(e) {
