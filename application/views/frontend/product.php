@@ -23,8 +23,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
       <div class="col-md-3 mx-auto price">
         <p> <span class="currency">AED</span> <?= $product->price ?></p>
         <p class="p-category"><?= $product->sub_cat_title ?></p>
-          <p class="p-category"><?= $product->category ?></p>
-
+       
           <button id="toggle">SELECT A VARIETY <span class="fa fas fa-chevron-down" aria-hidden="true"></span></button>
           <div class="row" id="content">
             <?php
