@@ -33,12 +33,12 @@ $segment = $this->uri->segment('2');
             <li class="dropdown level1"><a href="javascript:;" class="<?= $segment == 'products' || $segment == '/products' || $segment == 'product' ? 'active' : '' ?>"><?= $this->lang->line('Products') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
                 <ul>
 				<?php if(!empty($categories)){ ?>
-                    <li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+                    <li class="dropdown level2"><a href="javascript:;"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
                         <ul>
                             <?php
                             foreach ($categories as $key => $cat) {
                             ?>
-                                <li><a href="<?= base_url($lang . '/products/dates/'. $cat->slug) ?>"><?=  $cat->title ?></a></li>
+                                <li><a href="<?= base_url($lang . '/products/' . $cat->slug) ?>"><?= $cat->title ?></a></li>
                             <?php
                         if($key == 10)
                         {
