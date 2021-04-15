@@ -177,7 +177,7 @@ class Products extends My_Controller
                 $this->upload->initialize($config2);
 
                 if (!$this->upload->do_upload('thumb1')) {
-                    $da = ['error1' => 'Upload the Thumnail 1 with correct dimmisions.', 'data' => $this->input->post()];
+                    $da = ['error1' => 'Upload Thumbnail 1 with correct dimensions.', 'data' => $this->input->post()];
                     $this->session->set_flashdata('error', $da);
                     redirect('admin/products/add');
                 } else {
@@ -201,7 +201,7 @@ class Products extends My_Controller
                 $this->load->library('upload', $config3);
                 $this->upload->initialize($config3);
                 if (!$this->upload->do_upload('thumb2')) {
-                    $da = ['error1' => 'Upload the Thumnail 2 with correct dimmisions.', 'data' => $this->input->post()];
+                    $da = ['error1' => 'Upload Thumbnail 2 with correct dimensions.', 'data' => $this->input->post()];
                     $this->session->set_flashdata('error', $da);
                     redirect('admin/products/add');
                 } else {

@@ -33,25 +33,27 @@ select:-webkit-scrollbar { /*For WebKit Browsers*/
     height: 0;
 }
 
-
-
 select>option:hover
     {
 		letter-spacing: 5px;
     }
+
+	.same-as-selected, .select-items
+	{
+		line-height: 15px;
+	}
 
 	.same-as-selected, .select-items div:hover
 	{
 		letter-spacing: 5px;
 		background-color: rgb(255 255 255)  !important;
 	}
+
 </style>
 
 
 <!-- Page Header -->
-<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); ">
-
-</div>
+<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); "></div>
 
 <!-- Main Content -->
 <div class="container content-products ">
@@ -60,8 +62,10 @@ select>option:hover
 		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
 		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
 		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
-		<li class="custom-select"><select name="category" class='eee'>
-				<option><?= $this->lang->line('VARIETY') ?></option>
+		<li class="custom-select">
+	
+		<select name="category" class='eee'>
+				<option><?= $this->lang->line('All-VARIETIES') ?></option>
 				<?php
 				foreach ($categories as $category) {
 				?>
@@ -74,6 +78,7 @@ select>option:hover
 		</li>
 
 	</ul>
+
 	<div class="tab-content">
 
 		<div class="products">
@@ -93,7 +98,7 @@ select>option:hover
 							$col = 3;
 							$thumb = $p->thumbnail1;
 						}
-					?>
+					   ?>
 						<div class="product-grid col-md-<?= $col ?>">
 							<div class="p-holder">
 

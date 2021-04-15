@@ -93,14 +93,14 @@
 
                        </div>
 
-
-					   <div class="col-md-7 form-group">
+					   <input type="hidden" name='dispaly_text' value='1'>
+					   <!-- <div class="col-md-7 form-group">
 					   <label>Display Text on Slider</label>
                            <select name="dispaly_text" class="form-control">
                                    <option value="1">Yes</option>
                                    <option value="0">No</option>
                                </select>
-                            </div>
+                            </div> -->
 
                            <div class="col-md-7 form-group">
                                <label>Status</label>

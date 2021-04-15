@@ -73,6 +73,33 @@ class User_model extends CI_model
         }
     }
 
+	public function verifyUser($code, $id)
+	{
+		// $this->db->select('*');
+        // $this->db->from('users');
+        // $this->db->where('activation_code', $code);
+        // $this->db->where('id', $id);
+
+
+        // $query = $this->db->get();
+
+		$update = array(
+			'active' => 1,
+		);
+
+		$this->db->where('activation_code', $code);
+		$this->db->where('id', $id);
+		$this->db->update('users', $update);
+
+		return true;
+
+        // if ($query->num_rows() > 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+	}
+
     public function save($data)
     {
         $this->db->insert('users', $data);

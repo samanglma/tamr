@@ -14,6 +14,11 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
     margin-left: 220px;
   }
+
+	.mx-auto{
+		margin-left: -30px;
+
+	}
 </style>
 <div class="page-holder">
   <div class="container-fluid">

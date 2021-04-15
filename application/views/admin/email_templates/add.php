@@ -43,7 +43,7 @@
 
               <div class="col-md-12 form-group">
                            <label>Template *</label>
-						   <p style="color:cadetblue">Use variables {name}, {email}, {message}, {verification_code}, {forget_password_link}</p>
+						   <p style="color:cadetblue">Use variables {name}, {email}, {message}, {verification_link}, {forget_password_link}</p>
                            <textarea class="ckeditor1 ckeditor" name="template" id="editor"> <?= set_value('template') ?> </textarea>
 						   <?php echo form_error('description', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
