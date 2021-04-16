@@ -24,7 +24,8 @@ class Wishlist_m  extends CI_Model
     {
         $this->db->select('product_id as id');
         $this->db->where("user_id", $id); 
-		return $this->db->get('wishlist')->result_array();
+		$result = $this->db->get('wishlist')->result_array();
+        return array_column($result, 'id');
 
     }
 

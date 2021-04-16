@@ -106,7 +106,7 @@ select>option:hover
 										<a href="javascript:;" class="wishlist-icon"><i class="fa fas fa-heart"></i></a>
 
 									<?php } else { ?>
-										<a href="<?= base_url($lang . '/product/' . $p->slug) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
+										<a href="<?= base_url('/user/addToWishlist/' . $p->id) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
 									<?php } ?>
 								</div>
 								<div class=""> 
