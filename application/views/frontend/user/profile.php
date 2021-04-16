@@ -1,7 +1,12 @@
 <?php
 $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
+<style>
+.bottom-cats{
 
+display: none;
+}
+	</style>
 
 <!-- Page Header -->
 <!--   <div class="masthead" style="background-image: url('img/about-bg.jpg'); height: 406px;">
@@ -10,8 +15,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 <div class="full-screen">
   <div class="table-cell align-middle">
     <div class="container">
-
-
 
       <div class="contact-us register">
         <div class="bg-text">

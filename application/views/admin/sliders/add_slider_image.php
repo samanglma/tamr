@@ -84,14 +84,15 @@
 
 
                       
-                       <div class="col-md-7 from-group">
+                       <!-- <div class="col-md-7 from-group">
                            <label>Slider Text Display</label>
                            <select name="dispaly_text" class="form-control">
                            <option value="1">Yes</option>
                            <option value="0">No</option>
                            </select>
-                       </div>
-
+                       </div> -->
+						<input type="hidden" name='dispaly_text' value='1'>
+						
                            <div class="col-md-7 form-group">
                                <label>Status</label>
                                <select name="status" class="form-control">

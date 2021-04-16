@@ -3,6 +3,14 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 $title = lang() == 'english' ? 'title' : 'title_ar';
 $description = lang() == 'english' ? 'description' : 'description_ar';
 ?>
+
+<style>
+.bottom-cats{
+
+display: none;
+}
+	</style>
+	
 <div class="full-screen">
   <div class="table-cell align-middle">
     <div class="container">
@@ -64,3 +72,4 @@ $description = lang() == 'english' ? 'description' : 'description_ar';
       </div>
     </div>
   </div>
+</div>

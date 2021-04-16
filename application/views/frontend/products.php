@@ -33,25 +33,27 @@ select:-webkit-scrollbar { /*For WebKit Browsers*/
     height: 0;
 }
 
-
-
 select>option:hover
     {
 		letter-spacing: 5px;
     }
+
+	.same-as-selected, .select-items
+	{
+		line-height: 15px;
+	}
 
 	.same-as-selected, .select-items div:hover
 	{
 		letter-spacing: 5px;
 		background-color: rgb(255 255 255)  !important;
 	}
+
 </style>
 
 
 <!-- Page Header -->
-<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); ">
-
-</div>
+<div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); "></div>
 
 <!-- Main Content -->
 <div class="container content-products ">
@@ -101,7 +103,7 @@ select>option:hover
 							$thumb = $p->thumbnail1;
 							$thumb1 = $p->image1;
 						}
-					?>
+					   ?>
 						<div class="product-grid col-md-<?= $col ?>">
 							<div class="p-holder">
 

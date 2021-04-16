@@ -83,6 +83,8 @@ $route['^(en|ar)/register']                                 =  'Auth/index';
 $route['^(en|ar)/login']                                 =  'Auth/login_view';
 $route['^(en|ar)/forgot-password']                                 =  'Auth/forgotPassword';
 $route['^(en|ar)/change-password']                                 =  'Auth/ChangePassword';
+$route['^(en|ar)/verifyUser']                                 =  'Auth/verifyUser';
+$route['^(en|ar)/logout']                                 =  'Auth/user_logout';
 $route['^(en|ar)/thankyou']                                 =  'Order/thankyou';
 $route['^(en|ar)/checkout']                                 =  'Order/checkout';
 //User dashboard

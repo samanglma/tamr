@@ -54,14 +54,40 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 		if ($(window).width() < 768) {
 			mobile = true;
 		}
-		$(".level1 a").click(function() {
+		$(".level1 a").click(function(){
+			$(this).css('padding','1.3rem 0');
+			$(this).find('img').hide();
 			$('.level1').children('ul').addClass('dropdown-opened');
 		});
-		$(".level2 a").click(function() {
+		$(".level2 a").click(function(){
+			$(this).css('padding','1.3rem 0');
+			$(this).find('img').hide();
 			$('.level2').children('ul').addClass('dropdown-opened');
+			$(".second").hide();
+			$(".third").hide();
+			$(".first").show();
 		});
+
+		$(".level_deb a").click(function(){
+			$(this).css('padding','1.3rem 0');
+			$(this).find('img').hide();
+			$('.level_deb').children('ul').addClass('dropdown-opened');
+			$(".first").hide();
+			$(".third").hide();
+			$(".second").show();
+		});
+
+		$(".level_gift a").click(function(){
+			$(this).css('padding','1.3rem 0');
+			$(this).find('img').hide();
+			$('.level_gift').children('ul').addClass('dropdown-opened');
+			$(".first").hide();
+			$(".second").hide();
+			$(".third").show();
+		});
+
 		if (!mobile) {
-			$(".level1")
+			$(".dropdown")
 				.mouseover(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
@@ -79,6 +105,68 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 					// $('.level1').children('ul').removeClass('dropdown-opened');
 				});
 			$(".level2")
+				.mouseover(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', '45%');
+				})
+				.mouseout(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', 'auto');
+				});
+		}
+
+		if (!mobile) {
+			$(".dropdown")
+				.mouseover(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', '25%');
+					var url = '<?= base_url('./assets/frontend/images/chevron-over.png') ?>';
+				$(this).children('a').find('img').attr("src", url); //URL @the time of mouse over on image
+				})
+				.mouseout(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', 'auto');
+					var url = '<?= base_url('./assets/frontend/images/chevron.png') ?>';
+				$(this).find('img').attr("src", url); //URL @the time of mouse over on image
+				// $('.level2').children('ul').removeClass('dropdown-opened');
+				// $('.level1').children('ul').removeClass('dropdown-opened');
+				});
+			$(".level_deb")
+				.mouseover(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', '45%');
+				})
+				.mouseout(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', 'auto');
+				});
+		}
+
+		if (!mobile) {
+			$(".dropdown")
+				.mouseover(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', '25%');
+					var url = '<?= base_url('./assets/frontend/images/chevron-over.png') ?>';
+				$(this).children('a').find('img').attr("src", url); //URL @the time of mouse over on image
+				})
+				.mouseout(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					$('.home-wrapper').css('left', 'auto');
+					var url = '<?= base_url('./assets/frontend/images/chevron.png') ?>';
+				$(this).find('img').attr("src", url); //URL @the time of mouse over on image
+				// $('.level2').children('ul').removeClass('dropdown-opened');
+				// $('.level1').children('ul').removeClass('dropdown-opened');
+				});
+			$(".level_gift")
 				.mouseover(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
@@ -277,6 +365,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 			timer.resume();
 		}
 	}
+	
 </script>
 <div id="myOverlay" class="overlay">
 	<span class="closebtn" onclick="closeSearch()" title="Close Overlay"><img src="<?= base_url('assets/frontend/images/close-search.svg') ?>" /></span>

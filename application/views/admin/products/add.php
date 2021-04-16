@@ -137,7 +137,7 @@
                            <?php //echo form_error('weight', '<div class="error" style="color: red;">', '</div>'); 
                             ?>
                        </div> -->
-
+					 
                        <div class="col-md-7  form-group">
                            <label>Thumbnail 1 *</label>
                            <input type='file' name='thumb1' size='20' required/>

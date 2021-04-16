@@ -8,10 +8,10 @@ $segment = $this->uri->segment('2');
 
 <style>
 
-	.level2 img{
+	/* .level2 img{
 
 		margin-left: 30px  !important;
-	}
+	} */
 
 	</style>
 
@@ -23,8 +23,8 @@ $segment = $this->uri->segment('2');
 		<span onclick="toggleMenu(this)" class="closs"><i class="far  fa-times"></i></span>
     </a>
 
-	
     <?= $breadcrumb ?? '' ?>
+
 </nav>
 <aside>
     <div class="menuss">
@@ -34,31 +34,36 @@ $segment = $this->uri->segment('2');
                 <ul>
 				<?php if(!empty($categories)){ ?>
                     <li class="dropdown level2"><a href="javascript:;"><?= $this->lang->line('dates') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
-                        <ul>
+                        <ul class="first">
                             <?php
+							
                             foreach ($categories as $key => $cat) {
                             ?>
                                 <li><a href="<?= base_url($lang . '/products/' . $cat->slug) ?>"><?= $cat->title ?></a></li>
                             <?php
-                        if($key == 10)
-                        {
-                            break;
-                        }
-                        } ?>
+							if($key == 10)
+							{
+								break;
+							}
+                           } ?>
 
-                        <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+                          <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
                         </ul>
                     </li>
-					<?php }else{?>
-						<li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?>
+					    <?php }else{?>
+
+						<li class="dropdown level2"><a href="<?= base_url($lang . '/products/dates') ?>"><?= $this->lang->line('dates') ?> </li>
+
 						<?php }?>
+
+
 					<?php if(!empty($categories_debes)){ ?>
-					<li class="dropdown level2"><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?>
-				
-					<img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
-                        <ul>
+
+					<li class="dropdown level_deb"><a href="javascript:;"><?= $this->lang->line('debes') ?><img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+                        <ul class="second">
                             <?php
-                            foreach ($categories_debes as $key => $cat) {
+
+                        foreach ($categories_debes as $key => $cat) {
                             ?>
                                 <li><a href="<?= base_url($lang . '/products/debes/'. $cat->slug) ?>"><?=  $cat->title ?></a></li>
                             <?php
@@ -72,18 +77,17 @@ $segment = $this->uri->segment('2');
                         </ul>
 					
                     </li>
-					<?php } else{?>
+					   <?php } else{?>
 					
 
-						<li class="dropdown level2"><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?>
+						<li class="dropdown level_deb"><a href="<?= base_url($lang . '/products/debes') ?>"><?= $this->lang->line('debes') ?> </li>
 						<?php }?>
 
 						<?php if(!empty($categories_gifts)){?>
-					<li class="dropdown level2"><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?>
-				
-					<img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
-                        <ul>
-                            <?php
+
+					<li class="dropdown level_gift"><a href="javascript:;"><?= $this->lang->line('gifts') ?>	<img src="<?= base_url('./assets/frontend/images/chevron.png') ?>"></a>
+                        <ul class="third">
+                       <?php
                             foreach ($categories_gifts as $key => $cat) {
                             ?>
                                 <li><a href="<?= base_url($lang . '/products/gifts/'. $cat->slug) ?>"><?=  $cat->title ?></a></li>
@@ -99,11 +103,13 @@ $segment = $this->uri->segment('2');
 						
                     </li>
 					<?php }else{ ?>
-						<li class="dropdown level2"><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?>
+						<li class="dropdown level_gift"><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?> </li>
+						<li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
 						<?php } ?>
-                    <li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+                    
                 </ul>
             </li>
+
             <li><a href="<?= base_url($lang . '/contact') ?>" class="<?= $segment == 'contact' || $segment == '/contact' ? 'active' : '' ?>"><?= $this->lang->line('contact-us') ?></a></li>
             <li><a href="<?= base_url($lang . '/about') ?>" class="<?= $segment == 'about' || $segment == '/about' ? 'active' : '' ?>"><?= $this->lang->line('about-us') ?></a></li>
             <li><a href="<?= base_url($lang . '/wishlist') ?>" class="<?= $segment == 'wishlist' || $segment == '/wishlist' ? 'active' : '' ?>"><?= $this->lang->line('wishlist') ?></a></li>
@@ -127,8 +133,6 @@ $segment = $this->uri->segment('2');
         </div>
 
     </div>
-
-
 
 </aside>
 

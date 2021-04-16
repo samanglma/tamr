@@ -93,12 +93,12 @@ define("PAYPAL_BASE_URL", "https://api.sandbox.paypal.com/v1/");
 define("PAYPAL_ENV", "sandbox");
 define('CURRENCY', 'USD');
 
-define('QUIQUP_BASE_URL', 'https://api.staging.quiqup.com/');
-define('QUIQUP_API_KEY', 'a4de139aee34ac1116870a5440878a99a48a10d592143d4af60fb05bda2e0fae');
-define('QUIQUP_API_SECRET', 'cb9c6ce85df7d74c80938a16a23a2ace1b5a94279958227d3cbbae1356362200');
-define('DEPACHIKA_PICKUP_NAME', 'Depachika Food Hall');
-define('DEPACHIKA_PICKUP_PHONE', '+97143633633');
+// define('QUIQUP_BASE_URL', 'https://api.staging.quiqup.com/');
+// define('QUIQUP_API_KEY', 'a4de139aee34ac1116870a5440878a99a48a10d592143d4af60fb05bda2e0fae');
+// define('QUIQUP_API_SECRET', 'cb9c6ce85df7d74c80938a16a23a2ace1b5a94279958227d3cbbae1356362200');
+// define('DEPACHIKA_PICKUP_NAME', 'Depachika Food Hall');
+// define('DEPACHIKA_PICKUP_PHONE', '+97143633633');
 
 
-define('FROM_EMAIL_ADDRESS', 'saman@glmaagency.com');
+define('FROM_EMAIL_ADDRESS', 'amin@glmaagency.com');
 define('FROM_NAME', 'Tamr');

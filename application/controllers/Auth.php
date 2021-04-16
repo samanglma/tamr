@@ -19,7 +19,6 @@ class Auth extends CI_Controller
 
     public function index()
     {
-
         $data['bodyClass'] = 'registration';
         $data['meta'] = [
             'canonical_tag' => '',
@@ -65,21 +64,29 @@ class Auth extends CI_Controller
 
             if ($email_check) {
 
-
                 $id = $this->User_model->register_user($user);
                 $template = $this->Email_templates_m->getTemplateBySlug('verify-email');
 
                 $data = array(
-                    '{name}'  =>  $this->input->post('name'),
-                    '{verification_link}' =>  base_url('user/reset-password?action=email-verification&id=' . $id . '&code=' . $code),
+                    '{name}'  =>  $this->input->post('user_name'),
+                    // '{link}' =>  base_url('user/reset-password?action=email-verification&id=' . $id . '&code=' . $code),
+					'{verification_link}' =>  base_url($this->language.'/verifyUser?action=email-verification&id=' . $id . '&code=' . $code)
                 );
+
+				$config=array(
+					'charset'=>'utf-8',
+					'wordwrap'=> TRUE,
+					'mailtype' => 'html'
+					);
+					
+				$this->email->initialize($config);
 
                 $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
                 $this->email->to($user['email']);
                 $this->email->subject($template->title);
                 $body = strtr($template->template, $data);
-                // echo $body;
-                // die();
+                //  echo $body;
+                //  die();
                 // $body = $this->parser->parse($template->template, $data, true);
                 $this->email->message($body);
                 $this->email->send();
@@ -97,7 +104,6 @@ class Auth extends CI_Controller
 
     public function login_view()
     {
-
         $data['bodyClass'] = 'login';
         $data['meta'] = [
             'canonical_tag' => '',
@@ -167,7 +173,6 @@ class Auth extends CI_Controller
 
     public function forgotPassword()
     {
-
         $data['bodyClass'] = 'forgotpassword';
         $data['meta'] = [
             'canonical_tag' => '',
@@ -176,7 +181,10 @@ class Auth extends CI_Controller
             'schema' => '',
             'robots' => ''
         ];
+
+
         $code = rand(0, 99999999999);
+
         $bc['breadcrumb'] = [
             'Home' => base_url(),
             'Forgot Password' => base_url($this->language . '/forgot-password'),
@@ -200,7 +208,8 @@ class Auth extends CI_Controller
 
                     $data = array(
                         '{name}'  =>  $this->input->post('name'),
-                        '{link}' =>  base_url('user/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code),
+					
+                        '{link}' =>  base_url('user/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code), 
                     );
 
                     $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
@@ -212,13 +221,13 @@ class Auth extends CI_Controller
                 }
                 else {
                     $data['error'] = "
-    Invalid Email ID !
-    ";
-                }
-            } else {
-                $data['error'] = "
-Invalid Email ID !
-";
+				Invalid Email ID !
+				";
+							}
+						} else {
+							$data['error'] = "
+			Invalid Email ID !
+			";
             }
         }
         $this->load->view('frontend/forgot-password', @$data);
@@ -231,6 +240,18 @@ Invalid Email ID !
         $verified = $this->User_model->verify_code($code, $id);
         if ($verified) {
             $this->changePassword();
+        }
+    }
+
+	public function verifyUser()
+    {
+        $code = $this->input->get('code');
+        $id = $this->input->get('id');
+        $verified = $this->User_model->verifyUser($code, $id);
+        if ($verified) {
+           // $this->changePassword();
+		   $this->session->set_flashdata('success', 'You verified email successfully. Now you can Login!');
+		   redirect($this->language . '/login', 'refresh');
         }
     }
 

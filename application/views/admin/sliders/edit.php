@@ -102,7 +102,9 @@
                            <?php echo form_error('text_color', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
-					   <div class="col-md-7 form-group">
+					   <input type="hidden" name='dispaly_text' value='1'>
+
+					   <!-- <div class="col-md-7 form-group">
                            <label>Display Text on Slider</label>
                            <select name="dispaly_text" class="form-control">
                                <?php if($row->dispaly_text == 1){?>
@@ -113,7 +115,7 @@
 							   <option value="1">Yes</option>
                                <?php }?>
                            </select>
-                       </div>
+                       </div> -->
 
                   
                        <div class="col-md-7 form-group">
