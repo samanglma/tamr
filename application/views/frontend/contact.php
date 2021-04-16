@@ -142,7 +142,7 @@ color:black !important;
 			</div>
 
 			<div class='head'>
-				TAMR HEAD OFFICE
+				TAMR Head Office
 			</div>
 
 			<div class="address">

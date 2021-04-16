@@ -12,7 +12,7 @@ class Wishlist_m  extends CI_Model
 
     public function getUserWishlist($id)
     {
-        $this->db->select('products.*');
+        $this->db->select('products.*,wishlist.id as w_id');
         $this->db->where("user_id", $id); 
         $this->db->join('products','products.id = wishlist.product_id');
 		$this->db->join('categories','products.cat_id = categories.id');

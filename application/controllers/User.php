@@ -58,7 +58,7 @@ class User extends CI_Controller
         ];
         $data['breadcrumb'] = [
             $this->lang->line('Home') => base_url(),
-            $this->lang->line('Profile') => base_url($this->language . '/profile'),
+            $this->lang->line('wishlist') => base_url($this->language . '/wishlist'),
         ];
 
         $wishlist = [];
@@ -87,6 +87,17 @@ class User extends CI_Controller
         ];
 		if ($this->session->userdata('user_id')) {
 			$wishlist = $this->Wishlist_m->save($wishlist);
+		}
+
+        $this->load->view('frontend/user/wishlist', $wishlist);
+
+        redirect($this->language.'/wishlist');
+    }
+
+    public function removeWishlist($id)
+    {
+		if ($this->session->userdata('user_id')) {
+			$wishlist = $this->Wishlist_m->delete($id);
 		}
 
         $this->load->view('frontend/user/wishlist', $wishlist);

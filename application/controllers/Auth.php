@@ -71,7 +71,7 @@ class Auth extends CI_Controller
 
                 $data = array(
                     '{name}'  =>  $this->input->post('name'),
-                    '{link}' =>  base_url('user/reset-password?action=email-verification&id=' . $id . '&code=' . $code),
+                    '{verification_link}' =>  base_url('user/reset-password?action=email-verification&id=' . $id . '&code=' . $code),
                 );
 
                 $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
