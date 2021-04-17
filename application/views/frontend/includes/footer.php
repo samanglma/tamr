@@ -4,7 +4,8 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/jquery.validate.js" integrity="sha384-QYr0Jb/x/vYoPGUFXkCz0h5Aq5+wFwjsiwCWsbgGk+SoBt1NlaFip4L4AB1L3hGz" crossorigin="anonymous"></script>
 <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/bootstrap-confirmation.js" integrity="sha384-pKyMMamvoZ5Tl9dqLIriIOplxM4yl4lDiMikOIQh1X31VHB8qjVFXjNOAIFPGoar" crossorigin="anonymous"></script> -->
-<!-- <script type="text/javascript" src="<?php //echo base_url(); ?>assets/frontend/js/sweetalert.min.js" integrity="sha384-RIQuldGV8mnjGdob13cay/K1AJa+LR7VKHqSXrrB5DPGryn4pMUXRLh92Ev8KlGF" crossorigin="anonymous"></script> -->
+<!-- <script type="text/javascript" src="<?php //echo base_url(); 
+											?>assets/frontend/js/sweetalert.min.js" integrity="sha384-RIQuldGV8mnjGdob13cay/K1AJa+LR7VKHqSXrrB5DPGryn4pMUXRLh92Ev8KlGF" crossorigin="anonymous"></script> -->
 
 <?php if (isset($_SESSION['site_lang']) && $_SESSION['site_lang'] == 'english') {
 
@@ -92,16 +93,16 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 					e.stopPropagation();
 					$('.home-wrapper').css('left', '25%');
 					var url = '<?= base_url('./assets/frontend/images/chevron-over.png') ?>';
-				$(this).children('a').find('img').attr("src", url); //URL @the time of mouse over on image
+					$(this).children('a').find('img').attr("src", url); //URL @the time of mouse over on image
 				})
 				.mouseout(function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 					$('.home-wrapper').css('left', 'auto');
 					var url = '<?= base_url('./assets/frontend/images/chevron.png') ?>';
-				$(this).find('img').attr("src", url); //URL @the time of mouse over on image
-				// $('.level2').children('ul').removeClass('dropdown-opened');
-				// $('.level1').children('ul').removeClass('dropdown-opened');
+					$(this).find('img').attr("src", url); //URL @the time of mouse over on image
+					// $('.level2').children('ul').removeClass('dropdown-opened');
+					// $('.level1').children('ul').removeClass('dropdown-opened');
 				});
 			$(".level2")
 				.mouseover(function(e) {
@@ -181,88 +182,87 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
 
 		var x, i, j, l, ll, selElmnt, a, b, c;
-	/*look for any elements with the class "custom-select":*/
-	x = document.getElementsByClassName("custom-select");
-	l = x.length;
-	for (i = 0; i < l; i++) {
-		selElmnt = x[i].getElementsByTagName("select")[0];
-		ll = selElmnt.length;
-		/*for each element, create a new DIV that will act as the selected item:*/
-		a = document.createElement("DIV");
-		a.setAttribute("class", "select-selected");
-		a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-		x[i].appendChild(a);
-		/*for each element, create a new DIV that will contain the option list:*/
-		b = document.createElement("DIV");
-		b.setAttribute("class", "select-items select-hide cart-custom-scroll");
-		for (j = 0; j < ll; j++) {
-			/*for each option in the original select element,
-			create a new DIV that will act as an option item:*/
-			c = document.createElement("DIV");
-			c.innerHTML = selElmnt.options[j].innerHTML;
-			c.addEventListener("click", function(e) {
-				/*when an item is clicked, update the original select box,
-				and the selected item:*/
-				var y, i, k, s, h, sl, yl;
-				s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-				sl = s.length;
-				h = this.parentNode.previousSibling;
-				for (i = 0; i < sl; i++) {
-					if (s.options[i].innerHTML == this.innerHTML) {
-						s.selectedIndex = i;
-						h.innerHTML = this.innerHTML;
-						y = this.parentNode.getElementsByClassName("same-as-selected");
-						yl = y.length;
-						for (k = 0; k < yl; k++) {
-							y[k].removeAttribute("class");
+		/*look for any elements with the class "custom-select":*/
+		x = document.getElementsByClassName("custom-select");
+		l = x.length;
+		for (i = 0; i < l; i++) {
+			selElmnt = x[i].getElementsByTagName("select")[0];
+			ll = selElmnt.length;
+			/*for each element, create a new DIV that will act as the selected item:*/
+			a = document.createElement("DIV");
+			a.setAttribute("class", "select-selected");
+			a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+			x[i].appendChild(a);
+			/*for each element, create a new DIV that will contain the option list:*/
+			b = document.createElement("DIV");
+			b.setAttribute("class", "select-items select-hide cart-custom-scroll");
+			for (j = 0; j < ll; j++) {
+				/*for each option in the original select element,
+				create a new DIV that will act as an option item:*/
+				c = document.createElement("DIV");
+				c.innerHTML = selElmnt.options[j].innerHTML;
+				c.addEventListener("click", function(e) {
+					/*when an item is clicked, update the original select box,
+					and the selected item:*/
+					var y, i, k, s, h, sl, yl;
+					s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+					sl = s.length;
+					h = this.parentNode.previousSibling;
+					for (i = 0; i < sl; i++) {
+						if (s.options[i].innerHTML == this.innerHTML) {
+							s.selectedIndex = i;
+							h.innerHTML = this.innerHTML;
+							y = this.parentNode.getElementsByClassName("same-as-selected");
+							yl = y.length;
+							for (k = 0; k < yl; k++) {
+								y[k].removeAttribute("class");
+							}
+							this.setAttribute("class", "same-as-selected");
+							break;
 						}
-						this.setAttribute("class", "same-as-selected");
-						break;
 					}
-				}
-				h.click();
-
-				$('.custom-control-input').prop('checked', false);
-				callProductsAjax();
-				SelectDeliveryTime();
+					h.click();
+					$('input[name=all]').attr('checked', false);
+					$('form.searchFrm').submit();
+					$('.custom-control-input').prop('checked', false);
+				});
+				b.appendChild(c);
+			}
+			x[i].appendChild(b);
+			a.addEventListener("click", function(e) {
+				/*when the select box is clicked, close any other select boxes,
+				and open/close the current select box:*/
+				e.stopPropagation();
+				closeAllSelect(this);
+				this.nextSibling.classList.toggle("select-hide");
+				this.classList.toggle("select-arrow-active");
 			});
-			b.appendChild(c);
 		}
-		x[i].appendChild(b);
-		a.addEventListener("click", function(e) {
-			/*when the select box is clicked, close any other select boxes,
-			and open/close the current select box:*/
-			e.stopPropagation();
-			closeAllSelect(this);
-			this.nextSibling.classList.toggle("select-hide");
-			this.classList.toggle("select-arrow-active");
-		});
-	}
 
-	function closeAllSelect(elmnt) {
-		/*a function that will close all select boxes in the document,
-		except the current select box:*/
-		var x, y, i, xl, yl, arrNo = [];
-		x = document.getElementsByClassName("select-items");
-		y = document.getElementsByClassName("select-selected");
-		xl = x.length;
-		yl = y.length;
-		for (i = 0; i < yl; i++) {
-			if (elmnt == y[i]) {
-				arrNo.push(i)
-			} else {
-				y[i].classList.remove("select-arrow-active");
+		function closeAllSelect(elmnt) {
+			/*a function that will close all select boxes in the document,
+			except the current select box:*/
+			var x, y, i, xl, yl, arrNo = [];
+			x = document.getElementsByClassName("select-items");
+			y = document.getElementsByClassName("select-selected");
+			xl = x.length;
+			yl = y.length;
+			for (i = 0; i < yl; i++) {
+				if (elmnt == y[i]) {
+					arrNo.push(i)
+				} else {
+					y[i].classList.remove("select-arrow-active");
+				}
+			}
+			for (i = 0; i < xl; i++) {
+				if (arrNo.indexOf(i)) {
+					x[i].classList.add("select-hide");
+				}
 			}
 		}
-		for (i = 0; i < xl; i++) {
-			if (arrNo.indexOf(i)) {
-				x[i].classList.add("select-hide");
-			}
-		}
-	}
-	/*if the user clicks anywhere outside the select box,
-	then close all select boxes:*/
-	document.addEventListener("click", closeAllSelect);
+		/*if the user clicks anywhere outside the select box,
+		then close all select boxes:*/
+		document.addEventListener("click", closeAllSelect);
 	});
 	$(".add-to-cart").click(function() {
 		id = $(this).attr('data-id');
@@ -279,7 +279,8 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 				var resp = jQuery.parseJSON(data);
 				if (resp.success == 'true') {
 					$('.cart-item').show();
-					// swal("<?php //echo $congrats; ?>", "<?php echo $succ_msg; ?>", "success");
+					// swal("<?php //echo $congrats; 
+								?>", "<?php echo $succ_msg; ?>", "success");
 					$("#sidebar-cart").hide();
 					var count = $('.cart-count').text();
 					$('.cart-count').text(parseInt(count) + 1);

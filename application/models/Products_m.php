@@ -157,13 +157,27 @@ class Products_m extends CI_Model
 		{
 			$this->db->where('categories.slug', $category);
 		}
+		if($this->input->get('type') && $this->input->get('type') === 'new')
+		{
+			$this->db->where('products.mark_as_new', 1);
+		}
+		if($this->input->get('selling') && $this->input->get('selling') === 'top')
+		{
+			$this->db->where('products.top_seller', 1);
+		}
+		if($this->input->get('category') && $this->input->get('category') !== 'ALL VARIETIES')
+		{
+			$this->db->like('sub_categories.slug', $this->input->get('category') );
+		}
 		$this->db->join('categories', 'categories.id = products.cat_id');
+		$this->db->join('sub_categories', 'sub_categories.id = products.child_cat');
 		// $this->db->join('product_variants', 'products.id = product_variants.product_id', 'left');
 		// $this->db->join('variants', 'product_variants.variant_id = variants.id', 'left');
 		// $this->db->join('variants_value', 'product_variants.variant_value_id = variants_value.id', 'left');
 		$this->db->where('products.status', 1);
 		$this->db->from('products');
 		$query = $this->db->get()->result();
+		// echo $this->db->last_query();
 		return $query;
 	}
 

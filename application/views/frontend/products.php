@@ -57,19 +57,22 @@ select>option:hover
 
 <!-- Main Content -->
 <div class="container content-products ">
-
+<form class="searchFrm">
 	<ul class="list-inline menu-products wrap_scroll">
-		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
-		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?type=new') ?>"><?= $this->lang->line('New-Products') ?></a></li>
-		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><a href="<?= base_url($lang . '/products?selling=top') ?>"><?= $this->lang->line('Top-Selling') ?></a></li>
-		<li class="custom-select">
-	
-		<select name="category" class='eee'>
+		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'active' : '' ?>"><input type='checkbox' name='all' <?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'checked' : '' ?> value='all' id='qs1' class="search"><label for='qs1'><?= $this->lang->line('All') ?></label></li>
+		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><input type='checkbox' <?= $this->input->get('type') != '' ? 'checked' : '' ?> name='type' value='new' class="search" id='qs2'><label for='qs2'><?= $this->lang->line('New-Products') ?></label></li>
+		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><input type='checkbox' name='selling' <?= $this->input->get('selling') != '' ? 'checked' : '' ?> value='top' class="search" id='qs3'><label for='qs3'><?= $this->lang->line('Top-Selling') ?></label></li>
+		<li class="custom-select"><select name="category" class='eee'>
 				<option><?= $this->lang->line('All-VARIETIES') ?></option>
 				<?php
 				foreach ($categories as $category) {
+					$selected = '';
+					if($this->input->get('category') == $category->slug)
+					{
+						$selected = 'selected=selected';
+					}
 				?>
-					<option value="<?= $category->slug ?>"><?= $category->title ?></option>
+					<option value="<?= $category->slug ?>" <?= $selected ?> ><?= $category->title ?></option>
 
 				<?php
 				}
@@ -78,7 +81,7 @@ select>option:hover
 		</li>
 
 	</ul>
-
+</form>
 	<div class="tab-content">
 
 		<div class="products">
@@ -94,9 +97,11 @@ select>option:hover
 						if ($key % 6 == 1 || $key % 6 == 3) {
 							$col = 6;
 							$thumb = $p->thumbnail2;
+							$thumb1 = $p->image1;
 						} else {
 							$col = 3;
 							$thumb = $p->thumbnail1;
+							$thumb1 = $p->image1;
 						}
 					   ?>
 						<div class="product-grid col-md-<?= $col ?>">
@@ -111,7 +116,7 @@ select>option:hover
 										<a href="javascript:;" class="wishlist-icon"><i class="fa fas fa-heart"></i></a>
 
 									<?php } else { ?>
-										<a href="<?= base_url($lang . '/product/' . $p->slug) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
+										<a href="<?= base_url('/user/addToWishlist/' . $p->id) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
 									<?php } ?>
 								</div>
 								<div class=""> 
@@ -119,7 +124,8 @@ select>option:hover
 								if($col == 6) { ?>
 								<div class="text-right">
 								<?php } ?>
-								<img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top">
+								<img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top main-img">
+								<img src="<?= base_url('uploads/products/' . $thumb1) ?>" class="card-img-top alternative-img">
 								<?php
 								if($col == 6) { ?>
 								</div>
@@ -147,3 +153,18 @@ select>option:hover
 	</div>
 
 	
+	<script>
+		$('.search').change(function(){
+			if($('input[name=type]').is(':checked') || $('input[name=selling]').is(':checked'))
+			{
+				$('input[name=all]').attr('checked', false);
+			}
+			if($('input[name=all]').is(':checked'))
+			{
+				window.location.replace("<?= base_url($lang."/products") ?>");
+			}
+			else {
+			$('form.searchFrm').submit();
+			}
+		})
+	</script>
