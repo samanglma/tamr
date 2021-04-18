@@ -3,6 +3,13 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
 <!-- Navigation -->
 <style>
+
+
+  .bottom-cats{
+
+    display: none;
+  }
+
   .price {
     margin-top: 160px;
   }
@@ -65,7 +72,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           <div class="cart-heading">
             <h1>Change password</h1>
           </div>
-          <form role="form" class="validate registerForm" method="post" action="<?php echo base_url($lang.'/change-password'); ?>">
+          <form role="form" class="validate registerForm" method="post" action="<?php echo base_url($lang.'/new-password'); ?>">
             <?php
             $error_msg = $this->session->flashdata('error_msg');
             if ($error_msg) {
@@ -75,6 +82,10 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             <?php if (!empty(validation_errors())) {
               echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
             } ?>
+
+            <input type="hidden" name="id" value="<?php echo $this->input->get('id'); ?>">
+             <input type="hidden" name="code" value="<?php echo $this->input->get('code'); ?>">
+
             <div class="form-group">
               <input type="password" class="form-control" placeholder="NEW PASSWORD" value="<?php echo set_value('password'); ?>" name='password' />
             </div>

@@ -133,7 +133,7 @@
 
                        <div class="col-md-7  form-group">
                            <label>Thumbnail 2 Image *</label>
-                           <span style="color: #97310e;"> Size ( 508 * 230 ) </span>
+                           <span style="color: #97310e;"> Size ( 508 * 391 ) </span>
                            <input type='file' name='thumb2' size='20' /><br>
                            <?php if (!empty($row->thumbnail2)) { ?> <img width="20%" src="<?php echo base_url() ?>uploads/products/<?php echo $row->thumbnail2; ?>">
                                <input type="hidden" value="<?php echo $row->thumbnail2; ?>" name="thumb22">

@@ -57,12 +57,12 @@ class User_model extends CI_model
     }
 
 
-    public function verify_code($code, $id)
+    public function verify_code($id)
     {
 
         $this->db->select('*');
         $this->db->from('users');
-        $this->db->where('activation_code', $code);
+      //  $this->db->where('activation_code', $code);
         $this->db->where('id', $id);
         $query = $this->db->get();
 
@@ -71,6 +71,30 @@ class User_model extends CI_model
         } else {
             return false;
         }
+    }
+
+    public function verify_code_password($id)
+    {
+         $this->db->select('*');
+        $this->db->from('users');
+      //  $this->db->where('activation_code', $code);
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function changePassword($id,$data)
+    {
+
+        $this->db->where('id', $id);
+        $this->db->update('users', $data);
+
+        return true;
     }
 
 	public function verifyUser($code, $id)
@@ -87,7 +111,7 @@ class User_model extends CI_model
 			'active' => 1,
 		);
 
-		$this->db->where('activation_code', $code);
+		//$this->db->where('activation_code', $code);
 		$this->db->where('id', $id);
 		$this->db->update('users', $update);
 

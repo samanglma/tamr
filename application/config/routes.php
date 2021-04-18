@@ -79,14 +79,20 @@ $route['^(en|ar)/cart']                                 =  'Cart/index';
 $route['^(en|ar)/products/(:any)']                                 =  'Products/index/$i';
 $route['^(en|ar)/products']                                 =  'Products/index';
 $route['^(en|ar)/product/(:any)']                                 =  'Products/details/$i';
+$route['^(en|ar)/product-slug/(:any)']                                 =  'Products/prdoduct_by_slug';
 $route['^(en|ar)/register']                                 =  'Auth/index';
 $route['^(en|ar)/login']                                 =  'Auth/login_view';
 $route['^(en|ar)/forgot-password']                                 =  'Auth/forgotPassword';
 $route['^(en|ar)/change-password']                                 =  'Auth/ChangePassword';
+$route['^(en|ar)/reset-password']                                 =  'Auth/ChangePassword';
+$route['^(en|ar)/new-password']                                 =  'Auth/newPassword';
 $route['^(en|ar)/verifyUser']                                 =  'Auth/verifyUser';
 $route['^(en|ar)/logout']                                 =  'Auth/user_logout';
 $route['^(en|ar)/thankyou']                                 =  'Order/thankyou';
 $route['^(en|ar)/checkout']                                 =  'Order/checkout';
+
+$route['^(en|ar)/search(:any)']                                 =  'Products/search';
+
 //User dashboard
 $route['^(en|ar)/profile']                                 =  'User/index';
 $route['^(en|ar)/orders']                                 =  'Order/index';
@@ -95,7 +101,7 @@ $route['^(en|ar)/order/(:any)']                                 =  'Order/detail
 
 
 
-// $route['^(en|ar)/reset-password']                                 =  'User/resetPassword';
+// $route['^(en|ar)/reset-password']                                 =  'User/resetPassword';  
 $route['myform/ajax/(:any)'] = 'Products/myformAjax/$1';
 
 // $route['en/cart']                      =  'Home/cart'; 

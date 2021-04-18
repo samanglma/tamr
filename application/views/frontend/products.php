@@ -26,14 +26,14 @@ $categories = getCategoriesByParentId(1);
 	select{
     scrollbar-width: none; /*For Firefox*/;
     -ms-overflow-style: none;  /*For Internet Explorer 10+*/;
-}
+    }
 
-select:-webkit-scrollbar { /*For WebKit Browsers*/
-    width: 0;
-    height: 0;
-}
+	select:-webkit-scrollbar { /*For WebKit Browsers*/
+		width: 0;
+		height: 0;
+	}
 
-select>option:hover
+    select>option:hover
     {
 		letter-spacing: 5px;
     }
@@ -49,6 +49,17 @@ select>option:hover
 		background-color: rgb(255 255 255)  !important;
 	}
 
+	.wrap_scroll li label
+	{
+     font-weight: normal; 
+     padding: 10px;
+	}
+
+	/* .alternative-img:hover{
+
+		margin-top: 20%;
+	} */
+
 </style>
 
 
@@ -62,12 +73,22 @@ select>option:hover
 		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'active' : '' ?>"><input type='checkbox' name='all' <?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'checked' : '' ?> value='all' id='qs1' class="search"><label for='qs1'><?= $this->lang->line('All') ?></label></li>
 		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><input type='checkbox' <?= $this->input->get('type') != '' ? 'checked' : '' ?> name='type' value='new' class="search" id='qs2'><label for='qs2'><?= $this->lang->line('New-Products') ?></label></li>
 		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><input type='checkbox' name='selling' <?= $this->input->get('selling') != '' ? 'checked' : '' ?> value='top' class="search" id='qs3'><label for='qs3'><?= $this->lang->line('Top-Selling') ?></label></li>
-		<li class="custom-select"><select name="category" class='eee'>
+		<li class="custom-select">
+			<select name="category" class='eee'>
 				<option><?= $this->lang->line('All-VARIETIES') ?></option>
 				<?php
-				foreach ($categories as $category) {
+				   foreach ($categories as $category) {
 					$selected = '';
-					if($this->input->get('category') == $category->slug)
+
+					if(!empty($this->uri->segment('3')))
+					{
+						$sub_cat = $this->uri->segment('3');
+					}
+					else{
+						$sub_cat = $this->input->get('category');
+					}
+
+					if($sub_cat == $category->slug)
 					{
 						$selected = 'selected=selected';
 					}
@@ -75,7 +96,7 @@ select>option:hover
 					<option value="<?= $category->slug ?>" <?= $selected ?> ><?= $category->title ?></option>
 
 				<?php
-				}
+				  }
 				?>
 			</select>
 		</li>
@@ -125,34 +146,31 @@ select>option:hover
 								<div class="text-right">
 								<?php } ?>
 								<img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top main-img">
-								<img src="<?= base_url('uploads/products/' . $thumb1) ?>" class="card-img-top alternative-img">
+							    <img src="<?= base_url('uploads/products/' . $thumb1) ?>" class="card-img-top alternative-img"> 
 								<?php
 								if($col == 6) { ?>
 								</div>
-								<?php } ?>
+								 <?php } ?>
 									<div class="card-body">
 										<div class="d-flex justify-content-between"> <span class="font-weight-bold p-title"><?= $p->title ?></span> </div>
 										<div class="details-products"><?= substr($p->description, 0, 50) ?? "" ?></div>
-
 										<span class="font-weight-bold price price-amount"><?= $p->price ?></span> <span class='currency'>AED</span>
 									</div>
 
 								</div>
 							</div>
 						</div>
-					<?php
-						$counter++;
+				    <?php
+					$counter++; 
 					}
-					?>
+				    ?>
 
 				</div>
-
 
 			</div>
 		</div>
 	</div>
 
-	
 	<script>
 		$('.search').change(function(){
 			if($('input[name=type]').is(':checked') || $('input[name=selling]').is(':checked'))

@@ -69,9 +69,13 @@ class Products_m extends CI_Model
 	public function filterProducts($data)
 	{
 
-		$catValue = $data['selectCatValue'];
+		 $catValue = $data['selectCatValue'];
+
 
 		$filterOption = $data['filterOption'];
+
+
+		
 		$this->db->select("*");
 
 		if($catValue)
@@ -150,12 +154,16 @@ class Products_m extends CI_Model
 
 	public function getAllProducts($category = '')
 	{
-
 		
-		$this->db->select('products.*, categories.title as cat_title, categories.title_ar as cat_title_ar');
+		$sub_cat = $this->db->select('*')->where('slug', $category)->from('sub_categories')->get()->row();
+		if(!empty($sub_cat)){
+		$subcatID = $sub_cat->id;
+	}
+
+		$this->db->select('products.*, categories.title as cat_title, categories.title_ar as cat_title_ar, sub_categories.title as sub_cat_title, sub_categories.title_ar as sub_cat_title_ar');
 		if($category!= '')
 		{
-			$this->db->where('categories.slug', $category);
+			$this->db->where('sub_categories.id', $subcatID);
 		}
 		if($this->input->get('type') && $this->input->get('type') === 'new')
 		{
@@ -221,14 +229,15 @@ class Products_m extends CI_Model
 		return $query;
 	}
 
-	public function search($search)
+	public function searchProduct($search = '')
 	{
 		$this->db->select('*');
 		$this->db->from('products');
 		$this->db->like('title',$search);
-		// $this->db->or_like('fname',$search);
+		// $this->db->or_like('fname',$search); 
 		// $this->db->or_like('lname',$search);
 		// $this->db->or_like('mname',$search);
+		$this->db->where('status', 1);
 		$query = $this->db->get();
 		return $query->result();
 	}

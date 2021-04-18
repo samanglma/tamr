@@ -24,11 +24,11 @@ if ($this->session->userdata('settings')) {
 input:focus::placeholder {
   color: #d8d5d3;
 }
-.msg:hover::placeholder{
+.message:hover::placeholder{
 	color: #d8d5d3;
 }
 
-.msg:focus::placeholder{
+.message:focus::placeholder{
 	color: #d8d5d3;
 }
 </style>
@@ -120,7 +120,7 @@ color:black !important;
 					<input type="text" placeholder="<?= $this->lang->line('EMAIL') ?>" class="form-control" name='email' />
 				</div>
 				<div class="form-group">
-					<textarea name="message" class=" form-control" placeholder="<?= $this->lang->line('MESSAGE') ?>"></textarea>
+					<textarea name="message" class=" form-control message" placeholder="<?= $this->lang->line('MESSAGE') ?>"></textarea>
 				</div>
 				<!--  <input type="text" placeholder="Message" name='msg' class="msg" />
 -->

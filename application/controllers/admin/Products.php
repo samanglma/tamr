@@ -193,9 +193,9 @@ class Products extends My_Controller
                 $config3['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config3['encrypt_name'] = TRUE;
                 $config3['max_width'] = 508;
-                $config3['max_height'] = 230;
+                $config3['max_height'] = 391;
                 $config3['min_width'] = 508;
-                $config3['min_height'] = 230;
+                $config3['min_height'] = 391;
 
 
                 $this->load->library('upload', $config3);
@@ -486,9 +486,9 @@ class Products extends My_Controller
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['encrypt_name'] = TRUE;
             $config['max_width'] = 508;
-            $config['max_height'] = 230;
+            $config['max_height'] = 391;
             $config['min_width'] = 508;
-            $config['min_height'] = 230;
+            $config['min_height'] = 391;
 
 
             $this->load->library('upload', $config);

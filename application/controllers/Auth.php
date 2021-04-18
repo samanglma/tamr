@@ -196,6 +196,7 @@ class Auth extends CI_Controller
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
 		$this->load->view('frontend/includes/bottom-sidebar');
+
         if ($this->input->post('forgot_pass')) {
             $email = $this->input->post('email');
             $que = $this->db->query("select id,password,email from users where email='$email'");
@@ -209,8 +210,16 @@ class Auth extends CI_Controller
                     $data = array(
                         '{name}'  =>  $this->input->post('name'),
 					
-                        '{link}' =>  base_url('user/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code), 
+                        '{forget_password_link}' =>  base_url($this->language.'/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code), 
                     );
+
+					$config=array(
+						'charset'=>'utf-8',
+						'wordwrap'=> TRUE,
+						'mailtype' => 'html'
+						);
+						
+					$this->email->initialize($config);
 
                     $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
                     $this->email->to($user_email);
@@ -241,6 +250,43 @@ class Auth extends CI_Controller
         if ($verified) {
             $this->changePassword();
         }
+    }
+
+	public function newPassword()
+	{
+	
+		$code = $this->input->post('code');
+        $id = $this->input->post('id');
+
+		
+        $verified = $this->User_model->verify_code_password($id);
+        if ($verified) {
+
+             $data = array(
+
+                'password' => md5($this->input->post('password')),
+                'verification_code' => $code
+
+             );
+
+            $rcd =  $this->User_model->changePassword($id,$data);
+
+            if($rcd)
+            {
+
+               $this->session->set_flashdata('success', 'You change password successfully. Now you can Login with new password!');
+               redirect($this->language . '/login', 'refresh');
+
+			//$this->changePassword2($id);
+          //  $this->changePassword();
+            }
+        }
+
+	}
+
+    public function changePassword2($id)
+    {
+        $this->User_model->changePassword($id);
     }
 
 	public function verifyUser()
