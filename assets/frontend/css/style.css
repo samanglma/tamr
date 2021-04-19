@@ -1453,9 +1453,15 @@ hr {
   width: 100%;
   opacity: 0;
   z-index: 0;
+  display: table;
   background-color: rgba(255, 255, 255, 0.8);
   height: 100%;
   transition: all ease-in-out 0.2s;
+}
+
+.product-grid .product-details > div {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .product-grid .product-details a:first-child {
