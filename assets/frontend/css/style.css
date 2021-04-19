@@ -1471,7 +1471,7 @@ hr {
 .product-grid .product-details a {
   font-size: 1.3rem;
   border-bottom: 1px solid #5F534A;
-  padding: 0.3rem 0;
+  padding: 1.3rem 0;
   display: inline-block;
   margin-bottom: 2;
   transition: all ease-in-out 0.2s;
@@ -1480,6 +1480,11 @@ hr {
 .product-grid .product-details a:hover {
   border-bottom: 1px solid #E8DBCA;
   transform: scale(1.1);
+}
+
+.all_prod{
+
+	top:-45px;
 }
 
 .product-grid {
@@ -1637,7 +1642,8 @@ body:not('.home') .dropdown ul {
     border: none;
     cursor: pointer;
     user-select: none;
-    margin-left: -31px;
+    margin-left: -35px;
+		background-color: white;
 }
 
 .select-items {
@@ -1823,6 +1829,6 @@ body.about .page-holder { margin: 10%;}
 .product-details .price,
 .product-details .pcs { margin-top: 8vw;}
 
-textarea.form-control { height: 110px; padding-top: 10px;}
+textarea.form-control { height: 110px; padding-top: 71px;}
 .details-about { height: 200px; overflow-y: scroll;}
 .searchFrm input[type=checkbox] { display: none;}

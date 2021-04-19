@@ -8,10 +8,6 @@ $segment = $this->uri->segment('2');
 
 <style>
 
-	/* .level2 img{
-
-		margin-left: 30px  !important;
-	} */
 
 	</style>
 
@@ -104,7 +100,7 @@ $segment = $this->uri->segment('2');
                     </li>
 					<?php }else{ ?>
 						<li class="dropdown level_gift"><a href="<?= base_url($lang . '/products/gifts') ?>"><?= $this->lang->line('gifts') ?> </li>
-						<li><a href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
+						<li><a class='all_prod' href="<?= base_url($lang . '/products') ?>"><?= $this->lang->line('All') ?></a></li>
 						<?php } ?>
                     
                 </ul>

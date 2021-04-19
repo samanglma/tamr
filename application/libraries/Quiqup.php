@@ -17,12 +17,11 @@ class Quiqup
 
         $request = '{
             "grant_type" : "client_credentials",
-            "client_id" : "' . QUIQUP_API_KEY . '",
-            "client_secret" : "' . QUIQUP_API_SECRET . '"
+         
         }';
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => QUIQUP_BASE_URL . 'oauth/token',
+            // CURLOPT_URL => QUIQUP_BASE_URL . 'oauth/token',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -79,8 +78,7 @@ class Quiqup
             "kind": "partner_standard",
             "pickups": [
                 {
-                  "contact_name": "' . DEPACHIKA_PICKUP_NAME . '",
-                  "contact_phone": "' . DEPACHIKA_PICKUP_PHONE . '",
+              
                   "partner_order_id": "' . $data['order']['id'] . '", 
                         "notes": "",
                   "location": {
@@ -118,7 +116,7 @@ class Quiqup
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => QUIQUP_BASE_URL . "partner/jobs",
+         //   CURLOPT_URL => QUIQUP_BASE_URL . "partner/jobs",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -161,7 +159,7 @@ var_dump($response);
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => QUIQUP_BASE_URL. "partner/jobs".$jobId."/submissions",
+       //   CURLOPT_URL => QUIQUP_BASE_URL. "partner/jobs".$jobId."/submissions",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,

@@ -31,7 +31,7 @@
                            <th width="">Product Title Arabic</th>
                            <!--<th width="10%">Brand</th> -->
                              <!--<th width="20%">Categories</th>  -->
-                           <th width="">Image</th>
+                           <th width="">Thumbnail</th>
                            <th width="">Net Price(AED)</th>
                            <th width="">Total Price(AED)</th>
                            <th width="">Status</th>

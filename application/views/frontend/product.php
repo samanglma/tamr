@@ -36,22 +36,24 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
             ?>
             <div class="col-md-6 kinds">
               <?php
-              foreach ($categories_upper as $key => $category) {
-              ?>
-                <a href="javascript:;"> <?= $category->$title ?> </a>
+
+									$curent = current_url();
+                foreach ($categories_upper as $key => $category) { ?>
+                <!-- <a href="javascript:;"> <?= $category->$title ?> </a> -->
+								<a href="<?= base_url($lang . '/product-slug/'.$category->slug.'?slug='.$product->slug) ?>"> <?= $category->$title ?> </a>
                 <?php
                 if ($key == $half) {
-                ?>
+              ?>
             </div>
 
             <div class="col-md-6 kinds">
             <?php } ?>
-          <?php }  ?>
+            <?php }  ?>
             </div>
 
           </div>
           <div class="text-right view-all">
-            <a href="<?php echo base_url(); ?>en/products" class=" btn"> ALL PRODUCTS </a>
+            <a href="<?= base_url($lang . '/products') ?>" class=" btn"> ALL PRODUCTS </a>
           </div>
 
         </div>
@@ -120,7 +122,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
               </div>
           <?php
             }
-          }
+            }
           ?>
           <br>
 
