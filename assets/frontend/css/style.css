@@ -1464,16 +1464,11 @@ hr {
   vertical-align: middle;
 }
 
-.product-grid .product-details a:first-child {
-  margin-top: 20%;
-}
-
 .product-grid .product-details a {
   font-size: 1.3rem;
   border-bottom: 1px solid #5F534A;
   padding: 1.3rem 0;
   display: inline-block;
-  margin-bottom: 2;
   transition: all ease-in-out 0.2s;
 }
 
@@ -1549,11 +1544,10 @@ hr {
 }
 .wishlist-box p,
 .wishlist-box p * {margin-top: 0; font-size: 0.9rem;}
-.wishlist-box .removeWishlist { position: absolute; top:1rem; right: 1rem}
+.wishlist-box .removeWishlist { position: absolute; top:2rem; right: 2rem}
 .wishlist-box .removeWishlist:hover,
 .wishlist-box .removeWishlist {border-bottom:none !important; text-decoration: none;}
-.wishlist-box .product-grid .product-details a:first-child { margin-top: auto;}
-.wishlist-box .product-grid .product-details .view-p { margin-top: 25%;}
+.wishlist-box .product-grid .product-details a:first-child { margin-top: auto; padding: 0;}
 .submit-btn.btn {
   position: absolute;
   bottom: 0;
