@@ -49,7 +49,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             ?>
             <tr class="">
               <td class="no-border">
-                <div class='alert alert-info'>No order found</div>
+                <div class='' style="background-color:transparent !important">No order found</div>
               </td>
             </tr>
             <?php } ?>

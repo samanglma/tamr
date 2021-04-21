@@ -132,4 +132,75 @@ class User extends CI_Controller
             }
         }
     }
+
+	public function resetPassword()
+	{
+		
+		$data['bodyClass'] = 'change-password';
+        $data['meta'] = [
+            'canonical_tag' => '',
+            'meta_title' => lang() == 'english' ? '' : '',
+            'meta_description' => lang() == 'english' ? '' : '',
+            'schema' => '',
+            'robots' => ''
+        ];
+
+        $bc['breadcrumb'] = [
+            'Home' => base_url(),
+            'Reset Password' => base_url($this->language . '/reset-password'),
+        ];
+
+        $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $bc, true);
+
+        $this->load->view('frontend/includes/header', $data);
+        $this->load->view('frontend/includes/navigation');
+        $this->load->view('frontend/includes/right-sidebar');
+		$this->load->view('frontend/includes/bottom-sidebar');
+
+        $this->load->view('frontend/reset-password', $data);
+
+	}
+
+	public function resestCustomerPass()
+	{
+
+		$this->form_validation->set_rules('old_password', 'Old Password', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('re_password', 'Confirm password', 'required|matches[password]');
+
+        if ($this->form_validation->run() == FALSE) {
+			
+			$this->session->set_flashdata('error_msg', 'Error occured please try again!');
+            redirect($this->language . '/reset-password');
+
+		}
+
+		$id = $this->input->post('id');
+		$odlPass = md5($this->input->post('old_password'));
+
+		$data = array(
+
+			'password' => md5($this->input->post('password')),
+			
+		);
+
+		// $this->db->where('id', $id);
+		// $this->db->where('password', $odlPass);
+		// $res = $this->db->update('users', $data);
+    
+		$rcd = $this->User_model->resestCustomerPass($id, $odlPass, $data);
+
+		if($rcd == true)
+		{
+			$this->session->set_flashdata('success', 'You change password successfully.');
+			redirect($this->language.'/profile');
+		}
+		else
+		{
+			$this->session->set_flashdata('error_msg', 'Error occured please try again!');
+            redirect($this->language . '/reset-password');
+		}
+
+
+	}
 }

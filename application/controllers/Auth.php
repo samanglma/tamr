@@ -73,11 +73,35 @@ class Auth extends CI_Controller
 					'{verification_link}' =>  base_url($this->language.'/verifyUser?action=email-verification&id=' . $id . '&code=' . $code)
                 );
 
+
+				/*$mess .="<p><a rel="nofollow" href=' ".$url." '>".$url."</a></p><p></p>";*/
+
 				$config=array(
 					'charset'=>'utf-8',
 					'wordwrap'=> TRUE,
 					'mailtype' => 'html'
 					);
+
+				/*	$config = Array(
+		            'protocol' => 'smtp',
+		            'smtp_host' => 'smtp.mailtrap.io',
+		            'smtp_port' => 2525,
+		            'smtp_user' => '2ce4b4b078f66a',
+		            'smtp_pass' => 'efc682f94ec19d',
+		            'MAIL_ENCRYPTION' => 'tls',
+		            'charset'=>'utf-8',
+					'wordwrap'=> TRUE,
+		            'mailtype'  => 'html'
+		            );*/
+
+					/*MAIL_MAILER=smtp
+					MAIL_HOST=smtp.mailtrap.io
+					MAIL_PORT=2525
+					MAIL_USERNAME=2ce4b4b078f66a
+					MAIL_PASSWORD=efc682f94ec19d
+					MAIL_ENCRYPTION=tls
+					MAIL_FROM_ADDRESS=noreplay@radsatraining.com
+					MAIL_FROM_NAME="${APP_NAME}"*/
 					
 				$this->email->initialize($config);
 
@@ -101,6 +125,8 @@ class Auth extends CI_Controller
         }
         $this->index();
     }
+
+	
 
     public function login_view()
     {
@@ -205,17 +231,34 @@ class Auth extends CI_Controller
                     $pass = $row->pass;
                     $template = $this->Email_templates_m->getTemplateBySlug('forgot-password');
 
+
+
                     $data = array(
                         '{name}'  =>  $this->input->post('name'),
 					
                         '{forget_password_link}' =>  base_url($this->language.'/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code), 
                     );
 
-					$config=array(
+				/*	$config=array(
 						'charset'=>'utf-8',
 						'wordwrap'=> TRUE,
 						'mailtype' => 'html'
 						);
+					$config['protocol'] = 'ssmtp';
+					$config['smtp_host'] = 'ssl://ssmtp.gmail.com';
+*/
+
+					$config = Array(
+		            'protocol' => 'smtp',
+		            'smtp_host' => 'smtp.googlemail.com',
+		            'smtp_port' => 465,
+		            'smtp_user' => 'noreplytelbs@gmail.com',
+		            'smtp_pass' => 'telbc123ww',
+		            'charset'=>'utf-8',
+					'wordwrap'=> TRUE,
+		            'mailtype'  => 'html'
+		            );
+
 						
 					$this->email->initialize($config);
 
@@ -302,7 +345,7 @@ class Auth extends CI_Controller
     {
         $code = $this->input->get('code');
         $id = $this->input->get('id');
-        $verified = $this->User_model->verifyUser($code, $id);
+        $verified = $this->User_model->verifyUser($id);
         if ($verified) {
            // $this->changePassword();
 		   $this->session->set_flashdata('success', 'You verified email successfully. Now you can Login!');

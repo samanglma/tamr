@@ -77,7 +77,7 @@ class User_model extends CI_model
     {
          $this->db->select('*');
         $this->db->from('users');
-      //  $this->db->where('activation_code', $code);
+      //$this->db->where('activation_code', $code);
         $this->db->where('id', $id);
         $query = $this->db->get();
 
@@ -97,14 +97,34 @@ class User_model extends CI_model
         return true;
     }
 
-	public function verifyUser($code, $id)
+	public function resestCustomerPass($id,$odlPass,$data)
+	{
+  		$this->db->where('id', $id);
+
+		  $idd = $this->db->select('*')->from('users')->where('id', $id)->get()->row();
+
+		  $old_pass = $idd->password;
+
+		  if($odlPass == $old_pass)
+		  {
+			$this->db->where('password', $odlPass);
+			$q = $this->db->update('users', $data);
+			return true;
+		  }
+		
+		else
+		{
+			return false;
+		}
+
+	}
+
+	public function verifyUser($id)
 	{
 		// $this->db->select('*');
         // $this->db->from('users');
         // $this->db->where('activation_code', $code);
         // $this->db->where('id', $id);
-
-
         // $query = $this->db->get();
 
 		$update = array(
@@ -147,7 +167,6 @@ class User_model extends CI_model
         $query = $this->db->get('users')->row();
         return $query;
     }
-
 
     public function update($data)
     {

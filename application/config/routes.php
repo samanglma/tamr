@@ -84,7 +84,7 @@ $route['^(en|ar)/register']                                 =  'Auth/index';
 $route['^(en|ar)/login']                                 =  'Auth/login_view';
 $route['^(en|ar)/forgot-password']                                 =  'Auth/forgotPassword';
 $route['^(en|ar)/change-password']                                 =  'Auth/ChangePassword';
-$route['^(en|ar)/reset-password']                                 =  'Auth/ChangePassword';
+//$route['^(en|ar)/resetpassword']                                 =  'Auth/resetPassword';
 $route['^(en|ar)/new-password']                                 =  'Auth/newPassword';
 $route['^(en|ar)/verifyUser']                                 =  'Auth/verifyUser';
 $route['^(en|ar)/logout']                                 =  'Auth/user_logout';
@@ -94,7 +94,9 @@ $route['^(en|ar)/checkout']                                 =  'Order/checkout';
 $route['^(en|ar)/search(:any)']                                 =  'Products/search';
 
 //User dashboard
-$route['^(en|ar)/profile']                                 =  'User/index';
+$route['^(en|ar)/profile']                                 =  'User/index'; 
+$route['^(en|ar)/reset-password']                                 =  'User/resetpassword';
+$route['^(en|ar)/resestCustomerPass']                                 =  'User/resestCustomerPass';
 $route['^(en|ar)/orders']                                 =  'Order/index';
 $route['^(en|ar)/wishlist']                                 =  'User/wishlist';
 $route['^(en|ar)/order/(:any)']                                 =  'Order/details';

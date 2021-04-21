@@ -53,13 +53,21 @@ display: none;
           <div class="form-group">
             <input type="email" class="form-control" disabled placeholder="YOUR EMAIL" readonly value="<?php echo $this->session->userdata('user_email'); ?>" name='user_email' />
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input type="password" class="form-control" value="<?php echo set_value('user_password'); ?>" placeholder="PASSWORD" name='user_password' />
-          </div>
+          </div> -->
 
           <div class="form-group">
             <input type="tel" class="form-control" placeholder="PHONE NUMBER" value="<?php echo $this->session->userdata('user_mobile'); ?>" name='user_mobile' />
+
+						
           </div>
+
+					<div class="form-group" style='float:left; font-size:12px;';>
+					<b><a href="<?= base_url($lang . '/reset-password') ?>">Reset Your Password</a></b>
+          </div>
+
+				
           <br>
           <div class="clearfix">
             <input type="submit" value='SAVE' class="btn float-right pull-right" name="save" />
