@@ -41,10 +41,12 @@ display: none;
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="white-bg product-grid ">
                     <div class="product-details">
+                      <div>
                     <a href="<?= base_url('user/removeWishlist/' . $p->w_id) ?>" class="removeWishlist">X</a><br>
                     <a href="<?= base_url($lang . '/product/' . $p->slug) ?>" class="view-p">VIEW PRODUCT</a><br>
                       <a href="<?= base_url($lang . '/product/' . $p->slug) ?>">ADD TO CART</a><br>
                         <a href="javascript:;" class="wishlist-icon"><i class="fa fas fa-heart"></i></a>
+                    </div>
                     </div>
                     <div>
                       <img src="<?= base_url('/uploads/products/' . $item->thumbnail1) ?>">

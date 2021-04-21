@@ -129,6 +129,7 @@ $categories = getCategoriesByParentId(1);
 							<div class="p-holder">
 
 								<div class="product-details">
+								<div>
 									<a href="<?= base_url($lang . '/product/' . $p->slug) ?>">VIEW PRODUCT</a><br>
 									<a href="<?= base_url($lang . '/product/' . $p->slug) ?>">ADD TO CART</a><br>
 									<?php
@@ -139,6 +140,7 @@ $categories = getCategoriesByParentId(1);
 									<?php } else { ?>
 										<a href="<?= base_url('/user/addToWishlist/' . $p->id) ?>" class="wishlist-icon"><i class="fa fas fa-heart-o"></i></a>
 									<?php } ?>
+								</div>
 								</div>
 								<div class=""> 
 								<?php
