@@ -76,7 +76,8 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             <?php
             $error_msg = $this->session->flashdata('error_msg');
             if ($error_msg) {
-              echo $error_msg;
+             
+							echo '<div class="alert alert-danger">' . $error_msg . '</div>';
             }
             ?>
             <?php if (!empty(validation_errors())) {

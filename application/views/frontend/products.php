@@ -67,7 +67,7 @@ $categories = getCategoriesByParentId(1);
 <div class="masthead-products" style="background-image: url('<?= base_url('assets/frontend/images/products-banner.png') ?>'); "></div>
 
 <!-- Main Content -->
-<div class="container content-products ">
+<div class="container content-products">
 <form class="searchFrm">
 	<ul class="list-inline menu-products wrap_scroll">
 		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'active' : '' ?>"><input type='checkbox' name='all' <?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'checked' : '' ?> value='all' id='qs1' class="search"><label for='qs1'><?= $this->lang->line('All') ?></label></li>
@@ -182,7 +182,8 @@ $categories = getCategoriesByParentId(1);
 				window.location.replace("<?= base_url($lang."/products") ?>");
 			}
 			else {
-			$('form.searchFrm').submit();
+				
+			    $('form.searchFrm').submit();
 			}
 		})
 	</script>

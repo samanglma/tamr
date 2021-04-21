@@ -142,7 +142,6 @@ class Auth extends CI_Controller
             $user = $this->User_model->login_user($user_login['email'], $user_login['password']);
             $data['user'] = $user;
             if (!empty($user)) {
-
                 $this->session->set_userdata('user_id', $user['id']);
                 $this->session->set_userdata('user_email', $user['email']);
                 $this->session->set_userdata('user_name', $user['username']);
@@ -154,7 +153,7 @@ class Auth extends CI_Controller
                 $this->login_view();
             }
         } else {
-            // $this->session->set_flashdata('error', 'Error occured,Try again.');
+            $this->session->set_flashdata('error', 'Error occured,Try again.');
             $this->login_view();
         }
     }
@@ -181,7 +180,6 @@ class Auth extends CI_Controller
             'schema' => '',
             'robots' => ''
         ];
-
 
         $code = rand(0, 99999999999);
 
@@ -229,36 +227,43 @@ class Auth extends CI_Controller
                     $this->email->send();
                 }
                 else {
-                    $data['error'] = "
-				Invalid Email ID !
-				";
+                    $data['error'] = " Invalid Email ID !";
 							}
 						} else {
-							$data['error'] = "
-			Invalid Email ID !
-			";
+							$data['error'] = "Invalid Email ID !";
             }
         }
+
         $this->load->view('frontend/forgot-password', @$data);
     }
 
-    public function resetPassword()
-    {
-        $code = $this->input->get('code');
-        $id = $this->input->get('id');
-        $verified = $this->User_model->verify_code($code, $id);
-        if ($verified) {
-            $this->changePassword();
-        }
-    }
+    // public function resetPassword()
+    // {
+    //     $code = $this->input->get('code');
+    //     $id = $this->input->get('id');
+    //     $verified = $this->User_model->verify_code($code, $id);
+    //     if ($verified) {
+    //         $this->changePassword();
+    //     }
+	
+    // }
 
 	public function newPassword()
 	{
-	
+
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('re_password', 'Confirm password', 'required|matches[password]');
+
+        if ($this->form_validation->run() == FALSE) {
+			
+			$this->session->set_flashdata('error_msg', 'Error occured please try again!');
+            redirect($this->language . '/change-password');
+
+		}
+
 		$code = $this->input->post('code');
         $id = $this->input->post('id');
 
-		
         $verified = $this->User_model->verify_code_password($id);
         if ($verified) {
 
@@ -280,7 +285,11 @@ class Auth extends CI_Controller
 			//$this->changePassword2($id);
           //  $this->changePassword();
             }
-        }
+        }else
+		{
+			$this->session->set_flashdata('error_msg', 'Error occured please try again!');
+            redirect($this->language . '/change-password');
+		}
 
 	}
 
@@ -303,7 +312,6 @@ class Auth extends CI_Controller
 
     public function changePassword()
     {
-
         $data['bodyClass'] = 'change-password';
         $data['meta'] = [
             'canonical_tag' => '',

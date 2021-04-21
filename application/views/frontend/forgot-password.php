@@ -80,6 +80,12 @@ $lang = lang() == 'english' ? 'en' : 'ar';
               echo $error_msg;
             }
             ?>
+						 <?php
+            $success_msg = $this->session->flashdata('success_msg');
+            if ($success_msg) {
+              echo $success_msg;
+            }
+            ?>
             <?php if (!empty(validation_errors())) {
               echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
             } ?>

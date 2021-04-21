@@ -1,4 +1,6 @@
 <style>
+
+html, body {margin: 0; height: 100%; overflow: hidden}
   .ours {
 
     text-align: center;
@@ -15,7 +17,7 @@
 	}
 
 </style>
-<div class="page-holder">
+<div class="page-holder abouttt">
 <?php
 
 $raw = json_decode($contents->content, true);
@@ -58,33 +60,46 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
       <?php if ($headings[0] != '' && $contents[0]) { ?>
         <div id="menu1" class="menu1 row tab-pane active">
           <div class="col-lg-6 col-md-6 mx-auto ours">
-            <h2><?= $headings[0] ?? '' ?></h2>
+					<div class="bg-text">
+          <h2>About Us</h2>
+        </div>
+            <h2 class='headin_about_us'><?= $headings[0] ?? '' ?></h2>
             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> -->
           </div>
           <div class="col-lg-6 col-md-6 mx-auto details-about">
             <p><?= $contents[0] ?? '' ?></p>
           </div>
         </div>
+			
       <?php } ?>
 
       <?php if ($headings[1] != '' && $contents[1]) { ?>
         <div id="menu2" class="menu2 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
-            <h2><?= $headings[1] ?? '' ?></h2>
+					<div class="bg-text">
+          <h2>About Us</h2>
+        </div>
+            <h2 class='headin_about_us'><?= $headings[1] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
           </div>
           <div class="col-lg-6 col-md-6 mx-auto details-about">
             <p><?= $contents[1] ?? '' ?></p>
           </div>
         </div>
+				
       <?php } ?>
 
       <?php if ($headings[2] != '' && $contents[2]) { ?>
         <div id="menu3" class="menu3 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
-            <h2><?= $headings[2] ?? '' ?></h2>
+					<div class="bg-text">
+          <h2>About Us</h2>
+        </div>
+            <h2 class='headin_about_us'><?= $headings[2] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+						
           </div>
+					
           <div class="col-lg-6 col-md-6 mx-auto details-about">
             <p><?= $contents[2] ?? '' ?></p>
           </div>
@@ -93,7 +108,10 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
       <?php if ($headings[3] != '' && $contents[3]) { ?>
         <div id="menu4" class="menu4 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
-            <h2><?= $headings[3] ?? '' ?></h2>
+					<div class="bg-text">
+          <h2>About Us</h2>
+        </div>
+            <h2 class='headin_about_us'><?= $headings[3] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
           </div>
           <div class="col-lg-6 col-md-6 mx-auto details-about">
@@ -102,8 +120,8 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
         </div>
       <?php } ?>
 
-
     </div>
+		
   </div>
 </div>
 
