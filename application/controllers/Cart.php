@@ -28,10 +28,11 @@ class Cart extends CI_Controller
 
 		$data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 		$data['categories'] = $this->Categories_m->getCategoriesByParent('dates');
+		
 		$wishlist = [];
-		// if ($this->session->userdata('user_id')) {
-		// 	$wishlist = $this->db->get_Where('wishlist', ['user_id' => $this->session->userdata('user_id')])->get();
-		// }
+		if ($this->session->userdata('user_id')) {
+			$wishlist = $this->Wishlist_m->getUserWishlist($this->session->userdata('user_id'));
+		}
 		$data['wishlist'] = $wishlist;
 
 		$this->load->view('frontend/includes/header', $data);

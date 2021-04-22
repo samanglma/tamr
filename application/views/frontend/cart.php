@@ -5,7 +5,14 @@ $vat = 0;
 $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
 
-<div class="page-holder">
+<style>
+.bottom-cats{
+
+display: none;
+}
+	</style>
+
+<!-- <div class="page-holder">
   <div class="container cart-wrapper">
     <div class="row">
 
@@ -36,7 +43,29 @@ $lang = lang() == 'english' ? 'en' : 'ar';
         </div>
 
 
-      </div>
+      </div> -->
+
+
+	<div class="full-screen">
+  <div class="table-cell align-middle">
+    <div class="container">
+      <div class="register">
+			<div class="cart-bg-text bg-text">
+            <h2>SHOPPING CART</h2>
+          </div>
+        <div class="cart-heading">
+				<h1>SHOPPING CART</h1>
+        </div>
+        <br>
+        <ul class="profile-actions">
+          <li>
+            <a href="<?= base_url($lang . '/cart') ?>" class="active"><?= $this->lang->line('shopping-cart') ?> (<?= $this->cart->total_items() ?>)</a>
+          </li>
+          <li>
+            <a href="<?= base_url($lang . '/wishlist') ?>" ><?= $this->lang->line('my-wishlist') ?> (<?= count($wishlist) ?>)</a>
+          </li>
+        </ul>
+        <hr>
 
       <div class="pb-5">
 
@@ -56,21 +85,21 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
                     ?>
                     <?php
-if($items['color'] != '')
-{
-  ?>
-  <style> 
-    .cat-circle:after {
-      background-color: <?= $items['color'] ?>;
-    }
-    .cat-circle:before {
-    border: 1px solid <?= $items['color'] ?>;
-}
-    </style>
-    <?php
-}
-?>
-                        <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
+										if($items['color'] != '')
+										{
+											?>
+											<style> 
+												.cat-circle:after {
+													background-color: <?= $items['color'] ?>;
+												}
+												.cat-circle:before {
+												border: 1px solid <?= $items['color'] ?>;
+										}
+												</style>
+												<?php
+										}
+										?>
+												<?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
 
                         <tr>
                           <td><a href="<?= base_url($lang . '/product/' . $items['slug']) ?>"><img src="<?= base_url('uploads/products/' . $items['image']) ?>" /></a></td>
@@ -144,11 +173,8 @@ if($items['color'] != '')
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
-
     </div>
   </div>
 </div>

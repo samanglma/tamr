@@ -66,13 +66,13 @@ class User extends CI_Controller
 			$wishlist = $this->Wishlist_m->getUserWishlist($this->session->userdata('user_id'));
 		}
 		$data['wishlist'] = $wishlist;
-
+	
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 
         $this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
-		// $this->load->view('frontend/includes/bottom-sidebar');
+		 $this->load->view('frontend/includes/bottom-sidebar');
         $this->load->view('frontend/includes/footer');
 
         $this->load->view('frontend/user/wishlist', $data);
