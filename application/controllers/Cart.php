@@ -60,6 +60,10 @@ class Cart extends CI_Controller
 			'color'    => $product->theme_color,
 			'options' => array('vat_price' => $product->vat_price, 'category' => $product->cat_title)
 		);
+
+    //    $s['product'] = $this->db->get('products')->row();
+	// 	$this->load->view('frontend/products', $s);
+
 		if ($this->cart->insert($data)) {
 			echo json_encode(array('success' => 'true'));
 			exit;

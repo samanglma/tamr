@@ -31,6 +31,15 @@ class Products_m extends CI_Model
 
 	}
 
+	public function getProduct($pro)
+	{
+		$this->db->select('*');
+		$this->db->where('id', $pro);
+		$query = $this->db->get('products')->row();
+		return $query;
+
+	}
+
 	public function edit($id)
 	{
 		$this->db->select('*');

@@ -183,3 +183,13 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
     <?php
     }
     ?>
+
+		<script>
+
+
+		 $(document).ready(function () {
+    setTimeout(function(){
+        $('.cart-p-title').fadeIn(500);
+    }, 5000);
+});
+			</script>

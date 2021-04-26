@@ -122,6 +122,7 @@ a, a:focus, a:hover {
 
 .right-sidebar .middle ul {
   vertical-align: middle;
+	text-align: center;
 }
 
 .right-sidebar .bottom ul {
@@ -215,7 +216,7 @@ aside ul li a {
 
 aside ul>li:hover>a {
   color: #E8DBCA;
-  padding-left: 5%;
+  padding-left: 3%;
 }
 
 aside ul>li.dropdown img {
@@ -447,7 +448,7 @@ aside li {
 }
 
 .dropdown a {
-  z-index: 3;
+  /* z-index: 3; */
   position: relative;
 }
 body:not([class^="home"])   aside {
@@ -491,7 +492,7 @@ body:not([class^="home"])   aside {
   left: 0;
 }
 
-.narrow-content h1, .narrow-content h2 {
+.narrow-content h1 {
   text-align: center;
   width: 70%;
   display: inline-block;
@@ -499,7 +500,14 @@ body:not([class^="home"])   aside {
   z-index: 99;
 	font-weight: 900;
 }
-
+.narrow-content h2{
+	text-align: center;
+  width: 70%;
+  display: inline-block;
+  position: relative;
+  z-index: 99;
+	font-weight: 200;
+}
 .slide-1 .right-img {
   display: inline-block;
   top: 0;
@@ -545,7 +553,7 @@ body:not([class^="home"])   aside {
 
 .slide-1.animate-out h2 {
   animation: slide-sub-title 3s;
-  animation-delay: 1000ms;
+  /* animation-delay: 1000ms; */
   animation-fill-mode: forwards;
 }
 
@@ -1477,10 +1485,13 @@ hr {
   border-bottom: 1px solid #E8DBCA;
   transform: scale(1.1);
 }
-
 .all_prod{
 
 	top:-45px;
+	
+}
+.all_prod:hover{
+
 }
 
 .product-grid {
@@ -1635,7 +1646,7 @@ body:not('.home') .dropdown ul {
 }
 
 .select-items div, .select-selected {
-  padding: 2px 0px;
+  padding: 2px 12px;
     border: none;
     cursor: pointer;
     user-select: none;

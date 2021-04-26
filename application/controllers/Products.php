@@ -11,8 +11,11 @@ class Products extends CI_Controller
         $this->language = lang() == 'english' ? 'en' : 'ar';
     }
 
-    public function index()
+    public function index($id = '')
     {
+
+		//$id = $_GET['id'];
+		
 		$search = $this->input->get('search');
 
         $data['wishlist'] = [];
@@ -32,6 +35,8 @@ class Products extends CI_Controller
 		];
 
         $data['products'] = $this->Products_m->getAllProducts($slug);
+
+		$data['product'] = $this->Products_m->getProduct($id);
 
 		if($search)
 		{
@@ -56,6 +61,11 @@ class Products extends CI_Controller
 
         $this->load->view('frontend/includes/footer');
     }
+
+	public function test()
+	{
+		echo $id = $this->input->post('id');
+	}
 
     public function details()
     {

@@ -17,14 +17,14 @@ if ($this->session->userdata('settings')) {
 .serch:hover{
 
 
-content: url('<?= base_url('assets/frontend/images/new-search.png') ?>');
+content: url('<?= base_url('assets/frontend/images/icons/search-hover.png') ?>');
 
 
 }
 
 .user_img:hover{
 
-	content: url('<?= base_url('assets/frontend/images/new-user.png') ?>');
+	content: url('<?= base_url('assets/frontend/images/icons/profile-hover.png') ?>');
 
 	
 	
@@ -32,9 +32,11 @@ content: url('<?= base_url('assets/frontend/images/new-search.png') ?>');
 
 .cart-icons:hover{
 
-content: url('<?= base_url('assets/frontend/images/cart-new22.png') ?>');
+content: url('<?= base_url('assets/frontend/images/icons/basket-hover.png') ?>');
 
 }
+
+
 
 
 </style>
@@ -90,17 +92,17 @@ content: url('<?= base_url('assets/frontend/images/cart-new22.png') ?>');
             }
             ?>
 
-            <li><a class='serch' href="javascript:;" onclick="openSearch()"><img   src="<?= base_url('assets/frontend/images/search.svg') ?>" />
+            <li><a class='serch' href="javascript:;" onclick="openSearch()"><img   src="<?= base_url('assets/frontend/images/icons/search-initial.png') ?>" />
 
 
-            <li><a class='user_img' href="<?= $url ?>"><img   src="<?= base_url('assets/frontend/images/user.svg') ?>" /></a></li>
+            <li><a class='user_img' href="<?= $url ?>"><img   src="<?= base_url('assets/frontend/images/icons/profile-initial.png') ?>" /></a></li>
 
            
 
 			
 			</a></li>
             <li><a  href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count"><?= $this->cart->total_items() ?></span>
-			<img class="cart-icons" id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" />
+			<img class="cart-icons" id='sidebar-cart' src="<?= base_url('assets/frontend/images/icons/basket-initial.png') ?>" />
 			<!-- <img class="cart-icons" <?= $this->cart->total_items() > 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart-full' src="<?= base_url('assets/frontend/images/cart-full.svg') ?>" /> -->
             <!-- <img class="cart-icons" <?= $this->cart->total_items() <= 0 ? 'style="display:inline-block"' : 'style="display:none"' ?> id='sidebar-cart' src="<?= base_url('assets/frontend/images/cart.svg') ?>" /> -->
         </a></li>

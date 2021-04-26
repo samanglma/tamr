@@ -73,8 +73,8 @@ $categories = getCategoriesByParentId(1);
 		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'active' : '' ?>"><input type='checkbox' name='all' <?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'checked' : '' ?> value='all' id='qs1' class="search"><label for='qs1'><?= $this->lang->line('All') ?></label></li>
 		<li class="<?= $this->input->get('type') != '' ? 'active' : '' ?>"><input type='checkbox' <?= $this->input->get('type') != '' ? 'checked' : '' ?> name='type' value='new' class="search" id='qs2'><label for='qs2'><?= $this->lang->line('New-Products') ?></label></li>
 		<li class="<?= $this->input->get('selling') != '' ? 'active' : '' ?>"><input type='checkbox' name='selling' <?= $this->input->get('selling') != '' ? 'checked' : '' ?> value='top' class="search" id='qs3'><label for='qs3'><?= $this->lang->line('Top-Selling') ?></label></li>
-		<li class="custom-select">
-			<select name="category" class='eee'>
+		<li class="custom-select" onclick="myFunction()">
+			<select name="category" class='eee' >
 				<option><?= $this->lang->line('All-VARIETIES') ?></option>
 				<?php
 				   foreach ($categories as $category) {
@@ -93,7 +93,7 @@ $categories = getCategoriesByParentId(1);
 						$selected = 'selected=selected';
 					}
 				?>
-					<option value="<?= $category->slug ?>" <?= $selected ?> ><?= $category->title ?></option>
+					<option  value="<?= $category->slug ?>" <?= $selected ?> ><?= $category->title ?></option>
 
 				<?php
 				  }
@@ -110,7 +110,9 @@ $categories = getCategoriesByParentId(1);
 
 				<div class="row g-3">
 					<?php
+					
 					$counter = 0;
+
 					foreach ($products as $key => $p) {
 						if ($counter != 0 && $counter % 3 == 0) {
 							echo '<div class="clearfix"></div>';
@@ -124,6 +126,7 @@ $categories = getCategoriesByParentId(1);
 							$thumb = $p->thumbnail1;
 							$thumb1 = $p->image1;
 						}
+
 					   ?>
 						<div class="product-grid col-md-<?= $col ?>">
 							<div class="p-holder">
@@ -131,7 +134,10 @@ $categories = getCategoriesByParentId(1);
 								<div class="product-details">
 								<div>
 									<a href="<?= base_url($lang . '/product/' . $p->slug) ?>">VIEW PRODUCT</a><br>
-									<a href="<?= base_url($lang . '/product/' . $p->slug) ?>">ADD TO CART</a><br>
+									<a href="javascript:void(0);"  class="add-to-cart btn"  data-id="<?= $p->id ?>">ADD TO CART</a><br>
+
+									<!-- <a href="javascript:void(0);" class="add-to-cart btn" id="addToCart" data-id="<?= $product->id ?>" class="view-all"> ADD TO CART </a> -->
+
 									<?php
 									if (in_array($p->id, $wishlist)) {
 									?>
@@ -173,7 +179,20 @@ $categories = getCategoriesByParentId(1);
 		</div>
 	</div>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+function myFunction() {
+
+  
+}
+</script>
+
 	<script>
+
 		$('.search').change(function(){
 			if($('input[name=type]').is(':checked') || $('input[name=selling]').is(':checked'))
 			{
@@ -187,5 +206,75 @@ $categories = getCategoriesByParentId(1);
 				
 			    $('form.searchFrm').submit();
 			}
-		})
+		});
+
+	// 	function getSummary(proid)
+    // {
+	// 	id = $(this).attr('data-id');
+
+	// 	alert(id);
+	// 	$.ajax({
+    //         type:'POST',
+	// 		url: "<?php echo base_url(); ?>en/products/index/",
+    //         data:{'id':id},
+    //         success:function(data){
+    //             //location.reload();
+    //         }
+    //     });
+    
+
+    // }
+</script>
+
+<script>
+
+	 $(".add-to-cart").click(function() {
+	 	id = $(this).attr('data-id');
+		// alert(id);
+	 	// quatity = $("#quantity").val();
+	});
+</script>
+		
+<?php
+echo $idss = "<script>document.write(id);</script>";
+?>
+
+
+ <script>
+// 	 	$.ajax({
+// 			type:'post',
+// 	 		url: "<?php echo base_url(); ?>en/products/test/" + id,
+// 			 data:{'id':id},
+// 	 	});
+// 	 });
+
+	
+// var p1 = $(this).attr('data-id');
+
+// </script>
+
+
+<script>	
+
+// 		$('.eee').click(function(){
+
+// 			alert();
+//     $("html, body").animate({ 
+//         scrollTop: $('.eee').offset().top 
+//     }, 1000);
+// });
 	</script>
+<?php echo $idss;?>
+	<div class="cart-item">
+      <div>
+        <div class="row">
+          <div class="col-xs-4"><img src="<?= base_url('uploads/products/' . $product->thumbnail1) ?>"></div>
+          <div class="col-xs-8">
+            <div class="cart-p-title"><?= $product->title ?></div>
+            <div class="cart-p-desc"><?= $product->description ?></div>
+          
+          </div>
+        </div>
+        <div class="text-right"><a href="<?= base_url($lang . '/cart') ?>" class="btn"><?= $this->lang->line('view-cart') ?></a></div>
+      </div>
+    </div>

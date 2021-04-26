@@ -179,8 +179,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 				});
 		}
 
-
-
 		var x, i, j, l, ll, selElmnt, a, b, c;
 		/*look for any elements with the class "custom-select":*/
 		x = document.getElementsByClassName("custom-select");
@@ -296,6 +294,18 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 		});
 	});
 
+
+	// $(".add-to-cart").click(function() {
+	// 	id = $(this).attr('data-id');
+	// 	// quatity = $("#quantity").val();
+	
+	// 	$.ajax({
+	// 		url: "<?php echo base_url(); ?>products/index/" + id,
+		
+		
+	// 	});
+	// });
+
 	function openSearch() {
 		document.getElementById("myOverlay").style.display = "block";
 	}
@@ -365,6 +375,14 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 			timer.resume();
 		}
 	}
+
+
+
+	$('.select-selected').on('change', function() {
+	alert();
+	});
+
+
 	
 </script>
 <div id="myOverlay" class="overlay">

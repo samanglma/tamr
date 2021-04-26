@@ -12,12 +12,12 @@ if ($this->session->userdata('settings')) {
 <style>
 	
 
-	.bottom-cats{
+.bottom-cats{
 
-		display: none;
-	}
+	display: none;
+}
 
-	input:hover::placeholder {
+ input:hover::placeholder {
   color: #d8d5d3;
 }
 
@@ -96,6 +96,7 @@ color:black !important;
 </style>
 
 
+
 <div class="masthead" style="background-image: url('<?= base_url("assets/frontend/images/about-bg.jpg") ?>'); background-repeat:no-repeat; background-position:100%; ">
 <a href="https://www.google.com/maps" target="_blank"><img src="<?= base_url('assets/frontend/images/about-bg.jpg') ?>" ></a>
 </div>
@@ -122,8 +123,7 @@ color:black !important;
 				<div class="form-group">
 					<textarea name="message" class=" form-control message" placeholder="<?= $this->lang->line('MESSAGE') ?>"></textarea>
 				</div>
-				<!--  <input type="text" placeholder="Message" name='msg' class="msg" />
--->
+				<!--  <input type="text" placeholder="Message" name='msg' class="msg" />  -->
 				<input type="submit" class="submit-btn btn" value='SUBMIT' />
 			</form>
 
