@@ -79,7 +79,7 @@ $route['^(en|ar)/cart']                                 =  'Cart/index';
 $route['^(en|ar)/products/(:any)']                                 =  'Products/index/$i';
 $route['^(en|ar)/products']                                 =  'Products/index';
 
-// $route['^(en|ar)/products/test/(:any)']                                 =  'Products/test/$i';
+ $route['^(en|ar)/products/test/(:any)']                                 =  'Products/test/$i';
 
 $route['^(en|ar)/product/(:any)']                                 =  'Products/details/$i';
 $route['^(en|ar)/product-slug/(:any)']                                 =  'Products/prdoduct_by_slug';

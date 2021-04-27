@@ -7,6 +7,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 <!-- <script type="text/javascript" src="<?php //echo base_url(); 
 											?>assets/frontend/js/sweetalert.min.js" integrity="sha384-RIQuldGV8mnjGdob13cay/K1AJa+LR7VKHqSXrrB5DPGryn4pMUXRLh92Ev8KlGF" crossorigin="anonymous"></script> -->
 
+
 <?php if (isset($_SESSION['site_lang']) && $_SESSION['site_lang'] == 'english') {
 
 
@@ -30,6 +31,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
 
 <?php } ?>
+
 
 <script>
 	function updateAjaxQuantity(rowid, quantity) {
@@ -292,19 +294,11 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 				alert("There is something Wrong,")
 			}
 		});
+
+
+
 	});
 
-
-	// $(".add-to-cart").click(function() {
-	// 	id = $(this).attr('data-id');
-	// 	// quatity = $("#quantity").val();
-	
-	// 	$.ajax({
-	// 		url: "<?php echo base_url(); ?>products/index/" + id,
-		
-		
-	// 	});
-	// });
 
 	function openSearch() {
 		document.getElementById("myOverlay").style.display = "block";
@@ -377,13 +371,10 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 	}
 
 
-
 	$('.select-selected').on('change', function() {
 	alert();
 	});
 
-
-	
 </script>
 <div id="myOverlay" class="overlay">
 	<span class="closebtn" onclick="closeSearch()" title="Close Overlay"><img src="<?= base_url('assets/frontend/images/close-search.svg') ?>" /></span>

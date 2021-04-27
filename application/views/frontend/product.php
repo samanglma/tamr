@@ -19,7 +19,18 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 		margin-left: -30px;
 
 	}
+
+.preload { width:100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+	}
+
+
 </style>
+
+
 <div class="page-holder">
   <div class="container-fluid">
 
@@ -57,9 +68,14 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
           </div>
 
         </div>
+
+				<div class="preload"><img src="http://i.imgur.com/KUJoe.gif"> </div>
+
         <div id="demo" class="col-md-6 mx-auto carousel slide" data-ride="carousel">
           <!-- Indicators -->
+					
           <ul class="carousel-indicators">
+
             <?php if (!empty($product->image1)) { ?>
               <li data-target="#demo" data-slide-to="0" class="active"></li>
 
@@ -184,12 +200,13 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
     }
     ?>
 
-		<script>
+<script>
 
+$(function() {
 
-		 $(document).ready(function () {
-    setTimeout(function(){
-        $('.cart-p-title').fadeIn(500);
-    }, 5000);
+    $(".preload").fadeOut(1500, function() {
+              
+    });
 });
-			</script>
+
+</script>

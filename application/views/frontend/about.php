@@ -16,6 +16,17 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 		display: none;
 	}
 
+
+	.pat{
+		margin-top: -373px;
+    /* width: 100%; */
+    float: right;
+    margin-right: -199px;
+	}
+.menu-image{
+	right: 0%;
+}
+
 </style>
 <div class="page-holder abouttt">
 <?php
@@ -41,7 +52,9 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
 
   <!-- Main Content -->
   <div class="container content about-us">
-   
+
+	<img class="pat" src="<?= base_url('assets/frontend/images/right-patren.png')?>" width="">
+
     <ul class="list-inline menu wrap_scroll">
       <?php if ($headings[0] != '' && $contents[0]) { ?>
         <li><a href="javascript:;" data-id="menu1"><?= $headings[0] ?></a></li>
@@ -56,13 +69,14 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
         <li><a href="javascript:;" data-id="menu4"><?= $headings[3] ?></a></li>
       <?php } ?>
     </ul>
-    <div class="tab-content">
+    <div class="tab-content aboutt">
       <?php if ($headings[0] != '' && $contents[0]) { ?>
-        <div id="menu1" class="menu1 row tab-pane active">
-          <div class="col-lg-6 col-md-6 mx-auto ours">
-					<div class="bg-text">
+				<div class="bg-text">
           <h2>About Us</h2>
         </div>
+        <div id="menu1" class="menu1 row tab-pane active">
+          <div class="col-lg-6 col-md-6 mx-auto ours">
+				
             <h2 class='headin_about_us'><?= $headings[0] ?? '' ?></h2>
             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> -->
           </div>
@@ -72,13 +86,14 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
         </div>
 			
       <?php } ?>
-
+			
       <?php if ($headings[1] != '' && $contents[1]) { ?>
+
+				
         <div id="menu2" class="menu2 row tab-pane">
+					
           <div class="col-lg-6 col-md-6 mx-auto ours">
-					<div class="bg-text">
-          <h2>About Us</h2>
-        </div>
+				
             <h2 class='headin_about_us'><?= $headings[1] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
           </div>
@@ -90,11 +105,10 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
       <?php } ?>
 
       <?php if ($headings[2] != '' && $contents[2]) { ?>
+			
         <div id="menu3" class="menu3 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
-					<div class="bg-text">
-          <h2>About Us</h2>
-        </div>
+					
             <h2 class='headin_about_us'><?= $headings[2] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
 						
@@ -106,11 +120,10 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
         </div>
       <?php } ?>
       <?php if ($headings[3] != '' && $contents[3]) { ?>
+				
         <div id="menu4" class="menu4 row tab-pane">
           <div class="col-lg-6 col-md-6 mx-auto ours">
-					<div class="bg-text">
-          <h2>About Us</h2>
-        </div>
+				
             <h2 class='headin_about_us'><?= $headings[3] ?? '' ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
           </div>

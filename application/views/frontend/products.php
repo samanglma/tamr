@@ -110,7 +110,7 @@ $categories = getCategoriesByParentId(1);
 
 				<div class="row g-3">
 					<?php
-					
+
 					$counter = 0;
 
 					foreach ($products as $key => $p) {
@@ -134,7 +134,7 @@ $categories = getCategoriesByParentId(1);
 								<div class="product-details">
 								<div>
 									<a href="<?= base_url($lang . '/product/' . $p->slug) ?>">VIEW PRODUCT</a><br>
-									<a href="javascript:void(0);"  class="add-to-cart btn"  data-id="<?= $p->id ?>">ADD TO CART</a><br>
+									<a href="javascript:void(0);" onclick="getSummary(<?= $p->id ?>)"  class="add-to-cart btn"  data-id="<?= $p->id ?>">ADD TO CART</a><br>
 
 									<!-- <a href="javascript:void(0);" class="add-to-cart btn" id="addToCart" data-id="<?= $product->id ?>" class="view-all"> ADD TO CART </a> -->
 
@@ -154,7 +154,8 @@ $categories = getCategoriesByParentId(1);
 								<div class="text-right">
 								<?php } ?>
 								<img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top main-img">
-							    <img src="<?= base_url('uploads/products/' . $thumb1) ?>" class="card-img-top alternative-img"> 
+								<img src="<?= base_url('uploads/products/' . $thumb) ?>" class="card-img-top alternative-img"> 
+							    <!-- <img src="<?= base_url('uploads/products/' . $thumb1) ?>" class="card-img-top alternative-img">  -->
 								<?php
 								if($col == 6) { ?>
 								</div>
@@ -180,16 +181,6 @@ $categories = getCategoriesByParentId(1);
 	</div>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function(event) { 
-            var scrollpos = localStorage.getItem('scrollpos');
-            if (scrollpos) window.scrollTo(0, scrollpos);
-        });
-function myFunction() {
-
-  
-}
-</script>
 
 	<script>
 
@@ -208,22 +199,22 @@ function myFunction() {
 			}
 		});
 
-	// 	function getSummary(proid)
-    // {
-	// 	id = $(this).attr('data-id');
+	 	function getSummary(id)
+     {
+	 	//id = $(this).attr('data-id');
 
-	// 	alert(id);
-	// 	$.ajax({
-    //         type:'POST',
-	// 		url: "<?php echo base_url(); ?>en/products/index/",
-    //         data:{'id':id},
-    //         success:function(data){
-    //             //location.reload();
-    //         }
-    //     });
+	 	//alert(proid);
+	 	$.ajax({
+             type:'POST',
+	 		url: "<?php echo base_url(); ?>en/products/index/"+id,
+             data:{'id':id},
+             success:function(data){
+                 //location.reload();
+             }
+         });
     
 
-    // }
+     }
 </script>
 
 <script>
@@ -264,8 +255,8 @@ echo $idss = "<script>document.write(id);</script>";
 //     }, 1000);
 // });
 	</script>
-<?php echo $idss;?>
-	<div class="cart-item">
+
+	<!-- <div class="cart-item">
       <div>
         <div class="row">
           <div class="col-xs-4"><img src="<?= base_url('uploads/products/' . $product->thumbnail1) ?>"></div>
@@ -277,4 +268,29 @@ echo $idss = "<script>document.write(id);</script>";
         </div>
         <div class="text-right"><a href="<?= base_url($lang . '/cart') ?>" class="btn"><?= $this->lang->line('view-cart') ?></a></div>
       </div>
-    </div>
+    </div> -->
+
+
+	<script>
+ window.onbeforeunload = function () {
+            var scrollPos;
+            if (typeof window.pageYOffset != 'undefined') {
+                scrollPos = window.pageYOffset;
+            }
+            else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') {
+                scrollPos = document.documentElement.scrollTop;
+            }
+            else if (typeof document.body != 'undefined') {
+                scrollPos = document.body.scrollTop;
+            }
+            document.cookie = "scrollTop=" + scrollPos;
+        }
+        window.onload = function () {
+            if (document.cookie.match(/scrollTop=([^;]+)(;|$)/) != null) {
+                var arr = document.cookie.match(/scrollTop=([^;]+)(;|$)/);
+                document.documentElement.scrollTop = parseInt(arr[1]);
+                document.body.scrollTop = parseInt(arr[1]);
+            }
+        }
+
+</script>

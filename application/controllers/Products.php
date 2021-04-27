@@ -15,6 +15,8 @@ class Products extends CI_Controller
     {
 
 		//$id = $_GET['id'];
+		echo $id = $this->input->post('id');
+
 		
 		$search = $this->input->get('search');
 
