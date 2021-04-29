@@ -5,6 +5,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 ?>
 
 <style>
+	
   .total_amm {
 
     display: none;
@@ -20,13 +21,12 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
 	}
 
-.preload { width:100px;
+/* .preload { width:100px;
     height: 100px;
     position: fixed;
     top: 50%;
     left: 50%;
-	}
-
+	} */
 
 </style>
 
@@ -36,7 +36,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
     <div class="row">
 
-      <div class="col-md-3 mx-auto price">
+      <div class="col-md-3 mx-auto price " data-aos="fade-right" data-aos-delay="2000">
         <p> <span class="currency">AED</span> <?= $product->price ?></p>
         <p class="p-category"><?= $product->sub_cat_title ?></p>
        
@@ -69,7 +69,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
         </div>
 
-				<div class="preload"><img src="http://i.imgur.com/KUJoe.gif"> </div>
+				<!-- <div class="preload"><img src="http://i.imgur.com/KUJoe.gif"> </div> -->
 
         <div id="demo" class="col-md-6 mx-auto carousel slide" data-ride="carousel">
           <!-- Indicators -->
@@ -91,7 +91,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
             <?php } ?>
           </ul>
 
-          <div class="carousel-inner">
+          <div class="carousel-inner" data-aos="fade-down"  data-aos-delay="100">
 
             <!-- <img src="img/Box1.png" width="100%"> -->
             <?php if (!empty($product->image1)) { ?>
@@ -118,11 +118,11 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
           </div>
 
         </div>
-        <div class="col-md-3 mx-auto pcs">
+        <div class="col-md-3 mx-auto pcs" data-aos="fade-left"  data-aos-delay="2000">
           <p class="product-details-tamr">TAMR</p>
           <p class="product-details-name"><?= $product->$title ?></p>
 
-          <?php
+          <!-- <?php
           if (!empty($variants)) {
             foreach ($variants as $variant) {
           ?>
@@ -137,9 +137,8 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
 
               </div>
           <?php
-            }
-            }
-          ?>
+            } }
+          ?> -->
           <br>
 
           <a href="javascript:void(0);" class="add-to-cart btn" id="addToCart" data-id="<?= $product->id ?>" class="view-all"> ADD TO CART </a>
@@ -200,7 +199,7 @@ $description = lang() == 'arabic' ? 'description_ar' : 'description';
     }
     ?>
 
-<script>
+<!-- <script>
 
 $(function() {
 
@@ -209,4 +208,4 @@ $(function() {
     });
 });
 
-</script>
+</script> -->

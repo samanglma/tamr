@@ -17,17 +17,10 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 	}
 
 
-	.pat{
-		margin-top: -373px;
-    /* width: 100%; */
-    float: right;
-    margin-right: -199px;
-	}
-.menu-image{
-	right: 0%;
-}
-
+	
 </style>
+
+
 <div class="page-holder abouttt">
 <?php
 
@@ -50,7 +43,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
   </div>
 
 
-  <!-- Main Content -->
+  <!-- Main Content   graphic -->
   <div class="container content about-us">
 
 	<img class="pat" src="<?= base_url('assets/frontend/images/right-patren.png')?>" width="">
@@ -69,6 +62,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
         <li><a href="javascript:;" data-id="menu4"><?= $headings[3] ?></a></li>
       <?php } ?>
     </ul>
+
     <div class="tab-content aboutt">
       <?php if ($headings[0] != '' && $contents[0]) { ?>
 				<div class="bg-text">
@@ -119,6 +113,8 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
           </div>
         </div>
       <?php } ?>
+
+
       <?php if ($headings[3] != '' && $contents[3]) { ?>
 				
         <div id="menu4" class="menu4 row tab-pane">

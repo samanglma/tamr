@@ -561,25 +561,24 @@ body:not([class^="home"])   aside {
 }
 
 
-.slide-1.animate-out h2 {
+ .slide-1.animate-out h2 {
   animation: slide-sub-title 3s;
 
-	/* animation-delay: 500ms; */
   animation-fill-mode: forwards;
-}
+} 
 
-.slide-1.animate-out h1 {
-  animation: slide-title 3s;
-  animation-delay: 500ms;
+ .slide-1.animate-out h1 {
+ animation: slide-title 3s;
+  /* animation-delay: 500ms;  */
   animation-fill-mode: forwards;
 	
 }
 
 .slide-1.animate-out .right-img {
   animation: slide-image 3s;
-  animation-delay: 200ms;
+  /* animation-delay: 200ms; */
   animation-fill-mode: forwards;
-}
+} 
 
 @keyframes slide-sub-title {
   0% {
@@ -593,7 +592,8 @@ body:not([class^="home"])   aside {
 @keyframes slide-title {
   0% {
     left: 0%;
-    letter-spacing: 100px;
+		letter-spacing: 0px;
+    /* letter-spacing: 120px; */
   }
   100% {
     left: 120%;
@@ -1883,4 +1883,20 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 .headin_about_us{
 
 	margin-top: -31px;
+}
+
+
+.pat{
+	margin-top: -373px;
+	/* width: 100%; */
+	float: right;
+	margin-right: -199px;
+}
+.menu-image{
+	right: 0%;
+}
+
+.about-banners{
+	overflow:hidden;
+
 }

@@ -37,7 +37,10 @@ content: url('<?= base_url('assets/frontend/images/icons/basket-hover.png') ?>')
 }
 
 
+.social ul li{
 
+	margin-left: 45px;
+}
 
 </style>
 

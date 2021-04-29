@@ -43,10 +43,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
     color: black !important;
   }
 
-
-
-
-
   .heading h1 {
 
     text-align: center;

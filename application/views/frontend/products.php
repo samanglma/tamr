@@ -199,62 +199,25 @@ $categories = getCategoriesByParentId(1);
 			}
 		});
 
-	 	function getSummary(id)
-     {
-	 	//id = $(this).attr('data-id');
+	//  	function getSummary(id)
+    //  {
+	//  	//id = $(this).attr('data-id');
 
-	 	//alert(proid);
-	 	$.ajax({
-             type:'POST',
-	 		url: "<?php echo base_url(); ?>en/products/index/"+id,
-             data:{'id':id},
-             success:function(data){
-                 //location.reload();
-             }
-         });
+	//  	//alert(proid);
+	//  	$.ajax({
+    //          type:'POST',
+	//  		url: "<?php echo base_url(); ?>en/products/index/"+id,
+    //          data:{'id':id},
+    //          success:function(data){
+    //              //location.reload();
+    //          }
+    //      });
     
 
-     }
+    //  }
 </script>
 
-<script>
 
-	 $(".add-to-cart").click(function() {
-	 	id = $(this).attr('data-id');
-		// alert(id);
-	 	// quatity = $("#quantity").val();
-	});
-</script>
-		
-<?php
-echo $idss = "<script>document.write(id);</script>";
-?>
-
-
- <script>
-// 	 	$.ajax({
-// 			type:'post',
-// 	 		url: "<?php echo base_url(); ?>en/products/test/" + id,
-// 			 data:{'id':id},
-// 	 	});
-// 	 });
-
-	
-// var p1 = $(this).attr('data-id');
-
-// </script>
-
-
-<script>	
-
-// 		$('.eee').click(function(){
-
-// 			alert();
-//     $("html, body").animate({ 
-//         scrollTop: $('.eee').offset().top 
-//     }, 1000);
-// });
-	</script>
 
 	<!-- <div class="cart-item">
       <div>

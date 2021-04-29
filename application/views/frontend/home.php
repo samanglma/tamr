@@ -2,12 +2,6 @@
 $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
 
-<style>
-.total_amm{
-
-	display: none;
-}
-	</style>
 <div class="home-wrapper">
     <div class="table height-v100">
         <div class="table-cell align-middle" id='slider'>
@@ -52,7 +46,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
     $(document).ready(function() {
         $current = $('#slider').find('.active');
         $($current).addClass('animate-in');
-
 
     });
 

@@ -7,9 +7,9 @@ class Home extends MY_Controller
 	{
 		parent::__construct();
 
-   $this->load->model('categories_m');
-     $this->load->model('Subcategories_m');
-   $this->load->model('Sliders_m');
+		$this->load->model('categories_m');
+		$this->load->model('Subcategories_m');
+		$this->load->model('Sliders_m');
 	}
 
 	public function index()
@@ -17,7 +17,7 @@ class Home extends MY_Controller
         $data['bodyClass'] = 'home';
 		$data['meta'] = [
 			'canonical_tag' => '',
-			'meta_title' => lang() == 'english' ? '' : '',
+			'meta_title' => lang() == 'english' ? 'Tamr Home' : '',
 			'meta_description' => lang() == 'english' ? '' : '',
 			'schema' => '',
 			'robots' => ''
@@ -34,9 +34,9 @@ class Home extends MY_Controller
 
 
 
-	//	$data['categories'] = $this->Categories_m->getCategoriesByParent($cat_id);
+	  //	$data['categories'] = $this->Categories_m->getCategoriesByParent($cat_id);
 
-    $data['sliders'] = $this->Sliders_m->getSliders();
+       $data['sliders'] = $this->Sliders_m->getSliders();
 		/* echo '<pre>';
 		 print_r($data['categories']);
 		 die();*/

@@ -8,6 +8,18 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 											?>assets/frontend/js/sweetalert.min.js" integrity="sha384-RIQuldGV8mnjGdob13cay/K1AJa+LR7VKHqSXrrB5DPGryn4pMUXRLh92Ev8KlGF" crossorigin="anonymous"></script> -->
 
 
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        AOS.init({
+            duration: 1000
+        });
+
+    });
+</script>
+
 <?php if (isset($_SESSION['site_lang']) && $_SESSION['site_lang'] == 'english') {
 
 
@@ -27,8 +39,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 
 	$congrats = 'تهانينا';
 	?>
-
-
 
 <?php } ?>
 
@@ -264,6 +274,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 		then close all select boxes:*/
 		document.addEventListener("click", closeAllSelect);
 	});
+
 	$(".add-to-cart").click(function() {
 		id = $(this).attr('data-id');
 		// quatity = $("#quantity").val();
@@ -295,10 +306,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 			}
 		});
 
-
-
 	});
-
 
 	function openSearch() {
 		document.getElementById("myOverlay").style.display = "block";
@@ -308,8 +316,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 	function closeSearch() {
 		document.getElementById("myOverlay").style.display = "none";
 	}
-
-
 
 	var timer = new IntervalTimer(function() {
 		$current = $('#slider').find('.active');
@@ -370,12 +376,13 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 		}
 	}
 
-
 	$('.select-selected').on('change', function() {
 	alert();
 	});
 
+
 </script>
+
 <div id="myOverlay" class="overlay">
 	<span class="closebtn" onclick="closeSearch()" title="Close Overlay"><img src="<?= base_url('assets/frontend/images/close-search.svg') ?>" /></span>
 	<div class="overlay-content">

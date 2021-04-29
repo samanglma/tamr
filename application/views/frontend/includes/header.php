@@ -26,6 +26,9 @@
    <!--  <link rel="icon" type="image/png"href="<?php echo base_url(); ?>assets/frontend/favicon/favicon.ico"> -->
     <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/frontend/favicon/favicon-new.png">
 
+	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <link rel="manifest" href="<?php echo base_url(); ?>assets/frontend/favicon//manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
