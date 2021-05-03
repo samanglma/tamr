@@ -13,21 +13,41 @@ class Products extends CI_Controller
 
     public function index($id = '')
     {
-
 		//$id = $_GET['id'];
-		echo $id = $this->input->post('id');
+		$id = $this->input->post('id');
 
-		
 		$search = $this->input->get('search');
-
+		 
         $data['wishlist'] = [];
         if ($this->session->userdata('user_id')) {
 			$data['wishlist'] = $this->Wishlist_m->getUserWishlistItemIds($this->session->userdata('user_id'));
 		}
 		
         $data['bodyClass'] = 'listings';
-        $slug = $this->uri->segment('3');
-      
+
+		$category = $this->input->get('category');
+		$slug = $this->uri->segment('3');
+
+		if($category != '')
+		{
+			$slug = $this->input->get('category');
+		}
+
+		if($slug != '')
+		{
+			$slug = $this->uri->segment('3');
+		}
+
+		if($slug != '' && $category != '')
+		{
+			$slug = $this->input->get('category');
+		}
+
+		// if(!empty($slug) && !empty($category))
+		// {
+		// 	$slug = $this->input->get('category');
+		// }
+
         $data['meta'] = [
 			'canonical_tag' => '',
 			'meta_title' => lang() == 'english' ? '' : '',
@@ -60,18 +80,16 @@ class Products extends CI_Controller
         $this->load->view('frontend/includes/right-sidebar');
 		$this->load->view('frontend/includes/bottom-sidebar');
         $this->load->view('frontend/products', $data);
-
         $this->load->view('frontend/includes/footer');
     }
 
-	public function test()
-	{
-		echo $id = $this->input->post('id');
-	}
+	// public function test()
+	// {
+	// 	echo $id = $this->input->post('id');
+	// }
 
     public function details()
     {
-		
         $data['meta'] = [
 			'canonical_tag' => '',
 			'meta_title' => lang() == 'english' ? '' : '',

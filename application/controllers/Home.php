@@ -34,7 +34,7 @@ class Home extends MY_Controller
 
 
 
-	  //	$data['categories'] = $this->Categories_m->getCategoriesByParent($cat_id);
+	  //$data['categories'] = $this->Categories_m->getCategoriesByParent($cat_id);
 
        $data['sliders'] = $this->Sliders_m->getSliders();
 		/* echo '<pre>';

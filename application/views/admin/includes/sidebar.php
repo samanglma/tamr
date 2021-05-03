@@ -419,6 +419,15 @@
                 </a>
             </li>
 
+			<li <?php if ($this->uri->segment(2) == "delivery_charges" && $this->uri->segment(3) == "edit") {
+                    echo 'class="active"';
+                } ?>>
+                <a href="<?php echo base_url() ?>admin/delivery_charges" class="">
+                    <i class="material-icons">paid</i> 
+                    <span class="nav-label"> Delivery Charges</span>
+                </a>
+            </li>
+
             <?php if($_SESSION["role"] == 1){ ?>
             <li <?php if ($this->uri->segment(2) == "user") {
                     echo 'class="active"';

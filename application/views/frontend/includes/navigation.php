@@ -117,10 +117,10 @@ $segment = $this->uri->segment('2');
     </div>
     <div class="nav-bottom">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 privacy">
                 <a href="<?= base_url($lang . '/privacy-policy') ?>"><?= $this->lang->line('Privacy-Policy') ?></a>
             </div>
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center glma">
                 <a href="https://glmaagency.com/" target="_blank"><?= $this->lang->line('Created-by-GLMA-Agency') ?></a>
             </div>
             <div class="col-md-4">

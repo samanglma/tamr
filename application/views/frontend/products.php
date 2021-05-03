@@ -80,7 +80,13 @@ $categories = getCategoriesByParentId(1);
 				   foreach ($categories as $category) {
 					$selected = '';
 
-					if(!empty($this->uri->segment('3')))
+					
+					if(!empty($this->uri->segment('3')) && !empty($this->input->get('category')))
+					{
+						$sub_cat = $this->input->get('category');
+					}
+
+					elseif(!empty($this->uri->segment('3')))
 					{
 						$sub_cat = $this->uri->segment('3');
 					}

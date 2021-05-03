@@ -1,6 +1,7 @@
 <style>
 
 html, body {margin: 0; height: 100%; overflow: hidden}
+
   .ours {
 
     text-align: center;
@@ -16,8 +17,6 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 		display: none;
 	}
 
-
-	
 </style>
 
 
@@ -89,7 +88,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
           <div class="col-lg-6 col-md-6 mx-auto ours">
 				
             <h2 class='headin_about_us'><?= $headings[1] ?? '' ?></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> -->
           </div>
           <div class="col-lg-6 col-md-6 mx-auto details-about">
             <p><?= $contents[1] ?? '' ?></p>
@@ -104,7 +103,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
           <div class="col-lg-6 col-md-6 mx-auto ours">
 					
             <h2 class='headin_about_us'><?= $headings[2] ?? '' ?></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> -->
 						
           </div>
 					
@@ -121,7 +120,7 @@ $content_ar = json_decode($raw_ar['contents_ar'], true);
           <div class="col-lg-6 col-md-6 mx-auto ours">
 				
             <h2 class='headin_about_us'><?= $headings[3] ?? '' ?></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> -->
           </div>
           <div class="col-lg-6 col-md-6 mx-auto details-about">
             <p><?= $contents[3] ?? '' ?></p>
