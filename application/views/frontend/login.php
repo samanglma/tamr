@@ -70,7 +70,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
         </div>
         <br>
         <p><?= $this->lang->line('Welcome-back-Login-to-start-shopping-with-TAMR') ?><br>
-        <?= $this->lang->line('you') ?> <strong><a href="<?= base_url($lang . '/register') ?>"><?= $this->lang->line('dont-have-an-accunt') ?></a></strong></p>
+        <?= $this->lang->line('dont-have-an-accunt') ?><strong> <a href="<?= base_url($lang . '/register') ?>"> <?= $this->lang->line('register-here') ?></a></strong> </p>
        
         <form role="form" class="loginForm" method="post" action="<?php echo base_url('auth/login_user'); ?>">
         <?php
@@ -94,7 +94,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           </div>
           <br>
           <div class="clearfix">
-            <p class="already float-left">Did you <a href="<?= base_url($lang . '/forgot-password') ?>"><b><strong>Forget your password?</strong> </b></a></p>
+            <p class="already float-left">Did you <a href="<?= base_url($lang . '/forgot-password') ?>"><b><strong>forget your password?</strong> </b></a></p>
 
             <input type="submit" value='<?= $this->lang->line('login_heading') ?>' class="btn float-right pull-right" name="login" />
           </div>

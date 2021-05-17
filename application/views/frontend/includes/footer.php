@@ -8,8 +8,6 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 											?>assets/frontend/js/sweetalert.min.js" integrity="sha384-RIQuldGV8mnjGdob13cay/K1AJa+LR7VKHqSXrrB5DPGryn4pMUXRLh92Ev8KlGF" crossorigin="anonymous"></script> -->
 
 
-
-
 <script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
@@ -61,6 +59,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 			}
 		})
 	}
+	
 	$(document).ready(function() {
 		var mobile = false;
 		if ($(window).width() < 768) {
@@ -297,6 +296,9 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 					$('.cart-count').text(parseInt(count) + 1);
 					$("#sidebar-cart-full").show();
 					$("#myModal").modal('hide');
+					
+					location.reload(true);
+
 				} else {
 					alert("There is something Wrong,")
 				}
@@ -387,7 +389,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
 	<span class="closebtn" onclick="closeSearch()" title="Close Overlay"><img src="<?= base_url('assets/frontend/images/close-search.svg') ?>" /></span>
 	<div class="overlay-content">
 		<form action="<?= base_url($lang . '/products') ?>">
-			<input type="text" placeholder="<?= $this->lang->line('SEARCH') ?>" class="form-control" name="search">
+			<input type="text" placeholder="<?= $this->lang->line('SEARCH') ?>" class="form-control searchh" name="search">
 			<button type="submit"><img src="<?= base_url('assets/frontend/images/search-big.svg') ?>" /></button>
 		</form>
 	</div>

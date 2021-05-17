@@ -47,7 +47,7 @@
                            <div class="col-md-12 form-group">
                                <label>Tab One Image</label>
                                <input type='file' name="image[]">
-                               <span style="color: #97310e;"> Size ( 1400 * 406 ) </span>
+                               <span style="color: #97310e;"> Size ( 1536 * 665 px ) </span>
                                <?php if($images[0] != '') { ?>
                                <img src='<?= base_url('uploads/pages/'.$images[0]) ?>'  width="200px" />
                                <?php } ?>
@@ -71,7 +71,7 @@
                            <div class="col-md-12 form-group">
                                <label>Tab Two Image</label>
                                <input type='file' name="image[]">
-                               <span style="color: #97310e;"> Size ( 1400 * 406 ) </span>
+                               <span style="color: #97310e;"> Size ( 1536 * 665 px ) </span>
                                <?php if($images[1] != '') { ?>
                                <img src='<?= base_url('uploads/pages/'.$images[1]) ?>'  width="200px" />
                                <?php } ?>
@@ -95,7 +95,7 @@
                            <div class="col-md-12 form-group">
                                <label>Tab Three Image</label>
                                <input type='file' name="image[]">
-                               <span style="color: #97310e;"> Size ( 1400 * 406 ) </span>
+                               <span style="color: #97310e;"> Size ( 1536 * 665 px ) </span>
                                <?php if($images[2] != '') { ?>
                                <img src='<?= base_url('uploads/pages/'.$images[2]) ?>'  width="200px" />
                                <?php } ?>
@@ -118,7 +118,7 @@
                            <div class="col-md-12 form-group">
                                <label>Tab Four Image</label>
                                <input type='file' name="image[]">
-                               <span style="color: #97310e;"> Size ( 1400 * 406 ) </span>
+                               <span style="color: #97310e;"> Size ( 1536 * 665 px ) </span>
                                <?php if($images[3] != '') { ?>
                                <img src='<?= base_url('uploads/pages/'.$images[3]) ?>'  width="200px" />
                                <?php } ?>
@@ -144,7 +144,7 @@
                                <label>Page Banner Image</label>
                                <input type='file' name="image[]">
                                <img src='<?= base_url('uploads/pages/'.$row->image) ?>'  width="200px" />
-                               <span style="color: #97310e;"> Size ( 1400 * 406 ) </span>
+                               <span style="color: #97310e;"> Size ( 1536 * 665 px ) </span>
                            </div>
 
                            <div class="col-md-12 form-group">

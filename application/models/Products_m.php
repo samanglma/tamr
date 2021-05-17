@@ -170,7 +170,7 @@ class Products_m extends CI_Model
 	}
 
 		$this->db->select('products.*, categories.title as cat_title, categories.title_ar as cat_title_ar, sub_categories.title as sub_cat_title, sub_categories.title_ar as sub_cat_title_ar');
-		if($category!= '')
+		if($category != '' && $this->input->get('category') !== 'ALL VARIETIES')
 		{
 			$this->db->where('sub_categories.id', $subcatID);
 		}
@@ -185,6 +185,11 @@ class Products_m extends CI_Model
 		if($this->input->get('category') && $this->input->get('category') !== 'ALL VARIETIES')
 		{
 			$this->db->like('sub_categories.slug', $this->input->get('category') );
+		}
+
+		if($this->input->get('category') == 'ALL VARIETIES')
+		{
+			$this->db->where('products.status', 1);
 		}
 		$this->db->join('categories', 'categories.id = products.cat_id');
 		$this->db->join('sub_categories', 'sub_categories.id = products.child_cat');

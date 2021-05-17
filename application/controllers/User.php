@@ -28,6 +28,7 @@ class User extends CI_Controller
             'schema' => '',
             'robots' => ''
         ];
+		
         $data['breadcrumb'] = [
             'Home' => base_url(),
             'Profile' => base_url($this->language . '/profile'),
@@ -89,9 +90,9 @@ class User extends CI_Controller
 			$wishlist = $this->Wishlist_m->save($wishlist);
 		}
 
-        $this->load->view('frontend/user/wishlist', $wishlist);
-
-        redirect($this->language.'/wishlist');
+      //  $this->load->view('frontend/user/wishlist', $wishlist);
+	  $this->session->set_flashdata('success', 'item added to wishlist.');
+        redirect($this->language.'/products');
     }
 
     public function removeWishlist($id)

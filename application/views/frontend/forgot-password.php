@@ -74,18 +74,25 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           <p>Forgot your password?<br>
             Don't worry, <strong>We will help you</strong></p>
           <form role="form" class="registerForm" method="post" action="<?php echo base_url($lang.'/forgot-password'); ?>">
+
+					<?php
+        $error_msg = $this->session->flashdata('error');
+        if ($error_msg) {
+          echo '<div class="alert alert-danger">' . $error_msg . '</div>';
+        }
+        $success = $this->session->flashdata('success_msg');
+        if ($success) {
+          echo '<div class="alert alert-success">' . $success . '</div>';
+        }
+        ?>
+
             <?php
             $error_msg = $this->session->flashdata('error_msg');
             if ($error_msg) {
               echo $error_msg;
             }
             ?>
-						 <?php
-            $success_msg = $this->session->flashdata('success_msg');
-            if ($success_msg) {
-              echo $success_msg;
-            }
-            ?>
+			
             <?php if (!empty(validation_errors())) {
               echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
             } ?>

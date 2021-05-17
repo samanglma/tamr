@@ -46,7 +46,7 @@ display: none;
       </div> -->
 
 
-	<div class="full-screen">
+	<div class="full-screen shopping-cart">
   <div class="table-cell align-middle">
     <div class="container">
       <div class="register">

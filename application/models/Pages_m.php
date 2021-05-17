@@ -70,6 +70,8 @@ class Pages_m  extends CI_Model
   public function updatePage1($data, $id)
     {
 
+		
+
         $this->db->where('id', $id);
         $this->db->update('pages', $data);
 

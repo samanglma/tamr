@@ -32,6 +32,7 @@ class Pages extends My_Controller
         $page = $this->pages_m->editPage1($id);
         $originalimages = json_decode($page->image, true);
         if (is_array($this->input->post('content'))) {
+
             $data = [
                 'headings' => json_encode($this->input->post('headings')),
                 'headings_ar' => json_encode($this->input->post('headings_ar')),
@@ -55,21 +56,21 @@ class Pages extends My_Controller
         $now = date('Y-m-d H:i:s');
         $data = array(
 
-            'title' => $this->input->post('title'),
-            'title_ar' => $this->input->post('title_ar'),
-            'content' => $content,
-            'content_ar' => $content_ar,
-            'mtitle' => $this->input->post('mtitle'),
-            'mtitle_ar' => $this->input->post('mtitle_ar'),
-            'mdesc' => $this->input->post('mdesc'),
-            'mdesc_ar' => $this->input->post('mdesc_ar'),
-            'updated_by' => $user,
-            'updated_at' => $now
+		'title' => $this->input->post('title'),
+		'title_ar' => $this->input->post('title_ar'),
+		'content' => $content,
+		'content_ar' => $content_ar,
+		'mtitle' => $this->input->post('mtitle'),
+		'mtitle_ar' => $this->input->post('mtitle_ar'),
+		'mdesc' => $this->input->post('mdesc'),
+		'mdesc_ar' => $this->input->post('mdesc_ar'),
+		'updated_by' => $user,
+		'updated_at' => $now
 
         );
             $images = [];
             foreach ($_FILES['image']['name'] as $key =>  $file) {
-                echo '<pre>';
+              //  echo '<pre>';
                 // print_r($_FILES['image']);
                 // die();
                 if ($_FILES['image']['size'][$key] == 0 &&  $_FILES['image']['error'][$key] == 4) {
@@ -87,9 +88,12 @@ class Pages extends My_Controller
                     // die();
                     $config['upload_path']          = './uploads/pages/';
                     $config['allowed_types']        = 'jpg|jpeg|png';
-                    //$config['max_width']            = 1400;
-                    //$config['encrypt_name'] = TRUE;
-                    //$config['max_height']           = 406;
+
+					$config['min_width']       = '1536';
+					$config['min_height']      = '665';
+					$config['max_width']       = '1536';
+					$config['max_height']      = '665';
+		
                     $this->load->library('upload', $config);
                     if (!$this->upload->do_upload('images[]')) {
                         $this->session->set_flashdata('error', $this->upload->display_errors() . $file);
@@ -104,7 +108,7 @@ class Pages extends My_Controller
             }
             $data['image'] = json_encode($images);
 
-        $rcd = $this->pages_m->updatePage1($data,  $id);
+         $rcd = $this->pages_m->updatePage1($data,  $id);
 
         if ($rcd) {
             $this->session->set_flashdata('success', 'Page updated Successfully');

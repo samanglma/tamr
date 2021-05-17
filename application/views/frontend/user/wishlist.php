@@ -9,6 +9,19 @@ $description = lang() == 'english' ? 'description' : 'description_ar';
 
 display: none;
 }
+.product-grid .product-details a{
+	font-size: 13px;
+	padding: 13px 0;
+}
+
+.wishlist-box h4{
+	font-size: 14px;
+
+}
+
+.price-amount{
+	font-size: 12px;
+}
 	</style>
 	
 <div class="full-screen">
@@ -36,9 +49,15 @@ display: none;
             <?php
             if (count($wishlist) > 0 && $wishlist != '') {
               $first = true;
-              foreach ($wishlist as $item) {
-            ?>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+						
+							$numOfCols = 3;
+							$rowCount = 0;
+							$bootstrapColWidth = 12 / $numOfCols;
+
+              foreach ($wishlist as $key => $item) {
+						
+               ?>
+                <div class="col-md-<?php echo $bootstrapColWidth; ?> col-sm-<?php echo $bootstrapColWidth; ?> col-xs-12">
                   <div class="white-bg product-grid ">
 							
                     <div class="product-details">
@@ -60,9 +79,13 @@ display: none;
                   </div>
                   </div>
                 </div>
-              <?php $first = false;
-              }
-            } else {
+
+								<?php $first = false;
+								$rowCount++;
+								if($rowCount % $numOfCols == 0) echo '</div><div class="row">';
+
+                	}
+           			 } else {
               ?>
               <tr class="">
                 <td class="no-border">

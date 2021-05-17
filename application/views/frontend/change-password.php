@@ -74,11 +74,11 @@ $lang = lang() == 'english' ? 'en' : 'ar';
           </div>
           <form role="form" class="validate registerForm" method="post" action="<?php echo base_url($lang.'/new-password'); ?>">
             <?php
-            $error_msg = $this->session->flashdata('error_msg');
-            if ($error_msg) {
+            // $error_msg = $this->session->flashdata('error_msg');
+            // if ($error_msg) {
              
-							echo '<div class="alert alert-danger">' . $error_msg . '</div>';
-            }
+						// 	echo '<div class="alert alert-danger">' . $error_msg . '</div>';
+            // }
             ?>
             <?php if (!empty(validation_errors())) {
               echo '<div class="alert alert-danger">' . validation_errors() . '</div>';

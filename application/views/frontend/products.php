@@ -60,6 +60,11 @@ $categories = getCategoriesByParentId(1);
 		margin-top: 20%;
 	} */
 
+	.alert-success{
+
+		text-align: center;
+	}
+
 </style>
 
 
@@ -68,6 +73,14 @@ $categories = getCategoriesByParentId(1);
 
 <!-- Main Content -->
 <div class="container content-products">
+
+<?php 
+
+$success = $this->session->flashdata('success');
+if ($success) {
+  echo '<div class="alert alert-success">' . $success . '</div>';
+}
+?>
 <form class="searchFrm">
 	<ul class="list-inline menu-products wrap_scroll">
 		<li class="<?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'active' : '' ?>"><input type='checkbox' name='all' <?= $this->input->get('type') == '' && $this->input->get('selling') == '' && $this->input->get('category') == '' ? 'checked' : '' ?> value='all' id='qs1' class="search"><label for='qs1'><?= $this->lang->line('All') ?></label></li>

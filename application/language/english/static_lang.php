@@ -66,7 +66,7 @@ $lang['cart'] = 'cart';
 $lang['view-cart'] = 'View Cart';
 
 $lang['Depachika-Location'] = 'Depachika Location';  
-$lang['Privacy-Policy'] = 'Privacy & Policy';
+$lang['Privacy-Policy'] = 'Privacy Policy';
 $lang['Terms-Conditions'] = 'Terms & Conditions';  
 $lang['Created-by-GLMA-Agency'] = 'Created by GLMA Agency'; 
 
@@ -171,12 +171,13 @@ $lang['menu'] = 'menu';
 $lang['basket'] = 'basket';
 $lang['Welcome-back-Login-to-start-shopping-with-TAMR'] = 'Welcome back! Login to start shopping with TAMR';
 $lang['dont-have-an-accunt'] = "Don't have an account?";
+$lang['register-here'] = "Registere here.";
 $lang['you'] = 'You';
 $lang['shopping-cart'] = 'Shopping cart';
 $lang['orders'] = 'Orders';
 $lang['my-wishlist'] = 'My wishlist';
 $lang['wishlist'] = 'wishlist';
-$lang['No-item-added-in-wishlist'] = 'No item added in wishlist';
+$lang['No-item-added-in-wishlist'] = 'NO ITEMS ARE ADDED TO YOUR WISHLIST';
 $lang['Profile'] = 'Profile';
 $lang['SHOP-NOW'] = 'SHOP NOW';
 $lang['about-us'] = 'About us';

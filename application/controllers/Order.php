@@ -34,11 +34,17 @@ class Order extends CI_Controller
 
         $data['breadcrumb'] = $this->load->view('frontend/includes/breadcrumbs', $data, true);
 
-        $this->load->view('frontend/includes/header', $data);
+        // $this->load->view('frontend/includes/header', $data);
+        // $this->load->view('frontend/includes/navigation');
+        // $this->load->view('frontend/includes/right-sidebar');
+
+        // $this->load->view('frontend/user/orders/index', $data);
+
+		$this->load->view('frontend/includes/header', $data);
         $this->load->view('frontend/includes/navigation');
         $this->load->view('frontend/includes/right-sidebar');
-
-        $this->load->view('frontend/user/orders/index', $data);
+		$this->load->view('frontend/user/orders/index', $data);
+		$this->load->view('frontend/includes/footer');
     }
 
 

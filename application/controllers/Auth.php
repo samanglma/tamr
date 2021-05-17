@@ -45,6 +45,7 @@ class Auth extends CI_Controller
 
     public function register_user()
     {
+		$this->load->library('email');
         $this->form_validation->set_rules('user_name', 'Name', 'required');
         $this->form_validation->set_rules('user_email', 'Email', 'required|valid_email|is_unique[users.email]');
         $this->form_validation->set_rules('user_password', 'Password', 'required');
@@ -76,33 +77,24 @@ class Auth extends CI_Controller
 
 				/*$mess .="<p><a rel="nofollow" href=' ".$url." '>".$url."</a></p><p></p>";*/
 
-				$config=array(
-					'charset'=>'utf-8',
-					'wordwrap'=> TRUE,
-					'mailtype' => 'html'
-					);
+				  $config=array(
+				  	'charset'=>'utf-8',
+				  	'wordwrap'=> TRUE,
+				  	'mailtype' => 'html'
+				  	);	
 
-				/*	$config = Array(
-		            'protocol' => 'smtp',
-		            'smtp_host' => 'smtp.mailtrap.io',
-		            'smtp_port' => 2525,
-		            'smtp_user' => '2ce4b4b078f66a',
-		            'smtp_pass' => 'efc682f94ec19d',
-		            'MAIL_ENCRYPTION' => 'tls',
-		            'charset'=>'utf-8',
-					'wordwrap'=> TRUE,
-		            'mailtype'  => 'html'
-		            );*/
+				//  $config = Array(
+				//  'protocol' => 'smtp',
+				//  'smtp_host' => 'smtp.googlemail.com',
+				//  'smtp_port' => 587,
+				//  'smtp_user' => 'au505712@gmail.com',
+				//  'smtp_pass' => 'expo2@2@',
+				//  'MAIL_ENCRYPTION' => 'tls',
+				//  'charset'=>'utf-8',
+				//  'wordwrap'=> TRUE,
+				//  'mailtype'  => 'html'
+				//  );
 
-					/*MAIL_MAILER=smtp
-					MAIL_HOST=smtp.mailtrap.io
-					MAIL_PORT=2525
-					MAIL_USERNAME=2ce4b4b078f66a
-					MAIL_PASSWORD=efc682f94ec19d
-					MAIL_ENCRYPTION=tls
-					MAIL_FROM_ADDRESS=noreplay@radsatraining.com
-					MAIL_FROM_NAME="${APP_NAME}"*/
-					
 				$this->email->initialize($config);
 
                 $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
@@ -123,10 +115,9 @@ class Auth extends CI_Controller
                 redirect($this->language . '/register');
             }
         }
+
         $this->index();
     }
-
-	
 
     public function login_view()
     {
@@ -221,6 +212,8 @@ class Auth extends CI_Controller
         $this->load->view('frontend/includes/right-sidebar');
 		$this->load->view('frontend/includes/bottom-sidebar');
 
+        $this->load->view('frontend/includes/footer');
+
         if ($this->input->post('forgot_pass')) {
             $email = $this->input->post('email');
             $que = $this->db->query("select id,password,email from users where email='$email'");
@@ -228,56 +221,59 @@ class Auth extends CI_Controller
             if ($row != '') {
                 $user_email = $row->email;
                 if ((!strcmp($email, $user_email))) {
-                    $pass = $row->pass;
+                   // $pass = $row->pass;
                     $template = $this->Email_templates_m->getTemplateBySlug('forgot-password');
 
 
 
-                    $data = array(
+                    $data1 = array(
                         '{name}'  =>  $this->input->post('name'),
-					
-                        '{forget_password_link}' =>  base_url($this->language.'/reset-password?action=forgot-password&id=' . $row->id . '&code=' . $code), 
+
+                        '{forget_password_link}' =>  base_url($this->language.'/change-password?action=forgot-password&id=' . $row->id . '&code=' . $code),
                     );
 
-				/*	$config=array(
+					$config=array(
 						'charset'=>'utf-8',
 						'wordwrap'=> TRUE,
 						'mailtype' => 'html'
 						);
-					$config['protocol'] = 'ssmtp';
-					$config['smtp_host'] = 'ssl://ssmtp.gmail.com';
-*/
 
-					$config = Array(
-		            'protocol' => 'smtp',
-		            'smtp_host' => 'smtp.googlemail.com',
-		            'smtp_port' => 465,
-		            'smtp_user' => 'noreplytelbs@gmail.com',
-		            'smtp_pass' => 'telbc123ww',
-		            'charset'=>'utf-8',
-					'wordwrap'=> TRUE,
-		            'mailtype'  => 'html'
-		            );
+					// 	$config = Array(
+					//     'protocol' => 'smtp',
+					//     'smtp_host' => 'smtp.googlemail.com',
+					//     'smtp_port' => 465,
+					//   	  'smtp_user' => 'au505712@gmail.com',
+					//   'smtp_pass' => 'expo2@2@',
+					//     'charset'=>'utf-8',
+					// 	'wordwrap'=> TRUE,
+					//     'mailtype'  => 'html'
+					//     );
 
-						
 					$this->email->initialize($config);
 
                     $this->email->from(FROM_EMAIL_ADDRESS, FROM_NAME);
                     $this->email->to($user_email);
                     $this->email->subject($template->title);
-                    $body = strtr($template->template, $data);
+                    $body = strtr($template->template, $data1);
+
+					// echo $body;
+					// die();
                     $this->email->message($body);
                     $this->email->send();
                 }
                 else {
-                    $data['error'] = " Invalid Email ID !";
+                    $data1['error'] = " Invalid Email ID !";
 							}
 						} else {
-							$data['error'] = "Invalid Email ID !";
+							$data1['error'] = "Invalid Email ID !";
             }
+
+			$this->session->set_flashdata('success_msg', 'Link is sent to your email. Please check you email.');
+
+			$this->load->view('frontend/forgot-password', @$data1);
         }
 
-        $this->load->view('frontend/forgot-password', @$data);
+            $this->load->view('frontend/forgot-password', @$data1);
     }
 
     // public function resetPassword()
@@ -288,7 +284,7 @@ class Auth extends CI_Controller
     //     if ($verified) {
     //         $this->changePassword();
     //     }
-	
+
     // }
 
 	public function newPassword()
@@ -298,15 +294,18 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('re_password', 'Confirm password', 'required|matches[password]');
 
         if ($this->form_validation->run() == FALSE) {
-			
+
 			$this->session->set_flashdata('error_msg', 'Error occured please try again!');
             redirect($this->language . '/change-password');
 
 		}
 
 		$code = $this->input->post('code');
-        $id = $this->input->post('id');
 
+	
+	
+       $id = $this->input->post('id');
+		
         $verified = $this->User_model->verify_code_password($id);
         if ($verified) {
 

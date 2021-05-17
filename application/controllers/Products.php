@@ -25,8 +25,14 @@ class Products extends CI_Controller
 		
         $data['bodyClass'] = 'listings';
 
-		$category = $this->input->get('category');
+	    $category = $this->input->get('category');
+
 		$slug = $this->uri->segment('3');
+
+		if($category == 'ALL VARIETIES')
+		{
+			$slug = $this->input->get('category');
+		}
 
 		if($category != '')
 		{
@@ -98,6 +104,7 @@ class Products extends CI_Controller
 			'robots' => ''
 		];
 
+		
 		$cat_id = 1;
         
         $data['bodyClass'] = 'product-details';

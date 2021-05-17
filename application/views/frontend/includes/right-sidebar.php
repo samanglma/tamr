@@ -100,9 +100,7 @@ content: url('<?= base_url('assets/frontend/images/icons/basket-hover.png') ?>')
 
             <li><a class='user_img' href="<?= $url ?>"><img   src="<?= base_url('assets/frontend/images/icons/profile-initial.png') ?>" /></a></li>
 
-           
-
-			
+    
 			</a></li>
             <li><a  href="<?= base_url($lang . '/cart') ?>" class="cart-icon"><span class="cart-count"><?= $this->cart->total_items() ?></span>
 			<img class="cart-icons" id='' src="<?= base_url('assets/frontend/images/icons/basket-initial.png') ?>" />
@@ -112,7 +110,7 @@ content: url('<?= base_url('assets/frontend/images/icons/basket-hover.png') ?>')
         </ul>
 
 	
-    <!-- <div class="pull-right cart-totals total_amm"><?= $this->cart->format_number($this->cart->total()) ?> <span class="currency">AED</span></div> -->
+     <!-- <div class="pull-right cart-totals total_amm"><?= $this->cart->format_number($this->cart->total()) ?> <span class="currency">AED</span></div>  -->
 </div>
 
 

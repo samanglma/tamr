@@ -2,16 +2,13 @@
 $lang = lang() == 'english' ? 'en' : 'ar';
 ?>
 
-
 <!-- Page Header -->
-<!--   <div class="masthead" style="background-image: url('img/about-bg.jpg'); height: 406px;">
-    
-  </div> -->
+<!--   <div class="masthead" style="background-image: url('img/about-bg.jpg'); height: 406px;">  </div> -->
+
+
 <div class="full-screen">
   <div class="table-cell align-middle">
     <div class="container">
-
-
 
       <div class="contact-us register">
         <div class="bg-text">
@@ -37,7 +34,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
               $first = true;
               foreach ($orders as $order) {
             ?>
-                <tr>aasdasdas
+                <tr>
                   <td class='<?= $first ? 'no-border' : '' ?>'>Order Number <?= $order->ref_number ?></td>
                   <td class='<?= $first ? 'no-border' : '' ?>'><?= date('M d, Y', strtotime($order->date)) ?></td>
                   <td class='<?= $first ? 'no-border' : '' ?>'><?= $order->total ?> AED</td>
@@ -49,7 +46,7 @@ $lang = lang() == 'english' ? 'en' : 'ar';
             ?>
             <tr class="">
               <td class="no-border">
-                <div class='' style="background-color:transparent !important">No order found</div>
+                <div class='' style="background-color:transparent !important">YOUR ORDERS PAGE IS EMPTY. <strong><a href="<?php echo base_url().$this->language.'/products';?>">START ORDERING</a></strong></div>
               </td>
             </tr>
             <?php } ?>
