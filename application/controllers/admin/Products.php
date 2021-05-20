@@ -322,7 +322,7 @@ class Products extends My_Controller
                 $this->session->set_flashdata('error','Please upload all images with correct dimentions');
                 redirect('admin/products/edit/'.$id);
             }
-
+	
             if ($_FILES['image1']['name'] != "") {
                 $config['upload_path'] = './uploads/products/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -357,7 +357,6 @@ class Products extends My_Controller
                 $config['max_width']       = '1374';
                 $config['max_height']      = '1030';
 
-
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image2')) {
                     $error = array('error' => $this->upload->display_errors());
@@ -381,7 +380,6 @@ class Products extends My_Controller
                 $config['min_height']      = '1030';
                 $config['max_width']       = '1374';
                 $config['max_height']      = '1030';
-
 
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image3')) {
@@ -423,162 +421,116 @@ class Products extends My_Controller
                 $image4 = $this->input->post('image4_2');
             }
 
+			 //thumbnail 1
+			 if ($_FILES['thumb1']['name'] != "") {
+				$config2['upload_path'] = './uploads/products/';
+				$config2['allowed_types'] = 'jpg|jpeg|png|gif';
+				$config2['encrypt_name'] = TRUE;
+				$config2['max_width'] = 321;
+				$config2['max_height'] = 282;
+				$config2['min_width'] = 321;
+				$config2['min_height'] = 282;
+	
+				$this->load->library('upload', $config2);
+				$this->upload->initialize($config2);
+	
+				if (!$this->upload->do_upload('thumb1')) {
+					$da = ['error1' => 'Upload Thumbnail 1 with correct dimensions.', 'data' => $this->input->post()];
+					$this->session->set_flashdata('error', $da);
+					redirect('admin/products/add');
+				} else {
+					$uploadData = $this->upload->data();
+	
+					$thumb1 = $uploadData['file_name'];
+				}
+			}
+			else
+			{
+				$thumb1 = $this->input->post('thumb12');
+			}
+	
+			//thumbnail 2
+			if ($_FILES['thumb2']['name'] != "") {
+				$config3['upload_path'] = './uploads/products/';
+				$config3['allowed_types'] = 'jpg|jpeg|png|gif';
+				$config3['encrypt_name'] = TRUE;
+				$config3['max_width'] = 508;
+				$config3['max_height'] = 391;
+				$config3['min_width'] = 508;
+				$config3['min_height'] = 391;
+	
+	
+				$this->load->library('upload', $config3);
+				$this->upload->initialize($config3);
+				if (!$this->upload->do_upload('thumb2')) {
+					$da = ['error1' => 'Upload Thumbnail 2 with correct dimensions.', 'data' => $this->input->post()];
+					$this->session->set_flashdata('error', $da);
+					redirect('admin/products/add');
+				} else {
+					$uploadData = $this->upload->data();
+	
+					$thumb2 = $uploadData['file_name'];
+				}
+			}
+			else
+			{
+				$thumb2 = $this->input->post('thumb22');
+			}
+	
+			$data['id'] = $this->input->post('id');
 
-            // if ($_FILES['image_ar']['name'] != "") {
+			$desc = $this->input->post('description');
+			$desc_ar = $this->input->post('description_ar');
 
+			if (strlen($desc) > 165) {
+				$desc = substr($desc, 0, 165);
+			}
 
-            //     $config['upload_path'] = './uploads/products/';
-            //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            //     /*$config['encrypt_name'] = TRUE;*/
-            //     $config['max_width'] = 700;
-            //     $config['max_height'] = 1000;
+			if (strlen($desc_ar) > 165) {
+				$desc_ar = substr($desc_ar, 0, 165);
+			}
 
+			$title = $this->input->post('title');
+			$slugs = url_title($title);
+			$slug = strtolower($slugs);
 
-            //     $this->load->library('upload', $config);
+			$user = $_SESSION["username"];
 
-            //     $id = $this->input->post('id');
+			$now = date('Y-m-d H:i:s');
 
-            //     if (!$this->upload->do_upload('image_ar')) {
+			$data['data'] = array(
+				'slug' => $slug,
+				'title' => $this->input->post('title'),
+				'title_ar' => $this->input->post('title_ar'),
+				'description' => $desc,
+				'description_ar' => $desc_ar,
+				'image1' => $image1,
+				'theme_color' => $this->input->post('theme_color'),
+				'image2' => $image2,
+				'image3' => $image3,
+				'image4' => $image4,
+				// 'image_ar' => $image_ar,
+				'thumbnail1' => $thumb1,
+				'thumbnail2' => $thumb2,
+				//'thumbnail_ar' => $thumb_ar,
+				'alt' => $this->input->post('alt'),
+				'discounted_price' => $discounted_price,
+				'price' => $this->input->post('price'),
+				'vat_price' => $this->input->post('vat_price'),
+				// 'alt_ar' => $this->input->post('alt_ar'),
+				// 'brand_id' => $this->input->post('brand_id'),  child_cat
+				'cat_id' => $this->input->post('cat_id'),
+				'child_cat' => $this->input->post('child_cat'),
+				'status' => $this->input->post('status'),
+				'mark_as_new' => $this->input->post('markAsNew'),
+				'top_seller' => $this->input->post('topSeller'),
+				'out_of_stock' => $this->input->post('outofStock'),
+				'updated_by' => $user,
+				'updated_at' => $now
+			);
 
-            //         $this->session->set_flashdata('error', 'There is a Problem Uploading Your Arabic Image. Please upload correct Image');
-            //         redirect('admin/products/edit/' . $id);
-            //     } elseif ($this->upload->do_upload('image_ar')) {
-
-            //         $uploadData = $this->upload->data();
-
-            //         $image_ar = $uploadData['file_name'];
-            //     }
-            // } else {
-            //     $image_ar = $this->input->post('image_ar2');
-            // }
-        }
-
-
-        //thumbnail 1
-        if ($_FILES['thumb1']['name'] != "") {
-            $config['upload_path'] = './uploads/products/';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $config['encrypt_name'] = TRUE;
-            $config['max_width'] = 321;
-            $config['max_height'] = 282;
-            $config['min_width'] = 321;
-            $config['min_height'] = 282;
-
-
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('thumb1')) {
-                $error = array('error' => $this->upload->display_errors());
-                $this->session->set_flashdata('error', $this->upload->display_errors());
-
-                redirect('admin/products/edit/' . $id);
-            } else {
-                $uploadData = $this->upload->data();
-
-                $thumb1 = $uploadData['file_name'];
-            }
-        } else {
-            $thumb1 = $this->input->post('thumb12');
-        }
-
-        //thumbnail 2
-        if ($_FILES['thumb2']['name'] != "") {
-            $config['upload_path'] = './uploads/products/';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $config['encrypt_name'] = TRUE;
-            $config['max_width'] = 508;
-            $config['max_height'] = 391;
-            $config['min_width'] = 508;
-            $config['min_height'] = 391;
-
-
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('thumb2')) {
-                $error = array('error' => $this->upload->display_errors());
-                $this->session->set_flashdata('error', $this->upload->display_errors());
-
-                redirect('admin/products/edit/' . $id);
-            } else {
-                $uploadData = $this->upload->data();
-
-                $thumb2 = $uploadData['file_name'];
-            }
-        } else {
-            $thumb2 = $this->input->post('thumb22');
-        }
-
-        // if (!empty($_FILES['thumb']['thumb_ar'])) {
-        //     $config['upload_path'] = './uploads/products/';
-        //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        //     /*$config['encrypt_name'] = TRUE;*/
-        //     $config['max_width'] = 225;
-        //     $config['max_height'] = 210;
-
-        //     $this->load->library('upload', $config);
-        //     if (!$this->upload->do_upload('thumb_ar')) {
-        //         $error = array('error' => $this->upload->display_errors());
-        //         $this->session->set_flashdata('error', $this->upload->display_errors());
-        //         redirect('admin/products/edit/' . $id);
-        //     } else {
-        //         $uploadData = $this->upload->data();
-
-        //         $thumb_ar = $uploadData['file_name'];
-        //     }
-        // }
-
-        $data['id'] = $this->input->post('id');
-
-        $desc = $this->input->post('description');
-        $desc_ar = $this->input->post('description_ar');
-
-        if (strlen($desc) > 165) {
-            $desc = substr($desc, 0, 165);
-        }
-
-        if (strlen($desc_ar) > 165) {
-            $desc_ar = substr($desc_ar, 0, 165);
-        }
-
-        $title = $this->input->post('title');
-        $slugs = url_title($title);
-        $slug = strtolower($slugs);
-
-        $user = $_SESSION["username"];
-
-        $now = date('Y-m-d H:i:s');
-
-        $data['data'] = array(
-            'slug' => $slug,
-            'title' => $this->input->post('title'),
-            'title_ar' => $this->input->post('title_ar'),
-            'description' => $desc,
-            'description_ar' => $desc_ar,
-            'image1' => $image1,
-            'theme_color' => $this->input->post('theme_color'),
-            'image2' => $image2,
-            'image3' => $image3,
-            'image4' => $image4,
-            // 'image_ar' => $image_ar,
-            'thumbnail1' => $thumb1,
-            'thumbnail2' => $thumb2,
-            //'thumbnail_ar' => $thumb_ar,
-            'alt' => $this->input->post('alt'),
-            'discounted_price' => $discounted_price,
-            'price' => $this->input->post('price'),
-            'vat_price' => $this->input->post('vat_price'),
-            // 'alt_ar' => $this->input->post('alt_ar'),
-            // 'brand_id' => $this->input->post('brand_id'),  child_cat
-            'cat_id' => $this->input->post('cat_id'),
-            'child_cat' => $this->input->post('child_cat'),
-            'status' => $this->input->post('status'),
-            'mark_as_new' => $this->input->post('markAsNew'),
-            'top_seller' => $this->input->post('topSeller'),
-            'out_of_stock' => $this->input->post('outofStock'),
-            'updated_by' => $user,
-            'updated_at' => $now
-        );
-
-        if ($this->input->post('outofStock') !== 1 && $this->input->post('outofStock') != $old->out_of_stock) {
-            $brand = $this->db->get_where('brands', ['id' => $this->input->post('brand_id')])->row_array();
+			if ($this->input->post('outofStock') !== 1 && $this->input->post('outofStock') != $old->out_of_stock) {
+				$brand = $this->db->get_where('brands', ['id' => $this->input->post('brand_id')])->row_array();
 
             $subscribers = $this->db->get_where('out_of_stock_subscribers', ['product_id' => $id, 'notified' => 0])->result();
             foreach ($subscribers as $sub) {
@@ -590,7 +542,7 @@ class Products extends My_Controller
                 $message2 = "
 				<html>
 				<head>
-				<title>DepaChika</title>
+				<title>Tamr</title>
 				</head>
 				<body>
 				<p style='margin-bottom:0'>We’d like to notify you that the product you wanted from " . $brand['brand_name'] . " is back on stock!</p><p> Visit our <a href='" . base_url() . "'>website</a> to purchase it now.</p>
@@ -603,7 +555,7 @@ class Products extends My_Controller
 				<tr>
 				<td>
 				<br><p><strong>Regards,</strong></p>
-				<p><strong>Depachika Food Hall Customer Service Team</strong></p>
+				<p><strong>Tamr Customer Service Team</strong></p>
 				<img src='" . base_url() . "assets/frontend/images/invoiceLogo.png' width='200' style='width:200px'>
 				</td></td>
 				</tr>
@@ -621,13 +573,13 @@ class Products extends My_Controller
                 $this->db->where('id', $sub->id);
                 $this->db->update('out_of_stock_subscribers');
             }
-        }
+          }
 			$this->db->where('product_id', $data['id']);
 			$this->db->delete('product_variants');
 			$variants = $this->input->post('variants');
 
 
-        foreach ($variants as $v_value) {
+          foreach ($variants as $v_value) {
             $variant = $this->Variant_m->getVariantValueByID($v_value);
             $variantData = array(
                 'variant_id' => $variant->variant_id,
@@ -635,13 +587,13 @@ class Products extends My_Controller
                 'product_id' => $data['id'],
             );
             $this->Common_model->save($variantData, 'product_variants');
-        }
+          }
 
         $this->Products_m->update($data);
         $this->session->set_flashdata('success', 'Product updated successfully');
         redirect('admin/products');
     }
-
+	}
 
     public function delete($id)
     {

@@ -22,6 +22,11 @@ display: none;
 .price-amount{
 	font-size: 12px;
 }
+
+.boxs{
+
+	padding-bottom: 35px;
+}
 	</style>
 	
 <div class="full-screen">
@@ -50,14 +55,14 @@ display: none;
             if (count($wishlist) > 0 && $wishlist != '') {
               $first = true;
 						
-							$numOfCols = 3;
+							$numOfCols = 2;
 							$rowCount = 0;
 							$bootstrapColWidth = 12 / $numOfCols;
 
               foreach ($wishlist as $key => $item) {
 						
                ?>
-                <div class="col-md-<?php echo $bootstrapColWidth; ?> col-sm-<?php echo $bootstrapColWidth; ?> col-xs-12">
+                <div class="col-md-<?php echo $bootstrapColWidth; ?> col-sm-<?php echo $bootstrapColWidth; ?> col-xs-<?php echo $bootstrapColWidth; ?> boxs">
                   <div class="white-bg product-grid ">
 							
                     <div class="product-details">

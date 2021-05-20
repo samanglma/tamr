@@ -65,6 +65,8 @@ $categories = getCategoriesByParentId(1);
 		text-align: center;
 	}
 
+
+
 </style>
 
 
@@ -132,6 +134,10 @@ if ($success) {
 
 					$counter = 0;
 
+					$rowCount = 0;
+					$numOfCols = 3;
+					$bootstrapColWidth = 12 / $numOfCols;
+
 					foreach ($products as $key => $p) {
 						if ($counter != 0 && $counter % 3 == 0) {
 							echo '<div class="clearfix"></div>';
@@ -145,9 +151,10 @@ if ($success) {
 							$thumb = $p->thumbnail1;
 							$thumb1 = $p->image1;
 						}
-
+					
+						
 					   ?>
-						<div class="product-grid col-md-<?= $col ?>">
+						<div class="product-grid col-md-<?= $col ?> col-xs-<?php echo $bootstrapColWidth; ?>">
 							<div class="p-holder">
 
 								<div class="product-details">
@@ -189,8 +196,13 @@ if ($success) {
 							</div>
 						</div>
 				    <?php
+
+					$rowCount++;
+					if($rowCount % $numOfCols == 0) echo '</div><div class="row">';
+
 					$counter++; 
 					}
+					
 				    ?>
 
 				</div>
@@ -198,8 +210,6 @@ if ($success) {
 			</div>
 		</div>
 	</div>
-
-
 
 	<script>
 
@@ -218,25 +228,25 @@ if ($success) {
 			}
 		});
 
-	//  	function getSummary(id)
-    //  {
-	//  	//id = $(this).attr('data-id');
+		//  	function getSummary(id)
+		//  {
+		//  	//id = $(this).attr('data-id');
 
-	//  	//alert(proid);
-	//  	$.ajax({
-    //          type:'POST',
-	//  		url: "<?php echo base_url(); ?>en/products/index/"+id,
-    //          data:{'id':id},
-    //          success:function(data){
-    //              //location.reload();
-    //          }
-    //      });
-    
+		//  	//alert(proid);
+		//  	$.ajax({
+		//          type:'POST',
+		//  		url: "<?php echo base_url(); ?>en/products/index/"+id,
+		//          data:{'id':id},
+		//          success:function(data){
+		//              //location.reload();
+		//          }
+		//      });
+		
 
-    //  }
-</script>
+		//  }
 
 
+	</script>
 
 	<!-- <div class="cart-item">
       <div>
@@ -253,7 +263,8 @@ if ($success) {
     </div> -->
 
 
-	<script>
+<script>
+
  window.onbeforeunload = function () {
             var scrollPos;
             if (typeof window.pageYOffset != 'undefined') {

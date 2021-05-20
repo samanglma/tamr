@@ -71,12 +71,12 @@
 
                        <div class="col-md-7  form-group">
                            <label>Product Name *</label>
-                           <input type="text" name="title" value="<?php echo $row->title ?>" class="form-control" placeholder="Title" />
+                           <input type="text" name="title" value="<?php echo $row->title ?>" class="form-control" placeholder="Name" />
                            <?php echo form_error('title', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
                        <div class="col-md-7  form-group">
                            <label>Arabic Product Name</label>
-                           <input dir="rtl" type="text" name="title_ar" value="<?php echo $row->title_ar ?>" class="form-control" placeholder="Arabic Tite" />
+                           <input dir="rtl" type="text" name="title_ar" value="<?php echo $row->title_ar ?>" class="form-control" placeholder="Arabic Name" />
                        </div>
                        <div class="col-md-12 form-group">
                            <label>Description</label>

@@ -70,7 +70,7 @@
                                                                         echo $data['data']['title'];
                                                                     } else {
                                                                         echo set_value('title');
-                                                                    } ?>" class="form-control" placeholder="Title" required />
+                                                                    } ?>" class="form-control" placeholder="Name" required />
                            <?php echo form_error('title', '<div class="error" style="color: red;">', '</div>'); ?>
                        </div>
 
@@ -80,7 +80,7 @@
                                                                                     echo $data['data']['title_ar'];
                                                                                 } else {
                                                                                     echo set_value('title_ar');
-                                                                                } ?>" class="form-control" placeholder="Arabic Tite" />
+                                                                                } ?>" class="form-control" placeholder="Arabic Name" />
                        </div>
 
                        <div class="col-md-12 form-group">

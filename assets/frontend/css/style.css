@@ -1897,6 +1897,13 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 
 }
 
+.p-holder{
+		
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+	padding: 0 5px;
+	height: 354px;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
@@ -1939,9 +1946,11 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 	.product-details .currency{
 		font-size: 11px;
 	}
+
 	.p-category{
 		font-size: 20px !important;
 	}
+
 	.price {
 		margin-right: 5px;
 		margin-top: 87px !important;
@@ -1953,19 +1962,24 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 	.product-details-tamr{
 		font-size: 18px;
 	}
+
 	.product-details-name{
 		font-size: 2rem;
 	}
+
 	.pcs {
 		margin-left: 25px;
 	}
+
 	#toggle{
 		font-size: 12px;
 	}
+
 	.view-all{
 		margin-top: 4%;
     margin-bottom: 26px;
 	}
+
 	.product-details-tamr{
 		margin-left: 48px;
 	}
@@ -2022,12 +2036,27 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 
 	/* about us page */
  .addresss{
-		margin-top: 116px;
-    margin-right: 85px;
+	margin-top: 41px;
+	margin-right: 60px;
+	}
+	.details-about{
+		height: 38px;
+	}
+
+ .serch:hover{
+
+	max-width: 18px;
+	
+	}
+	
+	.user_img:hover{
+
+		height: 30px;
+	
 	}
 
 	.submit-btn.btn{
-		right: -23%;
+		right: -32%;
     font-size: 14px;
 	}
 
@@ -2045,9 +2074,9 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 	}
 
 	.overlay button img{
-		width: 26px;
+		width: 22px;
     margin-top: -36px;
-    margin-left: 163px;
+    margin-left: 173px;
 	}
 
 	.menu-products li:first-child{
@@ -2218,7 +2247,6 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 		background-color: #fffefd;
 	}
 
-
 	.menu-image.active{
 		top:0px;
 	}
@@ -2262,6 +2290,33 @@ textarea.form-control { height: 110px; padding-top: 71px;}
 	.privacy-policy h3{
 		font-size: 18px;
 	}
+
+	.details-about{
+		height: 435px;
+	}
+
+	.product-grid .product-details a{
+		font-size: 11px;
+	}
+
+	.p-holder{
+		height: 235px;
+	}
+
+	.overlay button img{
+		width: 22px;
+    margin-top: -36px;
+    margin-left: 173px;
+	}
+
+	.content.contact-us {
+			padding: 5rem;
+	}
+
+	.right-sidebar{
+		width: 77px !important;
+		right: -6px !important;
+	}
   
 }
 
@@ -2270,14 +2325,17 @@ textarea.form-control { height: 110px; padding-top: 71px;}
   .product-details-name{
     font-size: 1rem;
   }
+
   #addToCart{
     margin-top: -8%;
     font-size: 11px;
   }
+
   .price p{
     margin-top: 19px;
     font-size: 12px !important;
   }
+
   .view-all a{
     font-size: 11px;
   }
@@ -2285,6 +2343,7 @@ textarea.form-control { height: 110px; padding-top: 71px;}
   #toggle{
     font-size: 10px;
   }
+
   .kinds a{
     margin: 5px -88px 0px;
   }
@@ -2329,8 +2388,8 @@ textarea.form-control { height: 110px; padding-top: 71px;}
   }
 
   .addresss {
-    margin-top: 55px;
-    margin-right: 61px;
+		margin-top: 41px;
+		margin-right: 139px;
   }
 
   .bg-text h2{
@@ -2363,6 +2422,46 @@ textarea.form-control { height: 110px; padding-top: 71px;}
   .p-holder img{
     max-height: 170px;
   }
+
+	.details-about{
+		height: 435px;
+	}
+
+	.serch:hover{
+		max-width: 18px;
+	}
+		
+	.user_img:hover{
+
+		height: 30px;
+	}
+
+	.product-grid .product-details a{
+		font-size: 11px;
+	}
+
+	.p-holder{
+		height: 235px;
+	}
+
+	.addresss{
+		margin-top: 41px;
+		margin-right: 60px;
+		}
+
+	.content.contact-us {
+		padding: 5rem;
+	}
+
+	.right-sidebar{
+    width: 77px !important;
+    right: -6px !important;
+  }
+
+	.submit-btn.btn{
+		right: -32%;
+    font-size: 14px;
+	}
 
 }
 
